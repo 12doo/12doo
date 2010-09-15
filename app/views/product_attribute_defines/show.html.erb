@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @product_attribute_define.name %>
+</p>
+
+<p>
+  <b>Short:</b>
+  <%= @product_attribute_define.short %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @product_attribute_define.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_product_attribute_define_path(@product_attribute_define) %> |
+<%= link_to 'Back', product_attribute_defines_path %>

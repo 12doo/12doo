@@ -1,0 +1,21 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  sku: MyString
+  price: 9.99
+  indication_price: 9.99
+  memo: MyString
+  status: MyString
+  count: 1
+  vintage: 1
+
+two:
+  name: MyString
+  sku: MyString
+  price: 9.99
+  indication_price: 9.99
+  memo: MyString
+  status: MyString
+  count: 1
+  vintage: 1
