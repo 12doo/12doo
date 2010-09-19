@@ -40,6 +40,10 @@
   <%= @product.vintage %>
 </p>
 
+<% @product.product_attributes.each do |attribute| %>
+	<b><%= attribute.name %>:</b>
+	<%= attribute.value %>
+<% end %>
 
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>

@@ -28,13 +28,13 @@ class ProductsController < ApplicationController
     @statuses = ProductStatus.all
     @years = (Time.now.year).downto(Time.now.year - 30).map{ |x| x }
     attributeDef = ProductAttributeDefine.all
-    @attr = Array.new
+
     attributeDef.each do |x|
       temp = ProductAttribute.new
-      temp.name = x.name
+      temp.name   = x.name
       temp.short = x.short
       temp.description = x.description
-      @attr << temp
+      @product.product_attributes << temp
     end
     respond_to do |format|
       format.html # new.html.erb
@@ -45,13 +45,22 @@ class ProductsController < ApplicationController
   # GET /products/1/edit
   def edit
     @product = Product.find(params[:id])
+    @statuses = ProductStatus.all
+    @years = (Time.now.year).downto(Time.now.year - 30).map{ |x| x }
   end
 
   # POST /products
   # POST /products.xml
   def create
     @product = Product.new(params[:product])
-
+    #need update: use tran save 
+    params[:product_attribute].each do |attri|
+      temp = ProductAttribute.new
+      temp.name = attri[:name]
+      temp.value = attri[:value]
+      temp.product_sku = @product.sku
+      temp.save
+    end
     respond_to do |format|
       if @product.save
         format.html { redirect_to(@product, :notice => 'Product was successfully created.') }
@@ -67,7 +76,11 @@ class ProductsController < ApplicationController
   # PUT /products/1.xml
   def update
     @product = Product.find(params[:id])
-
+    params[:product_attribute].each do |attri|
+      temp = @product.product_attributes.find(:first,:conditions => { :name => attri[:name] })
+      temp.value = attri[:value]
+      temp.save
+    end
     respond_to do |format|
       if @product.update_attributes(params[:product])
         format.html { redirect_to(@product, :notice => 'Product was successfully updated.') }

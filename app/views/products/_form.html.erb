@@ -29,11 +29,11 @@
   </div>
   <div class="field">
     <%= f.label :memo %><br />
-    <%= f.text_field :memo %>
+    <%= f.text_area :memo %>
   </div>
   <div class="field">
     <%= f.label :status %><br />
-    <%= f.text_field :status %>
+    <%= select :product, :status, @statuses.map {|s| [ s.name, s.name ] } %>
   </div>
   <div class="field">
     <%= f.label :count %><br />
@@ -41,8 +41,13 @@
   </div>
   <div class="field">
     <%= f.label :vintage %><br />
-    <%= f.text_field :vintage %>
+    <%= select :product, :vintage, @years %>
   </div>
+	<div class="field">
+		<% @product.product_attributes.each do |attribute| %>
+			<%= attribute.name %>:<input type="hidden" value="<%= attribute.name %>" name="product_attribute[][name]" /><input type="text" name="product_attribute[][value]" value="<%= attribute.value %>" /><br/>
+		<% end %>
+	</div>
   <div class="actions">
     <%= f.submit %>
   </div>
