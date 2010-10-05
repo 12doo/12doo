@@ -18,6 +18,7 @@
 	    <%= link_to "Sign in", new_user_session_path %>    
 	  <% end %>    
 	</div>
+	<div id="cart"><%= link_to "Cart", :action=>'show_cart', :controller=>'store' %></div>
 <%= yield %>
 
 </body>
