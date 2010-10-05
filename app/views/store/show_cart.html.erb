@@ -1,8 +1,29 @@
 <h2>Your Pragmatic Cart</h2>
-<ul>
-<% for item in @cart.items %>
-	<li><%= item.quantity %> &times; <%=h item.name %>--<%= item.subtotal.to_f %></li>
-<% end %>
-<li><h1><%= @cart.total.to_f %></h1></li>
-<li><%= button_to "clear cart", :action=>'clear_cart' %></li>
-</ul>
+<table>
+	<tr>
+		<td>Name</td>
+		<td>Price</td>
+		<td>Quantity</td>
+		<td>SubTotal</td>
+		<td></td>
+
+	</tr>
+	<% for item in @cart.items %>
+		<tr>
+			<td><%=h item.name %></td>
+			<td><%=h item.product.price.to_f %></td>
+			<td><input type="text" value="<%= item.quantity %>" onchange="$("#quantity".val(this.val()))" /></td>
+			<td><%=h item.subtotal.to_f %></td>
+			<td>
+				<% form_tag :action=>'update_from_cart', :id=>item.product.id do -%>
+					<input type="hidden" value="<%= item.quantity %>" id="quantity" />
+					<input type="submit" value="update" />
+				<% end -%>
+				<%= button_to "delete", :action=>'delete_from_cart', :id=>item.product.id %>
+			</td>
+		</tr>
+	<% end %>
+	<tr>
+		<td colspan='5'>Total:<%= @cart.total.to_f %><%= button_to "clear cart", :action=>'clear_cart' %><%= link_to "back", :action=>'index', :controller=>'products' %></td>
+	</tr>
+</table>

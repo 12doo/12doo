@@ -23,7 +23,7 @@ class Cart
     end
   end
   
-  def remove_product(product,quantity = 1)
+  def update_product(product,quantity = 1)
     if quantity > 0
       current_item = @items.find {|item| item.product == product} 
       if current_item
@@ -41,9 +41,8 @@ class Cart
   def total
     total = 0
     if @items != []
-      @items.each do |item|
-        total += item.subtotal
-      end
+      # how to use array.sum method to sum this array.
+      @items.each {|item| total += item.subtotal }
     end
     total
   end

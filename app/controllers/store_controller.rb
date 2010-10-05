@@ -8,9 +8,9 @@ class StoreController < ApplicationController
     redirect_to :action => 'show_cart'
   end
   
-  def remove_from_cart
+  def update_from_cart
     @cart = find_cart
-    @cart.remove_product(find_product)
+    @cart.update_product(find_product,params[:quantity])
     redirect_to :action => 'show_cart'
   end
   

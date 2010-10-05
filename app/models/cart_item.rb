@@ -15,6 +15,6 @@ class CartItem
   end
   
   def subtotal
-    @product.price * @quantity
+    (@product.price * @quantity).to_f
   end 
 end
