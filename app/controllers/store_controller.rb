@@ -31,7 +31,10 @@ class StoreController < ApplicationController
   end
   
   def search
-    @products = Product.joins(:product_tags).where("product_tags.value like '%#{params[:key]}%'").uniq
+    sku = []
+    ProductTag.where("value like '%#{params[:key]}%'").each {|tag| sku << tag.product_sku }
+    #@products = Product.joins(:product_tags).select("distinct(`products`.*)").where("product_tags.value like '%#{params[:key]}%'").uniq.paginate(:page => params[:page], :order => 'created_at DESC')
+    @products = Product.where(:sku => sku).paginate(:page => params[:page], :order => 'created_at DESC')
 
     respond_to do |format|
       format.html { render "products/index" }

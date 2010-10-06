@@ -70,7 +70,7 @@ GEM
     tzinfo (0.3.23)
     warden (0.10.7)
       rack (>= 1.0.0)
-    will_paginate (2.3.15)
+    will_paginate (3.0.pre2)
 
 PLATFORMS
   ruby
@@ -79,4 +79,4 @@ DEPENDENCIES
   devise
   mysql2
   rails (= 3.0.0)
-  will_paginate
+  will_paginate (= 3.0.pre2)
