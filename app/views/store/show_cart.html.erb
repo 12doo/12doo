@@ -12,11 +12,11 @@
 		<tr>
 			<td><%=h item.name %></td>
 			<td><%=h item.product.price.to_f %></td>
-			<td><input type="text" value="<%= item.quantity %>" onchange="$("#quantity".val(this.val()))" /></td>
+			<td><input type="text" value="<%= item.quantity %>" onchange='$("#<%= item.product.id %>_quantity").val($(this).val());' /></td>
 			<td><%=h item.subtotal.to_f %></td>
 			<td>
 				<% form_tag :action=>'update_from_cart', :id=>item.product.id do -%>
-					<input type="hidden" value="<%= item.quantity %>" id="quantity" />
+					<input type="hidden" value="<%= item.quantity %>" id="<%= item.product.id %>_quantity" name="quantity" />
 					<input type="submit" value="update" />
 				<% end -%>
 				<%= button_to "delete", :action=>'delete_from_cart', :id=>item.product.id %>

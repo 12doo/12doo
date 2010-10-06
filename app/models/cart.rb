@@ -9,7 +9,6 @@ class Cart
       current_item = @items.find {|item| item.product == product} 
       if current_item
         current_item.update_quantity(current_item.quantity + quantity)
-        @total += current_item.subtotal
       else
         @items << CartItem.new(product,quantity)
       end
@@ -27,11 +26,7 @@ class Cart
     if quantity > 0
       current_item = @items.find {|item| item.product == product} 
       if current_item
-        if curent_item.quantity > quantity
-          current_item.update_quantity(current_item.quantity - quantity)
-        else
-          delete_product(product)
-        end
+          current_item.update_quantity(quantity)
       end
     else quantity = 0
       delete_product(product)
@@ -43,6 +38,7 @@ class Cart
     if @items != []
       # how to use array.sum method to sum this array.
       @items.each {|item| total += item.subtotal }
+      # total = @items.sum(:quantity)
     end
     total
   end

@@ -10,7 +10,7 @@ class StoreController < ApplicationController
   
   def update_from_cart
     @cart = find_cart
-    @cart.update_product(find_product,params[:quantity])
+    @cart.update_product(find_product,params[:quantity].to_f)
     redirect_to :action => 'show_cart'
   end
   
