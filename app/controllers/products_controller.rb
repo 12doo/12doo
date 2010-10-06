@@ -124,6 +124,7 @@ class ProductsController < ApplicationController
     end
   end
   
+  # delete /products/1/delete_tag
   def delete_tag
     @product = Product.find(params[:id])
     tag = @product.product_tags.find(:first,:conditions => {:key => params[:key]})

@@ -30,6 +30,15 @@ class StoreController < ApplicationController
     @cart = find_cart
   end
   
+  def search
+    @products = Product.joins(:product_tags).where("product_tags.value like '%#{params[:key]}%'").uniq
+
+    respond_to do |format|
+      format.html { render "products/index" }
+      format.xml  { render :xml => @products }
+    end
+  end
+  
   private 
   def find_cart 
     session[:cart] ||= Cart.new 
