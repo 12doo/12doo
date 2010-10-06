@@ -1,4 +1,6 @@
 V3::Application.routes.draw do
+  resources :product_tags
+
   get "store/index"
 
   resources :product_statuses

@@ -61,6 +61,13 @@ class ProductsController < ApplicationController
       temp.product_sku = @product.sku
       temp.save
     end
+    params[:product_tag].each do |tag|
+      temp = ProductTag.new
+      temp.key = tag[:key]
+      temp.value = tag[:value]
+      temp.product_sku = @product.sku
+      temp.save
+    end
     respond_to do |format|
       if @product.save
         format.html { redirect_to(@product, :notice => 'Product was successfully created.') }
@@ -81,6 +88,19 @@ class ProductsController < ApplicationController
       temp.value = attri[:value]
       temp.save
     end
+    params[:product_tag].each do |tag|
+      if tag[:key] != ""
+        temp = @product.product_tags.find(:first,:conditions => {:key => tag[:key]})
+        if temp == nil
+          temp = ProductTag.new
+          temp.key = tag[:key]
+          temp.product_sku = @product.sku
+        end
+        temp.value = tag[:value]
+        temp.save
+      end
+    end
+    
     respond_to do |format|
       if @product.update_attributes(params[:product])
         format.html { redirect_to(@product, :notice => 'Product was successfully updated.') }
@@ -102,5 +122,15 @@ class ProductsController < ApplicationController
       format.html { redirect_to(products_url) }
       format.xml  { head :ok }
     end
+  end
+  
+  def delete_tag
+    @product = Product.find(params[:id])
+    tag = @product.product_tags.find(:first,:conditions => {:key => params[:key]})
+    if tag
+      tag.destroy
+    end
+    
+    redirect_to :action => 'edit',:id=>params[:id]
   end
 end

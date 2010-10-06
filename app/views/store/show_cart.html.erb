@@ -1,29 +1,16 @@
 <h2>Your Pragmatic Cart</h2>
-<table>
-	<tr>
-		<td>Name</td>
-		<td>Price</td>
-		<td>Quantity</td>
-		<td>SubTotal</td>
-		<td></td>
 
-	</tr>
-	<% for item in @cart.items %>
-		<tr>
-			<td><%=h item.name %></td>
-			<td><%=h item.product.price.to_f %></td>
-			<td><input type="text" value="<%= item.quantity %>" onchange='$("#<%= item.product.id %>_quantity").val($(this).val());' /></td>
-			<td><%=h item.subtotal.to_f %></td>
-			<td>
-				<% form_tag :action=>'update_from_cart', :id=>item.product.id do -%>
-					<input type="hidden" value="<%= item.quantity %>" id="<%= item.product.id %>_quantity" name="quantity" />
-					<input type="submit" value="update" />
-				<% end -%>
-				<%= button_to "delete", :action=>'delete_from_cart', :id=>item.product.id %>
-			</td>
-		</tr>
-	<% end %>
-	<tr>
-		<td colspan='5'>Total:<%= @cart.total.to_f %><%= button_to "clear cart", :action=>'clear_cart' %><%= link_to "back", :action=>'index', :controller=>'products' %></td>
-	</tr>
-</table>
+
+<li class="item_list_title">
+  <span class="item_name">Name</span>
+  <span class="item_price">Price</span>
+  <span class="item_quantity">Quantity</span>
+  <span class="item_subtotal">SubTotal</span>
+</li>
+
+
+	<%= render(:partial => "cart_item", :collection => @cart.items) %>
+
+
+Total:<%= @cart.total.to_f %><%= button_to "clear cart", :action=>'clear_cart' %><%= link_to "back", :action=>'index', :controller=>'products' %>
+

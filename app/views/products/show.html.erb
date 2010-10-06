@@ -42,7 +42,12 @@
 
 <% @product.product_attributes.each do |attribute| %>
 	<b><%= attribute.name %>:</b>
-	<%= attribute.value %>
+	<%= attribute.value %><br />
+<% end %>
+
+<% @product.product_tags.each do |tag| %>
+	<b><%= tag.key %>:</b>
+	<%= tag.value %><br />
 <% end %>
 
 <%= button_to "Add to Cart" , :action => 'add_to_cart', :controller => 'store', :id => @product %>

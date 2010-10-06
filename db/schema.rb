@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100915145931) do
+ActiveRecord::Schema.define(:version => 20101006043954) do
 
   create_table "product_attribute_defines", :force => true do |t|
     t.string   "name"
@@ -33,6 +33,14 @@ ActiveRecord::Schema.define(:version => 20100915145931) do
   create_table "product_statuses", :force => true do |t|
     t.string   "name"
     t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "product_tags", :force => true do |t|
+    t.string   "product_sku"
+    t.string   "key"
+    t.string   "value"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
