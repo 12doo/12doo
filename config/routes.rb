@@ -1,4 +1,18 @@
 V3::Application.routes.draw do
+  get "cart/show"
+
+  get "cart/clear"
+
+  get "cart/delete_product"
+
+  get "cart/update_product"
+
+  get "cart/add_product"
+
+  resources :order_items
+
+  resources :orders
+
   resources :product_tags
 
   get "store/index"

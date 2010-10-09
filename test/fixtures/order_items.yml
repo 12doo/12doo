@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  order_no: MyString
+  quantity: 1
+  price: 9.99
+  subtotal: 9.99
+  product_name: MyString
+  product_sku: MyString
+  status: MyString
+
+two:
+  order_no: MyString
+  quantity: 1
+  price: 9.99
+  subtotal: 9.99
+  product_name: MyString
+  product_sku: MyString
+  status: MyString

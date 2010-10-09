@@ -50,6 +50,6 @@
 	<%= tag.value %><br />
 <% end %>
 
-<%= button_to "Add to Cart" , :action => 'add_to_cart', :controller => 'store', :id => @product %>
+<%= button_to "Add to Cart" , :action => 'add_product', :controller => 'cart', :id => @product %>
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>

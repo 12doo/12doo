@@ -1,0 +1,21 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  no: MyString
+  total: 9.99
+  status: MyString
+  order_at: 2010-10-09 11:23:06
+  count: 1
+  delivery_at: 2010-10-09 11:23:06
+  address_id: 1
+  user_id: 1
+
+two:
+  no: MyString
+  total: 9.99
+  status: MyString
+  order_at: 2010-10-09 11:23:06
+  count: 1
+  delivery_at: 2010-10-09 11:23:06
+  address_id: 1
+  user_id: 1

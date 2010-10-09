@@ -12,5 +12,4 @@
 	<%= render(:partial => "cart_item", :collection => @cart.items) %>
 
 
-Total:<%= @cart.total.to_f %><%= button_to "clear cart", :action=>'clear_cart' %><%= link_to "back", :action=>'index', :controller=>'products' %>
-
+Total:<%= @cart.total.to_f %><%= button_to "clear cart", :action=>'clear', :controller=>'cart' %><%= link_to "back", :action=>'index', :controller=>'products' %><%= button_to "order", :action=>'new', :controller=>'orders' %>
