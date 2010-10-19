@@ -21,25 +21,19 @@
 </p>
 
 <p>
-  <b>Count:</b>
-  <%= @order.count %>
-</p>
-
-<p>
   <b>Delivery at:</b>
   <%= @order.delivery_at %>
 </p>
 
 <p>
   <b>Address:</b>
-  <%= @order.address_id %>
+  <%= @order.fullname %>/<%= @order.address %>/<%= @order.province %>/<%= @order.city %>/<%= @order.region %>
 </p>
 
 <p>
-  <b>User:</b>
-  <%= @order.user_id %>
+<% @order.order_items.each do |item| %>
+	<%= item.product_name %>:<%= item.price.to_f %>*<%= item.quantity %>=<%= item.subtotal.to_f %><br />
+<% end %>
 </p>
 
-
-<%= link_to 'Edit', edit_order_path(@order) %> |
 <%= link_to 'Back', orders_path %>

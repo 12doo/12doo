@@ -10,7 +10,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101009032650) do
+ActiveRecord::Schema.define(:version => 20101018075749) do
+
+  create_table "addresses", :force => true do |t|
+    t.string   "detail"
+    t.string   "province"
+    t.string   "city"
+    t.string   "region"
+    t.string   "zip"
+    t.string   "phone"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "default"
+    t.integer  "user_id"
+  end
 
   create_table "order_items", :force => true do |t|
     t.string   "order_no"
@@ -29,12 +43,18 @@ ActiveRecord::Schema.define(:version => 20101009032650) do
     t.decimal  "total",       :precision => 10, :scale => 0
     t.string   "status"
     t.datetime "order_at"
-    t.integer  "count"
     t.datetime "delivery_at"
     t.integer  "address_id"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "fullname"
+    t.string   "address"
+    t.string   "province"
+    t.string   "city"
+    t.string   "region"
+    t.string   "zip"
+    t.string   "phone"
   end
 
   create_table "product_attribute_defines", :force => true do |t|

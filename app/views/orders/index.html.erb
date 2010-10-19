@@ -6,7 +6,6 @@
     <th>Total</th>
     <th>Status</th>
     <th>Order at</th>
-    <th>Count</th>
     <th>Delivery at</th>
     <th>Address</th>
     <th>User</th>
@@ -21,17 +20,13 @@
     <td><%= order.total %></td>
     <td><%= order.status %></td>
     <td><%= order.order_at %></td>
-    <td><%= order.count %></td>
     <td><%= order.delivery_at %></td>
     <td><%= order.address_id %></td>
     <td><%= order.user_id %></td>
     <td><%= link_to 'Show', order %></td>
-    <td><%= link_to 'Edit', edit_order_path(order) %></td>
     <td><%= link_to 'Destroy', order, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
-
-<%= link_to 'New Order', new_order_path %>
