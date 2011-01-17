@@ -9,6 +9,7 @@ gem 'rails','3.0.1'
 
 gem 'mysql2'
 gem 'devise'
+gem 'delayed_job', '2.1.0.pre'
 
 gem 'active_merchant'
 gem 'activemerchant_patch_for_china'

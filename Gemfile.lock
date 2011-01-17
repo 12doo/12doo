@@ -43,6 +43,9 @@ GEM
     braintree (2.6.2)
       builder
     builder (2.1.2)
+    daemons (1.1.0)
+    delayed_job (2.1.0.pre)
+      daemons
     devise (1.1.2)
       bcrypt-ruby (~> 2.1.2)
       warden (~> 0.10.7)
@@ -90,6 +93,7 @@ PLATFORMS
 DEPENDENCIES
   active_merchant
   activemerchant_patch_for_china
+  delayed_job (= 2.1.0.pre)
   devise
   mysql2
   rails (= 3.0.1)

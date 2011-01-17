@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+  
+  after_create :send_welcome_email
+  
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable, :lockable and :timeoutable
   devise :database_authenticatable, :registerable,
@@ -11,6 +14,9 @@ class User < ActiveRecord::Base
   has_many :orders, :foreign_key => "user_id", :primary_key => "id"
   
   # verify
-  validates_uniqueness_of :email, :phone
-  validates_presence_of :email
+  validates_uniqueness_of :phone, :allow_nil => true, :allow_blank => true
+  
+  def send_welcome_email
+    UserMailer.welcome_email(self).deliver
+  end
 end

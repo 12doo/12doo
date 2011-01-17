@@ -20,6 +20,8 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(user)
     if user.admin
       return "/admin"
+    else
+      return "/"
     end
   end
 end
