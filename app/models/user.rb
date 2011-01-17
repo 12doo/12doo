@@ -9,4 +9,8 @@ class User < ActiveRecord::Base
   
   has_many :addresses, :foreign_key => "user_id", :primary_key => "id"
   has_many :orders, :foreign_key => "user_id", :primary_key => "id"
+  
+  # verify
+  validates_uniqueness_of :email, :phone
+  validates_presence_of :email
 end
