@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
-  <title>12度红酒网</title>
+  <title>V3</title>
   	<%= stylesheet_link_tag :all %>
 	<%= javascript_include_tag "jquery-1.4.1.min.js" %>
 	<%= javascript_include_tag 'rails' %>
@@ -12,18 +12,18 @@
     <p class="alert"><%= alert %></p>
 	<div id="user_nav">    
 	  <% if user_signed_in? %>
-	    欢迎 <%= link_to current_user.email, :action=>'index', :controller=>'my' %>. 这不是我的账户?    
-	    <%= link_to "注销", destroy_user_session_path %>
+	    Signed in as <%= current_user.email %>. <%= link_to "my", :action=>'index', :controller=>'my' %>Not you?    
+	    <%= link_to "Sign out", destroy_user_session_path %>
 	  <% else %>    
-	    <%= link_to "注册", new_user_registration_path %> or    
-	    <%= link_to "登陆", new_user_session_path %>    
+	    <%= link_to "Sign up", new_user_registration_path %> or    
+	    <%= link_to "Sign in", new_user_session_path %>    
 	  <% end %>    
 	</div>
-	<div id="cart"><%= link_to "购物车", :action=>'show', :controller=>'cart' %></div>
+	<div id="cart"><%= link_to "cart", :action=>'show', :controller=>'cart' %></div>
 	<div id="search">
 		<% form_tag ({:action=>'search',:controller=>'store'}, :method=>:get) do -%>
 			<input type="text" name="key" />
-			<input type="submit" value="搜索">
+			<input type="submit" value="search">
 		<% end -%>
 	</div>
 <%= yield %>

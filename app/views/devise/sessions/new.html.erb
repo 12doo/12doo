@@ -1,14 +1,14 @@
 <h2>登陆</h2>
 
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <p><%= f.label "邮箱", :email %><br />
+  <p>邮箱<br />
   <%= f.text_field :email %></p>
 
-  <p><%= f.label "密码", :password %><br />
+  <p>密码<br />
   <%= f.password_field :password %></p>
 
   <% if devise_mapping.rememberable? -%>
-    <p><%= f.check_box :remember_me %> <%= f.label :记住登陆状态 %></p>
+    <p><%= f.check_box :remember_me %>记住登陆状态</p>
   <% end -%>
 
   <p><%= f.submit "登陆" %></p>
