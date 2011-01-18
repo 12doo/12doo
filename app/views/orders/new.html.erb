@@ -1,5 +1,63 @@
-<h1>New order</h1>
+<%= form_tag 'create' do -%>
+<table>
+	<tr>
+		<td>产品</td>
+		<td>单价</td>
+		<td>数量</td>
+		<td>小计</td>
+	</tr>
+	<% @order.order_items.each do |item| %>
+	<tr>
+		<td><%= item.product_name %></td>
+		<td><%= item.price.to_f %></td>
+		<td><%= item.quantity %></td>
+		<td><%= item.subtotal.to_f %><br /></td>
+	</tr>
+	<% end %>
+</table>
+合计:<input type="text" name="total" id="total" /><br /><%= link_to "修改", :action=>'show', :controller=>'cart' %>
+地址:<%= link_to "地址列表", :action=>'index', :controller=>'address' %>
+<table>
+  <tr>
+  	<th></th>
+    <th>省</th>
+    <th>城市</th>
+    <th>区</th>
+    <th>地址</th>
+    <th>邮编</th>
+    <th>电话</th>
+    <th>姓名</th>
+    <th>默认地址</th>
+    <th></th>
+    <th></th>
+  </tr>
 
-<%= render 'form' %>
+<% current_user.addresses.each do |address| %>
+  <tr>
+  	<td><input type="radio" name="address_id" value="<%= address.id %>"></td>
+    <td><%= address.province %></td>
+    <td><%= address.city %></td>
+    <td><%= address.region %></td>
+    <td><%= address.detail %></td>
+    <td><%= address.zip %></td>
+    <td><%= address.phone %></td>
+    <td><%= address.name %></td>
+	<td><%= address.default ? "是" : "否" %></td>
+    <td><%= link_to '修改', :action => :edit, :id => address.id %></td>
+    <td><%= link_to '删除', address, :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+<input type="radio" name="address_id" value="0" />新地址:<br />
+姓名:<input type="text" name="fullname" /><br />
+省/市:<input type="text" name="province" /><br />
+市/县:<input type="text" name="city" /><br />
+地区/镇:<input type="text" name="region" /><br />
+地址:<input type="text" name="address" /><br />
+邮编:<input type="text" name="zip" /><br />
+联系电话:<input type="text" name="phone" /><br />
+送货方式:
+  <input type="submit" value="提交" />
+<% end -%>
 
-<%= link_to 'Back', orders_path %>
+<%= link_to '后退', orders_path %>

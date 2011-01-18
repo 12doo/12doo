@@ -1,17 +1,9 @@
 class ProductsController < ApplicationController
-  # GET /products
-  # GET /products.xml
+
   def index
     @products = Product.paginate :page => params[:page], :order => 'created_at DESC'
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @products }
-    end
   end
 
-  # GET /products/1
-  # GET /products/1.xml
   def show
     @product = Product.find(params[:id])
 
@@ -21,8 +13,6 @@ class ProductsController < ApplicationController
     end
   end
 
-  # GET /products/new
-  # GET /products/new.xml
   def new
     @product = Product.new
     @statuses = ProductStatus.all
@@ -42,15 +32,12 @@ class ProductsController < ApplicationController
     end
   end
 
-  # GET /products/1/edit
   def edit
     @product = Product.find(params[:id])
     @statuses = ProductStatus.all
     @years = (Time.now.year).downto(Time.now.year - 30).map{ |x| x }
   end
 
-  # POST /products
-  # POST /products.xml
   def create
     @product = Product.new(params[:product])
     #need update: use tran save 
@@ -79,8 +66,6 @@ class ProductsController < ApplicationController
     end
   end
 
-  # PUT /products/1
-  # PUT /products/1.xml
   def update
     @product = Product.find(params[:id])
     params[:product_attribute].each do |attri|
@@ -112,8 +97,6 @@ class ProductsController < ApplicationController
     end
   end
 
-  # DELETE /products/1
-  # DELETE /products/1.xml
   def destroy
     @product = Product.find(params[:id])
     @product.destroy
@@ -124,7 +107,6 @@ class ProductsController < ApplicationController
     end
   end
   
-  # delete /products/1/delete_tag
   def delete_tag
     @product = Product.find(params[:id])
     tag = @product.product_tags.find(:first,:conditions => {:key => params[:key]})

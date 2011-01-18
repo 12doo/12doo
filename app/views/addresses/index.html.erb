@@ -22,7 +22,7 @@
     <td><%= address.zip %></td>
     <td><%= address.phone %></td>
     <td><%= address.name %></td>
-	<td><%= address.default %></td>
+	<td><%= address.default ? "是" : "否" %></td>
     <td><%= link_to '修改', :action => :edit, :id => address.id %></td>
     <td><%= link_to '删除', address, :method => :delete %></td>
   </tr>

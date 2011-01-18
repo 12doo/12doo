@@ -1,20 +1,17 @@
-<h1>Listing orders</h1>
-
 <table>
   <tr>
-    <th>No</th>
-    <th>Total</th>
-    <th>Status</th>
-    <th>Order at</th>
-    <th>Delivery at</th>
-    <th>Address</th>
-    <th>User</th>
+    <th>编号</th>
+    <th>合计</th>
+    <th>状态</th>
+    <th>订单时间</th>
+    <th>送达时间</th>
+    <th>送货地址</th>
     <th></th>
     <th></th>
     <th></th>
   </tr>
 
-<% @orders.each do |order| %>
+<% current_user.orders.each do |order| %>
   <tr>
     <td><%= order.no %></td>
     <td><%= order.total %></td>
@@ -22,7 +19,6 @@
     <td><%= order.order_at %></td>
     <td><%= order.delivery_at %></td>
     <td><%= order.address_id %></td>
-    <td><%= order.user_id %></td>
     <td><%= link_to 'Show', order %></td>
     <td><%= link_to 'Destroy', order, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>

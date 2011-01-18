@@ -3521,6 +3521,14 @@ Area.create(:postcode => '659004', :province => '新疆维吾尔自治区', :cit
 # Area.create(:postcode => '810000', :province => '香港特别行政区', :city => '', :region => '')
 # Area.create(:postcode => '820000', :province => '澳门特别行政区', :city => '', :region => '')
 
+# create default admin account
+admin = User.create! do |u|
+  u.email = 'admin@12doo.com'
+  u.password = 'Password01'
+  u.password_confirmation = 'Password01'
+  u.admin = true
+end
+
 # define order status
 #OrderStatus.create(:short => 'ORDERCONFIRM', :display => '订单确认')
 #OrderStatus.create(:short => 'WAIT_BUYER_PAY', :display => '等待付款')
