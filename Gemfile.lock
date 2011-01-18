@@ -1,0 +1,56 @@
+GIT
+  remote: git://github.com/collectiveidea/delayed_job.git
+  revision: 6c11015334aae131737d08e4888ed2f84a161623
+  specs:
+    delayed_job (2.1.2)
+      activesupport (~> 3.0)
+      daemons
+
+GEM
+  remote: http://rubygems.org/
+  specs:
+    actionmailer (0.6.1)
+      actionpack (>= 0.9.5)
+    actionpack (1.4.0)
+    active_merchant (1.5.2)
+      activesupport (>= 2.3.2)
+      builder (>= 2.0.0)
+    activemerchant (1.9.4)
+      activesupport (>= 2.3.2)
+      braintree (>= 2.0.0)
+      builder (>= 2.0.0)
+    activemerchant_patch_for_china (0.1.5)
+      activemerchant (>= 1.4.2)
+    activerecord (1.6.0)
+    activesupport (3.0.3)
+    bcrypt-ruby (2.1.4)
+    braintree (2.6.3)
+      builder
+    builder (3.0.0)
+    daemons (1.1.0)
+    devise (1.1.5)
+      bcrypt-ruby (~> 2.1.2)
+      warden (~> 1.0.2)
+    mysql2 (0.2.6)
+    rack (1.2.1)
+    rails (0.9.5)
+      actionmailer (>= 0.6.1)
+      actionpack (>= 1.4.0)
+      activerecord (>= 1.6.0)
+      rake (>= 0.4.15)
+    rake (0.8.7)
+    warden (1.0.3)
+      rack (>= 1.0.0)
+    will_paginate (3.0.pre2)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  active_merchant
+  activemerchant_patch_for_china
+  delayed_job!
+  devise
+  mysql2
+  rails
+  will_paginate (= 3.0.pre2)
