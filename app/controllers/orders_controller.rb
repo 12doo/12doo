@@ -1,30 +1,15 @@
 class OrdersController < ApplicationController
-  # GET /orders
-  # GET /orders.xml
-  def index
-    @orders = Order.all
+  # 身份验证
+  before_filter :authorize_user!
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @orders }
-    end
+  def index
   end
 
-  # GET /orders/1
-  # GET /orders/1.xml
   def show
     @order = Order.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @order }
-    end
   end
 
-  # GET /orders/new
-  # GET /orders/new.xml
   def new
-    if user_signed_in?
     @order = Order.new
     @order.no = Time.now.strftime("SO%Y%m%d%H%M%S" )
     cart = find_cart
@@ -39,18 +24,12 @@ class OrdersController < ApplicationController
     end
 
     @order.total = cart.total
-
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @order }
     end
-  else
-    redirect_to :action => 'show', :controller => 'cart', :notice=>'sign in first!'
-  end
   end
 
-  # POST /orders
-  # POST /orders.xml
   def create
     if user_signed_in?
     @order = Order.new(params[:order])
@@ -111,8 +90,6 @@ class OrdersController < ApplicationController
   end
   end
 
-  # DELETE /orders/1
-  # DELETE /orders/1.xml
   def destroy
     @order = Order.find(params[:id])
     @order.destroy
@@ -123,7 +100,7 @@ class OrdersController < ApplicationController
     end
   end
   
-  private 
+  private
   def find_cart
     session[:cart] ||= Cart.new
   end

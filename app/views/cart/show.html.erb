@@ -1,15 +1,11 @@
-<h2>Your Pragmatic Cart</h2>
-
-
 <li class="item_list_title">
-  <span class="item_name">Name</span>
-  <span class="item_price">Price</span>
-  <span class="item_quantity">Quantity</span>
-  <span class="item_subtotal">SubTotal</span>
+  <span class="item_name">产品</span>
+  <span class="item_price">单价</span>
+  <span class="item_quantity">数量</span>
+  <span class="item_subtotal">小计</span>
 </li>
 
+<%= render(:partial => "cart_item", :collection => @cart.items) %>
 
-	<%= render(:partial => "cart_item", :collection => @cart.items) %>
 
-
-Total:<%= @cart.total.to_f %><%= button_to "clear cart", :action=>'clear', :controller=>'cart' %><%= link_to "back", :action=>'index', :controller=>'products' %><%= button_to "order", :action=>'new', :controller=>'orders' %>
+合计:<%= @cart.total.to_f %><%= button_to "清空购物车", :action=>'clear', :controller=>'cart' %><%= link_to "返回", :action=>'index', :controller=>'products' %><%= button_to "订购", :action=>'new', :controller=>'orders' %>
