@@ -17,6 +17,6 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :phone, :allow_nil => true, :allow_blank => true
   
   def send_welcome_email
-    UserMailer.welcome_email(self).deliver
+    UserMailer.delay.welcome_email(self)
   end
 end
