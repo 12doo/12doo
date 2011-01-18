@@ -1,6 +1,4 @@
-<h1>Editing address</h1>
-
+<%= form_tag '/addresses/update/' + @address.id.to_s, :id => @address.id do -%>
 <%= render 'form' %>
-
-<%= link_to 'Show', @address %> |
-<%= link_to 'Back', addresses_path %>
+<input type="submit" value="保存" />
+<% end -%>

@@ -1,83 +1,68 @@
 class AddressesController < ApplicationController
-  # GET /addresses
-  # GET /addresses.xml
+  # 身份验证
+  before_filter :authorize_user!
+  
   def index
-    @addresses = Address.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @addresses }
-    end
   end
 
-  # GET /addresses/1
-  # GET /addresses/1.xml
   def show
     @address = Address.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @address }
+    unless @address.user_id == current_user.id
+      redirect_to :action => "index"
     end
   end
 
-  # GET /addresses/new
-  # GET /addresses/new.xml
   def new
     @address = Address.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @address }
-    end
   end
 
-  # GET /addresses/1/edit
   def edit
     @address = Address.find(params[:id])
+    unless @address.user_id == current_user.id
+      redirect_to :action => "index"
+    end
   end
 
-  # POST /addresses
-  # POST /addresses.xml
   def create
     @address = Address.new(params[:address])
-
+    @address.user_id = current_user.id
+    
     respond_to do |format|
       if @address.save
-        format.html { redirect_to(@address, :notice => 'Address was successfully created.') }
-        format.xml  { render :xml => @address, :status => :created, :location => @address }
+        unless params[:default] == "true"
+          @address.set_as_default
+        end
+        format.html { redirect_to :action => "index" }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @address.errors, :status => :unprocessable_entity }
       end
     end
   end
 
-  # PUT /addresses/1
-  # PUT /addresses/1.xml
   def update
     @address = Address.find(params[:id])
-
-    respond_to do |format|
-      if @address.update_attributes(params[:address])
-        format.html { redirect_to(@address, :notice => 'Address was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @address.errors, :status => :unprocessable_entity }
+    if @address.user_id == current_user.id
+      @address.default = params[:default]
+      respond_to do |format|
+        if @address.update_attributes(params[:address])
+          unless params[:default] == "true"
+            @address.set_as_default
+          end
+          format.html { redirect_to :action => "index" }
+        else
+          format.html { render :action => "edit" }
+        end
       end
+    else
+      redirect_to :action => "index"
     end
   end
 
-  # DELETE /addresses/1
-  # DELETE /addresses/1.xml
   def destroy
     @address = Address.find(params[:id])
-    @address.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(addresses_url) }
-      format.xml  { head :ok }
+    if @address.user_id == current_user.id
+      @address.destroy
     end
+    redirect_to :action => "index"
   end
 end

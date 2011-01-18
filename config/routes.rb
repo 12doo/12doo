@@ -1,4 +1,6 @@
 V3::Application.routes.draw do
+  #resources :areas
+
   resources :addresses
 
   get "cart/show"

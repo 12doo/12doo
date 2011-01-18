@@ -54,14 +54,3 @@ div.field, div.actions {
   font-size: 12px;
   list-style: square;
 }
-
-li.item_list {display: block; }
-li.item_list_title {display: block; font-weight: bold; }
-
-span.item_name {display: inline-block; width: 160px; }
-.item_price {display: inline-block; width: 80px;background-color: #ccc;}
-.item_quantity {display: inline-block; width: 160px;}
-.item_subtotal {display: inline-block; width: 80px;background-color: #ccc;}
-.item_update {display: inline-block; width: 80px;}
-.item_delete {display: inline-block; width: 80px;}
-
