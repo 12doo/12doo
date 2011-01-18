@@ -1,35 +1,30 @@
-<h1>Listing addresses</h1>
-
+<%= link_to "添加", :action => 'new' %>
 <table>
   <tr>
-    <th>Detail</th>
-    <th>Province</th>
-    <th>City</th>
-    <th>Region</th>
-    <th>Zip</th>
-    <th>Phone</th>
-    <th>Name</th>
-    <th></th>
+    <th>省</th>
+    <th>城市</th>
+    <th>区</th>
+    <th>地址</th>
+    <th>邮编</th>
+    <th>电话</th>
+    <th>姓名</th>
+    <th>默认地址</th>
     <th></th>
     <th></th>
   </tr>
 
-<% @addresses.each do |address| %>
+<% current_user.addresses.each do |address| %>
   <tr>
-    <td><%= address.detail %></td>
     <td><%= address.province %></td>
     <td><%= address.city %></td>
     <td><%= address.region %></td>
+    <td><%= address.detail %></td>
     <td><%= address.zip %></td>
     <td><%= address.phone %></td>
     <td><%= address.name %></td>
-    <td><%= link_to 'Show', address %></td>
-    <td><%= link_to 'Edit', edit_address_path(address) %></td>
-    <td><%= link_to 'Destroy', address, :confirm => 'Are you sure?', :method => :delete %></td>
+	<td><%= address.default %></td>
+    <td><%= link_to '修改', :action => :edit, :id => address.id %></td>
+    <td><%= link_to '删除', :action => :destroy, :id => address.id %></td>
   </tr>
 <% end %>
 </table>
-
-<br />
-
-<%= link_to 'New Address', new_address_path %>

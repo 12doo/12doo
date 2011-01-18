@@ -1,45 +1,83 @@
-<%= form_for(@address) do |f| %>
-  <% if @address.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@address.errors.count, "error") %> prohibited this address from being saved:</h2>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#province').change(function(){
+			$.getJSON("/areas/get_cities?province=" + $('#province').val(), function(data){
+				$('#city option').remove();
+			  	$.each(data, function(i,item){
+			    	$('#city').append("<option value='"+ item.area.city +"'>"+ item.area.city +"</option>");
+			  	});
+				$('#city').change();
+			});
+		});
+	});
+	
+	$(document).ready(function(){
+		$('#city').change(function(){
+			$.getJSON("/areas/get_regions?province=" + $('#province').val() + "&city=" + $('#city').val(), function(data){
+				$('#region option').remove();
+			  	$.each(data, function(i,item){
+			    	$('#region').append("<option value='"+ item.area.region +"'>"+ item.area.region +"</option>");
+			  	});
+				$('#region').change();
+			});
+		});
+	});
+	
+	$(document).ready(function(){
+		$('#region').change(function(){
+			$.getJSON("/areas/get_detail?province=" + $('#province').val() + "&city=" + $('#city').val() + "&region=" + $('#region').val(), function(data){
+				$('#zip').val(data[0].area.postcode);
+				$('#zip').change();
+			});
+		});
+	});
 
-      <ul>
-      <% @address.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+</script>
 
-  <div class="field">
-    <%= f.label :detail %><br />
-    <%= f.text_field :detail %>
-  </div>
-  <div class="field">
-    <%= f.label :province %><br />
-    <%= f.text_field :province %>
-  </div>
-  <div class="field">
-    <%= f.label :city %><br />
-    <%= f.text_field :city %>
-  </div>
-  <div class="field">
-    <%= f.label :region %><br />
-    <%= f.text_field :region %>
-  </div>
-  <div class="field">
-    <%= f.label :zip %><br />
-    <%= f.text_field :zip %>
-  </div>
-  <div class="field">
-    <%= f.label :phone %><br />
-    <%= f.text_field :phone %>
-  </div>
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+<table width="100%" border="0" cellspacing="1" cellpadding="0" bgcolor="#cccccc" class="norm_tbl">
+	<tbody>
+        <tr>
+        	<td width="16%" bgcolor="#EBEBEB">收件人:</td>
+			<td width="84%" bgcolor="#FFFFFF"><input type="text" name="address[name]" value="<%= @address.name %>" /></td>
+		</tr>
+		<tr>
+        	<td bgcolor="#EBEBEB">省/直辖市:</td>
+			<td bgcolor="#FFFFFF">
+				<% areas = Area.new.get_provinces %>
+				<select name="address[province]" id="province">
+					<option value=""></option>
+				    <% areas.each do |item| %>
+					    <option value="<%= item.province %>" <% if @address.province == item.province  %>
+														"selected='true'"
+														 <% end %>	
+						><%= item.province %></option>
+				    <% end %>
+				</select>
+				市:
+				<select name="address[city]" id="city">
+					<% if @address.city %>
+					<option value="<%= @address.city %>"><%= @address.city %></option>
+					<% end %>
+				</select>
+				区/县:
+				<select name="address[region]" id="region">
+					<% if @address.region %>
+					<option value="<%= @address.region %>"><%= @address.region %></option>
+					<% end %>
+				</select>
+			</td>
+		</tr>
+		<tr>
+        	<td bgcolor="#EBEBEB">地址:</td>
+			<td bgcolor="#FFFFFF"><input type="text" id="address" name="address[detail]" value="<%= @address.detail %>" /></td>
+		</tr>
+		<tr>
+        	<td bgcolor="#EBEBEB">邮编:</td>
+			<td bgcolor="#FFFFFF"><input type="text" id="zip" name="address[zip]" value="<%= @address.zip %>" /></td>
+		</tr>
+		<tr>
+        	<td bgcolor="#EBEBEB">电话:</td>
+			<td bgcolor="#FFFFFF"><input type="text" name="address[phone]" value="<%= @address.phone %>" /></td>
+		</tr>
+</tbody>
+</table>
