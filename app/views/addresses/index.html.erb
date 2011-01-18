@@ -24,7 +24,7 @@
     <td><%= address.name %></td>
 	<td><%= address.default %></td>
     <td><%= link_to '修改', :action => :edit, :id => address.id %></td>
-    <td><%= link_to '删除', :action => :destroy, :id => address.id %></td>
+    <td><%= link_to '删除', address, :method => :delete %></td>
   </tr>
 <% end %>
 </table>

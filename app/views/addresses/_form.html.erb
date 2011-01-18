@@ -79,5 +79,9 @@
         	<td bgcolor="#EBEBEB">电话:</td>
 			<td bgcolor="#FFFFFF"><input type="text" name="address[phone]" value="<%= @address.phone %>" /></td>
 		</tr>
+		<tr>
+        	<td bgcolor="#EBEBEB">默认地址:</td>
+			<td bgcolor="#FFFFFF"><input type="checkbox" name="default" <%= @address.default ? "checked" : "" %> value="true" /></td>
+		</tr>
 </tbody>
 </table>

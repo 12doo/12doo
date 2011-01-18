@@ -29,6 +29,9 @@ class AddressesController < ApplicationController
     
     respond_to do |format|
       if @address.save
+        unless params[:default] == "true"
+          @address.set_as_default
+        end
         format.html { redirect_to :action => "index" }
       else
         format.html { render :action => "new" }
@@ -39,8 +42,12 @@ class AddressesController < ApplicationController
   def update
     @address = Address.find(params[:id])
     if @address.user_id == current_user.id
+      @address.default = params[:default]
       respond_to do |format|
         if @address.update_attributes(params[:address])
+          unless params[:default] == "true"
+            @address.set_as_default
+          end
           format.html { redirect_to :action => "index" }
         else
           format.html { render :action => "edit" }
@@ -55,11 +62,7 @@ class AddressesController < ApplicationController
     @address = Address.find(params[:id])
     if @address.user_id == current_user.id
       @address.destroy
-      respond_to do |format|
-        format.html { redirect_to(addresses_url) }
-      end
-    else
-      redirect_to :action => "index"
     end
+    redirect_to :action => "index"
   end
 end
