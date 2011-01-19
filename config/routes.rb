@@ -21,6 +21,8 @@ V3::Application.routes.draw do
 
   get "orders/get_coupon"
   
+  get "orders/check_out"
+  
   resources :orders
   
   resources :product_tags

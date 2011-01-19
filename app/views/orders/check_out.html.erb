@@ -1,0 +1,26 @@
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#submit').click(function(){	
+			$("input[name='utf8']").remove();
+		});
+	});
+</script>
+订单号码:<%= @order.no %><br />
+金额:<%= @order.total %>
+			<% payment_service_for @order.no, ActiveMerchant::Billing::Integrations::Alipay::ACCOUNT, 
+		                            :service => :alipay,  
+		                            :html => { :id => 'payment-form', :method => :get } do |service| %>  
+		        <% service.price @order.total %>
+		        <% service.quantity 1 %>
+		        <% service.seller :email => ActiveMerchant::Billing::Integrations::Alipay::EMAIL %>
+		        <% service.notify_url url_for(:only_path => false, :action => 'notify', :id => @order.id) %>
+		        <% service.return_url url_for(:only_path => false, :action => 'done', :id => @order.id) %>
+		        <% service.show_url url_for(:only_path => false, :action => 'show', :id => @order.id) %>
+		        <% service.body @order.no %>
+		        <% service.charset "utf-8" %>
+		        <% service.service ActiveMerchant::Billing::Integrations::Alipay::Helper::CREATE_DIRECT_PAY_BY_USER %>
+		        <% service.payment_type 1 %>
+		        <% service.subject @order.no %>
+		        <% service.sign %>
+			    <input type="submit" value="支付" class="mini_btn" id="submit">
+		    <% end %>
