@@ -9,7 +9,7 @@ gem 'rails', '>=3.0.3'
 
 gem 'mysql2'
 gem 'devise'
-gem 'delayed_job', :git => 'git://github.com/collectiveidea/delayed_job.git'
+# gem 'delayed_job', :git => 'git://github.com/collectiveidea/delayed_job.git'
 
 gem 'active_merchant'
 gem 'activemerchant_patch_for_china'
