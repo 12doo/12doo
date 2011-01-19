@@ -6,6 +6,5 @@ tmp/**/*
 public/client/*
 public/upload/*
 db/schema.rb
-Gemfile.lock
 config/config.yml
 .tmp*

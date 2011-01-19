@@ -1,3 +1,5 @@
+require 'bundler/capistrano'
+
 set :application, "12doo"
 set :repository,  "git@www.12doo.com:12doo.git"
 set :scm, :git
@@ -23,3 +25,27 @@ server "www.12doo.com", :app, :web, :db, :primary => true # All roles on one ser
 # end
 
 set :deploy_to, "/railsapp/12doo"
+
+# tasks
+namespace :deploy do
+  task :start, :roles => :app do
+    run "touch #{current_path}/tmp/restart.txt"
+  end
+
+  task :stop, :roles => :app do
+    # Do nothing.
+  end
+
+  desc "Restart Application"
+  task :restart, :roles => :app do
+    run "touch #{current_path}/tmp/restart.txt"
+  end
+
+  desc "Symlink shared resources on each release - not used"
+  task :symlink_shared, :roles => :app do
+    #run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
+  end
+end
+
+after 'deploy:update_code', 'deploy:symlink_shared'
+
