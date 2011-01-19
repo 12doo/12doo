@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110119024556) do
+ActiveRecord::Schema.define(:version => 20110119130328) do
 
   create_table "addresses", :force => true do |t|
     t.string   "detail"
@@ -33,6 +33,32 @@ ActiveRecord::Schema.define(:version => 20110119024556) do
     t.string   "region"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "coupon_used_records", :force => true do |t|
+    t.integer  "coupon_id"
+    t.string   "coupon_code"
+    t.integer  "user_id"
+    t.datetime "use_at"
+    t.string   "order_id"
+    t.string   "order_no"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "coupons", :force => true do |t|
+    t.string   "code"
+    t.decimal  "discount",         :precision => 10, :scale => 0
+    t.decimal  "threshold",        :precision => 10, :scale => 0
+    t.string   "product_category"
+    t.string   "belongs_to"
+    t.boolean  "all_user"
+    t.boolean  "one_off"
+    t.datetime "begin"
+    t.datetime "end"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "used_time",                                       :default => 0
   end
 
   create_table "delayed_jobs", :force => true do |t|
@@ -71,7 +97,7 @@ ActiveRecord::Schema.define(:version => 20110119024556) do
 
   create_table "orders", :force => true do |t|
     t.string   "no"
-    t.decimal  "total",       :precision => 10, :scale => 0
+    t.decimal  "total",         :precision => 10, :scale => 0
     t.string   "status"
     t.datetime "order_at"
     t.datetime "delivery_at"
@@ -86,6 +112,10 @@ ActiveRecord::Schema.define(:version => 20110119024556) do
     t.string   "region"
     t.string   "zip"
     t.string   "phone"
+    t.string   "delivery_type"
+    t.decimal  "carriage",      :precision => 10, :scale => 0
+    t.string   "coupon_code"
+    t.decimal  "discount",      :precision => 10, :scale => 0
   end
 
   create_table "product_attribute_defines", :force => true do |t|

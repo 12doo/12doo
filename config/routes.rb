@@ -19,8 +19,12 @@ V3::Application.routes.draw do
 
   resources :order_items
 
+  get "orders/get_coupon"
+  
+  get "orders/check_out"
+  
   resources :orders
-
+  
   resources :product_tags
 
   get "store/index"

@@ -12,6 +12,8 @@ class User < ActiveRecord::Base
   
   has_many :addresses, :foreign_key => "user_id", :primary_key => "id"
   has_many :orders, :foreign_key => "user_id", :primary_key => "id"
+  has_many :coupons, :foreign_key => "user_id", :primary_key => "id"
+  has_many :coupon_used_records, :foreign_key => "user_id", :primary_key => "id"
   
   # verify
   validates_uniqueness_of :phone, :allow_nil => true, :allow_blank => true
