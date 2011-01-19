@@ -3529,6 +3529,10 @@ admin = User.create! do |u|
   u.admin = true
 end
 
+Area.all.each do |area|
+  Delivery.create(:area_id => area.id, :door_step => 12)
+end
+
 # define order status
 #OrderStatus.create(:short => 'ORDERCONFIRM', :display => '订单确认')
 #OrderStatus.create(:short => 'WAIT_BUYER_PAY', :display => '等待付款')

@@ -1,4 +1,8 @@
 V3::Application.routes.draw do
+  resources :coupons
+
+  resources :deliveries
+
   #resources :areas
 
   resources :addresses

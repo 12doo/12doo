@@ -1,16 +1,13 @@
-<h1>Listing products</h1>
+<h1>产品</h1>
 
 <table>
   <tr>
-    <th>Name</th>
-    <th>Sku</th>
-    <th>Price</th>
-    <th>Indication price</th>
-    <th>Memo</th>
-    <th>Status</th>
-    <th>Count</th>
-    <th>Vintage</th>
-    <th></th>
+    <th>名称</th>
+	<th>编号</th>
+    <th>单价</th>
+    <th>指导价</th>
+    <th>库存数量</th>
+    <th>年份</th>
     <th></th>
     <th></th>
   </tr>
@@ -21,18 +18,12 @@
     <td><%= product.sku %></td>
     <td><%= product.price %></td>
     <td><%= product.indication_price %></td>
-    <td><%= product.memo %></td>
-    <td><%= product.status %></td>
     <td><%= product.count %></td>
     <td><%= product.vintage %></td>
-	<td><%= button_to "Add to Cart" , :action => 'add_product', :controller => 'cart', :id => product %></td>
-    <td><%= link_to 'Show', product %></td>
-    <td><%= link_to 'Edit', edit_product_path(product) %></td>
-    <td><%= link_to 'Destroy', product, :confirm => 'Are you sure?', :method => :delete %></td>
+	<td><%= button_to "添加到购物车" , :action => 'add_product', :controller => 'cart', :id => product %></td>
+    <td><%= link_to '详情', product %></td>
   </tr>
 <% end %>
 </table>
 <%= will_paginate @products %>
 <br />
-
-<%= link_to 'New Product', new_product_path %>
