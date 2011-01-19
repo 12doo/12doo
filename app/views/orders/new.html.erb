@@ -1,3 +1,15 @@
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#check_coupon').click(function(){
+			$.getJSON("/orders/get_coupon?code=" + $('#coupon_code').val(), function(data){
+			  	$.each(data, function(i,item){
+					$('#total').val(item.discount);
+			  	});
+				$('#total').change();
+			});
+		});
+	});
+</script>
 <%= form_tag 'create' do -%>
 <table>
 	<tr>
@@ -63,7 +75,10 @@
 价格:<input type="text" name="delivery_cost" readonly="true" />
 <hr />
 优惠券:
-<input type="text" name="coupon" /><input type="button" value="验证" />
+<input type="text" name="coupon_code" id="coupon_code" /><input type="button" id="check_coupon" value="使用" />
+<hr />
+应付金额:
+<input type="text" name="total" id="total" />
 <hr />
   <input type="submit" value="提交" />
 <% end -%>

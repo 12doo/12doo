@@ -2,7 +2,7 @@ class Coupon < ActiveRecord::Base
   has_many :coupon_used_records, :foreign_key => "coupon_id", :primary_key => "id"
   
   # 判断是否可用
-  def can_use(user,order,delivery)
+  def can_use(user,order)
     result = false
     # 判断优惠券生效时间范围,价格是否适用
     if self.begin < Time.now && self.end > Time.now && self.threshold_match(order)
@@ -28,8 +28,8 @@ class Coupon < ActiveRecord::Base
   
   # 判断某个人是否使用过该券
   def used(user)
-    records = CouponUsedRecord.find_by_user_id(user.id)
-    records.each do |item|
+    record = CouponUsedRecord.find_by_user_id(user.id)
+    if record
       return true
     end
     return false
@@ -45,7 +45,7 @@ class Coupon < ActiveRecord::Base
   end
   
   # 使用该券
-  def use(user,order,delivery)
+  def use(user,order)
     record = CouponUsedRecord.new
     record.user_id = user.id
     record.order_id = order.id

@@ -58,14 +58,6 @@ class CouponsController < ApplicationController
       end
     end
   end
-  
-  def get_detail_by_code
-    detail = Coupon.where(["code = ?",params[:code]])
-    
-    respond_to do |format| 
-          format.json { render :json => detail } 
-    end
-  end
 
   def destroy
     @coupon = Coupon.find(params[:id])
