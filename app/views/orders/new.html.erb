@@ -15,7 +15,8 @@
 	</tr>
 	<% end %>
 </table>
-合计:<input type="text" name="total" id="total" /><br /><%= link_to "修改", :action=>'show', :controller=>'cart' %>
+合计:<%= @order.total %><br /><%= link_to "修改", :action=>'show', :controller=>'cart' %>
+<hr />
 地址:<%= link_to "地址列表", :action=>'index', :controller=>'address' %>
 <table>
   <tr>
@@ -48,6 +49,7 @@
   </tr>
 <% end %>
 </table>
+<hr />
 <input type="radio" name="address_id" value="0" />新地址:<br />
 姓名:<input type="text" name="fullname" /><br />
 省/市:<input type="text" name="province" /><br />
@@ -56,7 +58,13 @@
 地址:<input type="text" name="address" /><br />
 邮编:<input type="text" name="zip" /><br />
 联系电话:<input type="text" name="phone" /><br />
-送货方式:
+<hr />
+送货方式:<input type="radio" name="delivery_type" value="door_step" checked="true" />送货上门<br />
+价格:<input type="text" name="delivery_cost" readonly="true" />
+<hr />
+优惠券:
+<input type="text" name="coupon" /><input type="button" value="验证" />
+<hr />
   <input type="submit" value="提交" />
 <% end -%>
 

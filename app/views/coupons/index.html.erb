@@ -2,13 +2,30 @@
 
 <table>
   <tr>
-    <th></th>
-    <th></th>
-    <th></th>
+  	<th>编号</th>
+    <th>折扣价格</th>
+    <th>最低使用价格</th>
+    <th>适用产品</th>
+	<th>用户</th>
+	<th>是否所有用户</th>
+	<th>使用次数</th>
+	<th>一次性</th>
+	<th>开始时间</th>
+	<th>结束时间</th>
   </tr>
 
 <% @coupons.each do |coupon| %>
   <tr>
+  	<td><%= coupon.code %></td>
+	<td><%= coupon.discount %></td>
+	<td><%= coupon.threshold %></td>
+	<td><%= coupon.product_category %></td>
+	<td><%= coupon.belongs_to %></td>
+	<td><%= coupon.all_user %></td>
+	<td><%= coupon.used_time %></td>
+	<td><%= coupon.one_off %></td>
+	<td><%= coupon.begin %></td>
+	<td><%= coupon.end %></td>
     <td><%= link_to 'Show', coupon %></td>
     <td><%= link_to 'Edit', edit_coupon_path(coupon) %></td>
     <td><%= link_to 'Destroy', coupon, :confirm => 'Are you sure?', :method => :delete %></td>

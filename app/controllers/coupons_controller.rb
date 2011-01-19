@@ -1,6 +1,5 @@
 class CouponsController < ApplicationController
-  # GET /coupons
-  # GET /coupons.xml
+
   def index
     @coupons = Coupon.all
 
@@ -10,8 +9,6 @@ class CouponsController < ApplicationController
     end
   end
 
-  # GET /coupons/1
-  # GET /coupons/1.xml
   def show
     @coupon = Coupon.find(params[:id])
 
@@ -21,8 +18,6 @@ class CouponsController < ApplicationController
     end
   end
 
-  # GET /coupons/new
-  # GET /coupons/new.xml
   def new
     @coupon = Coupon.new
 
@@ -32,13 +27,10 @@ class CouponsController < ApplicationController
     end
   end
 
-  # GET /coupons/1/edit
   def edit
     @coupon = Coupon.find(params[:id])
   end
 
-  # POST /coupons
-  # POST /coupons.xml
   def create
     @coupon = Coupon.new(params[:coupon])
 
@@ -53,8 +45,6 @@ class CouponsController < ApplicationController
     end
   end
 
-  # PUT /coupons/1
-  # PUT /coupons/1.xml
   def update
     @coupon = Coupon.find(params[:id])
 
@@ -68,9 +58,15 @@ class CouponsController < ApplicationController
       end
     end
   end
+  
+  def get_detail_by_code
+    detail = Coupon.where(["code = ?",params[:code]])
+    
+    respond_to do |format| 
+          format.json { render :json => detail } 
+    end
+  end
 
-  # DELETE /coupons/1
-  # DELETE /coupons/1.xml
   def destroy
     @coupon = Coupon.find(params[:id])
     @coupon.destroy

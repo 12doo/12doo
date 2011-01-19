@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110119024556) do
+ActiveRecord::Schema.define(:version => 20110119075110) do
 
   create_table "addresses", :force => true do |t|
     t.string   "detail"
@@ -33,6 +33,21 @@ ActiveRecord::Schema.define(:version => 20110119024556) do
     t.string   "region"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "coupons", :force => true do |t|
+    t.string   "code"
+    t.decimal  "discount",         :precision => 10, :scale => 0
+    t.decimal  "threshold",        :precision => 10, :scale => 0
+    t.string   "product_category"
+    t.string   "belongs_to"
+    t.boolean  "all_user"
+    t.boolean  "one_off"
+    t.datetime "begin"
+    t.datetime "end"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "used_time",                                       :default => 0
   end
 
   create_table "delayed_jobs", :force => true do |t|
