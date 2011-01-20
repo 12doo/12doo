@@ -1,0 +1,312 @@
+body,H1,H2{ margin:0px auto; padding:0px; font-family:Arial, Helvetica, sans-serif; font-size: 12px; color:#333333; text-align:center;}
+ul {PADDING: 0px; MARGIN: 0px; LIST-STYLE-TYPE: none}
+a{font-size:12px; color: #626262; text-decoration: none;}
+a:hover { color: #9c0727; text-decoration: underline; }
+
+form { height: auto; margin: 0px; padding:0px; }
+input { width:auto; margin: 0px; padding:0px;}
+
+
+
+.center{width:1000px; margin: 0px auto; clear:both;}
+.cent_1{ width:1000px; padding-top:21px;border-top:1px solid #DFDFDF;clear:both;}
+.cent_2{ width:1000px; height:25px; padding-top:7px; border-top:1px solid #DFDFDF;border-bottom:1px solid #DFDFDF;}
+.clear{ clear:both;}
+.f_left{ float:left;}
+.f_left2{ float:left; margin-left:40px;}
+.f_right{ float:right;}
+.f_left_{ float:left;padding-top:2px;}
+.f_left82{ widows:82px;float:left; text-align:left}
+.p_left152{ width:152px; float:left; text-align:left}
+.p_center614{ width:614px; margin:0px 11px; float:left; text-align:left}
+.p_right212{ width:212px; float:right; text-align:left}
+.p_right837{ width:837px; float:right; text-align:left}
+.block_gray{ border:1px solid #C0C0C0;background:#ffffff;}
+#knife{ background:url(http://img02.yesmywine.com/index/Knife_logo.jpg) no-repeat; width:150px; height:80px;}
+#vin{ background:url(http://img02.yesmywine.com/index/vin_logo.jpg) no-repeat; width:150px; height:80px;}
+#winecellar{ background:url(http://img02.yesmywine.com/index/winecellar_01.jpg) no-repeat; width:150px; height:50px;}
+#search{ background:url(http://img02.yesmywine.com/index/ser_bg.gif) no-repeat; width:150px; height:52px;}
+#search_b{padding:22px 0px 0px 5px}
+#search .input {
+	WIDTH: 105px; HEIGHT: 16px; border:0px; padding:2px;}
+#search .btn {
+	BORDER: 0px; padding:2px 2px 2px 20px; BACKGROUND: url(http://img02.yesmywine.com/index/ico_search.png) no-repeat; WIDTH: 30px; COLOR: #626262; HEIGHT: 20px; }
+.left_tit{ background:url(http://img02.yesmywine.com/index/left_list_bg.gif) no-repeat; height:18px;}
+.text_tit{ font-weight:bold; padding:3px 0px 0px 13px; color:#626262}
+.text_tit_{ font-weight:bold; padding:3px 0px 0px 0px; color:#626262;text-align:center;}
+.country_tab{ padding:8px 0px 0px 15px;}
+.country{ width:120px; height:25px; padding-top:4px; border-bottom:1px solid #C0C0C0; clear:both;}
+.country_{ width:145px; height:80px; padding:6px 0px;  clear:both;}
+.country_flag{ padding:5px; float:left}
+.country_name{  float:right; padding:0px;}
+.country_name a{ font-weight:bold;}
+.country_lev{ padding:8px 4px; line-height:18px;}
+.country_lev_{ padding:8px 0px; line-height:140%;}
+.country_lev1{ padding:8px 4px; line-height:150%;}
+.country_lev2{  padding-left:8px; float:left}
+.country_lev3{ padding-left:8px;float:right;}
+.country1{ width:120px; padding-top:6px; clear:both;}
+.country_bottom{ background:url(http://img02.yesmywine.com/index/left_bottom_bg.gif) repeat-x; height:4px}
+.knife_bottom{ background:url(http://img02.yesmywine.com/index/left_bottom_bg_.jpg) repeat-x; height:30px}
+.vin_bottom{ background:url(http://img02.yesmywine.com/index/vin_bottom_bg_.jpg) repeat-x; height:15px}
+.country_tab1{ padding-left:15px;}
+.price_ser{ padding:6px 0px;}
+.price_ser_head{ padding:0px;width:480px; height:40px;text-align:center;}
+.price_ser_head_wlt{}
+.price_ser_head_wltlogo{padding-top:5px; margin:0; width:315px; height:30px; float:right;text-align:right;}
+.price_ser_head_wltinfo{padding-top:10px; margin:0;width:160px; height:30px; float:left; text-align:right;}
+.price_ser_head2{float:left; width:480px; height:40px; margin-top:15px; text-align:center;}
+.price_ser_f{ background:url(http://img02.yesmywine.com/index/price_ser_bg.gif) no-repeat; width:42px; height:16px;border:0px solid #808080; margin-top:10px;}
+.price_ser_f_head{ width:77px; height:16px;border:1px solid #808080; margin-top:10px;}
+.price_ser_f_tit{ background:url(http://img02.yesmywine.com/index/price_ser_bg_77.gif) no-repeat; width:30px; height:14px;border:1px solid #808080; margin-top:10px;}
+.left_tit_g{ background:url(http://img02.yesmywine.com/index/title_g_bg.gif) repeat-x; height:21px; padding:12px 0px 0px 13px}
+.text_b{ font-weight:bold;}
+.text_bb{ FONT-SIZE: 16px;line-height:150%;font-weight:bold; color:#3E84DB}
+.pzju_block{ padding:10px 7px 10px 6px}
+.hysq_block{ padding:8px 0px 7px 5px}
+.hysq_block1{ padding:0px 8px 8px 8px}
+.hysq_font{ height:21px; padding-top:11px; border-top:1px solid #DFDFDF;}
+.red{ color:#9C0728;}
+.red_b{FONT-SIZE: 16px; font-weight: bold; color:#CB0215;}
+.red_bb{FONT-SIZE: 14px; font-weight: bold; color:#9c0727;}
+.hui_bb{FONT-SIZE: 14px; font-weight: bold; }
+.red_bbb{FONT-SIZE: 20px; font-weight: bold; color:#9c0727;}
+.blue{FONT-SIZE: 20px; color:#3a556b;}
+.Orange{ color:#eb6100;}
+.Orange_b{ color:#eb6100; font-weight:bold;}
+.Orange_bb{ FONT-SIZE: 18px;color:#eb6100; font-weight:bold;}
+.yellow{color:#e48f28;}
+.yellow_b{color:#e48f28;font-weight:bold;}
+.white{ color:#ffffff;}
+.white_bb{FONT-SIZE: 14px; font-weight: bold; color:#ffffff;}
+.brown{color:#6a3906;line-height:200%;}
+.gray{color:#c0c0c0;}
+
+.right_lev{ padding:20px 18px 10px 18px; line-height:120%;}
+.img{  width:190px; padding:10px 10px 5px 10px;}
+.img1{  width:210px; height:28px;}
+.line{ width:190px;height:186px;margin:0px 10px 0px 10px;border-top:1px solid #DFDFDF;border-bottom:1px solid #DFDFDF;clear:both;}
+.tab{ width:100px; padding:10px;border:1px solid #C0C0C0;background:#ffffff;}
+
+.ico_zi1{ width:80px; height:70px;float:right}
+.ico_img_01{  width:29px; float:left;height:70px;}
+.ico_01{ width:110px; height:70px;float:left;text-align:left;margin:0px 0px 0px 30px; display:inline}
+.ico_zi2{ height:70px;clear:both;float:right}
+.ico_img_02{  width:29px; float:left;height:70px;}
+.ico_02{ width:230px; margin:0px 0px 0px 60px;height:70px;float:left;text-align:left}
+.ico_zi3{ height:70px;clear:both;float:right}
+.ico_img_03{  width:34px; float:left;height:70px;}
+.ico_03{ width:170px; margin:0px;height:70px;float:left;text-align:left}
+.ico_img_04{  width:24px; float:left;height:70px;}
+.ico_04{ width:120px; margin:0px 0px 0px 50px;height:80px;float:left;text-align:left}
+
+.bottom_left{ width:200px; padding-left:20px;float:left;}
+.bottom_right{ width:285px;float:right;}
+.bottom_center{width:640px;margin: 0px auto; clear:both;}
+.bottom_center_{width:360px;margin: 0px auto; clear:both;font-weight:bold; color:#535353;text-align:center;}
+.bottom_link{border-bottom:1px solid #DFDFDF; width:980px; padding-left:20px;float:left;line-height:30px;}
+.indexbottom .bottom_link{display:block;}
+.center614_bottom{background:url(http://img02.yesmywine.com/index/center_bottom_bg.jpg) repeat-x; height:29px; width:614}
+.center614_bottom_r{; height:29px; width:70;float:right;}
+.center614_bottom_l{; height:29px; width:200;float:left;clear:both;}
+.center614_bottom_pic1{width:183px; height:245px;padding:0px 10px; text-align:center;float:left;}
+.center614_bottom_pic2{width:203px; border-right:1px solid #C0C0C0;border-left:1px solid #C0C0C0;float:left;}
+.center614_bottom_pic3{width:183px; height:245px; float:right;padding-top: 0px;padding-right: 10px;padding-bottom: 0px;padding-left: 10px;text-align:center;}
+.center614_bottom_lev{font-weight:bold; color:#626262;}
+.center614_bottom_lev1{width:183px; padding:15px 10px;float:left;text-align:center;line-height:210%;}
+.center614_bottom_lev2{width:183px; padding:15px 10px;float:left;text-align:center;line-height:210%;}
+.center614_bottom_lev3{width:183px;float:left;text-align:center;line-height:210%;padding-top: 15px;padding-right: 10px;padding-bottom: 15px;padding-left: 10px;}
+
+
+.fylbtag { margin:0px;}
+.fylbtag .tagf {
+	BACKGROUND-IMAGE: url(http://img02.yesmywine.com/index/nav1_bg.jpg); width:204px; height:22px; TEXT-ALIGN: center; FONT-SIZE: 14px; font-weight: bold; color:#CB0215; padding-top:2px;float:left;}
+.fylbtag .tagn {
+	width:204px; height:22px; TEXT-ALIGN: center; FONT-SIZE: 14px; font-weight: bold; color:#FFFFFF; padding-top:2px;float:left;}
+.tit_count{ background:url(http://img02.yesmywine.com/index/title_bg.jpg) repeat-x; height:29px;}
+.fylbtag1 { margin:0px;}
+.fylbtag1 .tagf {
+	BACKGROUND-IMAGE: url(http://img02.yesmywine.com/index/nav2_bg.jpg); width:76px; height:24px; TEXT-ALIGN: center; FONT-SIZE: 14px; font-weight: bold; color:#ffffff; float:left; padding-top:5px;}
+.fylbtag1 .tagn {
+	width:76px; height:24px; TEXT-ALIGN: center; FONT-SIZE: 14px; font-weight: bold; color:#626262; float:left; padding-top:5px;}
+
+.ttt_hj{ width:612px;height:204px;border-top:1px solid #cd0417;border-right:1px solid #cd0417;border-left:1px solid #cd0417; clear:both;}
+.ttt_hj_r{ width:198px; padding-left:5px;float:left; height:190px;}
+.ttt_hj_rr{ width:100px; height:180px;padding-top:10px;float:left;text-align:center;line-height:110%;}
+.ttt_hj_rr_{ width:100px; height:17px;float:left;}
+.ttt_hj_l{ width:198px; padding-left:5px;float:left; height:190px;}
+.ttt_sp{writing-mode:tb-rl;}
+
+.ttt_lp{ width:612px;height:245px;border:1px solid #c0c0c0; background:#ffffff;}
+.ttt_lp_top{ width:612px;height:217px;border:1px solid #c0c0c0;background:#ffffff;}
+.ttt_lp_top1{ width:612px;height:225px;border:1px solid #c0c0c0;background:#ffffff;}
+.ttt_lp_img{ width:204px; TEXT-ALIGN: center;float:left;}
+.ttt_lp_img_top{ width:204px; TEXT-ALIGN:center; float: left;}
+.ttt_lp_img1{ width:188px; padding:0px 7px;float:left;border-left:1px solid #c0c0c0;border-right:1px solid #c0c0c0;}
+.ttt_lp_img1_top{ width:183px; padding:0px 8px 0px 9px;float:left;border-left:1px solid #c0c0c0;border-right:1px solid #c0c0c0;}
+.ttt_lp_rr{ width:40px; height:180px;padding-top:10px; padding-left:15px; float:left;line-height:150%;}
+.ttt_lp_rr_center{ padding-left:20px}
+.ttt_lp_center{ width:183px;padding-top:6px;text-align:center; font-weight:bold; color:#626262;}
+.ttt_lp_left{ width:130px; padding:6px 10px 0px 10px; float:left;}
+.ttt_lp_name{ padding-top:6px;padding-left:10px;float:left; }
+
+.right837_left{width:837px; float:left;}
+.right837_left_tit{width:837px; height:23px;float:left;}
+.right837_ico{width:21px; height:23px;float:left;}
+.right837_tit{width:200px; padding:8px 0px 0px 10px;float:left;}
+.right837_tit_Sort{width:165px; padding:8px 0px 0px 270px;float:left;}
+.right837_tit_Sort_1{width:70px; padding:0px 0px 0px 350px;float:left;}
+.right837_tit_Sort_1_{width:270px; padding:0px 0px 0px 200px;float:left;}
+.right837_tit_left{padding-top:12px;float:left;}
+.right837_tit_right{padding-top:10px;float:right;}
+.right837_tab{ width:835px;border:1px solid #b5b5b5;float:left;}
+.right837_tabbg{ background:url(http://img02.yesmywine.com/index/tab_bg.jpg) repeat-x; height:41px;FONT-SIZE: 16px; font-weight: bold; color:#595959;text-align:center; valign:middle;}
+.right837_tab_lev{ text-decoration:line-through;FONT-SIZE: 14px; }
+
+.right212_tab_bg{ background:url(http://img02.yesmywine.com/index/right_09_bg.jpg) repeat-x; height:125px;FONT-SIZE: 12px; color:#850f31; padding-top:130px; padding-left:30px;}
+.right212_tab_Recent{ width:198px; height:426px; padding:7px 0px 0px 10px;}
+.right212_tab_height{ width:170px;height:105px; padding-top:14px;border-bottom:1px solid #c0c0c0;float:left}
+.right212_tab_lev1{ width:30px; height:30px; padding-top:4px;padding-left:5px;float:left}
+.right212_tab_lev2{ width:35px; height:30px;padding-top:6px;padding-left:10px;float:left}
+.right212_tab_right{ width:88px ;float:right;}
+.right212_tab_btnright{ width:170px ; padding:12px 0px ;float:right;}
+
+.center615_left{ width:255px; height:370px;text-align:center; float:left;}
+.center615_left_{ width:255px; height:370px;text-align:center; float:left;}
+.center615_right{ width:350px; padding-left:0px; padding-top:20px; float:left;}
+.center615_right_{ width:350px; padding-left:17px; padding-top:30px; float:left;}
+.center615_top{height:35px; line-height:35px;FONT-SIZE: 14px; font-weight:bold; padding-left:20px; background-color:#EFEFEF;color:#CC0000; text-align:left;}
+.center615_top_tit{ padding-right:25px;float:right;clear:both;}
+.center615_top_tita{font-size:12px; color: #626262;font-weight: normal;}
+.center615_top_pl{ height:25px; background-image:url(http://img02.yesmywine.com/detail/plbg.jpg)}
+.center615_info{ padding:10px 25px 10px 30px;line-height:185%; text-align:left}
+.center615_infopic{  padding:10px 25px 20px 30px;border-bottom:1px solid #e4e5e4;line-height:180%; }
+.center615_info_bottom{height:20px; padding-right:25px; border-bottom:1px solid #c0c0c0; line-height:180%; text-align: right;}
+
+.reason_right_606{ width:466px; height:210px; background-color:#e9e9e9; padding-left:40px; padding-right:100px; padding-top:30px;font-size:12px; color: #3a556b; float:left; text-align:left}
+.reason_right_394{ width:394px; height:240px;float:left;text-align:left}
+.reason_center_right{ width:550px; padding:20px 25px 17px 30px; border-left:1px solid #c0c0c0; border-bottom:1px solid #c0c0c0; float:left; height:810px;text-align:left}
+.reason_center_left{ width:363px; padding:20px 15px 10px 15px;background-color:#e9e9e9;border-right:1px solid #c0c0c0; border-bottom:1px solid #c0c0c0;float:left; height:817px;text-align:left}
+.reason_center_lev{ width:500px; padding:20px 0px 20px 50px;text-align:left}
+.reason_center_lev1{ width:303px; padding:10px 0px 3px 60px;text-align:left}
+.reason_center_lev2{ width:266px; padding:0px 0px 10px 87px;text-align:left}
+.reason_center_lev3{ width:293px; padding:8px 0px 3px 60px;text-align:left}
+.reason_center_lev4{ width:335px; padding-left:18px;padding-top:18px;float:left; text-align:left}
+.reason_center_pic{ width:360px; padding:3px 0px 5px 0px;text-align: right;}
+.reason_center_left_white{ width:358px; padding-left:2px; padding-bottom:10px;background-color:#FFFFFF;border-right:1px solid #c0c0c0; border-bottom:1px solid #c0c0c0;border-left:1px solid #c0c0c0;float:right;text-align:left}
+
+.account_left150{ width:125px; height:43px;padding:10px 10px 10px 15px;line-height:150%;word-wrap: break-word; word-break: break-all; }
+.account_left150_left{ width:95px; float:left;}
+.account_left150_right{ width:29px; float:left;}
+.account_837_tit{ width:837px; padding-top:3px;float:left;}
+.account_price{  border:1px solid #C0C0C0;}
+
+.vin{ padding:20px 10px 10px 20px;line-height:140%; width:180px; height:560px; background-image:url(http://img02.yesmywine.com/detail/vin_vbg.jpg);background-position:bottom;background-repeat:repeat-x;}
+.vin1{ width:75px;float:left;}
+.vin2{ width:90px; padding-left:15px;float:left;}
+
+.fav_mian{
+	width:958px; height:537px;
+	margin:0px;
+	padding:0px;
+}
+.favtag { margin:0px;}
+.favtag .tagn {
+	BACKGROUND-IMAGE: url(http://img02.yesmywine.com/detail/nav_bg.gif); width:128px; height:20px; TEXT-ALIGN: center; FONT-SIZE: 16px; font-weight: bold; color:#8F4818; padding-top:5px;}
+.favtag .tagf {
+	BACKGROUND-IMAGE: url(http://img02.yesmywine.com/detail/nav_bg1.gif); width:128px; height:20px; TEXT-ALIGN: center; FONT-SIZE: 16px; font-weight: bold; color:#F19149; padding-top:5px;}
+.fav_block { border-left:1px solid #493033; border-right:1px solid #493033; border-bottom:1px solid #493033; width:956px; height:511px; background: #1F0004;}
+
+.help{ width:152px; height:20px; padding:8px 0px; border-bottom:1px solid #a0a0a0;text-align:center;}
+.help_01{ width:810px; border-left:1px solid #c0c0c0; padding-left:15px;float:left;}
+.helptext{ line-height:180%;font-size:12px; color: #535353;}
+
+.ou{ padding:40px 200px 20px 200px; width:600px;}
+.ou_{ padding:40px 150px 20px 150px; width:700px;}
+.point{padding:20px 0px 20px 15px; background-color:#f8f7f7; FONT-SIZE: 14px;font-weight: bold;border-top:1px solid #c0c0c0}
+.point_{padding:20px 0px 20px 15px; background-color:#f8f7f7; FONT-SIZE: 14px;font-weight:bold;}
+.te{ font-size:12px;line-height:150%;}
+.text_center{TEXT-ALIGN:center; height:16px; line-height:16px;}
+.fybtag { margin:0px;}	
+.fybtag .taga {
+	BACKGROUND-IMAGE: url(http://img02.yesmywine.com/detail/center_top_bg.jpg); width:265px; height:20px; float:left;padding-left:25px;padding-top:5px;FONT-SIZE: 14px; font-weight:bold; color:#626262}
+.fybtag .tagb { BACKGROUND-IMAGE: url(http://img02.yesmywine.com/detail/center_top_bg_.jpg); width:265px; height:25px; float:left;padding-left:20px;padding-top:5px;FONT-SIZE: 14px; font-weight:bold; color:#626262}
+.center614_top_{ background:url(http://img02.yesmywine.com/detail/center_top_bg.jpg) repeat-x; height:25px;FONT-SIZE: 14px; font-weight:bold; color:#626262}
+.fabtag { margin:0px;}
+.fabtag .tagn {background:url(http://img02.yesmywine.com/detail/center_top_bg.jpg) repeat-x; width:120px; height:25px; TEXT-ALIGN: center; FONT-SIZE: 14px; font-weight: bold; color:#626262;text-align:center; line-height:25px;}
+.fabtag .tagf {background:url(http://img02.yesmywine.com/detail/center_top_bg_.jpg) repeat-x; width:120px; height:25px; TEXT-ALIGN: center; FONT-SIZE: 14px; font-weight: bold; color:#ffffff; text-align:center; line-height:25px;}
+.big{font-size: 14px;line-height:160%;}
+.red_bb_{FONT-SIZE: 14px; color:#9c0727;}
+.p_left607{ width:607px; float:left;}
+.p_left579{ width:579px; padding:14px 0px; border-bottom:1px solid #c0c0c0; margin: auto;}
+.p_left579_{ width:579px; padding:14px 0px; border-bottom:0px solid #c0c0c0; margin: auto;}
+.p_left379{ width:379px; float:right;}
+.p_left351{ width:351px; padding:14px 12px; margin:0px;}
+.p_left340{ width:340px; padding:14px 0px 5px 15px;text-align:left;line-height:160%;}
+.p_right340{ width:340px; padding:5px 18px 15px 0px;text-align:right;}
+.p_right579{ width:570px; padding:15px 10px;text-align:right;}
+.text_telil{ padding-top:25px; padding-bottom:5px; FONT-SIZE: 24px;font-weight:bold; text-align:center;}
+.text_telil_1{ padding-top:5px; padding-bottom:30px; FONT-SIZE: 15px; text-align:center;}
+.text_samll{ width:579px; padding-bottom:30px; FONT-SIZE: 12px;line-height:140%;text-align:left; padding-left: 15px;}
+.text_medium{ width:579px; padding-bottom:30px; FONT-SIZE: 14px;line-height:160%;text-align:left; padding-left: 15px;}
+.text_big{ width:579px; padding-bottom:30px; FONT-SIZE: 16px;line-height:180%;text-align:left; padding-left: 15px;}
+
+.comment_l { width:152px; height:380px; float:left; margin-right:11px;}
+.comment_l .title {height:25px;width:142px; padding:10px 0px 0px 10px; background-image:url(http://img02.yesmywine.com/index/leftbg1.jpg); font-size:14px; font-weight:bold; color:#FFFFFF;}
+.comment_l .main {height:310px;width:152px; background-image:url(http://img02.yesmywine.com/index/leftbg2.jpg);}
+.comment_l .main .r1{ margin:0px 10px 2px 10px; color:#993366;word-wrap: break-word; word-break: break-all;}
+.comment_l .main .r1 a{color:#993366;}
+.comment_l .main .r2{ margin:0px 10px 5px 10px; color:#006699;word-wrap: break-word; word-break: break-all;}
+.comment_l .main .r2 a{color:#006699;}
+.comment_l .main .r3{ margin:0px 10px 2px 10px;}
+.comment_l .main .r4{ margin:0px 10px 15px 10px;}
+.comment_l .main .r5{ text-align:center; color:#999; height:20px;}
+.comment_l .more {height:22px;width:142px; padding:13px 10px 0px 0px;background-image:url(http://img02.yesmywine.com/index/leftbg3.jpg); text-align:right; font-weight:bold; color:#FFFFFF;}
+.comment_l .more a {font-weight:bold; color:#ffffff;}
+
+.comment_m { width:614px; height:380px; float:left; margin-right:11px;}
+.comment_m .title {height:20px;width:590px;padding:5px 0px 0px 24px; background-image:url(http://img02.yesmywine.com/index/centerbg1.jpg);font-size:14px; font-weight:bold; color:#FFFFFF;}
+.comment_m .main {height:335px;width:614px; background-image:url(http://img02.yesmywine.com/index/centerbg2.jpg)}
+.comment_m .main .box1 { width:290px; height:205px; margin:5px 2px 0px 8px; float:left; border-bottom:1px #CCCCCC dashed;}
+.comment_m .main .box2 { width:190px; height:110px; margin:15px 5px 0px 5px; float:left;}
+.comment_m .more {height:20px;width:604px; background-image:url(http://img02.yesmywine.com/index/centerbg3.jpg); padding:0px 10px 0px 0px;text-align:right; }
+.comment_m .more a {font-weight:bold; color:#894F96;}
+
+.comment_r { width:212px; height:380px; float:left;}
+.comment_r .title {height:28px;width:205px; background-image:url(http://img02.yesmywine.com/index/rightbg1.jpg); font-size:14px; font-weight:bold; color:#894F96;padding:7px 0px 0px 7px;}
+.comment_r .main {height:320px;width:212px; background-image:url(http://img02.yesmywine.com/index/rightbg2.jpg)}
+.comment_r .main .box1 { width:195px; height:100px; margin:0px 9px 0px 8px; }
+.comment_r .more {height:25px;width:200px; background-image:url(http://img02.yesmywine.com/index/rightbg3.jpg);padding:0px 12px 0px 0px;text-align:right;}
+.comment_r .more a {font-weight:bold; color:#894F96;}
+
+
+.comment_l2 { width:240px; float:left;}
+.comment_l2 .title {height:25px;width:230px; background-image:url(http://img02.yesmywine.com/index/leftbg4.jpg); font-size:14px; font-weight:bold; color:#FFFFFF;padding:10px 0px 0px 10px;}
+.comment_l2 .main {width:240px; background-image:url(http://img02.yesmywine.com/index/leftbg5.jpg)}
+.comment_l2 .main .img { border:1px solid #CCCCCC;height:195px; width:134px; margin-top:5px;}
+.comment_l2 .main .f1 { color:#C7004E; font-size:14px; font-weight:bold;}
+.comment_l2 .main .f2 { color:#FF6600; font-size:12px; font-weight:bold;}
+.comment_l2 .main .box1 { width:220px; height:110px; margin:10px 0px 0px 10px; }
+.comment_l2 .main .more {height:20px;width:200px; padding:0px 10px 0px 0px;text-align:right; }
+.comment_l2 .main .more a {font-weight:bold; color:#894F96;}
+
+.comment_r2 { width:750px; float:right; background-image:url(http://img02.yesmywine.com/index/rightbg5.jpg)}
+.comment_r2 .main {margin:5px 10px 10px 10px;}
+.comment_r2 .main .title {color:#C7004E; padding-bottom:5px; font-size:14px; font-weight:bold; border-bottom:1px #CCCCCC solid;}
+
+a.commentf1{font-size:14px; color:#993366; text-decoration: none; font-weight:bold}
+a.commentf1:hover { font-size:14px;color:#993366; text-decoration: none; font-weight:bold}
+a.commentf2{font-size:12px; color:#006699; text-decoration: none;}
+a.commentf2:hover { font-size:12px;color:#006699; text-decoration: none; }
+a.commentf3{font-size:12px; color:#993366; text-decoration: none;}
+a.commentf3:hover { font-size:12px;color:#993366; text-decoration: none;}
+a.commentf4{font-size:12px; color:#FF0000; text-decoration: none;}
+a.commentf5{font-size:12px; color:#000; text-decoration: none;}
+a.commentf5:hover { font-size:12px;color:#000; text-decoration: none;}
+a.commentf6{font-size:12px; color:#666; line-height:145%; text-decoration: none;}
+a.commentf7{font-size:12px; color:#3179DA; text-decoration: none;}
+a.commentf7:hover { font-size:12px;color:#3179DA; text-decoration: none;}
+a.commentf8{font-size:12px; color:#C7004E; text-decoration: none;}
+a.commentf8:hover { font-size:12px;color:#C7004E; text-decoration: none;}
+.vl1 { margin-top:10px; padding:10px;}
+.vl2 { border:1px #E3E0DD solid; background-color:#FFFFFF; margin-top:10px; padding:10px;}

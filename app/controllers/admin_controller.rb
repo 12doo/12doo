@@ -7,4 +7,7 @@ class AdminController < ApplicationController
     
   end
   
+  def products
+    @products = Product.paginate :page => params[:page], :order => 'created_at DESC'
+  end
 end

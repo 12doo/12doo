@@ -1,62 +1,10 @@
-<%= form_for(@product) do |f| %>
-  <% if @product.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
-
-      <ul>
-      <% @product.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :sku %><br />
-    <%= f.text_field :sku %>
-  </div>
-  <div class="field">
-    <%= f.label :price %><br />
-    <%= f.text_field :price %>
-  </div>
-  <div class="field">
-    <%= f.label :indication_price %><br />
-    <%= f.text_field :indication_price %>
-  </div>
-  <div class="field">
-    <%= f.label :memo %><br />
-    <%= f.text_area :memo %>
-  </div>
-  <div class="field">
-    <%= f.label :status %><br />
-    <%= select :product, :status, @statuses.map {|s| [ s.name, s.name ] } %>
-  </div>
-  <div class="field">
-    <%= f.label :count %><br />
-    <%= f.text_field :count %>
-  </div>
-  <div class="field">
-    <%= f.label :vintage %><br />
-    <%= select :product, :vintage, @years %>
-  </div>
-	<div class="field">
-		<% @product.product_attributes.each do |attribute| %>
-			<%= attribute.name %>:<input type="hidden" value="<%= attribute.name %>" name="product_attribute[][name]" /><input type="text" name="product_attribute[][value]" value="<%= attribute.value %>" /><br />
-		<% end %>
-	</div>
-	<div class="field">
-		<% @product.product_tags.each do |tag| %>
-			<%= tag.key %>:<input type="hidden" value="<%= tag.key %>" name="product_tag[][key]" /><input type="text" name="product_tag[][value]" value="<%= tag.value %>" /><%= link_to 'Destroy',:id=>@product.id,:key=>tag.key, :method => :delete, :action=>'delete_tag' %><br />
-		<% end %>
-		<% (1..10).each do |index| %>
-			Key:<input type="text" name="product_tag[][key]" />Value:<input type="text" name="product_tag[][value]" /><br />
-		<% end %>
-	</div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+编号:<input type="text" name="product[sku]" /><br />
+产品名称:<input type="text" name="product[name]" /><br />
+价格:<input type="text" name="product[price]" /><br />
+市场价:<input type="text" name="product[indication_price]" /><br />
+备注:<textarea name="product[memo]"><%= @product.memo %></textarea><br />
+状态:<%= select :product, :status, @statuses.map {|s| [ s.name, s.name ] } %><br />
+库存数量:<input type="text" name="product[count]" /><br />
+年份:<%= select :product, :vintage, @years %><br />
+产地:<input type="text" name="product[country]" /><br />
+是否显示:<input type="checkbox" <%= @product.visiable ? "checked" : "" %> value="true" name="product[visiable]" /><br />

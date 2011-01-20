@@ -1,0 +1,129 @@
+@charset "utf-8";
+.listsearch { width:765px; border:1px #CCCCCC solid; margin:0 auto; margin-bottom:10px; background-image:url(http://img02.yesmywine.com/winelist/titbg0.gif); height:auto; overflow:auto; padding-top:10px;}
+.listsearch .title { height:26px; padding-left:5px; float:left; width:100px; text-align:left; font-weight:bold; margin-top:4px;}
+.listsearch .main { height:25px; width:660px; float:left; text-align:left;margin-top:5px;}
+.listsearch .main ul li { float:left; margin-right:15px; padding:0;height:25px;}
+.listsearch .main2 { height:25px; width:660px; float:left; text-align:left;margin-top:5px;}
+.listsearch .main2 ul li { float:left; margin-right:3px; padding:0; height:25px;}
+
+.turnon{ background:url(http://img02.yesmywine.com/winelist/liturnon.gif) center bottom;}
+
+#infodetail1 { clear:both; line-height:165%; margin-top:10px; text-align:left; margin-bottom:55px}
+#infodetail1 table { margin-bottom:10px}
+
+#infodetail2 { clear:both; line-height:165%; margin-top:10px; text-align:left; margin-bottom:55px; display:none}
+#infodetail2 table { margin-bottom:10px}
+
+
+
+
+.listsearch .main4 { clear:both; padding:5px 5px 3px 5px; margin-left:105px; line-height:150%; background-color:#EBEBEB; margin-bottom:5px; float:left; text-align:left;width:630px; display:inline;}
+.crumb { clear:both; height:25px; margin:0px auto;width:1000px;margin-top:13px; text-align:left}
+.listsearch .r1 .title2 {height:25px; padding-left:10px; background-image:url(http://img02.yesmywine.com/winelist/titbg2.gif);text-align:left; font-weight:bold; padding-top:6px; margin-bottom:5px; margin-top:8px}
+.searchon { background-color:#A62021; padding:3px 5px 1px 5px; width:auto}
+a.searchon{ color:#FFFFFF;}
+.searchoff { background-color:#fff; padding:3px 5px 1px 5px; width:auto}
+a.searchoff{ color:#393939;}
+.searchform1 { width:45px;}
+a:hover{
+   text-decoration: none;
+   *text-decoration:underline;
+}
+.searchbar { clear:both; text-align:left; background-color:#FFFBE8; border:1px solid #CCCCCC; height:26px; padding-top:9px; padding-left:10px; margin:0 auto; margin-bottom:10px;}
+.searchbar img { margin-left:2px;}
+
+.listwine { width:1000px; margin:0 auto;}
+.listwine .left{ width:765px; float:left;}
+.listwine .right { width:220px; float:right}
+.listwine .right .topbox {border:1px #CCCCCC solid; margin-bottom:10px; overflow:auto}
+.listwine .right .topbox .title { height:21px; padding-left:10px; background-image:url(http://img02.yesmywine.com/winelist/titbg1.gif); text-align:left; font-weight:bold; padding-top:9px; margin-bottom:5px;}
+/**100813修改,添加**/
+.listwine .right .topbox .numlist { border-bottom:1px #F0F0F0 solid; padding-bottom:5px; padding-top:10px;text-align:left; padding-left:15px;}
+.listwine .right .topbox .numimg{margin-bottom:2px; margin-right:5px;}
+#tabwine1 { height:110px;}
+#tabwine2 { display:none; height:110px; }
+#tabwine3 { display:none; height:110px; }
+#tabwine4 { display:none; height:110px; }
+#tabwine5 { display:none; height:110px; }
+
+.numlistdl{ width:180px; float:left; margin-top:5px;}
+.numlistdl dt{ width:62px;border:1px #F0F0F0 solid; float:left; }
+.numlistdl dd{ width:110px; float:right; margin-top:5px;}
+.numlistdl .numdd{ margin-top:15px;}
+/**end 100813修改,添加**/
+
+.wineimglist {background:#FFFFFF}
+.wineimglist ul { overflow:auto}
+.wineimglist ul li { float:left; margin:5px 0px 0px 5px; background:#FFFFFF;border:1px #F0F0F0 solid; height:145px; width:100px; text-align:center; display:inline}
+.wineimglist ul li .imgbox{ clear:both;width:100px; text-align:center; margin-bottom:5px;}
+.wineimglist ul li .txtbox { clear:both;height:18px; width:100px; text-align:center}
+.wineimglist ul li .imgbox img{ height:98px; width:60px}
+.myhuifu {}
+.pailie {text-align:left; background-image:url(http://img02.yesmywine.com/winelist/titbg3.gif);border:1px solid #CCCCCC; height:31px; padding-top:6px; padding-left:10px; margin:0 auto; margin-bottom:10px;}
+
+.winebox { clear:both; width:765px;margin-bottom:10px;}
+.winebox .winebox1 { width:180px; height:320px; border:1px #F0F0F0 solid; margin-right:12px; float:left; margin-bottom:10px;}
+.winebox .winebox3 { width:180px; height:299px; border:1px #F0F0F0 solid; margin-right:12px; float:left; margin-bottom:10px;}
+.winebox .winebox2 { width:765px; height:190px; border:1px #F0F0F0 solid; }
+.winebox .winebox2 .wineinfo {}
+.winebox .winebox2 .wineinfo .r1 { height:45px; border-bottom:1px #F0F0F0 solid; margin-top:15px;line-height:165%;}
+.winebox .winebox2 .wineinfo .r2 { height:45px; border-bottom:1px #F0F0F0 solid;margin-top:5px; line-height:165%;}
+.winebox .winebox2 .wineinfo .r3 { height:25px; border-bottom:1px #F0F0F0 solid;margin-top:5px; line-height:165%;}
+.winebox .winebox2 .wineinfo .r4 { height:25px; margin-top:5px; line-height:165%;}
+.winebox .winebox2 .wineinfo .r5 { border-bottom:1px #F0F0F0 solid;margin-top:5px; line-height:165%; padding-top:10px; padding-bottom:10px;}
+.winebox .winebox2 .wineinfo .r6 { height:45px; border-bottom:1px #F0F0F0 solid; margin-top:15px; line-height:45px;}
+.winebox .nomr { margin-right:0;}
+.winebox .giftico { margin-top:3px; margin-left:2px;}
+.winebox .winebox2 .winenum { width:40px; height:18px;}
+.secchandi {height:100px; overflow:auto; width:220px;overflow-x:hidden; margin-top:5px;}
+.secchandi table tr td { line-height:165%}
+#nofloat{ margin:0px auto; height:0px; line-height:0;}
+#pagebox{ width:330px; height:30px; float:right; border-top:1px solid #ccc;  padding-top:10px; margin-top:3px; float:right; margin-left:20px; text-align:right}
+#pagebox2{ width:330px; height:30px; float:right; margin-top:3px; margin-left:20px; text-align:right}
+.page{ width:auto; height:auto; float:right;text-align:right;margin-right:5px;}
+.page_on{color:#393939; font-weight:bold;  width:auto; height:15px; padding-top:3px; padding-left:5px; padding-right:5px; float:left; margin-right:3px;}
+.page a{ font-weight:normal; width:auto; height:16px; padding-top:2px; padding-left:5px; padding-right:5px; display:block; border:1px solid #ccc; float:left; margin-right:3px; text-decoration:none; color:#393939;}
+.page a:hover{ background-color:#a90005; color:#FFFFFF;}
+a.pagenowon { background-color:#a90005; color:#FFFFFF;}
+.showwine { width:1000px; margin:0 auto; border-top:1px #CCCCCC solid; padding-top:20px;}
+.showwine .left{ width:740px; float:left;}
+.showwine .left .leftwine{ width:230px; float:left; text-align:left}
+.showwine .left .leftwine img{ width:220px; height:360px; border:1px #f5f5f5 solid} 
+.showwine .left .infowine{ width:500px; float:right; text-align:left; margin-bottom:10px;}
+.showwine .left .infowine .r1{ clear:both; height:25px; padding-top:8px; text-align:left;border-bottom:1px #CCCCCC solid;}
+.showwine .left .infowine .r2{ clear:both; height:48px; padding-top:8px; text-align:left;border-bottom:1px #CCCCCC solid; line-height:165%; }
+.showwine .left .infowine .r3{ clear:both; height:28px; padding-top:10px; text-align:left;line-height:165%;}
+.showwine .left .infowine .r4{ clear:both; margin-bottom:10px;}
+.showwine .left .infowine .r5{ clear:both; margin-top:8px;}
+.underline{ border-bottom:1px #CCCCCC solid; padding-bottom:5px; height:20px;}
+.activemsg{}
+.activemsg h3{ height:20px; padding:0; margin:0px; font-size:12px; color:#ABACAE; text-align:left; font-weight:normal;}
+.activemsg ul li { height:20px; margin:0px 0px 1px 0px; text-align:left;}
+.activemsg ul li img{}
+.activemsg ul li a { background-color:#FEFCE7; padding:3px 5px 1px 5px; width:auto;}
+.showwine .left .infowine .winejiang { clear:both; width:493px; line-height:165%; padding:4px 0px 2px 5px; background-color:#FFFBE7; border:1px #CCCCCC solid; border-top:0; margin-bottom:6px;}
+.showwine .left .infowine .winejiang img { margin-right:3px;}
+.showwine .left .infowine .winenum { width:50px; height:18px; border:1px #CCCCCC solid}
+
+#jiagebox {position:relative;z-index:100;display:none;}
+.jiagemain {border:1px #CCCCCC solid; width:135px; padding:5px; background-color:#FFFFFF; position:absolute;z-index:100;left: 0px;top: 0px;}
+.pingluntitle { height:27px; width:740px; background-image:url(http://img02.yesmywine.com/winelist/pinglunsubbg.gif); padding-left:10px; margin-bottom:15px;}
+#pinglun1 {}
+#pinglun2 { display:none}
+.plmenu1a { float:left; width:80px; height:19px; padding-top:8px; background-image:url(http://img02.yesmywine.com/winelist/plmenu1a.gif); text-align:center; font-weight:bold; line-height:normal; font-size:12px;}
+.plmenu1b { float:left; width:80px; height:20px; padding-top:7px; background-image:url(http://img02.yesmywine.com/winelist/plmenu1b.gif); text-align:center; cursor:hand; line-height:normal; font-size:12px}
+.plmenu2a { float:left; width:80px; height:19px; padding-top:8px; background-image:url(http://img02.yesmywine.com/winelist/plmenu2a.gif); text-align:center; font-weight:bold; line-height:normal; font-size:12px}
+.plmenu2b { float:left; width:80px; height:20px; padding-top:7px; background-image:url(http://img02.yesmywine.com/winelist/plmenu2b.gif); text-align:center; cursor:hand; line-height:normal; font-size:12px}
+.plmenu3 { float:right; width:100px; text-align:right;}
+.pllist { clear:both; padding-bottom:10px; border-bottom:1px #CCCCCC dotted; margin-bottom:15px;}
+.pllist table tr td { line-height:165%;}
+#pinglun1 table tr td ，#pinglun2 table tr td { line-height:165%;}
+.plform{ line-height:165%; width:655px; height:50px;}
+.showwine .right { width:220px; float:right}
+.showwine .right .topbox {border:1px #CCCCCC solid; margin-bottom:10px ; background:#FFFFFF; overflow:auto}
+.showwine .right .topbox .title { height:21px; padding-left:10px; background-image:url(http://img02.yesmywine.com/winelist/titbg1.gif); text-align:left; font-weight:bold; padding-top:9px; margin-bottom:5px;}
+.showwine .right .topbox .numlist { border-bottom:1px #F0F0F0 solid; padding-bottom:5px; padding-top:10px;text-align:left; padding-left:15px; background:#FFFFFF}
+.showwine .right .topbox .numimg{margin-bottom:2px; margin-right:5px;}
+.showwine .right .topbox .wineimg { height:98px; border:1px #F0F0F0 solid; width:60px}
+
+.pdb { padding-bottom:10px;}

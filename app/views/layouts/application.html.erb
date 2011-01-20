@@ -1,32 +1,364 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-  <title>12度红酒网</title>
-  	<%= stylesheet_link_tag :all %>
+  	<title>12度红酒网</title>
+	<%= stylesheet_link_tag :all %>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="keywords" content="红酒,葡萄酒,进口红酒,进口葡萄酒,法国红酒,红葡萄酒,干红葡萄酒">
+	<meta name="description" content="12度红酒网">
 	<%= javascript_include_tag "jquery-1.4.4.min.js" %>
+	<%= javascript_include_tag "jquery.cookie.js" %>
 	<%= javascript_include_tag 'rails' %>
-  	<%= csrf_meta_tag %>
+	<%= csrf_meta_tag %>
 </head>
 <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-	<div id="user_nav">    
-	  <% if user_signed_in? %>
-	    欢迎 <%= link_to current_user.email, :action=>'index', :controller=>'my' %>. 这不是我的账户?    
-	    <%= link_to "注销", destroy_user_session_path %>
-	  <% else %>    
-	    <%= link_to "注册", new_user_registration_path %> or    
-	    <%= link_to "登陆", new_user_session_path %>    
-	  <% end %>    
+	<div id="top">
+	    <div class="left">
+	        <a href="/"><img src="/images/newlogo.gif" border="0"></a>
+	    </div>
+	    <div class="right">
+	        <div class="topinfo" id="myDiv2">
+	            您好，欢迎光临12度红酒网。
+				<%= link_to "注册", new_user_registration_path, :class => "snf3" %>
+				<a class="snf8">|</a> 　<%= link_to "登陆", new_user_session_path, :class => "snf3" %> 　<a class="snf8">|</a> 　
+				<img src="/images/ico1.gif" align="absmiddle">
+				<a href="/" class="snf1" target="_blank">在线客服</a> 　
+				<a class="snf8">|</a> 　<img src="/images/ico2.gif" align="absmiddle">
+				<%= link_to ("我的账户", {:action => 'index', :controller => 'my'}, :class => "snf1") %>　
+				<a class="snf8">|</a> 　<img src="/images/ico3.gif" align="absbottom">
+				<a href="/cart" class="snf1">购物车内有&nbsp;<span id="goodsNum" class="nf0">0</span>&nbsp;件商品</a>
+	        </div>
+	        <div class="row">
+	            <div class="row1">
+	                <div class="row3">
+	                    <div class="memberNum">
+	                        <span class="snf4" id="memberNum">10000</span>位会员信赖的葡萄酒商城
+	                    </div>
+	                </div>
+	                <div class="row3">
+	                    <div class="home">
+	                    	<a href="/">首页</a>
+	                    </div>
+	                    <div id="wltOrder" class="topbar">
+	                    	<%= link_to ("促销专区", {:action=> :promo, :controller => :home}, :class => "snf1") %>&nbsp;
+							<img src="/images/new.gif" border="0" align="absmiddle" />&nbsp;&nbsp;&nbsp;
+							<a href="#" class="snf1">免费索取目录</a>&nbsp;&nbsp;&nbsp;
+							<a href="#" class="snf1">限时抢购</a>
+	                    </div>
+	                </div>
+	            </div>
+	            <div class="row2">
+	                <div class="phone400">
+	                    <img src="/images/400b.gif">
+	                </div>
+	                <div class="mytealogo">
+	                    <a href="http://english.12doo.com/" target="_blank"><img src="/images/logo_englishwine.jpg" border="0"></a>
+						<a href="#" target="_blank"><img src="/images/logo_mytea.gif" border="0"></a>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
 	</div>
-	<div id="cart"><%= link_to "购物车", :action=>'show', :controller=>'cart' %></div>
-	<div id="search">
-		<% form_tag ({:action=>'search',:controller=>'store'}, :method=>:get) do -%>
-			<input type="text" name="key" />
-			<input type="submit" value="搜索">
-		<% end -%>
-	</div>
-<%= yield %>
 
+
+        <div class="menu">
+            <ul>
+                <li>
+                    <a onmouseover="showDivList('Subto1')" onmouseout="hideDivList('Subto1')" class="snf0">买酒荐酒<img src="/images/ico4.gif" border="0" align="absmiddle"></a>
+                    <div id="Subto1" onmouseover="showDivList('Subto1')" onmouseout="hideDivList('Subto1')">
+                        <div class="Subtobox">
+                            <div class="r1">
+                                <a href="" class="snf2">买酒荐酒<img src="/images/ico5.gif" align="absmiddle"></a>
+                            </div>
+                            <div class="r2" style="border:0">
+                                <a href="" class="snf1"><img src="/images/ico7.gif" align="absmiddle">红葡萄酒</a>
+                            </div>
+                            <div class="r2">
+                                <a href="" class="snf1"><img src="/images/ico7.gif" align="absmiddle">白葡萄酒</a>
+                            </div>
+                            <div class="r2">
+                                <a href="" class="snf1"><img src="/images/ico7.gif" align="absmiddle">桃红葡萄酒</a>
+                            </div>
+                            <div class="r2">
+                                <a href="" class="snf1"><img src="/images/ico7.gif" align="absmiddle">起泡酒</a>
+                            </div>
+                            <div class="r2">
+                                <a href="" class="snf1"><img src="/images/ico7.gif" align="absmiddle">加强葡萄酒</a>
+                            </div>
+                            <div class="r2">
+                                <a href="" class="snf1"><img src="/images/ico7.gif" align="absmiddle">烈酒</a>
+                            </div>
+                            <div class="r2">
+                                <a href="" class="snf1"><img src="/images/ico7.gif" align="absmiddle">其他</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <a onmouseover="showDivList('Subto2')" onmouseout="hideDivList('Subto2')" class="snf0">礼酒专区<img src="/images/ico4.gif" border="0" align="absmiddle"></a>
+                    <div id="Subto2" onmouseover="showDivList('Subto2')" onmouseout="hideDivList('Subto2')">
+                        <div class="Subtobox">
+                            <div class="r1 snf2">
+                                <a href="" class="snf2">礼酒专区<img src="/images/ico5.gif" align="absmiddle"></a>
+                            </div>
+                            <div class="r2" style="border:0;">
+                                <a href="" class="snf1"><img src="/images/ico7.gif" align="absmiddle">1-99元</a>
+                            </div>
+                            <div class="r2">
+                                <a href="" class="snf1"><img src="/images/ico7.gif" align="absmiddle">100-199元</a>
+                            </div>
+                            <div class="r2">
+                                <a href="" class="snf1"><img src="/images/ico7.gif" align="absmiddle">200-299元</a>
+                            </div>
+                            <div class="r2">
+                                <a href="" class="snf1"><img src="/images/ico7.gif" align="absmiddle">300-499元</a>
+                            </div>
+                            <div class="r2">
+                                <a href="" class="snf1"><img src="/images/ico7.gif" align="absmiddle">500-799元</a>
+                            </div>
+                            <div class="r2">
+                                <a href="" class="snf1"><img src="/images/ico7.gif" align="absmiddle">800-999元</a>
+                            </div>
+                            <div class="r2">
+                                <a href="" class="snf1"><img src="/images/ico7.gif" align="absmiddle">1000元以上</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <a onmouseover="showDivList('Subto3')" onmouseout="hideDivList('Subto3')" class="snf0">酒具专区<img src="/images/ico4.gif" border="0" align="absmiddle"></a>
+                    <div id="Subto3" onmouseover="showDivList('Subto3')" onmouseout="hideDivList('Subto3')">
+                        <div class="Subtobox">
+                            <div class="r1 snf2">
+                                <a href="" class="snf2">酒具专区<img src="/images/ico5.gif" align="absmiddle"></a>
+                            </div>
+                            <div class="r2" style="border:0;">
+                                <a href="" class="snf1"><img src="/images/ico7.gif" align="absmiddle">酒柜</a>
+                            </div>
+                            <div class="r2">
+                                <a href="" class="snf1"><img src="/images/ico7.gif" align="absmiddle">酒鼻子</a>
+                            </div>
+                            <div class="r2">
+                                <a href="" class="snf1"><img src="/images/ico7.gif" align="absmiddle">酒杯</a>
+                            </div>
+                            <div class="r2">
+                                <a href="" class="snf1"><img src="/images/ico7.gif" align="absmiddle">礼盒</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <a onmouseover="showDivList('Subto4')" onmouseout="hideDivList('Subto4')" class="snf0">场合选酒<img src="/images/ico4.gif" border="0" align="absmiddle"></a>
+                    <div id="Subto4" onmouseover="showDivList('Subto4')" onmouseout="hideDivList('Subto4')">
+                        <div class="Subtobox">
+                            <div class="r1 snf2">
+                                <a href="" class="snf2">场合选酒<img src="/images/ico5.gif" align="absmiddle"></a>
+                            </div>
+                            <div class="r2" style="border:0;">
+                                <a href="" class="snf1"><img src="/images/ico7.gif" align="absmiddle">聚会用</a>
+                            </div>
+                            <div class="r2">
+                                <a href="" class="snf1"><img src="/images/ico7.gif" align="absmiddle">约会用</a>
+                            </div>
+                            <div class="r2">
+                                <a href="" class="snf1"><img src="/images/ico7.gif" align="absmiddle">自饮用</a>
+                            </div>
+                            <div class="r2">
+                                <a href="" class="snf1"><img src="/images/ico7.gif" align="absmiddle">商务用</a>
+                            </div>
+                            <div class="r2">
+                                <a href="" class="snf1"><img src="/images/ico7.gif" align="absmiddle">婚宴用</a>
+                            </div>
+                            <div class="r2">
+                                <a href="" class="snf1"><img src="/images/ico7.gif" align="absmiddle">收藏用</a>
+                            </div>
+                            <div class="r2">
+                                <a href="" class="snf1"><img src="/images/ico7.gif" align="absmiddle">送礼用</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li style="width:90px;">
+                    <a class="snf0" href="">品酒会</a>
+                </li>
+                <li style="width:100px;">
+                    <a class="snf0" href="">红酒生活</a>
+                </li>
+                <li>
+                    <a class="snf0" href="">论坛</a>
+                </li>
+            </ul>
+        </div>
+		
+		<div class="topsearch">
+            <div class="searchbox">
+            	<% form_tag ({:action=>'search',:controller=>'store'}, :method=>:get, :name => :search) do %>
+                <input type="text" name="key" id="keywordTop" class="tsi" />
+				<a href="javascript:document.search.submit();">
+					<img src="/images/searchmenu.gif" align="absmiddle" border="0" />
+				</a>
+				<% end %>
+            </div>
+            <div class="hotbox">
+                <a class="snf1" href="">波尔多</a>
+                <a class="snf1" href="">香槟</a>
+                <a class="snf1" href="">赤霞珠</a>
+                <a class="snf1" href="">设拉子</a>
+                <a class="snf1" href="">组合</a>
+                <a class="snf1" href="">拉菲</a>
+                <a class="snf1" href="">黄尾</a>
+            </div>
+            <div class="snapping_up1">
+                <a href="#">距抢购活动<span id="startEnd">结束</span>时间</a>: <b><span id="timeDay">0</span></b>天<b><span id="timeHour">5</span></b>时<b><span id="timeMin">45</span></b>分<b><span id="timeSec">25</span></b>秒
+            </div>
+        </div>
+
+ <script type="text/javascript">
+    function showDivList(divname){
+        document.getElementById(divname).style.display = 'block';
+    }
+    
+    function hideDivList(divname){
+        document.getElementById(divname).style.display = 'none';
+    }
+</script>
+
+<div class="center" style="margin-top:6px;">
+    <div style="width:1000px; margin-bottom:6px; float:left;">
+        <img src="/images/banner_yunffei.gif">
+    </div>
+<%= yield %>
+<div class="center" style="margin-top:10px;">
+            </div>
+            <div class="clear">
+                <img src="/images/dot.gif" height="11px">
+            </div>
+            <div class="center" style="text-align:center; line-height:125%;">
+                <div class="cent_1">
+                    <div class="ico_01">
+                        <div class="ico_img_01">
+                            <img src="/images/ico_01.gif" width="19" height="14">
+                        </div>
+                        <div class="ico_img_zi1">
+                            <span class="text_b"><a href="">新手指南</a></span>
+                            <br>
+                            <a href="">注册新用户</a>
+                            <br>
+                            <a href="">网站订购流程</a>
+                            <br>
+                            <a href="" class="red">新积分规则</a>
+                        </div>
+                    </div>
+                    <div class="ico_02">
+                        <div class="ico_img_02">
+                            <img src="/images/ico_02.gif" width="19" height="14">
+                        </div>
+                        <div class="ico_img_zi2">
+                            <span class="text_b"><a href="">如何付款/退款</a></span>
+                            <br>
+                            <a href="">支付方式</a>
+                            <br>
+                            <a href="">各支付方式的付款等待期限</a>
+                            <br>
+                            <a href="">发票制度说明</a>
+                        </div>
+                    </div>
+                    <div class="ico_03">
+                        <div class="ico_img_03">
+                            <img src="/images/ico_03.gif" width="24" height="13">
+                        </div>
+                        <div class="ico_img_zi3">
+                            <span class="text_b"><a href="">配送方式</a></span>
+                            <br>
+                            <a href="">货到付款城市及配送时间</a>
+                            <br>
+                            <a href="">配送费收取标准</a>
+                        </div>
+                    </div>
+                    <div class="ico_04">
+                        <div class="ico_img_04">
+                            <img src="/images/ico_04.gif" width="14" height="14">
+                        </div>
+                        <div class="ico_img_zi3">
+                            <span class="text_b"><a href="">售后服务</a></span>
+                            <br>
+                            <a href="">退换货政策</a>
+                            <br>
+                            <a href="">如何办理退换货</a>
+                        </div>
+                    </div>
+                    <div class="ico_04">
+                        <div class="ico_img_04">
+                            <img src="/images/ico_05.gif" width="15" height="16">
+                        </div>
+                        <div class="ico_img_zi3">
+                            <span class="text_b"><a href="">帮助中心</a></span>
+                            <br>
+                            <a href="">常见热点问题</a>
+                            <br>
+                            <a href="">联系我们</a>
+                            <br>
+                            <a href="">投诉与建议</a>
+                            <br>
+                            <a href="">团购规则</a>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+                <div class="center">
+                    <div class="cent_2">
+                        <div class="bottom_left">
+                            仅限18周岁以上人士购买
+                        </div>
+                        <div class="bottom_right">
+                            <a href="#" class="red">公司简介</a> 　
+							<span class="red">|</span> 　
+							<a href="#" class="red">诚聘英才</a> 　
+							<span class="red">|</span> 　
+							<a href="#" class="red">隐私申明</a>
+                        </div>
+                    </div>
+                    <div class="bottom_link">
+                        <div>
+                            <a href="#">友情链接：</a>
+                            <a href="#" target="_blank">新浪</a>
+                            <a href="#" target="_blank">网易</a>
+                            <a href="#" target="_blank">谷歌</a> 　 
+                            <a href="#" target="_blank">微软</a> 　 
+                            <a href="#" target="_blank">淘宝</a>
+                            <a href="#" target="_blank">阿里巴巴</a>
+                        </div>
+                    </div>
+                    <div class="clear">
+                        <img src="/images/dot.gif" height="11px">
+                    </div>
+                    <div class="bottom_center">
+                        <img src="/images/bottom_01.jpg" width="200" height="66">
+						<img src="/images/dot.gif" width="20" height="1">
+						<img src="/images/bottom_02.jpg" width="200" height="68">
+                    </div>
+                    <br>
+                    <br>
+                    <div class="bottom_center" style="text-align:center">
+                        <a href="" target="_blank">
+                        	<img src="/images/091231a.jpg" border="0">
+						</a> 　
+						<a href="" target="_blank">
+							<img src="/images/091231b.jpg" border="0">
+						</a> 　　
+						<a href="" target="_blank">
+							<img src="/images/091231c.jpg" border="0">
+						</a>
+                    </div>
+                    <div class="clear">
+                        <img src="/images/dot.gif" height="11px">
+                    </div>
+                    <div class="bottom_center_">
+                        CopyRight: 2011 12度红酒网 All Rights Reserved  © 沪ICP备0123456789号
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
 </body>
 </html>

@@ -1,13 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
-#   Mayor.create(:name => 'Daley', :city => cities.first)
-
-# init city and region
-
 Area.create(:postcode => '110000', :province => '北京市', :city => '', :region => '')
 Area.create(:postcode => '110100', :province => '北京市', :city => '北京市', :region => '')
 Area.create(:postcode => '110101', :province => '北京市', :city => '北京市', :region => '东城区')
@@ -3533,16 +3523,20 @@ Area.all.each do |area|
   Delivery.create(:area_id => area.id, :door_step => 12)
 end
 
+ProductStatus.create(:name => '现货', :description => '现货')
+ProductStatus.create(:name => '订货', :description => '订货')
+ProductStatus.create(:name => '无货', :description => '无货')
+
+#ProductAttributeDefine.create(:name => '葡萄类型', :short => 'Attr0', :description => 'Attr0 description')
+#ProductAttributeDefine.create(:name => '罐装年分', :short => 'Attr1', :description => 'Attr1 description')
+#ProductAttributeDefine.create(:name => 'Attr2', :short => 'Attr2', :description => 'Attr2 description')
+#ProductAttributeDefine.create(:name => 'Attr3', :short => 'Attr3', :description => 'Attr3 description')
+
 # define order status
-#OrderStatus.create(:short => 'ORDERCONFIRM', :display => '订单确认')
-#OrderStatus.create(:short => 'WAIT_BUYER_PAY', :display => '等待付款')
-#OrderStatus.create(:short => 'TRADE_FINISHED', :display => '付款成功')
-#OrderStatus.create(:short => 'UPLOADCOMPLETED', :display => '上传完成')
-#OrderStatus.create(:short => 'WAIT_PUBLISH', :display => '等待印刷')
-#OrderStatus.create(:short => 'WAIT_PUBLISHING', :display => '正在印刷')
-#OrderStatus.create(:short => 'WAIT_SHIPPING', :display => '快递在途')
-#OrderStatus.create(:short => 'WAIT_SIGNFOR', :display => '签收完成')
-#OrderStatus.create(:short => 'WAIT_FINISHED', :display => '订单完成')
-#OrderStatus.create(:short => 'WAIT_REFUND', :display => '等待退款')
-#OrderStatus.create(:short => 'REFUND_SUCCESS', :display => '退款成功')
-#OrderStatus.create(:short => 'TRADE_CLOSED', :display => '交易关闭')
+OrderStatus.create(:short => 'WAIT_BUYER_PAY', :display => '等待付款')
+OrderStatus.create(:short => 'WAIT_SELLER_CONFIRM', :display => '等待网站确认')
+OrderStatus.create(:short => 'WAIT_SHIPPING', :display => '等待发货')
+OrderStatus.create(:short => 'WAIT_BUYER_CONFIRM', :display => '等待确认收货')
+OrderStatus.create(:short => 'ORDER_CLOSED', :display => '已关闭')
+OrderStatus.create(:short => 'ORDER_CANCELED', :display => '已取消')
+OrderStatus.create(:short => 'WAIT_REFUND', :display => '等待退款')

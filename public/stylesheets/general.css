@@ -1,0 +1,145 @@
+
+img { border:0}
+#backgroundPopup{
+display:none;
+position:fixed;
+_position:absolute; /* hack for internet explorer 6*/
+height:100%;
+width:100%;
+top:0;
+left:0;
+background:#ffffff;
+border:1px solid #cecece;
+z-index:1;
+}
+
+#popupContact{
+text-align:center;
+display:none;
+position:fixed;
+_position:absolute; /* hack for internet explorer 6*/
+height:300px;
+width:600px;
+background:#FFFFFF;
+border:5px solid #CE111A;
+z-index:2;
+padding:5px;
+}
+
+#popupCartSubmit{
+text-align:center;
+display:none;
+position:fixed;
+_position:absolute; /* hack for internet explorer 6*/
+height:300px;
+width:600px;
+background:#FFFFFF;
+border:5px solid #CE111A;
+z-index:2;
+padding:5px;
+}
+
+#boxPopup{
+text-align:center;
+display:none;
+position:fixed;
+_position:absolute; /* hack for internet explorer 6*/
+height:300px;
+width:600px;
+background:#FFFFFF;
+border:5px solid #CE111A;
+z-index:2;
+padding:5px;
+}
+
+#popupFavor{
+text-align:center;
+display:none;
+position:fixed;
+_position:absolute; /* hack for internet explorer 6*/
+height:300px;
+width:600px;
+background:#FFFFFF;
+border:5px solid #CE111A;
+z-index:2;
+padding:5px;
+}
+
+#JuBao{
+text-align:center;
+display:none;
+position:fixed;
+_position:absolute; /* hack for internet explorer 6*/
+height:400px;
+width:600px;
+background:#FFFFFF;
+border:5px solid #CE111A;
+z-index:2;
+padding:5px;
+}
+
+#dalibao{
+text-align:center;
+display:none;
+position:fixed;
+_position:absolute; /* hack for internet explorer 6*/
+height:400px;
+width:600px;
+background:#FFFFFF;
+border:5px solid #CE111A;
+z-index:2;
+padding:5px;
+}
+
+#leaveGoods{
+text-align:center;
+display:none;
+position:fixed;
+_position:absolute; /* hack for internet explorer 6*/
+height:400px;
+width:600px;
+background:#FFFFFF;
+border:5px solid #CE111A;
+z-index:2;
+padding:5px;
+}
+#cbutton{
+text-align:center;
+}
+
+.process { text-align:center; margin-bottom:10px;}
+.cartinfo { margin-left:60px;text-align:left;}
+.cartinfo table tr td { font-size:12px;}
+
+<!-- Cart Font -->
+a.cf1 {font-size:16px; color:#000; font-weight:bold}
+a.cf2 {font-size:16px; color:#990000; font-weight:bold}
+a.cf3 {font-size:14px; color:#333; font-weight:bold; margin-left:5px;}
+a.cf4 {font-size:12px; color:#0066FF; font-weight:bold }
+a.cf5 {font-size:14px; color:#990000; font-weight:bold; }
+a.cf6 {font-size:12px; color:#0066CC; text-decoration:underline}
+a.cf6:hover {font-size:12px;color:#0066CC; text-decoration:none}
+a.cf7 {font-size:12px; color:#990000; text-decoration:underline; margin-left:20px;}
+a.cf7:hover {font-size:12px;color:#990000; text-decoration:none; margin-left:20px;}
+a.cf8 {font-size:12px; color:#6A3906; text-decoration:none; line-height:165%;}
+a.cf9 {font-size:14px; color:#666; text-decoration:none; line-height:165%;}
+a.cf10 {font-size:14px; color:#990000; margin-left:10px; text-decoration:none; line-height:165%;}
+a.cf11 {font-size:14px; color:#666; text-decoration:none; font-weight:bold;}
+a.cf12 {font-size:12px; color:#990000; text-decoration:underline; }
+a.cf12:hover {font-size:12px;color:#990000; text-decoration:none; }
+a.cf13 {font-size:12px; color:#990000; text-decoration:underline; font-weight:bold;}
+a.cf13:hover {font-size:12px;color:#990000; text-decoration:none; font-weight:bold; }
+a.cf14{font-size:12px; color:#fff; font-weight:bold;}
+.tip1 { font-size:12px; color:#000000; margin:15px 5px 0px 30px; text-align:left}
+.tip2 { font-size:14px; color:#FF6600; margin:15px 5px 0px 30px; font-weight:bold; text-align:left}
+
+.tip3 {height:25px;text-align:left; font-size:14px; color:#990000;margin:25px 0px 0px 0px; font-weight:bold; }
+.tip4 { font-size:14px; color:#CC0000; margin:25px 10px 0px 10px; font-weight:bold; text-align:left; border-bottom:1px dashed #999999; padding-bottom:5px; text-align:left}
+
+<!-- Order Login -->
+.lon1 { width:525px; height:90px; background-color:#FFFFB2; border:#FFC1B2 1px solid; float:left; margin-right:10px;}
+.lon2 { width:380px; height:90px; float:left;}
+.lon3 { width:440px; border-right:1px #CCCCCC dashed; float:left; margin-left:70px; display:inline}
+.lon4 { width:420px; height:120px; float:left; margin-left:10px;}
+.zhifu1 {width:30px; margin-left:60px; float:left; margin-bottom:0px; height:30px; line-height:30px; display:inline;}
+.zhifu2 {width:380px; float:left;text-align:left; margin-bottom:0px; height:30px; line-height:25px; display:inline;}

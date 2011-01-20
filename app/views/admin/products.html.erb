@@ -1,0 +1,28 @@
+<%= link_to "添加", :action => :new, :controller => :products %>
+<table>
+  <tr>
+    <th>名称</th>
+	<th>编号</th>
+    <th>单价</th>
+    <th>指导价</th>
+    <th>库存数量</th>
+    <th>年份</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @products.each do |product| %>
+  <tr>
+    <td><%= product.name %></td>
+    <td><%= product.sku %></td>
+    <td><%= product.price %></td>
+    <td><%= product.indication_price %></td>
+    <td><%= product.count %></td>
+    <td><%= product.vintage %></td>
+	<td><%= link_to "编辑", :action => :edit, :controller => :products, :id => product.id %></td>
+    <td><%= link_to '详情', product %></td>
+  </tr>
+<% end %>
+</table>
+<%= will_paginate @products %>
+<br />
