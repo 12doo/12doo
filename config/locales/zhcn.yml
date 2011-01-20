@@ -145,6 +145,17 @@ zhcn:
       user:
         login: "账户名"
         password: "密码"
+        email: "电子邮件"
+        password_confirmation: "确认密码"
+        current_password: "当前密码"
+        sign_in_count: "登录次数"
+        last_sign_in_at: "上次登录时间"
+        last_sign_in_ip: "上次登录IP地址"
+        phone: "电话号码" 
+        name: "姓名"
+        title: "称呼"
+        birth: "生日"
+        gender: "性别"
       address:
         province: "省"
         city: "市"

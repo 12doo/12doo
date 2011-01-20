@@ -1,7 +1,7 @@
 <%= form_tag 'update_profile' do -%>
 <table>
 	<tr>
-		<td>邮箱:</td>
+		<td><%= resource.label :email %></td>
 		<td>
 			<input type="text" readonly="true" value="<%= current_user.email %>" />
 			<%= link_to "修改邮箱地址", :action=> "update_email" %>

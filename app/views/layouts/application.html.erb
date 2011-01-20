@@ -11,13 +11,7 @@
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 	<div id="user_nav">    
-	  <% if user_signed_in? %>
-	    欢迎 <%= link_to current_user.email, :action=>'index', :controller=>'my' %>. 这不是我的账户?    
-	    <%= link_to "注销", destroy_user_session_path %>
-	  <% else %>    
-	    <%= link_to "注册", new_user_registration_path %> or    
-	    <%= link_to "登陆", new_user_session_path %>    
-	  <% end %>    
+	  <%= render "layouts/user_nav" %>
 	</div>
 	<div id="cart"><%= link_to "购物车", :action=>'show', :controller=>'cart' %></div>
 	<div id="search">
