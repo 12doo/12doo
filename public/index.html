@@ -1,0 +1,218 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>12doo主页模板</title>
+<link href="css/HomePage.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+
+<div id="topnav">
+  <ul> 
+  	<li class="first">固定在顶部的浮动条，将用户常用操作放在这里</li>
+    <li><a href="#">注册</a></li>
+    <li><a href="#">登陆</a></li>
+    <li><a href="#">我的帐户</a></li>
+    <li><a href="#">购物车</a>中有3种商品总价478元</li>
+    <li><a href="#">订单查询</a></li>
+  </ul>
+</div>
+
+<div id="header">
+  <div id="headlogo">
+    <a href="index.php"><img src="img/12doo_ICON.png" alt="12doo Logo"/></a>
+  </div>
+  <div id="headbanner">
+    这里是页banner广告
+  </div>
+  <div id="mainmenu">
+   <ul>
+      <li><a href="wine.php">葡萄酒</a></li>
+      <li><a href="gift.php">礼品装</a></li>
+      <li><a href="#">葡萄酒知识</a></li>
+      <li><a href="http://blog.12doo.com">葡萄酒志</a></li>
+      <li class="end"></li>
+    </ul>
+  </div>
+  <div id="searchblock">
+      <form>
+        <input class="serach" name="search" type="text" value="输入关键字" maxlength="50" action="#" method="get" target="_top" /><input class="search-submit" type="submit" value="搜索商品" /><a href="#">高级搜索</a>
+      </form>
+  </div>
+  <br class="clearfloat" />
+<!-- end #header --></div>
+
+<div id="container">
+
+  <div id="leftcontainer">
+    <div class="sidebar">
+      <h1>—分类挑选葡萄酒—</h1>
+      <ul>
+      	<li><a href="./red">干红</a></li>
+        <li><a href="./white">干白</a></li>
+        <li><a href="./rose">桃红</a></li>
+        <li><a href="./sweet">甜酒</a></li>
+        <li><a href="./ice">冰酒</a></li>
+        <li><a href="./spark">香槟及气泡酒</a></li>
+        <li><a href="./sherry">雪利</a></li>
+      <!-- end of lists by type --></ul>
+	  <h1>—根据生产国选择—</h1>
+      <ul>
+      	<li><a href="./FR">法国</a></li>
+        <li><a href="./IT">意大利</a></li>
+        <li><a href="./ES">西班牙</a></li>
+        <li><a href="./DE">德国</a></li>
+        <li><a href="./EU">其他欧洲国家</a></li>
+        <li><a href="./US">美国</a></li>
+        <li><a href="./AU">澳大利亚</a></li>
+        <li><a href="./NZ">新西兰</a></li>
+        <li><a href="./CL">智利</a></li>
+        <li><a href="./ZA">南非</a></li>
+        <li><a href="./NEW">其他新世界</a></li>
+      <!-- end of lists by country --></ul>
+      <!--
+      <p>第一个左边栏基本为固定分类选择菜单，高度基本可以固定下来</p>
+      -->
+    <!-- end #sidebar1 --></div>
+    <div class="sidebar">
+      <h1>这是第二个左边栏</h1>
+      <p>The background color on this div will only show for the length of the content. If you'd like a dividing line instead, place a border on the left side of the #mainContent div if it will always contain more content. </p>
+      <p>第二个甚至第三个左边栏用于安放相关内容，例如产品列表有关的文章、产品推荐等</p>
+      <p>第二个甚至第三个左边栏用于安放相关内容，例如产品列表有关的文章、产品推荐等</p>
+      <p>第二个甚至第三个左边栏用于安放相关内容，例如产品列表有关的文章、产品推荐等</p>
+      <p>长度可伸展</p>      
+    <!-- end #sidebar2 --></div>
+  <!-- end #leftcontainer --> </div>
+  
+  
+  <div id="maincontent">
+  
+    <div class="content">
+  	<p>一个至少高200px的区域放说明性内容</p>
+    <p>用于内容性页面，可以将下方列表页面换成只有一行4个大图商品的缩微版，显示和上面内容相关的商品即可</p>
+	<p>While we only carry fine wine, this list represents the best wine we have to offer - highly rated wines, rare wines and limited production wines for serious oenophiles and collectors. Our premium wines will augment your personal wine cellar or serve as the perfect gift for a wine lover.</p>
+	<p>These top rated wines represent the creme de la creme of the wine world, each having been rated a prestigious 94 points or higher by such wine publications as Robert Parker's Wine Advocate and the Wine Spectator.
+
+Buy with confidence for yourself or as the perfect wine gift - each bottle Wine.com ships now comes with a neck hanger tag and sticker with name, vintage, price (unless it's a gift), rating and date purchased.
+
+Don't forget, you can use the links on the left to filter by region, color, or varietal of wine. </p>
+    </div>
+  
+  
+    <h1> 大图列表 </h1>
+    <p>列表分为两种，大图方式和小图方式，大图方式每行4个商品排列，每页（模块）12个商品，可翻页</p>
+  	<div class="bigwine">
+      <img src="img/winepic.png" alt="wine pic" />
+      <h1><span class="contrybrand">国家/品牌或酒庄<br /></span><span class="grapelevel">名称或葡萄种类/等级<br /></span><span class="typeyear">酒种类/年份</span></h1>
+    
+      <div class="sku">SKU:6 009650 560548</div>
+      <div class="price">会员价：￥13268</div>
+      <div class="save">立刻节省￥1336(%10)</div>
+      <div class="addcart"><a href="###">立刻购买</a></div> 
+    </div>
+  	<div class="bigwine">
+      <img src="img/winepic.png" alt="wine pic" />
+      <h1>南非旗岩 <br />Longitude 干红葡萄酒 <br />2006</h1>
+
+      <div class="sku">SKU:6 009650 560548</div>
+      <div class="price">会员价：￥168</div>
+      <div class="save">立刻节省￥36(%17)</div>
+      <div class="addcart"><a href="###">立刻购买</a></div>
+    </div>
+  	<div class="bigwine">
+      bigwine block 3
+    </div>
+  	<div class="bigwine">
+      bigwine block 4
+    </div>
+    <div class="bigwine">
+      bigwine block 5
+    </div>               
+
+	<br class="clearfloat" />
+    
+    
+
+    <p>小图方式每个商品占一行，每页（模块）12个，可翻页 </p>   
+    <span id="listtop">顶部翻页条</span>
+    <div class="smallwine">
+      <a href="###"><img src="img/winepic.png" alt="wine pic" /></a>
+      <span class="fullname">
+        <h1><a href="###">国家/品牌或酒庄/名称或葡萄种类/等级/酒种类/年份</a></h1>
+      </span>
+	  <span class="brief">
+        <p>一段 这里是商品简介内容这里是商品简介内容这里是商品简介内容这里是商品简介内容这里是商品简介内容这里是商品简介内容这里是商品简介内容这里是商品简介内容这里是商品简介内容这里是商品简介内容这里是商品简介内容这里是商品简介内容这里是商品简介内容这里是商品简介内容这里是商品简介内容这里是商品简介内容这里是商品简介内容这里是商品简介内容</p>
+      </span>
+ 
+      <div class="buyblock">
+        <div class="sku">SKU:6 009650 560548</div>
+        <div class="price">价格：￥13268</div>
+        <div class="save">立刻节省￥1336(%10)</div>
+        <div class="addcart"><a href="###">立刻购买</a></div> 
+      
+      </div>
+    </div>      
+    <div class="smallwine">
+      <img src="img/winepic.png" alt="wine pic" />
+      <h1>南非旗岩Longitude 干红葡萄酒 2006</h1>
+      <div class="buyblock">
+        <div class="sku">SKU:6 009650 560548</div>
+        <div class="price">价格：￥168</div>
+        <div class="save">立刻节省￥36(%17)</div>
+        <div class="addcart"><a href="###">立刻购买</a></div>
+      
+      </div>
+    </div>      
+    <div class="smallwine">
+      smallwine block 3
+    </div>      
+    <div class="smallwine">
+      smallwine block 4
+    </div>      
+    <div class="smallwine">
+      smallwine block 5
+    </div>      
+    <div class="smallwine">
+      smallwine block 6
+    </div>      
+    <div class="smallwine">
+      smallwine block 7
+    </div>     
+    <div class="smallwine">
+      smallwine block 8
+    </div>     
+    <div class="smallwine">
+      smallwine block 9
+    </div>      
+    <div class="smallwine">
+      smallwine block 10
+    </div>      
+    <div class="smallwine">
+      smallwine block 11
+    </div>      
+    <div class="smallwine">
+      smallwine block 12
+    </div>  
+    <span id="listbottom">底部翻页条</span>
+	<!-- end #mainContent --></div>
+    <div class="fillblank"> </div>  
+<!-- end #container --></div>
+  
+
+<div id="footer">
+    <p>这里是页脚部分，安放各种声明、说明、指南等内容</p>
+    <ul>
+      <li><a href="#">购物说明</a></li>
+      <li><a href="#">支付和配送</a></li>
+      <li><a href="#">服务承诺</a></li>
+      <li><a href="#">关于我们</a></li>
+    </ul>
+    <p>最后是版权声明脚注，备案、工商等</p>
+  <!-- end #footer --></div>
+  
+  <div id="bottom">
+  </div>
+</body>
+</html>
