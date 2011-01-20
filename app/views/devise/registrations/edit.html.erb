@@ -11,9 +11,14 @@
   <p><%= f.label :name %><br />
   <%= f.text_field :name %></p>
   
+  <p><%= f.label :phone %><br />
+  <%= f.text_field :phone %><%= link_to "修改手机号码", :action=> "update_phone" %></p>
+  
   <p><%= f.label :gender %><br />
-  <%= f.text_field :gender %></p>
-  <%= radio_button_tag(:gender, '男') -%><%= label_tag(:gender_male, "男") %>
+  <%= f.radio_button :gender, 'male' %><%= label_tag(:gender_male, "男") %>
+  <%= f.radio_button :gender, 'female' %><%= label_tag(:gender_female, "女") %>
+  <%= f.radio_button :gender, 'NA' %><%= label_tag(:gender_NA, "保密") %>
+  </p>
 <!--
   		<input type="radio" name="gender" value="男" <%= current_user.gender == "男" ? "checked" : "" %> />男
 			<input type="radio" name="gender" value="女" <%= current_user.gender == "女" ? "checked" : "" %> />女

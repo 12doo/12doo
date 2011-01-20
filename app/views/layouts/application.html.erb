@@ -15,7 +15,7 @@
 	</div>
 	<div id="cart"><%= link_to "购物车", :action=>'show', :controller=>'cart' %></div>
 	<div id="search">
-		<% form_tag ({:action=>'search',:controller=>'store'}, :method=>:get) do -%>
+		<%= form_tag ({:action=>'search',:controller=>'store'}, :method=>:get) do -%>
 			<input type="text" name="key" />
 			<input type="submit" value="搜索">
 		<% end -%>
