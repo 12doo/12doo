@@ -3,8 +3,7 @@ class ApplicationController < ActionController::Base
   protected
   # 判断是否管理员
   def authorize_admin!
-    if current_user && current_user.admin
-    else
+    unless current_user && current_user.admin
       redirect_to new_user_session_path
     end
   end
@@ -17,8 +16,8 @@ class ApplicationController < ActionController::Base
   end
   
   # 如果是管理员登陆,直接转到管理后台
-  def after_sign_in_path_for(user)
-    if user.admin
+  def after_sign_in_path_for(resource)
+    if resource.is_a?(User) && resource.admin
       return "/admin"
     else
       return "/"
