@@ -3,6 +3,7 @@ class OrdersController < ApplicationController
   before_filter :authorize_user!
 
   def index
+    @orders = Order.paginate :page => params[:page], :order => 'created_at DESC',:conditions => ['user_id = ?', current_user.id]
   end
 
   def show

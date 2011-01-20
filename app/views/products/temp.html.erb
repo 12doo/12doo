@@ -1,0 +1,10 @@
+<% # @product.product_attributes.each do |attribute| %>
+<!--	<%= # attribute.name %>:<input type="hidden" value="<%= attribute.name %>" name="product_attribute[][name]" /><input type="text" name="product_attribute[][value]" value="<%= attribute.value %>" /><br />-->
+<% # end %>
+
+<% # @product.product_tags.each do |tag| %>
+<!--	<%= # tag.key %>:<input type="hidden" value="<%= tag.key %>" name="product_tag[][key]" /><input type="text" name="product_tag[][value]" value="<%= tag.value %>" /><%= link_to '删除',:id=>@product.id,:key=>tag.key, :method => :delete, :action=>'delete_tag' %><br />-->
+<% # end %>
+<% # (1..10).each do |index| %>
+<!-- 名称:<input type="text" name="product_tag[][key]" />值:<input type="text" name="product_tag[][value]" /><br />-->
+<% # end %>

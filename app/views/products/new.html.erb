@@ -1,5 +1,5 @@
-<h1>New product</h1>
-
+<%= form_tag 'create' do %>
 <%= render 'form' %>
-
-<%= link_to 'Back', products_path %>
+<input type="submit" value="保存" />
+<% end %>
+<%= link_to '删除', products_path %>
