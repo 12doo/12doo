@@ -34,7 +34,10 @@ class ProductsController < ApplicationController
     
     if params[:product_attribute]
       params[:product_attribute].each do |attri|
+        define = ProductAttributeDefine.find_by_name(attri[:name])
         temp = ProductAttribute.new
+        temp.short = define.short
+        temp.description = define.description
         temp.name = attri[:name]
         temp.value = attri[:value]
         temp.product_sku = @product.sku
@@ -65,12 +68,11 @@ class ProductsController < ApplicationController
 
   def update
     @product = Product.find(params[:id])
-    # 暂时屏蔽
-    #params[:product_attribute].each do |attri|
-    #  temp = @product.product_attributes.find(:first,:conditions => { :name => attri[:name] })
-    #  temp.value = attri[:value]
-    #  temp.save
-    #end
+    params[:product_attribute].each do |attri|
+      temp = @product.product_attributes.find(:first,:conditions => { :name => attri[:name] })
+      temp.value = attri[:value]
+      temp.save
+    end
     #params[:product_tag].each do |tag|
     #  if tag[:key] != ""
     #    temp = @product.product_tags.find(:first,:conditions => {:key => tag[:key]})

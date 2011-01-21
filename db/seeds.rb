@@ -3531,11 +3531,13 @@ ProductAttributeDefine.create(:name => '葡萄品种', :short => 'grape', :descr
 ProductAttributeDefine.create(:name => '罐装年份', :short => 'pd', :description => '罐装年.')
 ProductAttributeDefine.create(:name => '生产厂商', :short => 'made_by', :description => '生产厂商.')
 ProductAttributeDefine.create(:name => '酒精度', :short => 'abv', :description => '酒精度.')
-ProductAttributeDefine.create(:name => '容量', :short => 'volumn', :description => '容量.')
+ProductAttributeDefine.create(:name => '容量', :short => 'vol', :description => '容量.')
 ProductAttributeDefine.create(:name => '级别', :short => 'level', :description => '级别.')
-ProductAttributeDefine.create(:name => '产区', :short => 'from', :description => '产区.')
+ProductAttributeDefine.create(:name => '产区', :short => 'region', :description => '产区.')
 ProductAttributeDefine.create(:name => '国家', :short => 'country', :description => '国家.')
 ProductAttributeDefine.create(:name => '葡萄年份', :short => 'vintage', :description => '葡萄年份.')
+ProductAttributeDefine.create(:name => '种类', :short => 'type', :description => '种类.')
+ProductAttributeDefine.create(:name => '价格区间', :short => 'price', :description => '价格区间.')
 
 # define order status
 OrderStatus.create(:short => 'WAIT_BUYER_PAY', :display => '等待付款')

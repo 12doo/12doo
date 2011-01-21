@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110121081255) do
+ActiveRecord::Schema.define(:version => 20110121135438) do
 
   create_table "addresses", :force => true do |t|
     t.string   "detail"
@@ -160,7 +160,7 @@ ActiveRecord::Schema.define(:version => 20110121081255) do
     t.string   "sku"
     t.decimal  "price",            :precision => 10, :scale => 0
     t.decimal  "indication_price", :precision => 10, :scale => 0
-    t.string   "memo"
+    t.text     "memo"
     t.string   "status"
     t.integer  "count"
     t.datetime "created_at"
