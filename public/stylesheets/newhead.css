@@ -36,7 +36,7 @@ a:hover { text-decoration:underline}
 .topsearch .hotbox a{ margin:0 5px;display:inline;}
 
 .tsi {width:200px; height:20px; border:1px #CCCCCC solid; margin-right:5px;}
-.areabox { width:155px; height:25px; line-height:25px; border:1px #CCCCCC solid;}
+.areabox { width:200px; height:25px; line-height:25px; border:1px #CCCCCC solid;}
 form { height: auto; margin: 0px; padding:0px; }
 input { width:auto; margin: 0px; padding:0px;}
 .ad { margin-bottom:10px;}

@@ -1,5 +1,5 @@
 <div class="searchbox">
-	<% form_tag ({:action=>'search',:controller=>'store'}, :method=>:get, :name => :search) do %>
+	<%= form_tag ({:action=>'search',:controller=>'store'}, :method=>:get, :name => :search) do %>
     <input type="text" name="key" id="keywordTop" class="tsi" />
     <a href="javascript:document.search.submit();">
       <img src="/images/searchmenu.gif" align="absmiddle" border="0" />

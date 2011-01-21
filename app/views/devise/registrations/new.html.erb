@@ -1,10 +1,8 @@
 <div class="crumb">
-	<img src="/images/ico9.gif" align="absbottom">
-	<a class="snf3" href="/">首页</a> ＞
-	<a href="#" class="snf1">用户注册</a>
+	  <img src="/images/ico9.gif" align="absbottom">
+	  <a class="snf3" href="/">首页</a> ＞	<a href="#" class="snf1">用户注册</a>
 </div>
 <div class="login">
-    <br>
     <div class="left">
         <div class="title">
             <a class="snf6">会员注册</a>
@@ -12,57 +10,58 @@
         </div>
         <div class="regbox">
             <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :post, :name => :user_new }) do |f| %>
-            <table width="640" border="0" align="left" cellpadding="0" cellspacing="0">
+            <table width="600" border="0" align="left" cellpadding="0" cellspacing="0">
                 <tbody>
                     <tr>
-                        <td width="70" height="35" align="right" valign="middle">
-                            <a class="snf7">* </a>登录帐号：
+                        <td width="75px" height="35" align="right" valign="middle">
+                            <span class="snf7">* </span><%= f.label :email %>：
                         </td>
-                        <td width="160" align="left" valign="middle">
+                        <td width="210px" align="left" valign="middle">
                             <%= f.text_field :email, :class => :areabox %>
                         </td>
-                        <td width="392" align="left">
-                            <div class="msg1" id="userNameDiv">
+                        <td width="315px" align="left">
+                            <span class="msg1" id="userNameDiv">
                                 请填写有效的E-mail作为您的登录帐号
-                            </div>
+                            </span>
                         </td>
                     </tr>
                     <tr>
-                        <td width="70" height="35" align="right" valign="middle">
-                            <a class="snf7">* </a>密 码：
+                        <td height="35" align="right" valign="middle">
+                            <span class="snf7">* </span><%= f.label :password %>：
                         </td>
                         <td align="left" valign="middle">
                             <%= f.password_field :password, :class => :areabox %>
                         </td>
                         <td align="left">
-                            <div class="msg1" id="passwordDiv">
+                            <span class="msg1" id="passwordDiv">
                                 密码请设为6-16位字母或数字
-                            </div>
+                            </span>
                         </td>
                     </tr>
                     <tr>
-                        <td width="70" height="35" align="right" valign="middle">
-                            <a class="snf7">* </a>密码确认：
+                        <td height="35" align="right" valign="middle">
+                            <span class="snf7">* </span><%= f.label :password_confirmation %>：
                         </td>
                         <td align="left" valign="middle">
                             <%= f.password_field :password_confirmation, :class => :areabox %>
                         </td>
                         <td align="left">
-                            <div class="msg2" id="passwordDiv2">
-                            </div>
+                            <span class="msg1" id="passwordDiv2">
+                                请再次输入密码确认
+                            </span>
                         </td>
                     </tr>
                     <tr>
-                        <td width="70" height="35" align="right" valign="middle">
+                        <td height="35" align="right" valign="middle">
                             推荐用户：
                         </td>
                         <td align="left" valign="middle">
                             <%= f.text_field :ref, :class => :areabox %>
                         </td>
                         <td align="left">
-                            <div class="msg1" id="introDiv">
+                            <span class="msg1" id="introDiv">
                                 无推荐人可不填写
-                            </div>
+                            </span>
                         </td>
                     </tr>
                     <tr>
@@ -73,19 +72,26 @@
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="3">
-                            <a href="javascript:document.user_new.submit();">&nbsp;&nbsp;&nbsp;<img src="/images/menu1(1).gif" name="Image36" border="0" id="Image36"></a>
+                        <td width="75px" height="35" align="right" valign="middle"></td>
+                        <td align="left" valign="middle">
+                            <a href="javascript:document.user_new.submit();"><img src="/images/menu1(1).gif" name="Image36" border="0" id="Image36"></a>
+                        </td>
+                        <td align="left">
+                            <span class="msg1" id="introDiv">
+                              
+                            </span>
                         </td>
                     </tr>
+                    
                 </tbody>
             </table>
             <% end %>
         </div>
     </div>
     <div class="right">
-        <img src="/images/liyou.gif">
-        <br>
-        <br>
-        <a class="snf3" href="#">我有帐号，立刻登录</a>
+        <%= link_to "我有帐号，立刻登录", new_user_session_path %>
+        <br />
+        <br />
+        
     </div>
 </div>

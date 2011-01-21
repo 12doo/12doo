@@ -1,42 +1,54 @@
-<h2>更新帐号信息</h2>
+<div class="crumb">
+    <img src="/images/ico9.gif" align="absbottom"><a class="snf3" href="/">首页</a>
+    ＞<a href="#" class="snf1">更新帐号信息</a>
+</div>
+<div class="login">
+    <div class="left">
+        <div class="title">
+            <a class="snf6">更新帐号信息：<%= resource.display_name %></a>
+        </div>
+        <div class="regbox">
+            <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :name =>"user_edit" }) do |f| %>
+                <%= devise_error_messages! %>
 
-<%= resource.display_name %>
+                <p><%= f.label :email %><br />
+                <%= f.text_field :email %></p>
+                
+                <p><%= f.label :name %><br />
+                <%= f.text_field :name %></p>
+                
+                <p><%= f.label :phone %><br />
+                <%= f.text_field :phone %></p>
+                
+                <p><%= f.label :gender %><br />
+                <%= f.radio_button :gender, 'male' %><%= label_tag(:gender_male, "男") %>
+                <%= f.radio_button :gender, 'female' %><%= label_tag(:gender_female, "女") %>
+                <%= f.radio_button :gender, 'NA' %><%= label_tag(:gender_NA, "保密") %>
+                </p>
+                <p><%= f.label :birth %><br />
+                <%= f.date_select :birth, :start_year => 2010, :end_year => 1960 %>
+                </p>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :name =>"user_edit" }) do |f| %>
-  <%= devise_error_messages! %>
+                <p><%= f.label :current_password %> <i>要更新您的帐号资料，请输入当前密码 we need your current password to confirm your changes</i><br />
+                <%= f.password_field :current_password %></p>
+                
+                <p><%= f.label :password %> <i>如果你不打算更改密码，此处请留空 leave blank if you don't want to change it</i><br />
+                <%= f.password_field :password %></p>
 
-  <p><%= f.label :email %><br />
-  <%= f.text_field :email %></p>
-  
-  <p><%= f.label :name %><br />
-  <%= f.text_field :name %></p>
-  
-  <p><%= f.label :phone %><br />
-  <%= f.text_field :phone %><%= link_to "修改手机号码", :action=> "update_phone" %></p>
-  
-  <p><%= f.label :gender %><br />
-  <%= f.radio_button :gender, 'male' %><%= label_tag(:gender_male, "男") %>
-  <%= f.radio_button :gender, 'female' %><%= label_tag(:gender_female, "女") %>
-  <%= f.radio_button :gender, 'NA' %><%= label_tag(:gender_NA, "保密") %>
-  </p>
-  <p><%= f.label :birth %><br />
-  <%= f.date_select :birth, :start_year => 2010, :end_year => 1960 %>
-  </p>
+                <p><%= f.label :password_confirmation %><br />
+                <%= f.password_field :password_confirmation %></p>
 
-  <p><%= f.label :current_password %> <i>要更新您的帐号资料，请输入当前密码 we need your current password to confirm your changes</i><br />
-  <%= f.password_field :current_password %></p>
-  
-  <p><%= f.label :password %> <i>如果你不打算更改密码，此处请留空 leave blank if you don't want to change it</i><br />
-  <%= f.password_field :password %></p>
-
-  <p><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></p>
-
-  <p><%= f.submit "更新 Update" %></p>
-<% end %>
-
-<h3>注销帐号</h3>
-
-<p>Unhappy? <%= link_to "删除帐号和所有帐号信息 Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete %>.</p>
-
-<%= link_to "Back", :back %>
+                <p><%= f.submit "更新 Update" %></p>
+            <% end %>
+        </div>
+    </div>
+    <div class="right">
+        <img src="/images/liyou.gif">
+        <br />
+        <br />
+    		<%= link_to "我要注册", new_registration_path(resource_name), :class => :snf3 %>
+    		<br />
+		    <p>注销帐号</p>
+        <p>Unhappy? <%= link_to "删除帐号和所有帐号信息 Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete %>.</p>
+    </div>
+</div>
