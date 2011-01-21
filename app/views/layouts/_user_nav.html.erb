@@ -1,7 +1,0 @@
-<% if user_signed_in? %>
-  欢迎 <%= link_to current_user.display_name, user_registration_path %>. 这不是我的账户?    
-  <%= link_to "注销", destroy_user_session_path %>
-<% else %>    
-  <%= link_to "注册", new_user_registration_path %> or    
-  <%= link_to "登陆", new_user_session_path %>    
-<% end %> 
