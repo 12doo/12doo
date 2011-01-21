@@ -102,7 +102,7 @@ input { width:auto; margin: 0px; padding:0px;}
 
 .bottom_left{ width:200px; padding-left:20px;float:left;}
 .bottom_right{ width:285px;float:right;}
-.bottom_center{width:640px;margin: 0px auto; clear:both;}
+.bottom_center{width:660px;margin: 0px auto; clear:both;}
 .bottom_center_{width:360px;margin: 0px auto; clear:both;font-weight:bold; color:#535353;text-align:center;}
 .bottom_link{border-bottom:1px solid #DFDFDF; width:980px; padding-left:20px;float:left;line-height:30px;}
 .indexbottom .bottom_link{display:block;}
