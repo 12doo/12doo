@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
   	<title>12度红酒网</title>
@@ -59,6 +59,14 @@
 	        </div>
 	    </div>
 	</div>
+	<div id="cart"><%= link_to "购物车", :action=>'show', :controller=>'cart' %></div>
+	<div id="search">
+		<%= form_tag ({:action=>'search',:controller=>'store'}, :method=>:get) do -%>
+			<input type="text" name="key" />
+			<input type="submit" value="搜索">
+		<% end -%>
+	</div>
+<%= yield %>
 
 
         <div class="menu">

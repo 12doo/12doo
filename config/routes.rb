@@ -35,7 +35,7 @@ V3::Application.routes.draw do
 
   resources :product_attribute_defines
 
-  devise_for :users
+  devise_for :users, :path => "my"
 
   resources :products
 
