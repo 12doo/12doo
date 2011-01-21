@@ -21,13 +21,9 @@
   </p>
   <p><%= f.label :birth %><br />
   <%= f.date_select :birth, :start_year => 2010, :end_year => 1960 %>
-  <!--
-  <%#  select_date :prompt => {:day => '日', :month => '月', :year => '年'}, :start_year => 2010, :end_year => 1960, :prefix => :birth %>
-  -->
   </p>
 
-
-  <p><%= f.label :current_password %> <i>要更新您的帐号资料，请在此输入当前密码 we need your current password to confirm your changes</i><br />
+  <p><%= f.label :current_password %> <i>要更新您的帐号资料，请输入当前密码 we need your current password to confirm your changes</i><br />
   <%= f.password_field :current_password %></p>
   
   <p><%= f.label :password %> <i>如果你不打算更改密码，此处请留空 leave blank if you don't want to change it</i><br />
@@ -35,7 +31,6 @@
 
   <p><%= f.label :password_confirmation %><br />
   <%= f.password_field :password_confirmation %></p>
-
 
   <p><%= f.submit "更新 Update" %></p>
 <% end %>

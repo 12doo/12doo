@@ -1,0 +1,40 @@
+<div class="left">
+    <a href="/"><img src="/images/12doo_ICON.png" border="0"></a>
+</div>
+
+<div class="right">
+  <div class="topinfo" id="myDiv2">
+    <%= render 'layouts/topinfo' %>
+  </div>
+  <div class="row">
+    <div class="row1">
+      <div class="row3">
+        <div class="memberNum">
+          <span class="snf11">您身边的葡萄酒</span>
+        </div>
+      </div>
+      <div class="row3">
+        <div class="home">
+        	<a href="/">首页</a>
+        </div>
+        <div id="wltOrder" class="topbar">
+        	<%= link_to ("促销专区", {:action=> :promo, :controller => :home}, :class => "snf1") %>&nbsp;
+          <img src="/images/new.gif" border="0" align="absmiddle" />&nbsp;&nbsp;&nbsp;
+          <a href="#" class="snf1">免费索取目录</a>&nbsp;&nbsp;&nbsp;
+          <a href="#" class="snf1">限时抢购</a>
+        </div>
+      </div>
+    </div>
+    <div class="row2">
+      <div class="phone400">
+        <img src="/images/hotline.png">
+      </div>
+      <!--
+      <div class="mytealogo">
+        <a href="http://english.12doo.com/" target="_blank"><img src="/images/logo_englishwine.jpg" border="0"></a>
+        <a href="#" target="_blank"><img src="/images/logo_mytea.gif" border="0"></a>
+      </div>
+      -->
+    </div>
+  </div>
+</div>
