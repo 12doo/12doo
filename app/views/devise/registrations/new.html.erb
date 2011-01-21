@@ -1,18 +1,91 @@
-<h2>注册</h2>
-
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
-
-  <p>帐号名，请输入一个有效的电子邮件地址：<br />
-  <%= f.text_field :email %></p>
-
-  <p>请输入密码：<br />
-  <%= f.password_field :password %></p>
-
-  <p>请确认密码：<br />
-  <%= f.password_field :password_confirmation %></p>
-
-  <p><%= f.submit "注册" %></p>
-<% end %>
-
-<%= render :partial => "devise/shared/links" %>
+<div class="crumb">
+	<img src="/images/ico9.gif" align="absbottom">
+	<a class="snf3" href="/">首页</a> ＞
+	<a href="#" class="snf1">用户注册</a>
+</div>
+<div class="login">
+    <br>
+    <div class="left">
+        <div class="title">
+            <a class="snf6">会员注册</a>
+            <a class="snf7">* </a>为必填项
+        </div>
+        <div class="regbox">
+            <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :post, :name => :user_new }) do |f| %>
+            <table width="640" border="0" align="left" cellpadding="0" cellspacing="0">
+                <tbody>
+                    <tr>
+                        <td width="70" height="35" align="right" valign="middle">
+                            <a class="snf7">* </a>登录帐号：
+                        </td>
+                        <td width="160" align="left" valign="middle">
+                            <%= f.text_field :email, :class => :areabox %>
+                        </td>
+                        <td width="392" align="left">
+                            <div class="msg1" id="userNameDiv">
+                                请填写有效的E-mail作为您的登录帐号
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="70" height="35" align="right" valign="middle">
+                            <a class="snf7">* </a>密 码：
+                        </td>
+                        <td align="left" valign="middle">
+                            <%= f.password_field :password, :class => :areabox %>
+                        </td>
+                        <td align="left">
+                            <div class="msg1" id="passwordDiv">
+                                密码请设为6-16位字母或数字
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="70" height="35" align="right" valign="middle">
+                            <a class="snf7">* </a>密码确认：
+                        </td>
+                        <td align="left" valign="middle">
+                            <%= f.password_field :password_confirmation, :class => :areabox %>
+                        </td>
+                        <td align="left">
+                            <div class="msg2" id="passwordDiv2">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="70" height="35" align="right" valign="middle">
+                            推荐用户：
+                        </td>
+                        <td align="left" valign="middle">
+                            <%= f.text_field :ref, :class => :areabox %>
+                        </td>
+                        <td align="left">
+                            <div class="msg1" id="introDiv">
+                                无推荐人可不填写
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td height="40" colspan="3">
+                            &nbsp;&nbsp;<input name="tiaokuan" id="tiaokuan" type="checkbox" value="checkbox" checked=""><a href="#" target="block">阅读并接受12度服务条款</a>
+                            <div class="msg2" id="tiaokuanDiv" style="display: block">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">
+                            <a href="javascript:document.user_new.submit();">&nbsp;&nbsp;&nbsp;<img src="/images/menu1(1).gif" name="Image36" border="0" id="Image36"></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <% end %>
+        </div>
+    </div>
+    <div class="right">
+        <img src="/images/liyou.gif">
+        <br>
+        <br>
+        <a class="snf3" href="#">我有帐号，立刻登录</a>
+    </div>
+</div>
