@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110120080954) do
+ActiveRecord::Schema.define(:version => 20110121081255) do
 
   create_table "addresses", :force => true do |t|
     t.string   "detail"
@@ -61,21 +61,6 @@ ActiveRecord::Schema.define(:version => 20110120080954) do
     t.integer  "used_time",                                       :default => 0
   end
 
-  create_table "delayed_jobs", :force => true do |t|
-    t.integer  "priority",   :default => 0
-    t.integer  "attempts",   :default => 0
-    t.text     "handler"
-    t.text     "last_error"
-    t.datetime "run_at"
-    t.datetime "locked_at"
-    t.datetime "failed_at"
-    t.string   "locked_by"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
-
   create_table "deliveries", :force => true do |t|
     t.integer  "area_id"
     t.decimal  "door_step",  :precision => 10, :scale => 0
@@ -102,6 +87,14 @@ ActiveRecord::Schema.define(:version => 20110120080954) do
     t.string   "product_name"
     t.string   "product_sku"
     t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "order_statuses", :force => true do |t|
+    t.string   "short"
+    t.string   "display"
+    t.string   "memo"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -170,11 +163,12 @@ ActiveRecord::Schema.define(:version => 20110120080954) do
     t.string   "memo"
     t.string   "status"
     t.integer  "count"
-    t.integer  "vintage"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "country"
     t.boolean  "visiable",                                        :default => false
+    t.string   "cn_name"
+    t.string   "pic"
+    t.integer  "sold_count"
   end
 
   create_table "users", :force => true do |t|
