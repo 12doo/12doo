@@ -18,14 +18,26 @@
 	    </div>
 	    <div class="right">
 	        <div class="topinfo" id="myDiv2">
-	            您好，欢迎光临12度红酒网。
+	            您好，
+				<% if user_signed_in? %>
+				<%= current_user.display_name %>
+				<% end %>
+				欢迎光临12度红酒网。
+				<% if user_signed_in? %>
+				<%= link_to "注销", destroy_user_session_path, :class => "snf3" %>
+				<% else %>
 				<%= link_to "注册", new_user_registration_path, :class => "snf3" %>
-				<a class="snf8">|</a> 　<%= link_to "登陆", new_user_session_path, :class => "snf3" %> 　<a class="snf8">|</a> 　
+				<a class="snf8">|</a>
+				<%= link_to "登陆", new_user_session_path, :class => "snf3" %>
+				<% end %>
+				<a class="snf8">|</a>
 				<img src="/images/ico1.gif" align="absmiddle">
-				<a href="/" class="snf1" target="_blank">在线客服</a> 　
-				<a class="snf8">|</a> 　<img src="/images/ico2.gif" align="absmiddle">
-				<%= link_to ("我的账户", {:action => 'index', :controller => 'my'}, :class => "snf1") %>　
-				<a class="snf8">|</a> 　<img src="/images/ico3.gif" align="absbottom">
+				<a href="/" class="snf1" target="_blank">在线客服</a>
+				<a class="snf8">|</a>
+				<img src="/images/ico2.gif" align="absmiddle">
+				<%= link_to ("我的账户", {:action => 'index', :controller => 'my'}, :class => "snf1") %>
+				<a class="snf8">|</a>
+				<img src="/images/ico3.gif" align="absbottom">
 				<a href="/cart" class="snf1">购物车内有&nbsp;<span id="goodsNum" class="nf0">0</span>&nbsp;件商品</a>
 	        </div>
 	        <div class="row">
@@ -59,14 +71,6 @@
 	        </div>
 	    </div>
 	</div>
-	<div id="cart"><%= link_to "购物车", :action=>'show', :controller=>'cart' %></div>
-	<div id="search">
-		<%= form_tag ({:action=>'search',:controller=>'store'}, :method=>:get) do -%>
-			<input type="text" name="key" />
-			<input type="submit" value="搜索">
-		<% end -%>
-	</div>
-<%= yield %>
 
 
         <div class="menu">
