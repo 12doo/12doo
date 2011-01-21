@@ -2,7 +2,7 @@
 
 <%= resource.display_name %>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :name =>"user_edit" }) do |f| %>
   <%= devise_error_messages! %>
 
   <p><%= f.label :email %><br />
@@ -19,11 +19,14 @@
   <%= f.radio_button :gender, 'female' %><%= label_tag(:gender_female, "女") %>
   <%= f.radio_button :gender, 'NA' %><%= label_tag(:gender_NA, "保密") %>
   </p>
-<!--
-  		<input type="radio" name="gender" value="男" <%= current_user.gender == "男" ? "checked" : "" %> />男
-			<input type="radio" name="gender" value="女" <%= current_user.gender == "女" ? "checked" : "" %> />女
-			<input type="radio" name="gender" value="保密" <%= current_user.gender != "男" && current_user.gender != "女" ? "checked" : "" %> />保密
+  <p><%= f.label :birth %><br />
+  <%= f.date_select :birth, :start_year => 2010, :end_year => 1960 %>
+  <!--
+  <%#  select_date :prompt => {:day => '日', :month => '月', :year => '年'}, :start_year => 2010, :end_year => 1960, :prefix => :birth %>
   -->
+  </p>
+
+
   <p><%= f.label :current_password %> <i>要更新您的帐号资料，请在此输入当前密码 we need your current password to confirm your changes</i><br />
   <%= f.password_field :current_password %></p>
   

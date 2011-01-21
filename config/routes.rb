@@ -1,43 +1,21 @@
 V3::Application.routes.draw do
-  resources :coupons
+  resources :coupons, :deliveries, :addresses, :orders, :order_items, 
+            :products, :product_tags, :product_statuses, :product_attributes, :product_attribute_defines
 
-  resources :deliveries
-
+  devise_for :users
+  
   #resources :areas
 
-  resources :addresses
-
   get "cart/show"
-
   get "cart/clear"
-
   get "cart/delete_product"
-
   get "cart/update_product"
-
   get "cart/add_product"
 
-  resources :order_items
-
   get "orders/get_coupon"
-  
   get "orders/check_out"
-  
-  resources :orders
-  
-  resources :product_tags
 
   get "store/index"
-
-  resources :product_statuses
-
-  resources :product_attributes
-
-  resources :product_attribute_defines
-
-  devise_for :users, :path => "my"
-
-  resources :products
 
   get "home/index"
   root :to => "home#index" 
