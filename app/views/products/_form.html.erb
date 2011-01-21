@@ -1,10 +1,15 @@
+图片地址:<input type="text" name="product[pic]" /><br />
 编号:<input type="text" name="product[sku]" /><br />
 产品名称:<input type="text" name="product[name]" /><br />
+中文名称:<input type="text" name="product[cn_name]" /><br />
 价格:<input type="text" name="product[price]" /><br />
 市场价:<input type="text" name="product[indication_price]" /><br />
 备注:<textarea name="product[memo]"><%= @product.memo %></textarea><br />
 状态:<%= select :product, :status, @statuses.map {|s| [ s.name, s.name ] } %><br />
 库存数量:<input type="text" name="product[count]" /><br />
-年份:<%= select :product, :vintage, @years %><br />
-产地:<input type="text" name="product[country]" /><br />
+已售数量:<input type="text" name="product[sold_count]" /><br />
 是否显示:<input type="checkbox" <%= @product.visiable ? "checked" : "" %> value="true" name="product[visiable]" /><br />
+<hr />
+<% @product.product_attributes.each do |attribute| %>
+	<%= attribute.name %>:<input type="hidden" value="<%= attribute.name %>" name="product_attribute[][name]" /><input type="text" name="product_attribute[][value]" value="<%= attribute.value %>" /><br />
+<% end %>

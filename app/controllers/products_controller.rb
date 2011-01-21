@@ -32,16 +32,15 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(params[:product])
     
-    # 暂时屏蔽
-    #if params[:product_attribute]
-    #  params[:product_attribute].each do |attri|
-    #    temp = ProductAttribute.new
-    #    temp.name = attri[:name]
-    #    temp.value = attri[:value]
-    #    temp.product_sku = @product.sku
-    #    temp.save
-    #  end
-    #end
+    if params[:product_attribute]
+      params[:product_attribute].each do |attri|
+        temp = ProductAttribute.new
+        temp.name = attri[:name]
+        temp.value = attri[:value]
+        temp.product_sku = @product.sku
+        temp.save
+      end
+    end
     #params[:product_tag].each do |tag|
     #  temp = ProductTag.new
     #  temp.key = tag[:key]

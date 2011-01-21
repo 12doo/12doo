@@ -7,7 +7,6 @@
     <th>单价</th>
     <th>指导价</th>
     <th>库存数量</th>
-    <th>年份</th>
     <th></th>
     <th></th>
   </tr>
@@ -19,7 +18,6 @@
     <td><%= product.price %></td>
     <td><%= product.indication_price %></td>
     <td><%= product.count %></td>
-    <td><%= product.vintage %></td>
 	<td><%= button_to "添加到购物车" , :action => 'add_product', :controller => 'cart', :id => product %></td>
     <td><%= link_to '详情', product %></td>
   </tr>
