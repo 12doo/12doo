@@ -1,0 +1,19 @@
+.login { width:1000px; margin:0 auto; text-align:left;}
+.login .msg { width:978px; height:28px;border:1px #cecece solid; padding-left:20px; padding-top:7px; margin-bottom:20px;}
+.login .left { width:725px; float:left;}
+.login .title  { margin-bottom:6px; height:20px;}
+.login .regbox { width:660px; border:1px solid #CECECE; float:left; background:url(../login/logobg.jpg) no-repeat top; padding:20px 0px 20px 63px;}
+.login .right { width:210px; float:right; text-align:left; padding-top:25px;}
+
+.msg1 { color:#656565}
+.msg2 { color:#960105}
+.tuijian { clear:both; height:30px; line-height:30px; font-size:14px; color:#960105; text-align:left; font-weight:bold; margin:20px 0px 20px 0px;  border-bottom:1px #ccc solid;}
+.psd { width:1000px; margin:0 auto; text-align:left;}
+
+.psd .left { width:485px; float:left; margin-right:30px;}
+.psd .title { margin-bottom:10px; height:20px;}
+.psdbox { width:455px; height:230px; background-image:url(../login/psdbg.jpg); padding:20px 0px 0px 30px;}
+.psd .right { width:485px; float:right;}
+.psd .msg { line-height:165%; color:#656565; font-family:"ËÎÌו";}
+
+.login .prompt {background:none repeat scroll 0 0 #f5f5f5; border:1px solid #CECECE; color:#333333; float:left; line-height:20px; padding:0 10px;}

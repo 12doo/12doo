@@ -1,17 +1,74 @@
-<h2>登陆</h2>
-
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <p>邮箱<br />
-  <%= f.text_field :email %></p>
-
-  <p>密码<br />
-  <%= f.password_field :password %></p>
-
-  <% if devise_mapping.rememberable? -%>
-    <p><%= f.check_box :remember_me %>记住登陆状态</p>
-  <% end -%>
-
-  <p><%= f.submit "登陆" %></p>
-<% end %>
-
-<%= render :partial => "devise/shared/links" %>
+<div class="crumb">
+    <img src="/images/ico9.gif" align="absbottom"><a class="snf3" href="/">首页</a>
+    ＞<a href="/" class="snf1">会员登录</a>
+</div>
+<div class="login">
+    <br>
+    <div class="left">
+        <div class="title">
+            <a class="snf6">会员登录</a>
+        </div>
+        <div class="regbox">
+            <br>
+			<%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :method => :post) do |f| %>
+                <table width="600" border="0" align="left" cellpadding="0" cellspacing="0">
+                    <tbody>
+                        <tr>
+                            <td width="65" height="35" align="left" valign="middle">
+                                登录帐号：
+                            </td>
+                            <td width="165" align="left" valign="middle">
+                            	<%= f.text_field :email, :class => :areabox, :id => :loginName %>
+                            </td>
+                            <td width="370" align="left">
+                                &nbsp;
+                            </td>
+                        </tr>
+                        <tr>
+                            <td height="35" align="left" valign="middle">
+                                密 码：
+                            </td>
+                            <td align="left" valign="middle">
+                            	<%= f.password_field :password, :class => :areabox, :id => :loginPassword %>
+                            </td>
+                            <td align="left">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td height="35" align="left" valign="middle">
+                                &nbsp;
+                            </td>
+                            <td colspan="2" align="left" valign="middle">
+                            	<%= f.check_box :remember_me, :id => :flagLoginSelf %>自动登录
+                                &nbsp;&nbsp;&nbsp;<%= link_to "忘记密码?", new_password_path(resource_name), :class => :snf1 %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td height="35" align="left" valign="middle">
+                                <a class="snf7"></a>
+                            </td>
+                            <td align="left" valign="middle">
+                                <a href="javascript:document.new_user.submit();"><img src="/images/menu2(1).gif" name="Image35" border="0" align="absmiddle" id="Image35"></a>
+                            </td>
+                            <td align="left">
+                                &nbsp;
+                            </td>
+                        </tr>
+                        <tr>
+                            <td height="40" colspan="3" class="msg1">
+                                有任何疑问请点击<a target="_blank" class="snf1" href="#">帮助中心</a>
+                                或<a target="_blank" class="snf1" href="#">在线客服</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            <% end %>
+        </div>
+    </div>
+    <div class="right">
+        <img src="/images/liyou.gif">
+        <br>
+        <br>
+		<%= link_to "我要注册", new_registration_path(resource_name), :class => :snf3 %>
+    </div>
+</div>
