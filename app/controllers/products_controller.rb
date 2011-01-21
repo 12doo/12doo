@@ -32,16 +32,18 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(params[:product])
     
-    # 暂时屏蔽
-    #if params[:product_attribute]
-    #  params[:product_attribute].each do |attri|
-    #    temp = ProductAttribute.new
-    #    temp.name = attri[:name]
-    #    temp.value = attri[:value]
-    #    temp.product_sku = @product.sku
-    #    temp.save
-    #  end
-    #end
+    if params[:product_attribute]
+      params[:product_attribute].each do |attri|
+        define = ProductAttributeDefine.find_by_name(attri[:name])
+        temp = ProductAttribute.new
+        temp.short = define.short
+        temp.description = define.description
+        temp.name = attri[:name]
+        temp.value = attri[:value]
+        temp.product_sku = @product.sku
+        temp.save
+      end
+    end
     #params[:product_tag].each do |tag|
     #  temp = ProductTag.new
     #  temp.key = tag[:key]
@@ -66,12 +68,11 @@ class ProductsController < ApplicationController
 
   def update
     @product = Product.find(params[:id])
-    # 暂时屏蔽
-    #params[:product_attribute].each do |attri|
-    #  temp = @product.product_attributes.find(:first,:conditions => { :name => attri[:name] })
-    #  temp.value = attri[:value]
-    #  temp.save
-    #end
+    params[:product_attribute].each do |attri|
+      temp = @product.product_attributes.find(:first,:conditions => { :name => attri[:name] })
+      temp.value = attri[:value]
+      temp.save
+    end
     #params[:product_tag].each do |tag|
     #  if tag[:key] != ""
     #    temp = @product.product_tags.find(:first,:conditions => {:key => tag[:key]})

@@ -1,54 +1,7 @@
-<p id="notice">
-    <%= notice %>
-</p>
-<p>
-    <b>Name:</b>
-    <%= @product.name %>
-</p>
-<p>
-    <b>Sku:</b>
-    <%= @product.sku %>
-</p>
-<p>
-    <b>Price:</b>
-    <%= @product.price %>
-</p>
-<p>
-    <b>Indication price:</b>
-    <%= @product.indication_price %>
-</p>
-<p>
-    <b>Memo:</b>
-    <%= @product.memo %>
-</p>
-<p>
-    <b>Status:</b>
-    <%= @product.status %>
-</p>
-<p>
-    <b>Count:</b>
-    <%= @product.count %>
-</p>
-<p>
-    <b>Vintage:</b>
-    <%= @product.vintage %>
-</p>
-<% @product.product_attributes.each do |attribute| %>
-<b><%= attribute.name %>:</b>
-<%= attribute.value %>
-<br/>
-<% end %>
-<% @product.product_tags.each do |tag| %>
-<b><%= tag.key %>:</b>
-<%= tag.value %>
-<br/>
-<% end %>
-<%= button_to "Add to Cart" , :action => 'add_product', :controller => 'cart', :id => @product %>
-<%= link_to 'Edit', edit_product_path(@product) %> |<%= link_to 'Back', products_path %>
 <div class="crumb">
     <img src="/images/ico9.gif" align="absbottom"><a style="color: #383838;" href="#">首页</a>
     ＞<a href="#" class="snf1">买酒荐酒</a>
-    ＞<a href="#" class="snf1">红葡萄酒</a>＞<span style="color: #970005;"><%= @product.name %></span>
+    ＞<a href="#" class="snf1">红葡萄酒</a>＞<span style="color: #970005;"><%= @product.cn_name %></span>
 </div>
 <div class="showwine">
     <div class="left">
@@ -57,71 +10,37 @@
         <span style="float:left; position:relative; padding:0px; cursor:pointer;">
             <div style="position: absolute; left: 176px; top: 318px; z-index: 500; border: 0px none;">
             </div>
-            <a href="/images/380x620.jpg" class="jqzoom" style="outline-style: none; text-decoration: none; ">
-			<img src="/images/220x360.jpg" style="border: 1px solid #ccc;">
+            <a href="/pics/<%= @product.sku %>/<%= @product.pic %>" class="jqzoom" style="outline-style: none; text-decoration: none; ">
+			<img src="/pics/<%= @product.sku %>/<%= @product.pic %>" style="border: 1px solid #ccc;">
                 <div class="preload" style="visibility: hidden; ">
                     Loading zoom
                 </div>
             </a></span>
         <div class="infowine">
             <div class="r1">
-                已经售出&nbsp;<span class="snf3" id="saleAmout">1000</span>&nbsp;
-                瓶
-                有&nbsp;<span class="snf3" id="commentAmount">100</span>&nbsp;人评论
-				<a href="#" class="snf3">查看评论&nbsp;<img src="/images/dian1.gif" align="absmiddle"></a>
+                已经售出&nbsp;<span class="snf3" id="saleAmout"><%= @product.sold_count %></span>&nbsp;瓶  
             </div>
             <div class="r2">
                 <table width="500" border="0" cellspacing="0" cellpadding="0">
                     <tbody>
                         <tr>
                             <td width="389">
-                                <a class="snf11"><%= @product.name %></a>
+                                <a class="snf11"><%= @product.cn_name %></a>
                                 <br>
-                                COTES DU RHONE RED Notre Dame des Treilles
-                            </td>
-                            <td width="111">
-                                <table width="111" border="0" align="right" cellpadding="0" cellspacing="0">
-                                    <tbody>
-                                        <tr>
-                                            <td align="center" valign="middle">
-                                                <img src="/images/shou1.gif" align="absmiddle">
-                                            </td>
-                                            <td align="center" valign="middle">
-                                                <img src="/images/shou3.gif" align="absmiddle">
-                                            </td>
-                                            <td align="center" valign="middle">
-                                                <img src="/images/shou2.gif" align="absmiddle">
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td align="center" valign="middle">
-                                                26
-                                            </td>
-                                            <td align="center" valign="middle">
-                                                39
-                                            </td>
-                                            <td align="center" valign="middle">
-                                                14
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                <%= @product.name %>
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
             <div class="r5">
-                会员价：<span class="snf17">￥<%= format ("%.2f", @product.price ? 0 : @product.price) %></span>
+                会员价：<span class="snf17">￥<%= format ("%.2f", @product.price) %></span>
             </div>
             <div class="r5 snf8">
-                <span class="delline">市场价：￥<%= format ("%.2f", @product.indication_price ? 0 : @product.indication_price) %></span>
+                <span class="delline">市场价：￥<%= format ("%.2f", @product.indication_price) %></span>
             </div>
             <div class="r5 underline">
                 <div style="float: left">
-                    白银会员价：￥109.8&nbsp;&nbsp;&nbsp;&nbsp;
-                    黄金会员价：￥108.6&nbsp;&nbsp;&nbsp;&nbsp;
-                    白金会员价：￥106.4
                 </div>
             </div>
             <table width="496" border="0" cellpadding="0" cellspacing="0" class="r4">
@@ -148,7 +67,7 @@
                                             <a href="#"><img src="/images/menu2(1).gif" border="0"></a>
                                         </td>
                                         <td width="323" align="left" valign="top">
-                                            <a href="#" target="_blank"><img src="/images/menu4.gif" border="0"></a>
+                                            
                                         </td>
                                     </tr>
                                 </tbody>
@@ -167,160 +86,15 @@
                 </div>
             </div>
             <div class="singletxt">
-                <strong>参考年份：</strong>
-                2009
-                <br>
-                <p>
-                    <span><strong>葡萄酒种类：</strong>干红</span>
-                    <br>
-                    <strong>产地：</strong>法国(France)&nbsp;罗纳河(Rhone Valley)
-                    <br>
-                    <strong>葡萄品种：</strong>歌海娜(Grenache)、西拉(Syrah)
-                    <br>
-                    <strong>级别：</strong>罗纳河法定产区 A.O.C
-                    <br>
-                    <strong>酒精度：</strong>13.0%
-                    <br>
-                    <strong>规格：</strong>750ml
-                    <br>
-                    <strong>香味：</strong>樱桃和黑醋栗等成熟水果香气
-                    <br>
-                    <strong>色泽：</strong>红石榴色
-                    <br>
-                    <strong>搭配菜肴：</strong>肉类，奶油意面，色拉
-                    <br>
-                    <strong>建议醒酒时间：</strong>30分钟
-                    <br>
-                    <strong>最佳品尝温度：</strong>16-18℃
-                    <br>
-                    <strong>酒品介绍：</strong>在去皮发酵前冷冻。发酵时控制在25℃以下，并且每日温柔地抽水，制作出柔软单宁的、独一无二的混合果香酒。以其炎热的夏季与密斯托风而闻名遐迩的罗纳山麓地区，为其出产的葡萄酒提供了广泛而多样的口感。你会爱上它明亮的石榴石颜色以及调色板般柔和的光线。
+            	<p>
+				<% @product.product_attributes.each do |attribute| %>
+					<strong><%= attribute.name %>:</strong><%= attribute.value %><br />
+				<% end %>
                 </p>
                 <div class="pro_txt">
-                    <div class="pro_line">
-                        &nbsp;
-                    </div>
-                    <div class="clear">
-                        &nbsp;
-                    </div>
-                    <dl>
-                        <dt>
-                            <img src="/images/1.jpg" style="width: 350px; height: 295px">
-                        </dt>
-                        <dd>
-                            <b>罗纳山麓修女院红葡萄酒</b>
-                            <p>
-                                以其炎热的夏季与密斯托风而闻名遐迩的罗纳山麓地区，为其出产的葡萄酒提供了广泛而多样的口感。你会爱上它明亮的石榴石颜色以及调色板般柔和的光线。
-                            </p>
-                        </dd>
-                    </dl>
-                    <div class="pro_line">
-                        &nbsp;
-                    </div>
-                    <div class="clear">
-                        &nbsp;
-                    </div>
-                    <dl>
-                        <dt>
-                            <img src="/images/2.jpg" style="width: 350px; height: 295px">
-                        </dt>
-                        <dd>
-                            <b>酒品酿造</b>
-                            <p>
-                                在去皮发酵前冷冻。发酵时控制在25℃以下，并且每日温柔地抽水，制作出柔软单宁的、独一无二的混合果香酒。以其炎热的夏季与密斯托风而闻名遐迩的罗纳山麓地区，为其出产的葡萄酒提供了广泛而多样的口感。你会爱上它明亮的石榴石颜色以及调色板般柔和的光线
-                            </p>
-                        </dd>
-                    </dl>
-                    <div class="pro_line">
-                        &nbsp;
-                    </div>
-                    <div class="clear">
-                        &nbsp;
-                    </div>
-                    <dl>
-                        <dt>
-                            <img src="/images/5.jpg" style="width: 350px; height: 295px">
-                        </dt>
-                        <dd>
-                            <br>
-                            <br>
-                            <br>
-                            <b>Kevin（法国兰斯大学葡萄酒与香槟酒学硕士）酒评</b>
-                            <p>
-                                跳出像法律一样严谨不可挑战的波尔多，今天我们来到了法国南部的罗纳河谷。早在公元一世纪，罗纳河谷就开始了葡萄酒的酿造，而波尔多较之整整落后了一个世纪。与酷爱浓妆艳抹的波尔多不同，罗纳河谷更喜欢淡妆素裹。他们不爱过多的使用新橡木桶去强化改变酒的结构，而倾心于用五光十色的各种葡萄品种去任意混合搭配，做出果肉风味十足的个性葡萄酒。少了一份酸涩，多了一份浓情。如同那典雅的钢琴，即使在这个喧闹繁华的年代，也不会随波逐流，不卑不亢，尊贵的气质无时不在提醒着人们，经典无法被超越。罗纳河谷的Grand Vin 我心中永远的钢琴曲...
-                            </p>
-                        </dd>
-                    </dl>
-                    <div class="pro_line">
-                        &nbsp;
-                    </div>
-                    <div class="clear">
-                        &nbsp;
-                    </div>
-                    <dl>
-                        <dt>
-                            <img src="/images/3.jpg" style="width: 350px; height: 295px">
-                        </dt>
-                        <dd>
-                            <b>原装原产，纯进口佳酿</b>
-                            <p>
-                                也买酒只出售原装进口正品佳酿。左侧图片中的“教堂珍藏红葡萄酒等”，囊括了罗纳山麓修女院红葡萄酒与其他几款教堂主题的葡萄酒。
-                            </p>
-                        </dd>
-                    </dl>
-                    <div class="pro_line">
-                        &nbsp;
-                    </div>
+                <%= raw @product.memo %>
                 </div>
             </div>
-        </div>
-        <div id="infodetail2">
-            <div class="pingluntitle">
-                <a style="cursor: pointer;" onclick="addinfodetail2();">
-                    <div class="plmenu1b">
-                        产品描述
-                    </div>
-                </a>
-            </div>
-            <table width="747" border="0" cellpadding="3" cellspacing="1" bgcolor="#D0D0D0">
-                <tbody>
-                    <tr>
-                        <td width="65" height="22" align="center" valign="middle" bgcolor="#F8F8F8">
-                        </td>
-                        <td width="294" align="left" valign="middle" bgcolor="#FFFFFF">
-                        </td>
-                        <td width="65" align="right" valign="middle" bgcolor="#F8F8F8">
-                        </td>
-                        <td width="294" align="left" valign="middle" bgcolor="#FFFFFF">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td height="22" align="center" valign="middle" bgcolor="#F8F8F8">
-                        </td>
-                        <td align="left" valign="middle" bgcolor="#FFFFFF">
-                        </td>
-                        <td align="right" valign="middle" bgcolor="#F8F8F8">
-                        </td>
-                        <td align="left" valign="middle" bgcolor="#FFFFFF">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td height="22" align="center" valign="middle" bgcolor="#F8F8F8">
-                        </td>
-                        <td align="left" valign="middle" bgcolor="#FFFFFF">
-                        </td>
-                        <td align="right" valign="middle" bgcolor="#F8F8F8">
-                        </td>
-                        <td align="left" valign="middle" bgcolor="#FFFFFF">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td height="22" align="center" valign="middle" bgcolor="#F8F8F8">
-                        </td>
-                        <td colspan="3" align="left" valign="middle" bgcolor="#FFFFFF">
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
         </div>
 	</div>
     <div class="right">
