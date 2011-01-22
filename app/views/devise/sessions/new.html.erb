@@ -1,14 +1,16 @@
 <div class="crumb">
     <img src="/images/ico9.gif" align="absbottom"><a class="snf3" href="/">首页</a>
-    ＞<a href="#" class="snf1">会员登录</a>
+    ＞<a href="#" class="snf1">会员登陆</a>
 </div>
 <div class="login">
     <div class="left">
         <div class="title">
-            <a class="snf6">会员登录</a>
+            <a class="snf6">会员登陆</a>
         </div>
         <div class="regbox">
+            <%= render 'devise/alert' %>
 			      <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:method => :post, :name => :new_user}) do |f| %>
+                
                 <table width="600" border="0" align="left" cellpadding="0" cellspacing="0">
                     <tbody>
                         <tr>
@@ -19,12 +21,12 @@
                             	<%= f.text_field :email, :class => :areabox, :id => :loginName %>
                             </td>
                             <td width="315px" align="left">
-                                请输入您的邮件地址登录
+                              请输入您的Email邮箱地址登陆
                             </td>
                         </tr>
                         <tr>
                             <td height="35" align="right" valign="middle">
-                                <%= f.label :password %>：
+                              <%= f.label :password %>：
                             </td>
                             <td align="left" valign="middle">
                             	<%= f.password_field :password, :class => :areabox, :id => :loginPassword %>
@@ -34,22 +36,24 @@
                         </tr>
                         <tr>
                             <td height="35" align="left" valign="middle">
-                                &nbsp;
+                               
                             </td>
                             <td colspan="2" align="left" valign="middle">
-                            	<%= f.check_box :remember_me, :id => :flagLoginSelf %>自动登录
-                                &nbsp;&nbsp;&nbsp;<%= link_to "忘记密码?", new_password_path(resource_name), :class => :snf1 %>
+                            	<%= f.check_box :remember_me, :id => :flagLoginSelf %>记住我                               
+                            </td>
+                            <td align="left">
                             </td>
                         </tr>
                         <tr>
                             <td height="35" align="left" valign="middle">
-                                <a class="snf7"></a>
+                                
                             </td>
                             <td align="left" valign="middle">
-                                <a href="javascript:document.new_user.submit();"><img src="/images/menu2(1).gif" name="Image35" border="0" align="absmiddle" id="Image35"></a>
+                                <a href="javascript:document.new_user.submit();"><img src="/images/login_button.gif" name="Image35" border="0" align="absmiddle" id="Image35"></a>
+                                <%= link_to "忘记密码?", new_password_path(resource_name), :class => :snf1 %>
                             </td>
                             <td align="left">
-                                &nbsp;
+                                <%= link_to "我要注册", new_registration_path(resource_name), :class => :snf3 %>
                             </td>
                         </tr>
                         <tr>
@@ -64,9 +68,9 @@
         </div>
     </div>
     <div class="right">
-        <img src="/images/liyou.gif">
+        
         <br />
         <br />
-		    <%= link_to "我要注册", new_registration_path(resource_name), :class => :snf3 %>
+		    
     </div>
 </div>
