@@ -1,4 +1,12 @@
-<%= form_tag '/addresses/update/' + @address.id.to_s, :id => @address.id do -%>
-<%= render 'form' %>
-<input type="submit" value="保存" />
-<% end -%>
+<div class="crumb">
+    <a href="/">首页</a>
+    &gt;<span id="dangqian1">管理后台</span>
+    &gt;<span style="color: rgb(151, 0, 5);" id="dangqian"></span>
+</div>
+<%= render 'devise/userside' %>
+<div class="all_content">
+  <%= form_tag '/addresses/update/' + @address.id.to_s, :id => @address.id do -%>
+    <%= render 'form' %>
+    <input type="submit" value="保存" />
+  <% end -%>
+</div>

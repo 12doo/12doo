@@ -1,3 +1,12 @@
+<div class="crumb">
+    <a href="/">首页</a> 
+    &gt;<span id="dangqian1">用户资料</span>
+    &gt;<span style="color: rgb(151, 0, 5);" id="dangqian">增加地址</span>
+</div>
+<%= render 'devise/userside' %>
+
+<div class="all_content">
+
 <h2>重设密码 Forgot your password?</h2>
 
 <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
@@ -10,3 +19,5 @@
 <% end %>
 
 <%= render :partial => "devise/shared/links" %>
+
+</div>

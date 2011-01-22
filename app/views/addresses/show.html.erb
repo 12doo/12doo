@@ -1,40 +1,46 @@
-<p id="notice"><%= notice %></p>
+<div class="crumb">
+    <a href="/">首页</a> 
+    &gt;<span id="dangqian1">用户资料</span>
+    &gt;<span style="color: rgb(151, 0, 5);" id="dangqian">地址信息</span>
+</div>
+<%= render 'devise/userside' %>
 
-<p>
-  <b>Detail:</b>
-  <%= @address.detail %>
-</p>
+<div class="all_content">
 
-<p>
-  <b>Province:</b>
-  <%= @address.province %>
-</p>
+  <p id="notice"><%= notice %></p>
+  <p>
+    <b>详细地址:</b>
+    <%= @address.detail %>
+  </p>
 
-<p>
-  <b>City:</b>
-  <%= @address.city %>
-</p>
+  <p>
+    <b>省:</b>
+    <%= @address.province %>
+  </p>
 
-<p>
-  <b>Region:</b>
-  <%= @address.region %>
-</p>
+  <p>
+    <b>城市:</b>
+    <%= @address.city %>
+  </p>
 
-<p>
-  <b>Zip:</b>
-  <%= @address.zip %>
-</p>
+  <p>
+    <b>地区:</b>
+    <%= @address.region %>
+  </p>
 
-<p>
-  <b>Phone:</b>
-  <%= @address.phone %>
-</p>
+  <p>
+    <b>邮政编码:</b>
+    <%= @address.zip %>
+  </p>
 
-<p>
-  <b>Name:</b>
-  <%= @address.name %>
-</p>
+  <p>
+    <b>电话:</b>
+    <%= @address.phone %>
+  </p>
 
+  <p>
+    <b>姓名:</b>
+    <%= @address.name %>
+  </p>
+</div>
 
-<%= link_to 'Edit', edit_address_path(@address) %> |
-<%= link_to 'Back', addresses_path %>

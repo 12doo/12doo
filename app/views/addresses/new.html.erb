@@ -1,4 +1,13 @@
-<%= form_tag 'create' do -%>
-<%= render 'form' %>
-<input type="submit" value="保存" />
-<% end -%>
+<div class="crumb">
+    <a href="/">首页</a> 
+    &gt;<span id="dangqian1">用户资料</span>
+    &gt;<span style="color: rgb(151, 0, 5);" id="dangqian">增加地址</span>
+</div>
+<%= render 'devise/userside' %>
+
+<div class="all_content">
+  <%= form_tag 'create' do -%>
+    <%= render 'form' %>
+    <input type="submit" value="保存" />
+  <% end -%>
+</div>
