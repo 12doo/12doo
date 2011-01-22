@@ -17,7 +17,9 @@ V3::Application.routes.draw do
 
   get "store/index"
   
-  match "cat/:keys", :to => "products#index"
+  match "category/:tags/:keywords", :to => "products#index"
+  match "category/:tags", :to => "products#index"
+  match "category", :to => "products#index"
 
   get "home/index"
   root :to => "home#index" 
