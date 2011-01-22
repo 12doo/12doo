@@ -4,7 +4,24 @@ class ProductsController < ApplicationController
   before_filter :authorize_admin!, :except => [:index, :show]
   
   def index
-    @products = Product.paginate :page => params[:page], :order => 'created_at desc', :conditions => "visiable = true"
+    if (params[:tags] == nil) && (params[:keywords] == nil)
+      @products = Product.paginate(:page => params[:page], :order => 'created_at desc', :conditions => "visiable = true")
+    else
+      sku = []
+      
+      if params[:tags] == nil && params[:keywords] && params[:keywords] != ''
+        # 如果tag为空,keywords不为空
+        sku = ProductAttribute.select("distinct(product_sku)").where("value like :keywords", :keywords => "%#{params[:keywords]}%")
+      elsif params[:keywords] == nil && params[:tags] && params[:tags] != ''
+        # 如果keywords为空,tags不为空
+        sku = ProductAttribute.select("distinct(product_sku)").where("value in (:tags)", :tags => params[:tags].split(','))
+      else
+        # 如果都不为空
+        sku = ProductAttribute.select("distinct(product_sku)").where("value in (:tags) and value like :keywords",:tags => params[:tags].split(','), :keywords => "%#{params[:keywords]}%")
+      end
+      
+      @products = Product.where(:sku => sku, :visiable => true).paginate(:page => params[:page], :order => 'created_at desc')
+    end
   end
 
   def show

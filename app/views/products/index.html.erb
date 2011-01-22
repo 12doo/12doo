@@ -124,16 +124,19 @@
                         <input type="text" value="1" size="3" maxlength="3" id="pageNum1" style="float:left;width:22px; margin-right:5px;"><img src="/images/searchList_19.jpg" onmousedown="turnPage(32,&#39;-1_-1_-1_-1_-1_-1_-1_-1_-1_-1_%E8%AE%BE%E6%8B%89%E5%AD%90_&#39;,&#39;_1&#39;,&#39;1&#39;)">
                     </div>
                 </div>
-            </div><!-- 列表  -->
+            </div>
             <div class="winebox" id="winebox">
-                <div class="winebox1">
+            	<% @products.each do |product| %>
+				<div class="winebox1">
                     <table height="85" cellspacing="0" cellpadding="0" border="0" align="center" width="178">
                         <tbody>
                             <tr>
                                 <td valign="top" align="left" width="34">
                                 </td>
                                 <td align="left" width="110">
-                                    <a href="http://www.yesmywine.com/goods/5.html"><img height="180" border="0" width="110" src="/images/110x180.jpg"></a>
+                                    <a href="/products/<%= product.id  %>">
+                                    	<img height="180" border="0" width="110" src="/images/110x180.jpg">
+									</a>
                                 </td>
                                 <td align="left" width="34">
                                     &nbsp;
@@ -141,22 +144,22 @@
                             </tr>
                             <tr>
                                 <td height="21" align="left" colspan="3">
-                                    <a href="http://www.yesmywine.com/goods/5.html">蓝宝丽丝 - 穗乐仙（红）</a>
+                                	<%= link_to product.cn_name, :action => :show, :controller => :products, :id => product.id %>
                                 </td>
                             </tr>
                             <tr>
                                 <td height="21" align="left" colspan="3">
-                                    <a href="http://www.yesmywine.com/goods/5.html">Blue Pyrenees - Shiraz</a>
+                                	<%= link_to product.name, :action => :show, :controller => :products, :id => product.id %>
                                 </td>
                             </tr>
                             <tr>
                                 <td height="21" align="left" colspan="3">
-                                    <span class="snf8 delline">市场价：229.0元</span>
+                                    <span class="snf8 delline">市场价：<%= format ("%.2f",product.indication_price) %>元</span>
                                 </td>
                             </tr>
                             <tr>
                                 <td height="21" align="left" colspan="3">
-                                    会员价：<span class="snf6">209.0元</span>
+                                    会员价：<span class="snf6"><%= format ("%.2f",product.price) %>元</span>
                                 </td>
                             </tr>
                             <tr>
@@ -166,370 +169,13 @@
                             </tr>
                             <tr>
                                 <td valign="middle" height="25" bgcolor="#f5f5f5" align="left" colspan="3">
-                                    已销售
-                                    8
-                                    瓶
-                                    1
-                                    个好评
+                                    已销售<%= product.sold_count %>瓶
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-                <div class="winebox1">
-                    <table height="85" cellspacing="0" cellpadding="0" border="0" align="center" width="178">
-                        <tbody>
-                            <tr>
-                                <td valign="top" align="left" width="34">
-                                </td>
-                                <td align="left" width="110">
-                                    <a href="http://www.yesmywine.com/goods/9.html"><img height="180" border="0" width="110" src="/images/110x180(1).jpg"></a>
-                                </td>
-                                <td align="left" width="34">
-                                    &nbsp;
-                                </td>
-                            </tr>
-                            <tr>
-                                <td height="21" align="left" colspan="3">
-                                    <a href="http://www.yesmywine.com/goods/9.html">蓝宝丽丝红酒王</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td height="21" align="left" colspan="3">
-                                    <a href="http://www.yesmywine.com/goods/9.html">Blue Pyrenees Estate - R...</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td height="21" align="left" colspan="3">
-                                    <span class="snf8 delline">市场价：436.0元</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td height="21" align="left" colspan="3">
-                                    会员价：<span class="snf6">398.0元</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td height="30" align="left" colspan="3">
-                                    <a href="javascript:goodsDetail.showCartBox1('9');"><img border="0" src="/images/menu1(1).gif"></a>&nbsp;&nbsp;<a href="javascript:goodsDetail.addFavorite('9');"><img border="0" src="/images/menu2(1).gif"></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td valign="middle" height="25" bgcolor="#f5f5f5" align="left" colspan="3">
-                                    已销售
-                                    13
-                                    瓶
-                                    1
-                                    个好评
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="winebox1">
-                    <table height="85" cellspacing="0" cellpadding="0" border="0" align="center" width="178">
-                        <tbody>
-                            <tr>
-                                <td valign="top" align="left" width="34">
-                                </td>
-                                <td align="left" width="110">
-                                    <a href="http://www.yesmywine.com/goods/14.html"><img height="180" border="0" width="110" src="/images/110x180(2).jpg"></a>
-                                </td>
-                                <td align="left" width="34">
-                                    &nbsp;
-                                </td>
-                            </tr>
-                            <tr>
-                                <td height="21" align="left" colspan="3">
-                                    <a href="http://www.yesmywine.com/goods/14.html">元素穗乐仙嘉本纳（红）</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td height="21" align="left" colspan="3">
-                                    <a href="http://www.yesmywine.com/goods/14.html">Element - Shiraz Caberne...</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td height="21" align="left" colspan="3">
-                                    <span class="snf8 delline">市场价：212.0元</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td height="21" align="left" colspan="3">
-                                    会员价：<span class="snf6">159.0元</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td height="30" align="left" colspan="3">
-                                    <a href="javascript:goodsDetail.showCartBox1('14');"><img border="0" src="/images/menu1(1).gif"></a>&nbsp;&nbsp;<a href="javascript:goodsDetail.addFavorite('14');"><img border="0" src="/images/menu2(1).gif"></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td valign="middle" height="25" bgcolor="#f5f5f5" align="left" colspan="3">
-                                    已销售
-                                    10
-                                    瓶
-                                    0
-                                    个好评
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="winebox1 nomr">
-                    <table height="85" cellspacing="0" cellpadding="0" border="0" align="center" width="178">
-                        <tbody>
-                            <tr>
-                                <td valign="top" align="left" width="34">
-                                </td>
-                                <td align="left" width="110">
-                                    <a href="http://www.yesmywine.com/goods/17.html"><img height="180" border="0" width="110" src="/images/110x180(3).jpg"></a>
-                                </td>
-                                <td align="left" width="34">
-                                    &nbsp;
-                                </td>
-                            </tr>
-                            <tr>
-                                <td height="21" align="left" colspan="3">
-                                    <a href="http://www.yesmywine.com/goods/17.html">豪园 - 礼士顿庄园 - 穗...</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td height="21" align="left" colspan="3">
-                                    <a href="http://www.yesmywine.com/goods/17.html">Howard Park - Leston Shi...</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td height="21" align="left" colspan="3">
-                                    <span class="snf8 delline">市场价：418.0元</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td height="21" align="left" colspan="3">
-                                    会员价：<span class="snf6">378.0元</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td height="30" align="left" colspan="3">
-                                    <a href="javascript:goodsDetail.showCartBox1('17');"><img border="0" src="/images/menu1(1).gif"></a>&nbsp;&nbsp;<a href="javascript:goodsDetail.addFavorite('17');"><img border="0" src="/images/menu2(1).gif"></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td valign="middle" height="25" bgcolor="#f5f5f5" align="left" colspan="3">
-                                    已销售
-                                    5
-                                    瓶
-                                    2
-                                    个好评
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="winebox1">
-                    <table height="85" cellspacing="0" cellpadding="0" border="0" align="center" width="178">
-                        <tbody>
-                            <tr>
-                                <td valign="top" align="left" width="34">
-                                </td>
-                                <td align="left" width="110">
-                                    <a href="http://www.yesmywine.com/goods/27.html"><img height="180" border="0" width="110" src="/images/110x180(4).jpg"></a>
-                                </td>
-                                <td align="left" width="34">
-                                    &nbsp;
-                                </td>
-                            </tr>
-                            <tr>
-                                <td height="21" align="left" colspan="3">
-                                    <a href="http://www.yesmywine.com/goods/27.html">海马园穗乐仙（红）</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td height="21" align="left" colspan="3">
-                                    <a href="http://www.yesmywine.com/goods/27.html">Jaraman (Taylors) - Shir...</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td height="21" align="left" colspan="3">
-                                    <span class="snf8 delline">市场价：458.0元</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td height="21" align="left" colspan="3">
-                                    会员价：<span class="snf6">372.0元</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td height="30" align="left" colspan="3">
-                                    <a href="javascript:goodsDetail.showCartBox1('27');"><img border="0" src="/images/menu1(1).gif"></a>&nbsp;&nbsp;<a href="javascript:goodsDetail.addFavorite('27');"><img border="0" src="/images/menu2(1).gif"></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td valign="middle" height="25" bgcolor="#f5f5f5" align="left" colspan="3">
-                                    已销售
-                                    4
-                                    瓶
-                                    0
-                                    个好评
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="winebox1">
-                    <table height="85" cellspacing="0" cellpadding="0" border="0" align="center" width="178">
-                        <tbody>
-                            <tr>
-                                <td valign="top" align="left" width="34">
-                                </td>
-                                <td align="left" width="110">
-                                    <a href="http://www.yesmywine.com/goods/29.html"><img height="180" border="0" width="110" src="/images/110x180(5).jpg"></a>
-                                </td>
-                                <td align="left" width="34">
-                                    &nbsp;
-                                </td>
-                            </tr>
-                            <tr>
-                                <td height="21" align="left" colspan="3">
-                                    <a href="http://www.yesmywine.com/goods/29.html">狂鱼 - 穗乐仙（红）</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td height="21" align="left" colspan="3">
-                                    <a href="http://www.yesmywine.com/goods/29.html">Mad Fish - Shiraz</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td height="21" align="left" colspan="3">
-                                    <span class="snf8 delline">市场价：241.0元</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td height="21" align="left" colspan="3">
-                                    会员价：<span class="snf6">230.0元</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td height="30" align="left" colspan="3">
-                                    <a href="javascript:goodsDetail.showCartBox1('29');"><img border="0" src="/images/menu1(1).gif"></a>&nbsp;&nbsp;<a href="javascript:goodsDetail.addFavorite('29');"><img border="0" src="/images/menu2(1).gif"></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td valign="middle" height="25" bgcolor="#f5f5f5" align="left" colspan="3">
-                                    已销售
-                                    2
-                                    瓶
-                                    0
-                                    个好评
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="winebox1">
-                    <table height="85" cellspacing="0" cellpadding="0" border="0" align="center" width="178">
-                        <tbody>
-                            <tr>
-                                <td valign="top" align="left" width="34">
-                                    <img class="giftico" src="/images/gift2.gif">
-                                    <br>
-                                </td>
-                                <td align="left" width="110">
-                                    <a href="http://www.yesmywine.com/goods/31.html"><img height="180" border="0" width="110" src="/images/110x180(6).jpg"></a>
-                                </td>
-                                <td align="left" width="34">
-                                    &nbsp;
-                                </td>
-                            </tr>
-                            <tr>
-                                <td height="21" align="left" colspan="3">
-                                    <a href="http://www.yesmywine.com/goods/31.html">奔富酒园Bin128库纳瓦拉...</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td height="21" align="left" colspan="3">
-                                    <a href="http://www.yesmywine.com/goods/31.html">Penfolds - Bin 128  Coon...</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td height="21" align="left" colspan="3">
-                                    <span class="snf8 delline">市场价：477.0元</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td height="21" align="left" colspan="3">
-                                    促销价：<span class="snf6">286.0元</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td height="30" align="left" colspan="3">
-                                    <a href="javascript:goodsDetail.showCartBox1('31');"><img border="0" src="/images/menu1(1).gif"></a>&nbsp;&nbsp;<a href="javascript:goodsDetail.addFavorite('31');"><img border="0" src="/images/menu2(1).gif"></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td valign="middle" height="25" bgcolor="#f5f5f5" align="left" colspan="3">
-                                    已销售
-                                    48
-                                    瓶
-                                    6
-                                    个好评
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="winebox1 nomr">
-                    <table height="85" cellspacing="0" cellpadding="0" border="0" align="center" width="178">
-                        <tbody>
-                            <tr>
-                                <td valign="top" align="left" width="34">
-                                    <img class="giftico" src="/images/gift2.gif">
-                                    <br>
-                                </td>
-                                <td align="left" width="110">
-                                    <a href="http://www.yesmywine.com/goods/32.html"><img height="180" border="0" width="110" src="/images/110x180(7).jpg"></a>
-                                </td>
-                                <td align="left" width="34">
-                                    &nbsp;
-                                </td>
-                            </tr>
-                            <tr>
-                                <td height="21" align="left" colspan="3">
-                                    <a href="http://www.yesmywine.com/goods/32.html">奔富酒园Bin28卡琳娜设拉...</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td height="21" align="left" colspan="3">
-                                    <a href="http://www.yesmywine.com/goods/32.html">Penfolds - Bin 28 Kalimn...</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td height="21" align="left" colspan="3">
-                                    <span class="snf8 delline">市场价：465.0元</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td height="21" align="left" colspan="3">
-                                    促销价：<span class="snf6">338.0元</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td height="30" align="left" colspan="3">
-                                    <a href="javascript:goodsDetail.showCartBox1('32');"><img border="0" src="/images/menu1(1).gif"></a>&nbsp;&nbsp;<a href="javascript:goodsDetail.addFavorite('32');"><img border="0" src="/images/menu2(1).gif"></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td valign="middle" height="25" bgcolor="#f5f5f5" align="left" colspan="3">
-                                    已销售
-                                    55
-                                    瓶
-                                    5
-                                    个好评
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+				<% end %>
             </div>
             <div id="pagebox2" style="width:700px;">
                 <div class="page" id="pageInfo2">
