@@ -1,10 +1,8 @@
 <div class="searchbox">
-	<%= form_tag ({:action=>'search',:controller=>'store'}, :method=>:get, :name => :search) do %>
-    <input type="text" name="key" id="keywordTop" class="tsi" />
-    <a href="javascript:document.search.submit();">
+    <input type="text" id="keywordTop" value="<%= params[:keywords] %>" class="tsi" />
+    <a href="javascript:window.location.href = '/category/<%= params[:tags] %>/' + $('#keywordTop').val();">
       <img src="/images/searchmenu.gif" align="absmiddle" border="0" />
     </a>
-  <% end %>
 </div>
 <div class="hotbox">
   <a class="snf1" href="">波尔多</a>
