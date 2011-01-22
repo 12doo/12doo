@@ -1,2 +1,207 @@
-后台首页<br />
-<%= link_to "产品管理", :action => :products %>
+<div class="crumb">
+    <a href="/">首页</a>
+    &gt;<span id="dangqian1">管理后台</span>
+    &gt;<span style="color: rgb(151, 0, 5);" id="dangqian"></span>
+</div>
+<div class="all_sidebar">
+    <div class="ymw">
+        <h3><a href="#">
+                <p style="color:#FF6600;">
+                    我的12度
+                </p>
+            </a>
+		</h3>
+        <ul>
+            <li>
+                <a href="">产品管理</a>
+            </li>
+        </ul>
+    </div>
+    <!--也买茶  -->
+    <div class="ymj">
+        <h3><a href="" onclick="">我的也买酒</a></h3>
+        <div class="mytea_list">
+            <h3>我的信息</h3>
+            <ul>
+                <li>
+                    <a href="#">我的优惠券</a>
+                </li>
+                <li>
+                    <a href="#">我的收藏</a>
+                </li>
+            </ul>
+        </div>
+        <div id="mycenter2">
+            <div class="mytea_list">
+                <h3>订单管理</h3>
+                <ul>
+                    <li>
+                        <a href="#">全部订单</a>
+                    </li>
+                    <li>
+                        <a href="#">已购商品</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="mytea_list">
+                <h3>我的客服</h3>
+                <ul>
+                    <li>
+                        <a href="#">我的投诉</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="mytea_list">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="all_content">
+    <div class="myinfo">
+        <dl>
+            <dt>
+                <img src="/images/phogoface.jpg" width="130" height="130">
+            </dt>
+            <dd>
+                <span></span>您好！欢迎光临也买酒
+            </dd>
+            <dd>
+                上次登录时间：<span id="lastLoginTime">2011-01-22 14:10:41</span>
+            </dd>
+            <dd>
+                会员级别：
+                普通会员<img src="/images/Platinum.png" width="15" height="17"><a href="#">[积分规则]</a>
+            </dd>
+            <dd>
+                <p>
+                    您的帐户余额：<span class="jifen">0.0元</span>
+                </p>
+                <p>
+                    <a href="#"><img src="/images/menu13.gif" width="80" height="28"></a>
+                </p>
+            </dd>
+            <dd>
+                现有可用积分：<span class="jifen">0分</span>
+            </dd>
+            <dd>
+                历史累积积分：<span class="jifen">0分</span>
+            </dd>
+        </dl>
+        <div class="messages">
+            <h3>消息提醒：</h3>
+            <ul>
+                <li>
+                    您有  0张优惠券可以使用
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="mytea_tab">
+        <ul>
+            <li id="mytea1" onclick="setTab(&#39;mytea&#39;,1,3)" class="hover">
+                <a href="#">未处理订单(<span id="tab1">0</span>)</a>
+            </li>
+            <li id="mytea2" onclick="setTab(&#39;mytea&#39;,2,3)" class="">
+                <a href="#">未点评商品(<span id="tab2">0</span>)</a>
+            </li>
+            <div style="display:none">
+                <li id="mytea3" onclick="setTab(&#39;mytea&#39;,3,3)" class="">
+                    <a href="#">咨询点评回复(<span id="tab3">0</span>)</a>
+                </li>
+            </div>
+        </ul>
+    </div>
+    <input type="hidden" id="curPageNum" name="curPageNum" value="1"><input type="hidden" id="recordCnt" name="recordCnt" value="0"><input type="hidden" id="lastPageNum" name="lastPageNum" value="1"><input type="hidden" id="pageInfo.currentPage" name="pageInfo.currentPage" value="1"><input type="hidden" id="pageInfo.totalCount" name="pageInfo.totalCount" value="0"><input type="hidden" id="pageInfo.lastPageNum" name="pageInfo.lastPageNum" value="1">
+    <div id="con_mytea_1" class="con_mytea" style="display: block; ">
+        <table cellspacing="1" cellpadding="0" border="0" bgcolor="#737373" width="788">
+            <tbody>
+                <tr>
+                    <td height="30" bgcolor="#737373" align="center" width="100" valign="middle" class="snf14">
+                        订单号
+                    </td>
+                    <td bgcolor="#737373" align="center" width="100" valign="middle" class="snf14">
+                        收货人
+                    </td>
+                    <td bgcolor="#737373" align="center" width="90" valign="middle" class="snf14">
+                        付款方式
+                    </td>
+                    <td bgcolor="#737373" align="center" width="150" valign="middle" class="snf14">
+                        下单时间
+                    </td>
+                    <td bgcolor="#737373" align="center" width="100" valign="middle" class="snf14">
+                        订单状态
+                    </td>
+                    <td bgcolor="#737373" align="center" width="100" valign="middle" class="snf14">
+                        下单处
+                    </td>
+                    <td bgcolor="#737373" align="center" valign="middle" class="snf14">
+                        操作
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table cellspacing="1" cellpadding="0" border="0" bgcolor="#cecece" width="788">
+        </table>
+    </div>
+    <div id="con_mytea_2" class="con_mytea" style="display: none; ">
+        <table cellspacing="1" cellpadding="0" border="0" bgcolor="#737373" width="788">
+            <tbody>
+                <tr>
+                    <td height="30" bgcolor="#737373" align="center" width="100" valign="middle" class="snf14">
+                        商品编号
+                    </td>
+                    <td bgcolor="#737373" align="center" width="337" valign="middle" class="snf14">
+                        商品
+                    </td>
+                    <td bgcolor="#737373" align="center" width="86" valign="middle" class="snf14">
+                        商品来源
+                    </td>
+                    <td bgcolor="#737373" align="center" width="149" valign="middle" class="snf14">
+                        购买时间
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table cellspacing="1" cellpadding="0" border="0" bgcolor="#cecece" width="788">
+        </table>
+    </div>
+    <div id="con_mytea_3" class="con_mytea" style="display: none; ">
+        <table cellspacing="1" cellpadding="0" border="0" bgcolor="#737373" width="788">
+            <tbody>
+                <tr>
+                    <td height="30" bgcolor="#737373" align="center" width="100" valign="middle" class="snf14">
+                        类别
+                    </td>
+                    <td bgcolor="#737373" align="center" width="100" valign="middle" class="snf14">
+                        归属
+                    </td>
+                    <td bgcolor="#737373" align="center" width="240" valign="middle" class="snf14">
+                        主题
+                    </td>
+                    <td bgcolor="#737373" align="center" width="150" valign="middle" class="snf14">
+                        提交时间
+                    </td>
+                    <td bgcolor="#737373" align="center" width="100" valign="middle" class="snf14">
+                        回复状态
+                    </td>
+                    <!--
+                    <td bgcolor="#737373" align="center" valign="middle"
+                    class="snf14">
+                    操作
+                    </td> -->
+                </tr>
+            </tbody>
+        </table>
+        <table cellspacing="1" cellpadding="0" border="0" bgcolor="#cecece" width="788">
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    <div id="pagebox2">
+        <div class="page" id="pageNav">
+            <a href="javascript:;">«上一页</a>
+            <a class="pagenowon" href="javascript:;">1</a>
+            <a href="javascript:;">下一页»</a>
+        </div>
+    </div>
+</div>

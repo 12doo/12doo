@@ -34,14 +34,28 @@ class ProductsController < ApplicationController
     
     if params[:product_attribute]
       params[:product_attribute].each do |attri|
-        define = ProductAttributeDefine.find_by_name(attri[:name])
-        temp = ProductAttribute.new
-        temp.short = define.short
-        temp.description = define.description
-        temp.name = attri[:name]
-        temp.value = attri[:value]
-        temp.product_sku = @product.sku
-        temp.save
+        if attri[:value] && attri[:value] != ''
+          define = ProductAttributeDefine.find_by_name(attri[:name])
+          if define.multiple
+            attri[:value].split(",").each do |value|
+              temp = ProductAttribute.new
+              temp.short = define.short
+              temp.description = define.description
+              temp.name = attri[:name]
+              temp.value = value
+              temp.product_sku = @product.sku
+              temp.save
+            end
+          else
+              temp = ProductAttribute.new
+              temp.short = define.short
+              temp.description = define.description
+              temp.name = attri[:name]
+              temp.value = attri[:value]
+              temp.product_sku = @product.sku
+              temp.save
+          end
+        end
       end
     end
     #params[:product_tag].each do |tag|

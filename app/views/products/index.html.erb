@@ -1,7 +1,8 @@
 <div class="crumb">
     <img src="/images/ico9.gif" align="absbottom"><a style="color:#383838;" href="#">首页</a>
     ＞ <a href="#" style="color:#970005;">买酒荐酒</a>
-    <span class="snf1"></span>
+    <span class="snf1">
+	</span>
 </div>
 <div align="left">
     <div id="indexInfo">
@@ -33,27 +34,12 @@
                         <li>
                             <span class="searchon">不限</span>
                         </li>
-                        <li>
-                            <a class="searchoff" href="javascript:goodsList.choosePriceType(1);">1-99元</a>
-                        </li>
-                        <li>
-                            <a class="searchoff" href="javascript:goodsList.choosePriceType(2);">100-199元</a>
-                        </li>
-                        <li>
-                            <a class="searchoff" href="javascript:goodsList.choosePriceType(3);">200-299元</a>
-                        </li>
-                        <li>
-                            <a class="searchoff" href="javascript:goodsList.choosePriceType(4);">300-499元</a>
-                        </li>
-                        <li>
-                            <a class="searchoff" href="javascript:goodsList.choosePriceType(5);">500-799元</a>
-                        </li>
-                        <li>
-                            <a class="searchoff" href="javascript:goodsList.choosePriceType(6);">800-999元</a>
-                        </li>
-                        <li>
-                            <a class="searchoff" href="javascript:goodsList.choosePriceType(7);">1000元以上</a>
-                        </li>
+						<% prices = ProductAttribute.all(:select => "distinct(value)", :conditions => "short = 'price'") %>
+						<% prices.each do |price|%>
+						<li>
+							<a class="searchoff" href="#"> <%= price.value %></a>
+						</li>
+						<% end %>
                     </ul>
                 </div>
                 <div class="title">

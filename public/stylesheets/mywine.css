@@ -1,0 +1,850 @@
+@charset "utf-8";
+/* CSS Document */
+.all_sidebar
+{
+    width:200px;
+    float:left;
+}
+.all_content
+{
+    width:792px;
+    float:right;
+}
+.all_content h3
+{
+    border-bottom:1px dotted #CECECE;
+    margin-bottom:10px;
+    height:25px;
+    width:100%;
+    color:#383838;
+    font-size:12px;
+    font-weight:bold;
+}
+
+.top_center 
+{
+    margin:0 auto;
+    width:1000px;
+}
+.ymw
+{
+    width:198px;
+    float:left;
+    border:1px solid #b0b0b0;
+    margin-bottom:10px;
+}
+.ymw h3
+{
+    background:url(http://img02.yesmywine.com/usercenter/ymw_bg.jpg) repeat-x;
+    width:178px;
+    height:42px;
+    float:left;
+    color:#ff6600;
+    margin:0;
+    font-size:14px;
+    line-height:40px;
+    font-weight:bold;
+    padding-left:20px;
+}
+.ymw .btn
+{
+    float:right;
+    font-size:12px;
+    font-weight:bold;
+    color:red;
+    padding-right:10px;
+}
+.ymw .btn a
+{
+    color:red;
+}
+.ymw ul
+{
+    padding-bottom:3px;
+    float:left;
+}
+.ymw ul li
+{
+    font-size:12px;
+    color:#333;
+    padding-left:20px;
+    float:left;
+    width:168px;
+    padding-bottom:13px;
+    _padding-bottom:11px;
+}
+.ymw ul li a
+{
+    color:#333;
+}
+#mycenter1
+{
+    display:none;
+}
+
+.ymj
+{
+    width:198px;
+    float:left;
+    border:1px solid #b0b0b0;
+    margin-bottom:10px;
+}
+
+.ymj .btn
+{
+    float:right;
+    font-size:12px;
+    font-weight:bold;
+    color:red;
+    padding-right:10px;
+}
+.ymj h3
+{
+    background:url(http://img02.yesmywine.com/usercenter/ymj_bg.jpg) repeat-x;
+    width:178px;
+    height:42px;
+    float:left;
+    color:#a73234;
+    font-size:14px;
+    line-height:40px;
+    font-weight:bold;
+    padding-left:20px;
+    margin:0;
+}
+.ymj h3 a
+{
+    color:#a73234;
+}
+.ymj .btn a
+{
+    color:red;
+}
+.ymj ul li
+{
+    font-size:12px;
+    color:#333;
+    padding-left:20px;
+    float:left;
+    width:168px;
+    line-height:30px;
+}
+.ymj ul li a
+{
+    color:#333;
+}
+.mytea_list
+{
+    width:198px;
+    float:left;
+    margin-bottom:5px;
+}
+.mytea_list h3
+{
+    background:url(http://img02.yesmywine.com/usercenter/mytea_list_bg.jpg) repeat-x;
+    width:178px;
+    height:32px;
+    float:left;
+    color:#333;
+    font-size:12px;
+    line-height:32px;
+    font-weight:bold;
+    padding-left:20px;
+    margin:0;
+}
+.mytea_list ul li
+{
+    font-size:12px;
+    color:#333;
+    padding-left:20px;
+    float:left;
+    width:168px;
+    line-height:26px;
+}
+.mytea_list ul li a
+{
+    color:#333;
+}
+.sc
+{
+    float:left;
+    margin-left:15px;
+    display:inline;
+    margin-right:-10px;
+}
+.myinfo 
+{ 
+    background-color:#fffff9;
+    height:161px; 
+    border:1px solid #ccc; 
+    padding:15px; 
+    margin-bottom:10px;
+    width:758px;
+    font-size:12px;
+}
+.myinfo dt
+{
+    height:161px;
+    float:left;
+}
+.myinfo dd span.jifen
+{
+    font-size:14px;
+    color:#ff6600;
+    font-weight:bold;
+}
+.myinfo dd p
+{
+    float:left;
+    margin:0;
+}
+.myinfo dl
+{
+    width:502px;
+    float:left;
+}
+.myinfo dt img
+{
+    border:1px solid #CCCCCC;
+    float:left;
+}
+.myinfo dd
+{
+    float:left;
+    line-height:26px;
+    width:350px;
+    color:#333; 
+    margin-left:20px;
+    display:inline;
+}
+.myinfo dd span
+{
+    color:#1259bb;
+    padding-right:10px;
+}
+.myinfo dd a
+{
+    color:#1259bb;
+}
+.myinfo dd img
+{
+    margin:0 5px;
+    vertical-align:middle;
+}
+.messages
+{
+    float:left;
+    width:256px;
+}
+.messages h3
+{
+    color:#1259bb;
+    font-weight:bold;
+    margin:0;
+    font-size:14px;
+    line-height:26px;
+}
+.messages ul li
+{
+    line-height:26px;
+    font-size:12px;
+    color:#333;
+}
+.mytea_tab
+{
+    color:#333333;
+    display:inline;
+    float:left;
+    font-size:14px;
+    text-align:center;
+}
+.mytea_tab ul li
+{
+    float:left;
+    margin-right:5px;
+}
+.mytea_tab ul li a
+{
+    background:url(http://img02.yesmywine.com/usercenter/mytea_out_bg.jpg) repeat-x left top;
+    color:#333;
+    float:left;
+    font-size:12px;
+    padding:4px 15px;
+    text-decoration:none;
+    border:1px solid #dcdcdc;
+    border-bottom:0;
+}
+.mytea_tab ul li.hover a, .mytea_tab ul li.hover a:hover
+{
+    background:url(http://img02.yesmywine.com/usercenter/mytea_hover_bg.jpg) repeat-x left top;
+    color:#fff;
+    font-size:12px;
+    float:left;
+    font-weight:bold;
+    padding:4px 15px;
+    border:1px solid #737373;
+}
+.con_mytea
+{
+    float:left;
+}
+.snf1 {font-size:12px; color:#383838; font-weight:normal}
+.snf14  
+{
+    color:#FFFFFF;
+    font-size:12px;
+    font-weight:bold;
+}
+.snf15
+{
+    color:#333;
+    font-size:12px;
+    font-weight:bold;
+}
+.snf3  
+{
+    color:#970005;
+    font-size:12px;
+    font-weight:normal;
+    text-decoration:none;
+}
+.snf3 a:hover
+{
+    color:#970005;
+}
+td
+{
+    font-size:12px;
+}
+.mytea_txt a
+{
+    color:#1259BB;
+}
+.all_content .title {
+height:25px;
+width:100%;
+}
+.all_content .r3 {
+border-bottom:1px dotted #CECECE;
+margin-bottom:10px;
+}
+.snf5  {
+color:#383838;
+font-size:12px;
+font-weight:bold;
+}
+.snf10  {
+color:#DD7231;
+font-size:12px;
+}
+.list_btn {
+margin-left:220px;
+float:left;
+display:inline;
+}
+.list_btn ul li {
+float:left;
+list-style-type:none;
+margin-right:20px;
+}
+.snf6 {font-size:14px; color:#111; font-weight:bold}
+.r10 {border-top:0;line-height:165%;line-height:100%\9;*line-height:100%;_line-height:100%;  margin-bottom:20px;font-size:12px; color:#333;}
+.account{ width:100%; float:left; margin-bottom:10px;}
+.account p{float:left; margin:0; line-height:28px; margin-right:10px;}
+.account p.cumulative{ margin-left:20px; display:inline;}
+.account_search_box{ padding-bottom:10px; margin:10px 0; border-bottom:1px dotted #ccc}
+
+.r10 a{ color:#1259BB;}
+.mb10{height:30px;width:100%; margin-bottom:10px;color:#111;font-size:12px;font-weight:bold; line-height:30px;}
+.dizhibu_line{ width:788px; float:left; height:2px; overflow:hidden; background:#737373; margin-bottom:10px;}
+.cart1_scj_commodity2
+{
+    width:480px;
+    float:left;
+}
+.cart1_scj_commodity2 dt
+{
+    float:left;
+}
+.cart1_scj_commodity2 dd
+{
+    float:left;
+    width:230px;
+    margin-left:10px;
+    line-height:30px;
+    display:inline;
+}
+.cart1_scj_commodity2 dd.cpmc
+{
+    width:200px;
+    margin-top:20px;
+}
+.cart1_scj_commodity2 dd a
+{
+    color:#2152a1;
+    line-height:25px;
+    font-weight:bold;
+    font-size:14px;
+    text-decoration:none;
+}
+.cart1_scj_commodity2 dd a:hover
+{
+    color:red;
+    font-weight:bold;
+    text-decoration:underline;
+}
+.cart1_scj_commodity2 span.bh,  .cart-none dd span.bh
+{
+    color:#888;
+}
+.cart1_scj_commodity2 span.scj, .cart-none dd span.scj
+{
+    color:#888;
+    text-decoration:line-through;
+}
+.cart1_cxsp_commodity span.bh
+{
+    color:#888;
+}
+.cart1_cxsp_commodity span.df
+{
+    width:auto;
+}
+.cart1_cxsp_commodity span img
+{
+    border:0px;
+}
+.cart1_cxsp_commodity span a
+{
+    color:#2152a1;
+    line-height:25px;
+    font-weight:bold;
+    font-size:14px;
+    text-decoration:none;
+}
+.cart1_cxsp_commodity span a:hover
+{
+    color:red;
+    font-weight:bold;
+    text-decoration:underline;
+}
+.relative
+{
+    position:relative;
+}
+.del_btn
+{
+    line-height:normal;
+    width:120px;
+}
+.del_btn ul li
+{
+    background:url("http://img01.yesmytea.com/button_left.jpg") no-repeat scroll left top transparent;
+    display:inline;
+    float:left;
+    margin-left:16px;
+    padding-left:4px;
+}
+.del_btn ul li a
+{
+    background:url("http://img01.yesmytea.com/button_right.jpg") no-repeat scroll right top transparent;
+    color:#333333;
+    display:block;
+    font-family:Verdana,Geneva,sans-serif;
+    font-size:12px;
+    padding:3px 6px 4px 6px;
+    _padding:5px 6px;
+    text-decoration:none;
+}
+.quanxuan a
+{
+    color:#333;
+}
+.operate_btn ul li.yll img
+{
+    margin-left:15px;
+}
+.operate_btn ul li.yjrgwc
+{
+    color:#a4a4a4
+}
+.operate_btn ul li.del
+{
+    line-height:25px;
+    text-align:left;
+    padding-left:40px;
+    background:url(http://img02.yesmywine.com/usercenter/checkout/cart_icon1.jpg) no-repeat 20px;
+}
+.operate_btn ul li.del a
+{
+    color:#a30000;
+    text-decoration:none;
+}
+.operate_btn ul li.del a:hover
+{
+    color:#a30000;
+    text-decoration:underline
+}
+.operate_btn ul li.collect
+{
+    line-height:25px;
+    text-align:left;
+    padding-left:40px;
+    background:url(http://img02.yesmywine.com/usercenter/checkout/cart_icon2.jpg) no-repeat 20px;
+}
+.operate_btn ul li.collect a
+{
+    color:#a30000;
+    text-decoration:none;
+}
+.operate_btn ul li.collect a:hover
+{
+    color:#a30000;
+    text-decoration:underline
+}
+.operate_btn ul li.collect2
+{
+    line-height:25px;
+    text-align:left;
+    padding-left:40px;
+    background:url(http://img02.yesmywine.com/usercenter/checkout/cart_icon2.jpg) no-repeat 20px;
+}
+.operate_btn ul li.collect2 a
+{
+    color:#a30000;
+    text-decoration:none;
+}
+.operate_btn ul li.collect2 a:hover
+{
+    color:#a30000;
+    text-decoration:underline
+}
+.operate_btn ul li.collect3
+{
+    line-height:25px;
+    text-align:left;
+    padding-left:50px;
+    background:url(http://img02.yesmywine.com/usercenter/checkout/cart_icon2.jpg) no-repeat 30px;
+}
+.operate_btn ul li.collect3 a
+{
+    color:#a30000;
+    text-decoration:none;
+}
+.operate_btn ul li.collect3 a:hover
+{
+    color:#a30000;
+    text-decoration:underline
+}
+.scj_box, .del_box
+{
+    width:250px;
+    position:absolute;
+    background:#fff;
+    left:-120px;
+    top:-23px;
+    border:1px solid #a5a5a5;
+    display:none;
+    z-index:100;
+}
+.syjf_content
+{
+    width:248px;
+    margin:1px 0 0 1px;
+    float:left;
+    background:#f6f7f6;
+    line-height:normal;
+    padding-bottom:10px;
+}
+.syjf_content h4
+{
+    font-size:14px;
+    color:#333;
+    font-weight:bold;
+    float:left;
+    margin:10px;
+    display:inline;
+}
+.syjf_content p
+{
+    font-size:12px;
+    color:#333;
+    margin:0 0 0 10px;
+    padding:10px 0;
+    text-align:left;
+}
+.syjf_content input
+{
+    background:url("http://img02.yesmywine.com/usercenter/checkout/input_bg.jpg") repeat-x scroll 0 0 #FFFFFF;
+    border:1px solid #A8ACAD;
+    color:#000000;
+    display:inline;
+    font-size:12px;
+    height:20px;
+    margin:0 5px;
+    width:100px;
+    padding-left:5px;
+}
+.close
+{
+    width:30px;
+    float:right;
+    font-size:12px;
+    color:#999;
+    margin-top:5px;
+    background:url(http://img02.yesmywine.com/usercenter/checkout/close.gif) no-repeat left center;
+    padding-left:15px;
+}
+.close a, .close a:hover
+{
+    color:#999;
+    text-decoration:none;
+}
+.scj
+{
+    float:left;
+    width:200px;
+}
+
+.scj ul li
+{
+    background:url("http://img01.yesmytea.com/button_left.jpg") no-repeat scroll left top transparent;
+    display:inline;
+    float:left;
+    margin-left:10px;
+    margin-right:14px;
+    padding-left:4px;
+}
+.scj ul li a
+{
+    background:url("http://img01.yesmytea.com/button_right.jpg") no-repeat scroll right top transparent;
+    color:#333333;
+    display:block;
+    font-family:Verdana,Geneva,sans-serif;
+    font-size:12px;
+    padding:3px 6px 4px 6px;
+    _padding:5px 6px;
+    line-height:normal;
+    text-decoration:none;
+}
+.scj ul li.on
+{
+    background:url(http://img02.yesmywine.com/usercenter/button_left_on.jpg) no-repeat scroll left top transparent;
+    display:inline;
+    float:left;
+    margin-left:10px;
+    margin-right:14px;
+    padding-left:4px;
+}
+.scj ul li.on a
+{
+    background:url(http://img02.yesmywine.com/usercenter/button_right_on.jpg) no-repeat scroll right top transparent;
+    color:#e6ffab;
+    display:block;
+    font-family:Verdana,Geneva,sans-serif;
+    font-size:12px;
+    padding:3px 6px 4px 6px;
+    _padding:5px 6px;
+    text-decoration:none;
+}
+.scj_icon
+{
+    background:url(http://img02.yesmywine.com/usercenter/icon.jpg) no-repeat;
+    width:32px;
+    height:32px;
+    float:left;
+    margin-left:10px;
+    margin-top:10px;
+    display:inline;
+}
+.syjf_content2
+{
+    width:278px;
+    margin:1px 0 0 1px;
+    float:left;
+    background:#f6f7f6;
+    line-height:normal;
+    padding-bottom:10px;
+}
+.syjf_content2 p
+{
+    width:458px;
+    float:left;
+    padding:10px;
+    margin:0;
+    text-align:left;
+}
+.syjf_content2 h4
+{
+    font-size:14px;
+    color:#333;
+    font-weight:bold;
+    float:left;
+    margin:10px;
+    display:inline;
+}
+.del_box2
+{
+    width:280px;
+    position:absolute;
+    background:#fff;
+    left:-80px;
+    top:-23px;
+    border:1px solid #a5a5a5;
+    display:none;
+    z-index:100;
+}
+#syzx1-2
+{
+    font-family:"微软雅黑", Verdana, "宋体";
+    font-size:12px;
+}
+#syzx1-2 h2
+{
+    color:#178f2d;
+    font-size:24px;
+    line-height:50px;
+    padding-left:15px;
+}
+#syzx1-2 h3
+{
+    color:#2152a1;
+    font-size:18px;
+    padding-left:15px;
+    margin-top:15px;
+    line-height:45px;
+}
+#syzx1-2 label, #syzx1-2 select
+{
+    margin-left:35px;
+}
+#syzx1-2 ul li
+{
+    margin-left:35px;
+    height:30px;
+    line-height:30px;
+}
+#syzx1-2 ul li dd
+{
+    text-align:right;
+    float:left;
+    width:60px;
+}
+#syzx1-2 ul li input
+{
+    margin-left:10px;
+}
+#syzx1-2 #like
+{
+    margin-left:35px;
+}
+#syzx1-2 .btn
+{
+    text-align:center;
+    float:left;
+    width:480px;
+    margin:20px 0;
+    text-align:center;
+}
+.snf11 {font-size:14px; color:#383838; font-weight:bold;}
+.r4 {line-height:200%; padding:0px 6px 5px 6px; border-bottom:1px  #CCCCCC dashed; font-size:12px;}
+.r7 {padding-top:10px; margin:20px 0px 5px 5px;}
+.myorderdetail {border:1px #cecece solid; padding:10px; padding-bottom:10px;}
+.acform6{ width:30px;}
+.snf6 {font-size:14px; color:#970005; font-weight:bold}
+.usfont1 { font-size:14px; font-weight:bold; color:#2A5B90; text-decoration:underline}
+#pagebox{ width:330px; height:30px; float:right; border-top:1px solid #ccc;  padding-top:10px; margin-top:3px; float:right; margin-left:20px; text-align:right; }
+#pagebox2{ width:330px; height:30px; float:right; margin-top:10px; margin-left:20px; text-align:right}
+.page{ width:auto; height:auto; float:right;text-align:right;margin-right:5px;font-size:12px}
+.page_on{color:#393939; font-weight:bold;  width:auto; height:15px; padding-top:3px; padding-left:5px; padding-right:5px; float:left; margin-right:3px;}
+.page a{ font-weight:normal; width:auto; height:16px; padding-top:2px; padding-left:5px; padding-right:5px; display:block; border:1px solid #ccc; float:left; margin-right:3px; text-decoration:none; color:#393939;}
+.page a:hover{ background-color:#a90005; color:#FFFFFF;}
+a.pagenowon { background-color:#a90005; color:#FFFFFF;}
+@-moz-document url-prefix(){.del_btn ul li a, .jfdh ul li a, .scj ul li a, .scj ul li.on a { padding:4px 6px 5px 6px; line-height:normal }}
+@media all and (-webkit-min-device-pixel-ratio:10000), not all and (-webkit-min-device-pixel-ratio:0){.del_btn ul li a, .jfdh ul li a, .scj ul li a, .scj ul li.on a { padding:6px; }}
+@media screen and (-webkit-min-device-pixel-ratio:0){.del_btn ul li a, .jfdh ul li a, .scj ul li a, .scj ul li.on a { padding:3px 6px 8px 6px; }}
+
+
+#account
+{
+    float:left;
+    margin-left:5px;
+    display:inline;
+}
+.pay_input
+{
+    width:40px;
+}
+.pay_img
+{
+    border:1px solid #ccc;
+}
+.paydone
+{
+    float:left;
+    line-height:30px;
+    margin-right:10px;
+}
+.paydone b
+{
+    color:#970005;
+    font-size:12px;
+}
+
+
+
+/* by chenyun  for mycoupon*/
+.table_kuang table, .table_kuang table td
+{
+    border-left:1px solid #cecece;
+    border-right:1px solid #cecece;
+    border-bottom:1px solid #cecece;
+    border-collapse:collapse;
+}
+.table_kuang table a:hover {
+    color:#900;
+    text-decoration:underline;
+}
+.table_kuang table{
+    float:left;
+    width:788px;
+}
+.table td{
+    padding:10px;
+    text-align:right;
+}
+.table_kuang ul {
+    float:left;
+    width:786px;
+}
+.ipput_left {
+    float:left;
+    width:200px;
+    line-height:16px;
+}
+#menu .t_1 {
+    background:#999;
+}
+#menu .hidemenu { display:none; }
+#menu .showmenu { display:block;}
+.popup_box {
+    width:340px;
+    height:auto;
+    border:6px solid #ccc;
+    background:#fff;
+    padding:10px;
+    font-size:12px;
+    line-height:26px;
+    color:#333;
+    position:relative;
+    z-index:1;
+}
+.popup_box h1 {
+    width:340px;
+    border-bottom:1px solid #CCC;
+    font-family:"宋体";
+    font-size:14px;
+    line-height:30px;
+    color:#900;
+    font-weight:bold;
+}
+

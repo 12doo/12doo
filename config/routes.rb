@@ -16,6 +16,8 @@ V3::Application.routes.draw do
   get "orders/check_out"
 
   get "store/index"
+  
+  match "cat/:keys", :to => "products#index"
 
   get "home/index"
   root :to => "home#index" 
