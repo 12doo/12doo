@@ -2,10 +2,8 @@ V3::Application.routes.draw do
   resources :coupons, :deliveries, :addresses, :orders, :order_items, 
             :products, :product_tags, :product_statuses, :product_attributes, :product_attribute_defines
 
-  devise_for :users do
-    get "my" => "devise/registrations#info"
-  end
-  
+  devise_for :users
+  get "my/info", :to => "my#index"
   #resources :areas
 
   get "cart/show"

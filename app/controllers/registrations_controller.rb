@@ -3,12 +3,6 @@ class Devise::RegistrationsController < ApplicationController
   prepend_before_filter :authenticate_scope!, :only => [:info :edit, :update, :destroy]
   include Devise::Controllers::InternalHelpers
 
-
-  # GET /resource
-  def info
-    render_with_scope :info
-  end
-  
   # GET /resource/sign_up
   def new
     build_resource({})
