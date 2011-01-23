@@ -14,10 +14,10 @@ class ProductsController < ApplicationController
         sku = ProductAttribute.select("distinct(product_sku)").where("value like :keywords", :keywords => "%#{params[:keywords]}%")
       elsif params[:keywords] == nil && params[:tags] && params[:tags] != ''
         # 如果keywords为空,tags不为空
-        sku = ProductAttribute.select("distinct(product_sku)").where("value in (:tags)", :tags => params[:tags].split(','))
+        sku = ProductAttribute.select("distinct(product_sku)").where(join_for_where)
       else
         # 如果都不为空
-        sku = ProductAttribute.select("distinct(product_sku)").where("value in (:tags) and value like :keywords",:tags => params[:tags].split(','), :keywords => "%#{params[:keywords]}%")
+        sku = ProductAttribute.select("distinct(product_sku)").where(join_for_where).where("value like :keywords", :keywords => "%#{params[:keywords]}%")
       end
       
       @products = Product.where(:sku => sku, :visiable => true).paginate(:page => params[:page], :order => 'created_at desc')
@@ -144,5 +144,29 @@ class ProductsController < ApplicationController
     end
     
     redirect_to :action => 'edit',:id=>params[:id]
+  end
+  
+  def join_for_in(a)
+    returns = '('
+    a.each_with_index do |item , i|
+      if i == 0
+        returns += "'#{item}'"
+      else
+        returns += ",'#{item}'"
+      end
+    end
+    returns += ')'
+  end
+  
+  def join_for_where
+    returns = ''
+    params[:tags].split(';').each_with_index do |item,i|
+      if i == 0
+        returns += "value in #{join_for_in(item.split(','))}"
+      else
+        returns += " and value in #{join_for_in(item.split(','))}"
+      end
+    end
+    returns
   end
 end
