@@ -3528,7 +3528,7 @@ ProductStatus.create(:name => '订货', :description => '订货')
 ProductStatus.create(:name => '无货', :description => '无货')
 
 ProductAttributeDefine.create(:name => '葡萄品种', :short => 'grape', :description => '各种葡萄及其成分比例.', :multiple => true)
-ProductAttributeDefine.create(:name => '罐装年份', :short => 'pd', :description => '罐装年.')
+ProductAttributeDefine.create(:name => '灌装年分', :short => 'pd', :description => '罐装年.')
 ProductAttributeDefine.create(:name => '生产厂商', :short => 'made_by', :description => '生产厂商.')
 ProductAttributeDefine.create(:name => '酒精度', :short => 'abv', :description => '酒精度,只需要写数字.')
 ProductAttributeDefine.create(:name => '容量', :short => 'vol', :description => '容量,只需要写数字.')
@@ -3540,6 +3540,11 @@ ProductAttributeDefine.create(:name => '种类', :short => 'type', :description 
 ProductAttributeDefine.create(:name => '价格区间', :short => 'price', :description => '价格区间.')
 ProductAttributeDefine.create(:name => '葡萄成分', :short => 'grape_content', :description => '葡萄成分,用百分比表示.')
 ProductAttributeDefine.create(:name => '用途', :short => 'use_for', :description => '比如送礼之类的.', :multiple => true)
+
+ProductAttributeValue.create(:name => '葡萄品种', :short => 'grape', :value => '霞多内')
+ProductAttributeValue.create(:name => '葡萄品种', :short => 'grape', :value => '赤霞朱')
+ProductAttributeValue.create(:name => '葡萄品种', :short => 'grape', :value => '品丽朱')
+ProductAttributeValue.create(:name => '灌装年分', :short => 'pd', :value => '品丽朱')
 
 # define order status
 OrderStatus.create(:short => 'WAIT_BUYER_PAY', :display => '等待付款')
