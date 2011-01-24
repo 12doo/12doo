@@ -10,72 +10,25 @@
     <div class="listwine">
         <div class="left">
             <div class="listsearch">
+            	<% defines = ProductAttributeDefine.where(:search => true).order("sort asc") %>
+				<% defines.each do |define| %>
                 <div class="title">
-                    <img src="/images/icon_wine.gif" align="absbottom">&nbsp;酒 种 类：
+                    <img src="/images/icon_<%= define.short %>.gif" align="absbottom">&nbsp;<%= define.name %>：
                 </div>
                 <div class="main">
-                    <ul id="wineTypes">
+                    <ul id="<%= define.short %>">
                         <li>
-                            <span class="searchon">不限</span>
+                            <a class="<%= checked?(0, define.sort) ? 'searchoff' : 'searchon' %>" href="<%= search_path 0, define.sort %>"> 不限</a>
                         </li>
-						<% types = ProductAttribute.all(:select => "distinct(value)", :conditions => "short = 'type'") %>
-						<% types.each do |type|%>
+						<% values = ProductAttributeValue.where(:short => define.short) %>
+						<% values.each do |value|%>
 						<li>
-							<a class="searchoff" href="<%= search_path type.value %>"> <%= type.value %></a>
+							<a class="<%= checked?(value.id, define.sort) ? 'searchoff' : 'searchon' %>" href="<%= search_path value.id, define.sort %>"> <%= value.value %></a>
 						</li>
 						<% end %>
                     </ul>
                 </div>
-                <div class="title">
-                    <img src="/images/icon_money.gif" align="absbottom">&nbsp;价　　格：
-                </div>
-                <div class="main">
-                    <ul id="priceTypes">
-                        <li>
-                            <span class="searchon">不限</span>
-                        </li>
-						<% prices = ProductAttribute.all(:select => "distinct(value)", :conditions => "short = 'price'") %>
-						<% prices.each do |price|%>
-						<li>
-							<a class="searchoff" href="<%= search_path price.value %>"> <%= price.value %></a>
-						</li>
-						<% end %>
-                    </ul>
-                </div>
-                <div class="title">
-                    <img src="/images/icon_map.gif" align="absbottom">&nbsp;产　　地：
-                </div>
-                <div class="main2">
-                    <ul id="countryTypes">
-                        <li style="margin-right:15px;">
-                            <span class="searchon">不限</span>
-                        </li>
-						<% countrys = ProductAttribute.all(:select => "distinct(value)", :conditions => "short = 'country'") %>
-						<% countrys.each do |country|%>
-						<li>
-							<a class="searchoff" href="<%= search_path country.value %>"> <%= country.value %></a>
-						</li>
-						<% end %>
-                    </ul>
-                </div>
-                <div class="main4" id="areaTypes" style="display: none; ">
-                </div>
-                <div class="title">
-                    <img src="/images/ico2(1).gif" align="absbottom">&nbsp;葡萄种类：
-                </div>
-                <div class="main">
-                    <ul id="grapeTypes">
-                        <li>
-                            <span class="searchon">不限</span>
-                        </li>
-						<% grapes = ProductAttribute.all(:select => "distinct(value)", :conditions => "short = 'grape'") %>
-						<% grapes.each do |grape|%>
-						<li>
-							<a class="searchoff" href="<%= search_path grape.value %>"> <%= grape.value %></a>
-						</li>
-						<% end %>
-                    </ul>
-                </div>
+				<% end %>
             </div>
             <div class="searchbar">
                 共&nbsp;&nbsp;<a class="snf3"><span id="goodsTotalNu">250</span></a>&nbsp;&nbsp;件商品  您搜索的条件：<span id="allSeach"></span>

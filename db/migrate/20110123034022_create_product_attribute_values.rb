@@ -3,6 +3,7 @@ class CreateProductAttributeValues < ActiveRecord::Migration
     create_table :product_attribute_values do |t|
       t.string :name
       t.string :short
+      t.integer :sort
       t.string :value
       t.timestamps
     end
