@@ -1,37 +1,13 @@
-<div class="crumb">
-    <img src="/images/ico9.gif" align="absbottom"><a style="color:#383838;" href="#">首页</a>
-    ＞ <a href="#" style="color:#970005;">买酒荐酒</a>
-    <span class="snf1">
-	</span>
-</div>
+<%= render 'products/listsearch' %>
+
 <div align="left">
     <div id="indexInfo">
     </div>
     <div class="listwine">
         <div class="left">
-            <div class="listsearch">
-            	<% defines = ProductAttributeDefine.where(:search => true).order("sort asc") %>
-				<% defines.each do |define| %>
-                <div class="title">
-                    <img src="/images/icon_<%= define.short %>.gif" align="absbottom">&nbsp;<%= define.name %>：
-                </div>
-                <div class="main">
-                    <ul id="<%= define.short %>">
-                        <li>
-                            <a class="<%= checked?(0, define.sort) ? 'searchoff' : 'searchon' %>" href="<%= search_path 0, define.sort %>"> 不限</a>
-                        </li>
-						<% values = ProductAttributeValue.where(:short => define.short) %>
-						<% values.each do |value|%>
-						<li>
-							<a class="<%= checked?(value.id, define.sort) ? 'searchoff' : 'searchon' %>" href="<%= search_path value.id, define.sort %>"> <%= value.value %></a>
-						</li>
-						<% end %>
-                    </ul>
-                </div>
-				<% end %>
-            </div>
+
             <div class="searchbar">
-                共&nbsp;&nbsp;<a class="snf3"><span id="goodsTotalNu">250</span></a>&nbsp;&nbsp;件商品  您搜索的条件：<span id="allSeach"></span>
+                找到&nbsp;&nbsp;<a class="snf3"><span id="goodsTotalNu">18</span></a>&nbsp;&nbsp;件商品符合您的挑选条件<span id="allSeach"></span>
             </div>
             <div class="pailie">
                 <table width="349" height="28" border="0" cellpadding="3" cellspacing="0" style="float:left">
