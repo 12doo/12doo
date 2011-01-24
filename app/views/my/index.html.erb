@@ -1,8 +1,4 @@
-<div class="crumb">
-    <img src="/images/ico9.gif" align="absbottom"><a class="snf3" href="/">首页</a>
-    ＞<a href="#" class="snf1">更新帐号信息</a>
-</div>
-
+<%= render 'my/crumb' %>
 <%= render 'devise/userside' %>
 
 
@@ -10,7 +6,7 @@
 
   <div class="regbox">
     <%# render 'devise/alert' %>
-    <%= form_for( :users, :html => {:name =>"user_info" }) do |f| %>
+    <%= form_for(:current_user, :html => {:name =>"user_info" }) do |f| %>
         
     <table width="600" border="0" align="left" cellpadding="0" cellspacing="0">
       <tbody>
@@ -19,7 +15,7 @@
                 <%= f.label :email %>：
               </td>
               <td width="210px" align="left" valign="middle">
-              	<%= f.text_field :email, :class => :areabox %>
+              	<%= @current_user.email %>
               </td>
               <td width="315px" align="left">
               
@@ -30,7 +26,7 @@
                 <%= f.label :name %>：
               </td>
               <td align="left" valign="middle">
-              	<%= f.text_field :name, :class => :areabox %>
+              	<%= @current_user.name %>
               </td>
               <td align="left">
               
@@ -41,7 +37,7 @@
                 <%= f.label :phone %>：
               </td>
               <td align="left" valign="middle">
-              	 <%= f.text_field :phone, :class => :areabox %>
+              	 <%= @current_user.phone %>
               </td>
               <td align="left">
               
@@ -52,9 +48,7 @@
                 <%= f.label :gender %>：
               </td>
               <td align="left" valign="middle">
-              	<%= f.radio_button :gender, 'male' %><%= label_tag(:gender_male, "男") %>
-                <%= f.radio_button :gender, 'female' %><%= label_tag(:gender_female, "女") %>
-                <%= f.radio_button :gender, 'NA' %><%= label_tag(:gender_NA, "保密") %>
+                <%= @current_user.gender %>
               </td>
               <td align="left">
               
@@ -65,51 +59,20 @@
                 <%= f.label :birth %>：
               </td>
               <td align="left" valign="middle">
-              	<%= f.date_select :birth, :start_year => 2010, :end_year => 1960 %>
+              	<%= @current_user.birth.to_s %>
               </td>
               <td align="left">
               
               </td>
           </tr>                                                              
-          <tr>
-              <td height="35" align="right" valign="middle">
-                <%= f.label :current_password %>：
-              </td>
-              <td align="left" valign="middle">
-              	<%= f.password_field :current_password, :class => :areabox %>
-              </td>
-              <td align="left">
-                要更新您的帐号资料，请输入当前密码
-              </td>
-          </tr>                                                              
-          <tr>
-              <td height="35" align="right" valign="middle">
-                <%= f.label :password %>：
-              </td>
-              <td align="left" valign="middle">
-              	<%= f.password_field :password, :class => :areabox %>
-              </td>
-              <td align="left">
-                如果不打算更改密码，此处请留空
-              </td>
-          </tr>                                                              
-          <tr>
-              <td height="35" align="right" valign="middle">
-                <%= f.label :password_confirmation %>：
-              </td>
-              <td align="left" valign="middle">
-              	<%= f.password_field :password_confirmation, :class => :areabox %>
-              </td>
-              <td align="left">
-              
-              </td>
-          </tr>
+ 
           <tr>
               <td height="35" align="right" valign="middle">
                 
               </td>
               <td align="left" valign="middle">
-              	<%= f.submit "更新个人信息" %>
+                <%= link_to "我要修改上述信息", edit_user_registration_path %>
+              	<%# f.submit "更新个人信息" %>
               </td>
               <td align="left">
               

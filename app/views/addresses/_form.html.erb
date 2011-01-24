@@ -41,16 +41,16 @@
 			<td width="84%" bgcolor="#FFFFFF"><input type="text" name="address[name]" value="<%= @address.name %>" /></td>
 		</tr>
 		<tr>
-        	<td bgcolor="#EBEBEB">省/直辖市:</td>
+        	<td bgcolor="#EBEBEB">选择省市区：</td>
 			<td bgcolor="#FFFFFF">
+				省/直辖市:
 				<% areas = Area.new.get_provinces %>
 				<select name="address[province]" id="province">
 					<option value=""></option>
 				    <% areas.each do |item| %>
-					    <option value="<%= item.province %>" <% if @address.province == item.province  %>
-														"selected='true'"
-														 <% end %>	
-						><%= item.province %></option>
+					    <option value="<%= item.province %>" <%- if (@address.province == item.province) %>selected='true'<% end -%>	>
+					      <%= item.province %>
+					    </option>
 				    <% end %>
 				</select>
 				市:
@@ -68,7 +68,7 @@
 			</td>
 		</tr>
 		<tr>
-        	<td bgcolor="#EBEBEB">地址:</td>
+        	<td bgcolor="#EBEBEB">详细地址:</td>
 			<td bgcolor="#FFFFFF"><input type="text" id="address" name="address[detail]" value="<%= @address.detail %>" /></td>
 		</tr>
 		<tr>
