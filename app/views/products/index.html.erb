@@ -18,10 +18,10 @@
                         <li>
                             <span class="searchon">不限</span>
                         </li>
-						<% types = ProductAttribute.all(:select => "distinct(value)", :conditions => "short = 'type'") %>
+						<% types = ProductAttributeValue.where(:short => :type) %>
 						<% types.each do |type|%>
 						<li>
-							<a class="searchoff" href="<%= search_path type.value %>"> <%= type.value %></a>
+							<a class="searchoff" href="<%= search_path type.value, type.sort %>"> <%= type.value %></a>
 						</li>
 						<% end %>
                     </ul>
@@ -34,10 +34,10 @@
                         <li>
                             <span class="searchon">不限</span>
                         </li>
-						<% prices = ProductAttribute.all(:select => "distinct(value)", :conditions => "short = 'price'") %>
+						<% prices = ProductAttributeValue.where(:short => :price) %>
 						<% prices.each do |price|%>
 						<li>
-							<a class="searchoff" href="<%= search_path price.value %>"> <%= price.value %></a>
+							<a class="searchoff" href="<%= search_path price.value, price.sort %>"> <%= price.value %></a>
 						</li>
 						<% end %>
                     </ul>
@@ -50,10 +50,10 @@
                         <li style="margin-right:15px;">
                             <span class="searchon">不限</span>
                         </li>
-						<% countrys = ProductAttribute.all(:select => "distinct(value)", :conditions => "short = 'country'") %>
+						<% countrys = ProductAttributeValue.where(:short => :country) %>
 						<% countrys.each do |country|%>
 						<li>
-							<a class="searchoff" href="<%= search_path country.value %>"> <%= country.value %></a>
+							<a class="searchoff" href="<%= search_path country.value, country.sort %>"> <%= country.value %></a>
 						</li>
 						<% end %>
                     </ul>
@@ -68,10 +68,10 @@
                         <li>
                             <span class="searchon">不限</span>
                         </li>
-						<% grapes = ProductAttribute.all(:select => "distinct(value)", :conditions => "short = 'grape'") %>
+						<% grapes = ProductAttributeValue.where(:short => :grape) %>
 						<% grapes.each do |grape|%>
 						<li>
-							<a class="searchoff" href="<%= search_path grape.value %>"> <%= grape.value %></a>
+							<a class="searchoff" href="<%= search_path grape.value, grape.sort %>"> <%= grape.value %></a>
 						</li>
 						<% end %>
                     </ul>

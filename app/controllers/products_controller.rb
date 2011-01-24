@@ -150,9 +150,9 @@ class ProductsController < ApplicationController
     returns = '('
     a.each_with_index do |item , i|
       if i == 0
-        returns += "'#{item}'"
+        returns += "#{item}"
       else
-        returns += ",'#{item}'"
+        returns += ",#{item}"
       end
     end
     returns += ')'
@@ -160,11 +160,11 @@ class ProductsController < ApplicationController
   
   def join_for_where
     returns = ''
-    params[:tags].split(';').each_with_index do |item,i|
+    params[:tags].split('-').each_with_index do |item,i|
       if i == 0
-        returns += "value in #{join_for_in(item.split(','))}"
+        returns += "product_attribute_value_id in #{join_for_in(item.split(','))}"
       else
-        returns += " and value in #{join_for_in(item.split(','))}"
+        returns += " and product_attribute_value_id in #{join_for_in(item.split(','))}"
       end
     end
     returns
