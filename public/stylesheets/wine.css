@@ -1,10 +1,12 @@
 @charset "utf-8";
-.listsearch { width:765px; border:1px #CCCCCC solid; margin:0 auto; margin-bottom:10px; background-image:url(http://img02.yesmywine.com/winelist/titbg0.gif); height:auto; overflow:auto; padding-top:10px;}
-.listsearch .title { height:26px; padding-left:5px; float:left; width:100px; text-align:left; font-weight:bold; margin-top:4px;}
-.listsearch .main { height:25px; width:660px; float:left; text-align:left;margin-top:5px;}
-.listsearch .main ul li { float:left; margin-right:15px; padding:0;height:25px;}
-.listsearch .main2 { height:25px; width:660px; float:left; text-align:left;margin-top:5px;}
+.listsearch { width:998px; border:1px #CCCCCC solid; margin:0 auto; margin-bottom:10px; background-image:url(http://img02.yesmywine.com/winelist/titbg0.gif); height:auto; overflow:auto; padding-top:10px;}
+.listsearch .title { height:25px; padding-left:5px; float:left; width:100px; text-align:left; font-weight:bold; margin-top:4px;}
+.listsearch .main { height:25px; width: 890px; float:left; text-align:left; margin-top:5px;}
+.listsearch .main ul li { float:left; margin-right:15px; padding:0; height:25px;}
+.listsearch .main2 { height:25px; float:left; text-align:left; margin-top:5px;}
 .listsearch .main2 ul li { float:left; margin-right:3px; padding:0; height:25px;}
+.listsearch .main4 { clear:both; margin:0; line-height:150%; float:left; background-color:#EBEBEB; text-align:left;}
+.listsearch .r1 .title2 {height:25px; padding-left:10px; background-image:url(http://img02.yesmywine.com/winelist/titbg2.gif);text-align:left; font-weight:bold; padding-top:6px; margin-bottom:5px; margin-top:8px}
 
 .turnon{ background:url(http://img02.yesmywine.com/winelist/liturnon.gif) center bottom;}
 
@@ -15,14 +17,10 @@
 #infodetail2 table { margin-bottom:10px}
 
 
-
-
-.listsearch .main4 { clear:both; padding:5px 5px 3px 5px; margin-left:105px; line-height:150%; background-color:#EBEBEB; margin-bottom:5px; float:left; text-align:left;width:630px; display:inline;}
 .crumb { clear:both; height:25px; margin:0px auto;width:1000px;margin-top:13px; text-align:left}
-.listsearch .r1 .title2 {height:25px; padding-left:10px; background-image:url(http://img02.yesmywine.com/winelist/titbg2.gif);text-align:left; font-weight:bold; padding-top:6px; margin-bottom:5px; margin-top:8px}
 .searchon { background-color:#A62021; padding:3px 5px 1px 5px; width:auto}
 a.searchon{ color:#FFFFFF;}
-.searchoff { background-color:#fff; padding:3px 5px 1px 5px; width:auto}
+.searchoff { background-color:#fff; padding:3px 5px 1px 5px; width:auto; border: 1px #CCC solid;}
 a.searchoff{ color:#393939;}
 .searchform1 { width:45px;}
 a:hover{

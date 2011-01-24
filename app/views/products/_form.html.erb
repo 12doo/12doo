@@ -5,7 +5,7 @@
 tinyMCE.init({
 // General options
 mode : "textareas",
-language : "zh",
+language : "zh-cn",
 theme : "advanced",
 plugins : "safari,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
 // Theme options
@@ -26,7 +26,7 @@ external_image_list_url : "js/image_list.js",
 media_external_list_url : "js/media_list.js",
 // Replace values for the template plugin
 template_replace_values : {
-username : "Some User",
+username : "<%= current_user.email %>",
 staffid : "991234"
 }
 });

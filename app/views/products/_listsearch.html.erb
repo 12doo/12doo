@@ -1,0 +1,21 @@
+<div class="listsearch">
+	<% defines = ProductAttributeDefine.where(:search => true).order("sort asc") %>
+  <% defines.each do |define| %>
+    <div class="title">
+        <img src="/images/icon_<%= define.short %>.gif" align="absbottom">&nbsp;<%= define.name %>：
+    </div>
+    <div class="main">
+      <ul id="<%= define.short %>">
+        <li>
+          <a class="<%= checked?(0, define.sort) ? 'searchon' : 'searchoff' %>" href="<%= search_path 0, define.sort %>"> 不限</a>
+        </li>
+        <% values = ProductAttributeValue.where(:short => define.short) %>
+        <% values.each do |value|%>
+          <li>
+            <a class="<%= checked?(value.id, define.sort) ? 'searchon' : 'searchoff' %>" href="<%= search_path value.id, define.sort %>"> <%= value.value %></a>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+</div>
