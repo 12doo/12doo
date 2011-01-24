@@ -130,11 +130,13 @@ ActiveRecord::Schema.define(:version => 20110123034629) do
     t.datetime "updated_at"
     t.boolean  "multiple",    :default => false
     t.integer  "sort",        :default => 0
+    t.boolean  "search",      :default => false
   end
 
   create_table "product_attribute_values", :force => true do |t|
     t.string   "name"
     t.string   "short"
+    t.integer  "sort"
     t.string   "value"
     t.datetime "created_at"
     t.datetime "updated_at"
