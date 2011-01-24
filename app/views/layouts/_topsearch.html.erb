@@ -1,20 +1,15 @@
 <div class="searchbox">
     <input type="text" id="keywordTop" value="<%= params[:keywords] %>" class="tsi" />
-    <a href="javascript:window.location.href = '/category/<%= params[:tags] %>/' + $('#keywordTop').val();">
+    <a href="javascript:window.location.href = '<%= search_path_without_keywords %>' + $('#keywordTop').val();">
       <img src="/images/searchmenu.gif" align="absmiddle" border="0" />
     </a>
 </div>
 <div class="hotbox">
-  <a class="snf1" href="">波尔多</a>
-  <a class="snf1" href="">智利</a>
-  <a class="snf1" href="">赤霞珠</a>
-  <a class="snf1" href="">设拉子</a>
-  <a class="snf1" href="">翠岭</a>
-  <a class="snf1" href="">木桐</a>
-  <a class="snf1" href="">圣泉</a>
+  <a class="snf1" href="<%= search_path_without_keywords %>波尔多">波尔多</a>
+  <a class="snf1" href="<%= search_path_without_keywords %>智利">智利</a>
+  <a class="snf1" href="<%= search_path_without_keywords %>赤霞朱">赤霞珠</a>
+  <a class="snf1" href="<%= search_path_without_keywords %>设拉子">设拉子</a>
+  <a class="snf1" href="<%= search_path_without_keywords %>翠岭">翠岭</a>
+  <a class="snf1" href="<%= search_path_without_keywords %>木桐">木桐</a>
+  <a class="snf1" href="<%= search_path_without_keywords %>圣泉">圣泉</a>
 </div>
-<!--
-<div class="snapping_up1">
-  <a href="#">距抢购活动<span id="startEnd">结束</span>时间</a>: <b><span id="timeDay">0</span></b>天<b><span id="timeHour">5</span></b>时<b><span id="timeMin">45</span></b>分<b><span id="timeSec">25</span></b>秒
-</div>
--->

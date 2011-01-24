@@ -1,26 +1,17 @@
 <ul>
     <li>
-        <a onmouseover="showDivList('Subto1')" onmouseout="hideDivList('Subto1')" class="snf0">买酒荐酒<img src="/images/ico4.gif" border="0" align="absmiddle"></a>
+        <a herf="#" onmouseover="showDivList('Subto1')" onmouseout="hideDivList('Subto1')" class="snf0">推荐产品<img src="/images/ico4.gif" border="0" align="absmiddle"></a>
         <div id="Subto1" onmouseover="showDivList('Subto1')" onmouseout="hideDivList('Subto1')">
             <div class="Subtobox">
                 <div class="r1">
-                    <a href="" class="snf2">买酒荐酒<img src="/images/ico5.gif" align="absmiddle"></a>
+                    <a href="#" class="snf2">推荐产品<img src="/images/ico5.gif" align="absmiddle"></a>
                 </div>
-                <div class="r2" style="border:0">
-                    <a href="" class="snf1"><img src="/images/ico7.gif" align="absmiddle">红葡萄酒</a>
-                </div>
+				<% values = ProductAttributeValue.where(:short => :type) %>
+				<% values.each do |value|%>
                 <div class="r2">
-                    <a href="" class="snf1"><img src="/images/ico7.gif" align="absmiddle">白葡萄酒</a>
+                    <a href="<%= search_path_init value.id, 7 %>" class="snf1"><img src="/images/ico7.gif" align="absmiddle"><%= value.value %></a>
                 </div>
-                <div class="r2">
-                    <a href="" class="snf1"><img src="/images/ico7.gif" align="absmiddle">桃红葡萄酒</a>
-                </div>
-                <div class="r2">
-                    <a href="" class="snf1"><img src="/images/ico7.gif" align="absmiddle">起泡酒</a>
-                </div>
-                <div class="r2">
-                    <a href="" class="snf1"><img src="/images/ico7.gif" align="absmiddle">其他</a>
-                </div>
+				<% end %>
             </div>
         </div>
     </li>
@@ -31,45 +22,31 @@
                 <div class="r1 snf2">
                     <a href="" class="snf2">礼酒专区<img src="/images/ico5.gif" align="absmiddle"></a>
                 </div>
-                <div class="r2" style="border:0;">
-                    <a href="" class="snf1"><img src="/images/ico7.gif" align="absmiddle">150元以下</a>
-                </div>
+				<% values = ProductAttributeValue.where(:short => :price) %>
+				<% values.each do |value|%>
                 <div class="r2">
-                    <a href="" class="snf1"><img src="/images/ico7.gif" align="absmiddle">150-300元</a>
+                    <a href="<%= search_path_init value.id, 8 %>" class="snf1"><img src="/images/ico7.gif" align="absmiddle"><%= value.value %></a>
                 </div>
-                <div class="r2">
-                    <a href="" class="snf1"><img src="/images/ico7.gif" align="absmiddle">300-500元</a>
-                </div>
-                <div class="r2">
-                    <a href="" class="snf1"><img src="/images/ico7.gif" align="absmiddle">500元以上</a>
-                </div>
+				<% end %>
             </div>
         </div>
     </li>
-    <!--
     <li>
-        <a onmouseover="showDivList('Subto3')" onmouseout="hideDivList('Subto3')" class="snf0">酒具专区<img src="/images/ico4.gif" border="0" align="absmiddle"></a>
+        <a onmouseover="showDivList('Subto3')" onmouseout="hideDivList('Subto3')" class="snf0">不同产区<img src="/images/ico4.gif" border="0" align="absmiddle"></a>
         <div id="Subto3" onmouseover="showDivList('Subto3')" onmouseout="hideDivList('Subto3')">
             <div class="Subtobox">
                 <div class="r1 snf2">
-                    <a href="" class="snf2">酒具专区<img src="/images/ico5.gif" align="absmiddle"></a>
+                    <a href="" class="snf2">不同产区<img src="/images/ico5.gif" align="absmiddle"></a>
                 </div>
-                <div class="r2" style="border:0;">
-                    <a href="" class="snf1"><img src="/images/ico7.gif" align="absmiddle">酒柜</a>
-                </div>
+				<% values = ProductAttributeValue.where(:short => :country) %>
+				<% values.each do |value|%>
                 <div class="r2">
-                    <a href="" class="snf1"><img src="/images/ico7.gif" align="absmiddle">酒鼻子</a>
+                    <a href="<%= search_path_init value.id, 5 %>" class="snf1"><img src="/images/ico7.gif" align="absmiddle"><%= value.value %></a>
                 </div>
-                <div class="r2">
-                    <a href="" class="snf1"><img src="/images/ico7.gif" align="absmiddle">酒杯</a>
-                </div>
-                <div class="r2">
-                    <a href="" class="snf1"><img src="/images/ico7.gif" align="absmiddle">礼盒</a>
-                </div>
+				<% end %>
             </div>
         </div>
     </li>
-    -->
     <li>
         <a onmouseover="showDivList('Subto4')" onmouseout="hideDivList('Subto4')" class="snf0">场合选酒<img src="/images/ico4.gif" border="0" align="absmiddle"></a>
         <div id="Subto4" onmouseover="showDivList('Subto4')" onmouseout="hideDivList('Subto4')">
@@ -77,37 +54,17 @@
                 <div class="r1 snf2">
                     <a href="" class="snf2">场合选酒<img src="/images/ico5.gif" align="absmiddle"></a>
                 </div>
-                <div class="r2" style="border:0;">
-                    <a href="" class="snf1"><img src="/images/ico7.gif" align="absmiddle">聚会用</a>
-                </div>
+				<% values = ProductAttributeValue.where(:short => :use_for) %>
+				<% values.each do |value|%>
                 <div class="r2">
-                    <a href="" class="snf1"><img src="/images/ico7.gif" align="absmiddle">约会用</a>
+                    <a href="<%= search_path_init value.id, 9 %>" class="snf1"><img src="/images/ico7.gif" align="absmiddle"><%= value.value %></a>
                 </div>
-                <div class="r2">
-                    <a href="" class="snf1"><img src="/images/ico7.gif" align="absmiddle">自饮用</a>
-                </div>
-                <div class="r2">
-                    <a href="" class="snf1"><img src="/images/ico7.gif" align="absmiddle">商务用</a>
-                </div>
-                <div class="r2">
-                    <a href="" class="snf1"><img src="/images/ico7.gif" align="absmiddle">婚宴用</a>
-                </div>
-                <div class="r2">
-                    <a href="" class="snf1"><img src="/images/ico7.gif" align="absmiddle">收藏用</a>
-                </div>
-                <div class="r2">
-                    <a href="" class="snf1"><img src="/images/ico7.gif" align="absmiddle">送礼用</a>
-                </div>
+				<% end %>
             </div>
         </div>
     </li>
-    <!--
-    <li style="width:90px;">
-        <a class="snf0" href="">品酒会</a>
-    </li>
-    -->
     <li style="width:100px;">
-        <a class="snf0" href="">红酒生活</a>
+        <a class="snf0" href="#">葡萄酒知识</a>
     </li>
 
 </ul>

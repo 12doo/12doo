@@ -10,27 +10,73 @@
     <div class="listwine">
         <div class="left">
             <div class="listsearch">
-            	<% defines = ProductAttributeDefine.where(:search => true).order("sort asc") %>
-				<% defines.each do |define| %>
                 <div class="title">
-                    <img src="/images/icon_<%= define.short %>.gif" align="absbottom">&nbsp;<%= define.name %>：
+                    <img src="/images/icon_type %>.gif" align="absbottom">&nbsp;种类：
                 </div>
                 <div class="main">
-                    <ul id="<%= define.short %>">
+                    <ul id="type">
                         <li>
-                            <a class="<%= checked?(0, define.sort) ? 'searchoff' : 'searchon' %>" href="<%= search_path 0, define.sort %>"> 不限</a>
+                            <a class="<%= checked?(0, 7) ? 'searchoff' : 'searchon' %>" href="<%= search_path 0, 7 %>"> 不限</a>
                         </li>
-						<% values = ProductAttributeValue.where(:short => define.short) %>
+						<% values = ProductAttributeValue.where(:short => :type) %>
 						<% values.each do |value|%>
 						<li>
-							<a class="<%= checked?(value.id, define.sort) ? 'searchoff' : 'searchon' %>" href="<%= search_path value.id, define.sort %>"> <%= value.value %></a>
+							<a class="<%= checked?(value.id, 7) ? 'searchoff' : 'searchon' %>" href="<%= search_path value.id, 7 %>"> <%= value.value %></a>
 						</li>
 						<% end %>
                     </ul>
                 </div>
-				<% end %>
+                <div class="title">
+                    <img src="/images/icon_price %>.gif" align="absbottom">&nbsp;价格范围：
+                </div>
+                <div class="main">
+                    <ul id="price">
+                        <li>
+                            <a class="<%= checked?(0, 8) ? 'searchoff' : 'searchon' %>" href="<%= search_path 0, 8 %>"> 不限</a>
+                        </li>
+						<% values = ProductAttributeValue.where(:short => :price) %>
+						<% values.each do |value|%>
+						<li>
+							<a class="<%= checked?(value.id, 8) ? 'searchoff' : 'searchon' %>" href="<%= search_path value.id, 8 %>"> <%= value.value %></a>
+						</li>
+						<% end %>
+                    </ul>
+                </div>
+                <div class="title">
+                    <img src="/images/icon_country %>.gif" align="absbottom">&nbsp;产地：
+                </div>
+                <div class="main">
+                    <ul id="country">
+                        <li>
+                            <a class="<%= checked?(0, 5) ? 'searchoff' : 'searchon' %>" href="<%= search_path 0, 5 %>"> 不限</a>
+                        </li>
+						<% values = ProductAttributeValue.where(:short => :country) %>
+						<% values.each do |value|%>
+						<li>
+							<a class="<%= checked?(value.id, 5) ? 'searchoff' : 'searchon' %>" href="<%= search_path value.id, 5 %>"> <%= value.value %></a>
+						</li>
+						<% end %>
+                    </ul>
+                </div>
+                <div class="title">
+                    <img src="/images/icon_grape %>.gif" align="absbottom">&nbsp;葡萄品种：
+                </div>
+                <div class="main">
+                    <ul id="grape">
+                        <li>
+                            <a class="<%= checked?(0, 0) ? 'searchoff' : 'searchon' %>" href="<%= search_path 0, 0 %>"> 不限</a>
+                        </li>
+						<% values = ProductAttributeValue.where(:short => :grape) %>
+						<% values.each do |value|%>
+						<li>
+							<a class="<%= checked?(value.id, 0) ? 'searchoff' : 'searchon' %>" href="<%= search_path value.id, 0 %>"> <%= value.value %></a>
+						</li>
+						<% end %>
+                    </ul>
+                </div>
             </div>
             <div class="searchbar">
+            	<%= will_paginate @products %>
                 共&nbsp;&nbsp;<a class="snf3"><span id="goodsTotalNu">250</span></a>&nbsp;&nbsp;件商品  您搜索的条件：<span id="allSeach"></span>
             </div>
             <div class="pailie">
@@ -41,7 +87,12 @@
                                 显示方式：
                             </td>
                             <td width="42" align="left" valign="middle">
-                                <a href="javascript:goodsList.chooseDataSortShow(1);"><img id="chooseDataSortShow1" src="/images/ico7a.gif"></a><a href="javascript:goodsList.chooseDataSortShow(0);"><img id="chooseDataSortShow0" src="/images/ico8b.gif" border="0"></a>
+                                <a href="">
+                                	<img id="chooseDataSortShow1" src="/images/ico7a.gif">
+								</a>
+								<a href="">
+									<img id="chooseDataSortShow0" src="/images/ico8b.gif" border="0">
+								</a>
                             </td>
                             <td width="40" align="left" valign="middle">
                                 排序：
@@ -59,7 +110,12 @@
                                 </select>
                             </td>
                             <td width="101" align="left" valign="middle">
-                                <a href="javascript:goodsList.chooseSort('price_asc');"><img id="priceOrderImg" src="/images/ico9b.gif" alt="按价格从低到高排序" border="0"></a><a href="javascript:goodsList.chooseSort('commentNum_desc');"><img id="renqiOrderImg" src="/images/ico10b.gif" alt="按人气从高到低排序" border="0"></a>
+                                <a href="javascript:goodsList.chooseSort('price_asc');">
+                                	<img id="priceOrderImg" src="/images/ico9b.gif" alt="按价格从低到高排序" border="0">
+								</a>
+								<a href="javascript:goodsList.chooseSort('commentNum_desc');">
+									<img id="renqiOrderImg" src="/images/ico10b.gif" alt="按人气从高到低排序" border="0">
+								</a>
                             </td>
                         </tr>
                     </tbody>
