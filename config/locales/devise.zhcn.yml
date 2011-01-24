@@ -23,7 +23,7 @@ zhcn:
     confirmations:
       send_instructions: '您将收到激活帐号邮件'
       confirmed: '您的帐号已经激活，请登录'
-      submit_button: 'Resend confirmation instructions'
+      submit_button: '重新发送确认激活帐号邮件'
     registrations:
       signed_up: '注册成功，您将收到确认邮件'
       updated: '帐号资料已更新'
