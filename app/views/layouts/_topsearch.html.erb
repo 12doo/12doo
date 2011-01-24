@@ -1,6 +1,6 @@
 <div class="searchbox">
-    <input type="text" id="keywordTop" value="<%= params[:keywords] %>" class="tsi" />
-    <a href="javascript:window.location.href = '<%= search_path_without_keywords %>' + $('#keywordTop').val();">
+    <input type="text" id="keywordTop" onkeydown="javascript:if(event.keyCode == 13){window.location.href = '<%= search_path_without_keywords %>' + $('#keywordTop').val();}"  value="<%= params[:keywords] %>" class="tsi" />
+    <a id="searchButton" href="javascript:window.location.href = '<%= search_path_without_keywords %>' + $('#keywordTop').val();">
       <img src="/images/searchmenu.gif" align="absmiddle" border="0" />
     </a>
 </div>
