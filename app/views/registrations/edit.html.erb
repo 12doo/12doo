@@ -1,7 +1,4 @@
-<div class="crumb">
-    <img src="/images/ico9.gif" align="absbottom"><a class="snf3" href="/">首页</a>
-    ＞<a href="#" class="snf1">更新帐号信息</a>
-</div>
+<%= render 'my/crumb' %>
 <%= render 'devise/userside' %>
 
 <div class="all_content">
@@ -50,9 +47,9 @@
                 <%= f.label :gender %>：
               </td>
               <td align="left" valign="middle">
-              	<%= f.radio_button :gender, 'male' %><%= label_tag(:gender_male, "男") %>
-                <%= f.radio_button :gender, 'female' %><%= label_tag(:gender_female, "女") %>
-                <%= f.radio_button :gender, 'NA' %><%= label_tag(:gender_NA, "保密") %>
+              	<%= f.radio_button :gender, '男' %><%= label_tag(:gender_male, "男") %>
+                <%= f.radio_button :gender, '女' %><%= label_tag(:gender_female, "女") %>
+                <%= f.radio_button :gender, '保密' %><%= label_tag(:gender_NA, "保密") %>
               </td>
               <td align="left">
               

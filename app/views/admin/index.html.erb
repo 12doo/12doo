@@ -1,8 +1,4 @@
-<div class="crumb">
-    <a href="/">首页</a>
-    &gt;<span id="dangqian1">管理后台</span>
-    &gt;<span style="color: rgb(151, 0, 5);" id="dangqian"></span>
-</div>
+<%= render 'admin/crumb' %>
 <%= render 'devise/userside' %>
 <div class="all_content">
     <div class="myinfo">
@@ -11,10 +7,10 @@
                 <img src="/images/phogoface.jpg" width="130" height="130">
             </dt>
             <dd>
-                <span></span>您好！欢迎光临也买酒
+                <span></span>您好！欢迎光临12doo
             </dd>
             <dd>
-                上次登录时间：<span id="lastLoginTime">2011-01-22 14:10:41</span>
+                上次登录时间：<span id="lastLoginTime"><%= current_user.last_sign_in_at %></span>
             </dd>
             <dd>
                 会员级别：

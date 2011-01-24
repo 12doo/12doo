@@ -30,6 +30,6 @@ class User < ActiveRecord::Base
   
 protected
   def password_required?
-    !persisted? || password.present? || password_confirmation.present?
+    new_record?
   end
 end

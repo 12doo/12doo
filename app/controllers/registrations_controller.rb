@@ -1,6 +1,6 @@
-class Devise::RegistrationsController < ApplicationController
+class RegistrationsController < ApplicationController
   prepend_before_filter :require_no_authentication, :only => [ :new, :create ]
-  prepend_before_filter :authenticate_scope!, :only => [:info :edit, :update, :destroy]
+  prepend_before_filter :authenticate_scope!, :only => [:edit, :update, :destroy]
   include Devise::Controllers::InternalHelpers
 
   # GET /resource/sign_up
@@ -29,7 +29,11 @@ class Devise::RegistrationsController < ApplicationController
 
   # PUT /resource
   def update
-    if resource.update_with_password(params[resource_name])
+    # czhang changed code on 2011-1-24 to allow user edit their profile info without providing password
+    # by following https://github.com/plataformatec/devise/wiki/How-To:-Allow-users-to-edit-their-account-without-providing-a-password
+    # instructions "an alternate strategy".  When necessary, can change the code "if resource.update_attributes"  
+    # back to "if resource.update_with_password(params[resource_name])" to enable password protection again.  
+    if resource.update_attributes(params[resource_name])
       set_flash_message :notice, :updated
       redirect_to after_update_path_for(resource)
     else
@@ -54,9 +58,8 @@ class Devise::RegistrationsController < ApplicationController
       send(:"authenticate_#{resource_name}!")
       self.resource = resource_class.find(send(:"current_#{resource_name}").id)
     end
-    
+        
     def after_update_path_for(resource)
-      # You can put whatever path you want here
-      my_path
-    end
+      my_info_path # You can put whatever path you want here
+    end    
 end
