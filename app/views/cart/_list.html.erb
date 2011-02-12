@@ -1,0 +1,24 @@
+<table>
+	<tr>
+		<td>产品</td>
+		<td>单价</td>
+		<td>数量</td>
+		<td>小计</td>
+		<td></td>
+	</tr>
+	<% @cart.items.each do |item| %>
+	<tr>
+		<td><%= item.name %></td>
+		<td><%= item.product.price %></td>
+		<td>
+			<%= form_tag ({:action=>'update_product', :id=>item.product.id}, :name=>'update_product_form_' + item.product.id.to_s) do %>
+			<input type="text" value="<%= item.quantity %>" onchange="javascript:document.update_product_form_<%= item.product.id.to_s %>.submit();" name="quantity" />
+			<% end %>
+		</td>
+		<td><%= item.subtotal %></td>
+		<td><%= button_to "删除", :action=>'delete_product', :id=>item.product.id %></td>
+	</tr>
+	<% end %>
+</table>
+
+合计:<%= @cart.total %>
