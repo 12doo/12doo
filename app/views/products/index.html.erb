@@ -12,8 +12,9 @@
     <div class="listwine">
         <div class="left">
             <%= render 'products/listsearch' %>         
-            <div class="searchbar">           	
-                找到 &nbsp;&nbsp;<a class="snf3"><span id="goodsTotalNu">18</span></a>&nbsp;&nbsp;件商品符合您的选择条件<span id="allSeach"></span>
+            <div class="searchbar">
+            	<%= page_entries_info @products %>
+                找到 &nbsp;&nbsp;<a class="snf3"><span id="goodsTotalNu"><%= @products.count %></span></a>&nbsp;&nbsp;件商品符合您的选择条件<span id="allSeach"></span>
             </div>
             
             <!-- 以下是修改列表方式和分页标签，上半部分 -->
@@ -64,12 +65,12 @@
                     <div class="page" id="pageInfo1">
                         <a href="#">«上一页</a>
                         <a href="/images/列表.html" class="pagenowon">1</a>
-                        <a href="http://www.yesmywine.com/goods/-1_-1_-1_-1_-1_-1_-1_-1_-1_-1_%E8%AE%BE%E6%8B%89%E5%AD%90_2_1.html">2</a>
-                        <a href="http://www.yesmywine.com/goods/-1_-1_-1_-1_-1_-1_-1_-1_-1_-1_%E8%AE%BE%E6%8B%89%E5%AD%90_3_1.html">3</a>
-                        <a href="http://www.yesmywine.com/goods/-1_-1_-1_-1_-1_-1_-1_-1_-1_-1_%E8%AE%BE%E6%8B%89%E5%AD%90_4_1.html">4</a>
+                        <a href="">2</a>
+                        <a href="">3</a>
+                        <a href="">4</a>
                         <span class="page_on">...</span>
-                        <a href="http://www.yesmywine.com/goods/-1_-1_-1_-1_-1_-1_-1_-1_-1_-1_%E8%AE%BE%E6%8B%89%E5%AD%90_32_1.html">32</a>
-                        <a href="http://www.yesmywine.com/goods/-1_-1_-1_-1_-1_-1_-1_-1_-1_-1_%E8%AE%BE%E6%8B%89%E5%AD%90_2_1.html">下一页»</a>
+                        <a href="">32</a>
+                        <a href="">下一页»</a>
                         <input type="text" value="1" size="3" maxlength="3" id="pageNum1" style="float:left;width:22px; margin-right:5px;"><img src="/images/searchList_19.jpg" onmousedown="turnPage(32,&#39;-1_-1_-1_-1_-1_-1_-1_-1_-1_-1_%E8%AE%BE%E6%8B%89%E5%AD%90_&#39;,&#39;_1&#39;,&#39;1&#39;)">
                     </div>
                 </div>
