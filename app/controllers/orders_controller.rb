@@ -132,6 +132,7 @@ class OrdersController < ApplicationController
   end
   
   private
+  
   def find_cart
     session[:cart] ||= Cart.new
   end

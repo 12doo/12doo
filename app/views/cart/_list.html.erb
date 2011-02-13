@@ -6,7 +6,8 @@
 		<td>小计</td>
 		<td></td>
 	</tr>
-	<% @cart.items.each do |item| %>
+	<% cart = find_cart %>
+	<% cart.items.each do |item| %>
 	<tr>
 		<td><%= item.name %></td>
 		<td><%= item.product.price %></td>
@@ -21,4 +22,4 @@
 	<% end %>
 </table>
 
-合计:<%= @cart.total %>
+合计:<%= cart.total %>

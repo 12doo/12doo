@@ -59,7 +59,7 @@
                                 <tbody>
                                     <tr>
                                         <td colspan="2" align="left" valign="top">
-                                            <a href="javascript:showCart();"><img src="/images/add_to_cart.gif" border="0"></a>
+                                            <a href="#" onclick="this.href='/cart/in_container?id=<%= @product.id %>&height=400&width=500&modal=true&quantity=' + $('#winenum').val()" class="thickbox"><img src="/images/add_to_cart.gif" border="0"></a>
                                             <div id="clickBox">
                                             </div>
                                         </td>

@@ -1,13 +1,4 @@
-<script type="text/javascript">
-	function showCart(){
-		$("#cart_container").show();
-	}
-	
-	function hideCart(){
-		$("#cart_container").hide();
-	}
-</script>
 <div id="cart_container" style="display:none;">
 <%= render 'cart/list' %>
-<button onclick="hideCart()">继续购物</button>
+<button onclick="tb_remove()">继续购物</button>
 </div>
