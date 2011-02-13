@@ -18,5 +18,5 @@
 
 合计:<%= format ("%.2f",cart.total == nil ? 0 : cart.total) %>
 
-<button onclick="tb_remove()">继续购物</button>
+<button onclick="document.location.reload()">继续购物</button>
 <button onclick="document.location.href='/orders/new'">结账</button>

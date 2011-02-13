@@ -43,6 +43,14 @@ class Cart
     total
   end
   
+  def quantity
+    quantity = 0
+    if @items != []
+      @items.each { |item| quantity += item.quantity }
+    end
+    quantity
+  end
+  
   def clear
     @items = []
   end
