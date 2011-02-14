@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110123034629) do
+ActiveRecord::Schema.define(:version => 20110214085532) do
 
   create_table "addresses", :force => true do |t|
     t.string   "detail"
@@ -131,6 +131,7 @@ ActiveRecord::Schema.define(:version => 20110123034629) do
     t.boolean  "multiple",    :default => false
     t.integer  "sort",        :default => 0
     t.boolean  "search",      :default => false
+    t.boolean  "fix",         :default => true
   end
 
   create_table "product_attribute_values", :force => true do |t|
@@ -152,6 +153,7 @@ ActiveRecord::Schema.define(:version => 20110123034629) do
     t.datetime "updated_at"
     t.integer  "product_attribute_value_id", :default => 0
     t.boolean  "multiple",                   :default => false
+    t.boolean  "fix",                        :default => true
   end
 
   create_table "product_statuses", :force => true do |t|

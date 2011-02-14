@@ -4,7 +4,6 @@ class ProductsController < ApplicationController
   before_filter :authorize_admin!, :except => [:index, :show]
   
   def index
-    @count = 0
     if (params[:tags] == nil) && (params[:keywords] == nil)
       @products = Product.paginate(:page => params[:page], :order => 'created_at desc', :conditions => "visiable = true")
     else
@@ -20,8 +19,6 @@ class ProductsController < ApplicationController
         # 如果都不为空
         sku = ProductAttribute.select("distinct(product_sku)").where(join_for_where).where("value like :keywords", :keywords => "%#{params[:keywords]}%")
       end
-      
-      @count = sku.count
       
       @products = Product.where(:sku => sku, :visiable => true).paginate(:page => params[:page], :order => 'created_at desc')
     end
@@ -42,8 +39,9 @@ class ProductsController < ApplicationController
 
     attributeDef.each do |x|
       temp = ProductAttribute.new
-      temp.name   = x.name
+      temp.name = x.name
       temp.short = x.short
+      temp.fix = x.fix
       temp.description = x.description
       @product.product_attributes << temp
     end

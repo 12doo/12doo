@@ -48,5 +48,14 @@ staffid : "991234"
 <% @product.product_attributes.each do |attribute| %>
 	<%= attribute.name %>:
 	<input type="hidden" value="<%= attribute.name %>" name="product_attribute[][name]" />
+	<% if attribute.fix %>
+	<% allAttr = ProductAttributeValue.where(:short => attribute.short) %>
+	<% allAttr.each do |value| %>
+	<input type="checkbox" /><%= value.value %>
+	<% end %>
+	<br />
+	<% else %>
 	<input type="text" name="product_attribute[][value]" value="<%= attribute.value %>" /><br />
+	<% end %>
+	
 <% end %>

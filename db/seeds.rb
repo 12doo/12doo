@@ -3538,7 +3538,7 @@ ProductAttributeDefine.create(:name => '国家', :short => 'country',:sort => 5,
 ProductAttributeDefine.create(:name => '葡萄年份', :short => 'vintage',:sort => 6, :search => true, :description => '葡萄年份.')
 ProductAttributeDefine.create(:name => '种类', :short => 'type',:sort => 7, :search => true, :description => '种类,比如桃红酒,可以写多个.', :multiple => true)
 ProductAttributeDefine.create(:name => '价格区间', :short => 'price',:sort => 8, :search => true,:description => '价格区间.')
-ProductAttributeDefine.create(:name => '葡萄成分', :short => 'grape_content',:sort => 0, :search => false, :description => '葡萄成分,用百分比表示.')
+ProductAttributeDefine.create(:name => '葡萄成分', :short => 'grape_content',:sort => 0, :search => false, :description => '葡萄成分,用百分比表示.', :fix => false)
 ProductAttributeDefine.create(:name => '用途', :short => 'use_for',:sort => 9, :search => true, :description => '比如送礼之类的.', :multiple => true)
 
 ProductAttributeValue.create(:name => '葡萄品种', :short => 'grape', :value => '赤霞珠', :sort => 0)
