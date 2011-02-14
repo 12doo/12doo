@@ -45,13 +45,13 @@ staffid : "991234"
 已售数量:<input type="text" name="product[sold_count]" /><br />
 是否显示:<input type="checkbox" <%= @product.visiable ? "checked" : "" %> value="true" name="product[visiable]" /><br />
 <hr />
-<% @product.product_attributes.each do |attribute| %>
+<% @attributes.each do |attribute| %>
 	<%= attribute.name %>:
 	<input type="hidden" value="<%= attribute.name %>" name="product_attribute[][name]" />
 	<% if attribute.fix %>
 	<% allAttr = ProductAttributeValue.where(:short => attribute.short) %>
 	<% allAttr.each do |value| %>
-	<input type="checkbox" /><%= value.value %>
+	<input type="checkbox" name="product_attribute[][value]" <%= @product.has_attribute(attribute.short, value.value) ? "checked" : "" %> value="<%= value.value %>" /><%= value.value %>
 	<% end %>
 	<br />
 	<% else %>

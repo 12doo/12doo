@@ -35,16 +35,7 @@ class ProductsController < ApplicationController
     @product = Product.new
     @statuses = ProductStatus.all
     @years = (Time.now.year).downto(Time.now.year - 30).map{ |x| x }
-    attributeDef = ProductAttributeDefine.all
-
-    attributeDef.each do |x|
-      temp = ProductAttribute.new
-      temp.name = x.name
-      temp.short = x.short
-      temp.fix = x.fix
-      temp.description = x.description
-      @product.product_attributes << temp
-    end
+    @attributes = ProductAttributeDefine.all
   end
   
   def create
@@ -96,6 +87,7 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @statuses = ProductStatus.all
     @years = (Time.now.year).downto(Time.now.year - 30).map{ |x| x }
+    @attributes = ProductAttributeDefine.all
   end
 
   def update

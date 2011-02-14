@@ -6,4 +6,13 @@ class Product < ActiveRecord::Base
   has_many :product_tags, :foreign_key => "product_sku", :primary_key => "sku"
   cattr_reader :per_page
   @@per_page = 8
+  
+  def has_attribute(short,value)
+    self.product_attributes.each do | attr |
+      if attr.short == short && attr.value == value
+        return true
+      end
+    end
+    return false
+  end
 end
