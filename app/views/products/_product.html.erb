@@ -1,0 +1,49 @@
+<div class="<%= cycle('box1', 'box2', 'box3', 'boxlast') %>" >
+  <table height="85" cellspacing="0" cellpadding="0" border="0" align="center" width="178">
+      <tbody>
+          <tr>
+              <td valign="top" align="left" width="34">
+              </td>
+              <td align="left" width="110">
+                  <a href="/products/<%= product.id  %>">
+                  	<img height="180" border="0" width="110" src="/pics/<%= product.sku %>/<%= product.pic %>">
+              </a>
+              </td>
+              <td align="left" width="34">
+                  &nbsp;
+              </td>
+          </tr>
+          <tr>
+              <td height="21" align="left" colspan="3">
+              	<%= link_to product.cn_name, :action => :show, :controller => :products, :id => product.id %>
+              </td>
+          </tr>
+          <tr>
+              <td height="21" align="left" colspan="3">
+              	<%= link_to product.name, :action => :show, :controller => :products, :id => product.id %>
+              </td>
+          </tr>
+          <tr>
+              <td height="21" align="left" colspan="3">
+                  <span class="snf8 delline">市场价：<%= format ("%.2f",product.indication_price) %>元</span>
+              </td>
+          </tr>
+          <tr>
+              <td height="21" align="left" colspan="3">
+                  会员价：<span class="snf6"><%= format ("%.2f",product.price) %>元</span>
+              </td>
+          </tr>
+          <tr>
+              <td height="30" align="left" colspan="3">
+                  <a href="javascript:goodsDetail.showCartBox1('5');"><img border="0" src="/images/menu1(1).gif"></a>&nbsp;&nbsp;<a href="javascript:goodsDetail.addFavorite('5');"><img border="0" src="/images/menu2(1).gif"></a>
+              </td>
+          </tr>
+          <tr>
+              <td valign="middle" height="25" bgcolor="#f5f5f5" align="left" colspan="3">
+                  已销售<%= product.sold_count %>瓶
+              </td>
+          </tr>
+      </tbody>
+  </table>
+</div>
+

@@ -1,6 +1,7 @@
 div.pagination {
     padding: 0px;
-    margin: 0px;        
+    margin: 0px;
+    float: left;        
 }
 
 div.pagination a {
@@ -20,7 +21,7 @@ div.pagination span.current {
     padding: 2px 5px 2px 5px;
     margin: 2px;
     border: 1px solid #000099;
-    
+    float: left;
     font-weight: bold;
     background-color: #000099;
     color: #FFF;
@@ -29,7 +30,7 @@ div.pagination span.disabled {
     padding: 2px 5px 2px 5px;
     margin: 2px;
     border: 1px solid #EEE;
-
+    float: left;
     color: #DDD;
 }
 .pagination em{

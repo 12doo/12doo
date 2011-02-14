@@ -60,7 +60,11 @@ a:hover{
 .pailie {text-align:left; background-image:url(http://img02.yesmywine.com/winelist/titbg3.gif);border:1px solid #CCCCCC; height:31px; padding-top:6px; padding-left:10px; margin:0 auto; margin-bottom:10px;}
 
 .winebox { clear:both; width:765px;margin-bottom:10px;}
-.winebox .winebox1 { width:180px; height:320px; border:1px #F0F0F0 solid; margin-right:12px; float:left; margin-bottom:10px;}
+.winebox .winebox1 { width:180px; height:320px; border:1px #F0F0F0 solid; margin-right:11px; float:left; margin-bottom:10px;}
+.winebox .box1 { width:180px; height:320px; border:1px #F0F0F0 solid; margin-right:12px; float:left; margin-bottom:10px;}
+.winebox .box2 { width:180px; height:320px; border:1px #F0F0F0 solid; margin-right:12px; float:left; margin-bottom:10px;}
+.winebox .box3 { width:180px; height:320px; border:1px #F0F0F0 solid; margin-right:12px; float:left; margin-bottom:10px;}
+.winebox .boxlast { width:180px; height:320px; border:1px #F0F0F0 solid; margin-right:0; float:left; margin-bottom:10;}
 .winebox .winebox3 { width:180px; height:299px; border:1px #F0F0F0 solid; margin-right:12px; float:left; margin-bottom:10px;}
 .winebox .winebox2 { width:765px; height:190px; border:1px #F0F0F0 solid; }
 .winebox .winebox2 .wineinfo {}
