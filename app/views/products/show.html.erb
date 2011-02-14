@@ -1,7 +1,6 @@
 <div class="crumb">
-    <img src="/images/ico9.gif" align="absbottom"><a style="color: #383838;" href="#">首页</a>
-    ＞<a href="#" class="snf1">买酒荐酒</a>
-    ＞<a href="#" class="snf1">红葡萄酒</a>＞<span style="color: #970005;"><%= @product.cn_name %></span>
+  <img src="/images/ico9.gif" align="absbottom"><a style="color: #383838;" href="/">首页</a>
+  ＞<span style="color: #970005;"><%= @product.cn_name %></span>
 </div>
 <div class="showwine">
     <div class="left">
@@ -11,11 +10,12 @@
             <div style="position: absolute; left: 176px; top: 318px; z-index: 500; border: 0px none;">
             </div>
             <a href="/pics/<%= @product.sku %>/<%= @product.pic %>" class="jqzoom" style="outline-style: none; text-decoration: none; ">
-			<img src="/pics/<%= @product.sku %>/<%= @product.pic %>" style="border: 1px solid #ccc;">
+			          <img src="/pics/<%= @product.sku %>/<%= @product.pic %>" style="border: 1px solid #ccc;">
                 <div class="preload" style="visibility: hidden; ">
                     Loading zoom
                 </div>
-            </a></span>
+            </a>
+        </span>
         <div class="infowine">
             <div class="r1">
                 已经售出&nbsp;<span class="snf3" id="saleAmout"><%= @product.sold_count %></span>&nbsp;瓶  
@@ -34,7 +34,7 @@
                 </table>
             </div>
             <div class="r5">
-                会员价：<span class="snf17">￥<%= format ("%.2f", @product.price) %></span>
+                12doo价：<span class="snf17">￥<%= format ("%.2f", @product.price) %></span>
             </div>
             <div class="r5 snf8">
                 <span class="delline">市场价：￥<%= format ("%.2f", @product.indication_price) %></span>
@@ -87,9 +87,9 @@
             </div>
             <div class="singletxt">
             	<p>
-				<% @product.product_attributes.each do |attribute| %>
-					<strong><%= attribute.name %>:</strong><%= attribute.value %><br />
-				<% end %>
+				        <% @product.product_attributes.each do |attribute| %>
+					        <strong><%= attribute.name %>:</strong><%= attribute.value %><br />
+				        <% end %>
                 </p>
                 <div class="pro_txt">
                 <%= raw @product.memo %>
