@@ -62,13 +62,13 @@
                 </table>
                 <div id="pagebox2">
                     <div class="page" id="pageInfo1">
-                    	<%= will_paginate @products, :params => {:controller => "category", :action => nil } %>
+                    	<%= will_paginate @products, :params => {:controller => "category", :action => nil }, :inner_window => 1, :outer_window => 0 %>
                     </div>
                 </div>
             </div>
             <div class="winebox" id="winebox">
             	<% @products.each do |product| %>
-				          <div class="winebox1">
+				          <div class="winebox1"2
                     <table height="85" cellspacing="0" cellpadding="0" border="0" align="center" width="178">
                         <tbody>
                             <tr>
@@ -120,7 +120,8 @@
             </div>
             <div id="pagebox2" style="width:700px;">
                 <div class="page" id="pageInfo2">
-                	<%= will_paginate @products, :params => {:controller => "category", :action => nil } %></div>
+                	<%= will_paginate @products, :params => {:controller => "category", :action => nil }, :inner_window => 1, :outer_window => 0 %>
+                </div>
             </div>
         </div>
         
