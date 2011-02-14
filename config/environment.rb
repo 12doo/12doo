@@ -13,3 +13,7 @@ ActionView::Base.send(:include, ActiveMerchant::Billing::Integrations::ActionVie
 ActiveMerchant::Billing::Integrations::Alipay::KEY = "sauy54rkin9b5hu8t980syw7gb7c704m"
 ActiveMerchant::Billing::Integrations::Alipay::ACCOUNT = "2088002645810592"
 ActiveMerchant::Billing::Integrations::Alipay::EMAIL = "zacharyzhang@msn.com"
+
+#WillPaginate
+WillPaginate::ViewHelpers.pagination_options[:previous_label] = '«上一页'
+WillPaginate::ViewHelpers.pagination_options[:next_label] = '下一页»'
