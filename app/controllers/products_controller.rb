@@ -4,7 +4,6 @@ class ProductsController < ApplicationController
   before_filter :authorize_admin!, :except => [:index, :show]
   
   def index
-    @count = 0
     if (params[:tags] == nil) && (params[:keywords] == nil)
       @products = Product.paginate(:page => params[:page], :order => 'created_at desc', :conditions => "visiable = true")
     else
@@ -21,8 +20,6 @@ class ProductsController < ApplicationController
         sku = ProductAttribute.select("distinct(product_sku)").where(join_for_where).where("value like :keywords", :keywords => "%#{params[:keywords]}%")
       end
       
-      @count = sku.count
-      
       @products = Product.where(:sku => sku, :visiable => true).paginate(:page => params[:page], :order => 'created_at desc')
     end
   end
@@ -38,15 +35,7 @@ class ProductsController < ApplicationController
     @product = Product.new
     @statuses = ProductStatus.all
     @years = (Time.now.year).downto(Time.now.year - 30).map{ |x| x }
-    attributeDef = ProductAttributeDefine.all
-
-    attributeDef.each do |x|
-      temp = ProductAttribute.new
-      temp.name   = x.name
-      temp.short = x.short
-      temp.description = x.description
-      @product.product_attributes << temp
-    end
+    @attributes = ProductAttributeDefine.all
   end
   
   def create
@@ -98,6 +87,7 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @statuses = ProductStatus.all
     @years = (Time.now.year).downto(Time.now.year - 30).map{ |x| x }
+    @attributes = ProductAttributeDefine.all
   end
 
   def update
