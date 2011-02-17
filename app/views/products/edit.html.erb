@@ -1,4 +1,7 @@
+<%= form_tag '/products/update/' + @product.id.to_s do %>
 <%= render 'form' %>
-
+<input type="submit" value="保存" />
+<% end %>
+<%= link_to '删除', products_path %>
 <%= link_to '显示', @product %> |
 <%= link_to '返回', products_path %>
