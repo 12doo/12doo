@@ -4,8 +4,18 @@ class ProductsController < ApplicationController
   before_filter :authorize_admin!, :except => [:index, :show]
   
   def index
+    sort_by = "created_at"
+    sort = "desc"
+    if params[:sort] && params[:sort] == "0"
+      sort = "asc"
+    end
+    
+    if params[:sort_by]
+      sort_by = params[:sort_by]
+    end
+    
     if (params[:tags] == nil) && (params[:keywords] == nil)
-      @products = Product.paginate(:page => params[:page], :order => 'created_at desc', :conditions => "visiable = true")
+      @products = Product.paginate(:page => params[:page], :order => sort_by + ' ' + sort , :conditions => "visiable = true")
     else
       sku = []
       
@@ -25,7 +35,7 @@ class ProductsController < ApplicationController
         skus << item.product_sku
       end
       
-      @products = Product.where(:sku => skus, :visiable => true).paginate(:page => params[:page], :order => 'created_at desc')
+      @products = Product.where(:sku => skus, :visiable => true).paginate(:page => params[:page], :order => sort_by + ' ' + sort)
     end
   end
 
@@ -186,4 +196,5 @@ class ProductsController < ApplicationController
     end
     returns
   end
+  
 end

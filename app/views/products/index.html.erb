@@ -38,24 +38,13 @@
                             </td>
                             <td width="110" align="left" valign="middle">
                                 <!-- 这部分改为：价格，销量，两个排序按钮即可；默认为点击数从高到低 -->
-                                <select name="select" style="margin-bottom:4px;z-index=1;width:100px;" id="sortSelect" onchange="javascript:goodsList.sortSelectChange();">
-                                    <option selected="" value="-1">默认排序</option>
-                                    <option value="markNum_desc">评分由高到低</option>
-                                    <option value="clickNum_desc">点击数高到低</option>
-                                    <option value="price_asc">价格低到高</option>
-                                    <option value="price_desc">价格高到低</option>
-                                    <option value="commentNum_desc">评论数由多到少</option>
-                                    <option value="onLineTime_asc">上架时间由近到远</option>
-                                    <option value="saleNum_desc">销售数高到低</option>
+                                <select name="select" style="margin-bottom:4px;z-index=1;width:100px;" id="sortSelect" onchange="javascript:document.location.href = this.value;">
+                                    <option value="<%= search_path_without_sort %>">默认排序</option>
+                                    <option value="<%= search_path_with_sort("price",0) %>" <%= selected("price",0) ? "selected" : "" %>>价格由低到高</option>
+									<option value="<%= search_path_with_sort("price",1) %>" <%= selected("price",1) ? "selected" : "" %>>价格由高到低</option>
+                                    <option value="<%= search_path_with_sort("sold_count",0) %>" <%= selected("sold_count",0) ? "selected" : "" %>>销量由低到高</option>
+                                    <option value="<%= search_path_with_sort("sold_count",1) %>" <%= selected("sold_count",1) ? "selected" : "" %>>销量由高到低</option>
                                 </select>
-                            </td>
-                            <td width="101" align="left" valign="middle">
-                                <a href="javascript:goodsList.chooseSort('price_asc');">
-                                	<img id="priceOrderImg" src="/images/ico9b.gif" alt="按价格从低到高排序" border="0">
-								                </a>
-								                <a href="javascript:goodsList.chooseSort('commentNum_desc');">
-									                <img id="renqiOrderImg" src="/images/ico10b.gif" alt="按人气从高到低排序" border="0">
-								                </a>
                             </td>
                         </tr>
                     </tbody>

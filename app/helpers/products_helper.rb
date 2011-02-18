@@ -59,6 +59,22 @@ module ProductsHelper
     end
   end
   
+  def search_path_without_sort
+    search_path_without_keywords + "#{params[:keywords]}"
+  end
+  
+  def search_path_with_sort(sort_by, sort)
+    search_path_without_keywords + "#{params[:keywords]}?sort_by=#{sort_by}&sort=#{sort}"
+  end
+  
+  def selected(sort_by,sort)
+    if sort_by == params[:sort_by] && sort.to_s == params[:sort]
+      return true
+    else
+      return false
+    end
+  end
+  
   # 判断当前id是否选中
   def checked?(id ,sort)
     tags = []
