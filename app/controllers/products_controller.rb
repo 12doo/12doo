@@ -20,7 +20,12 @@ class ProductsController < ApplicationController
         sku = ProductAttribute.select("distinct(product_sku)").where(join_for_where).where("value like :keywords", :keywords => "%#{params[:keywords]}%")
       end
       
-      @products = Product.where(:sku => sku, :visiable => true).paginate(:page => params[:page], :order => 'created_at desc')
+      skus = []
+      sku.each do |item|
+        skus << item.product_sku
+      end
+      
+      @products = Product.where(:sku => skus, :visiable => true).paginate(:page => params[:page], :order => 'created_at desc')
     end
   end
 
@@ -45,25 +50,17 @@ class ProductsController < ApplicationController
       params[:product_attribute].each do |attri|
         if attri[:value] && attri[:value] != ''
           define = ProductAttributeDefine.find_by_name(attri[:name])
-          if define.multiple
-            attri[:value].split(",").each do |value|
-              temp = ProductAttribute.new
-              temp.short = define.short
-              temp.description = define.description
-              temp.name = attri[:name]
-              temp.value = value
-              temp.product_sku = @product.sku
-              temp.save
-            end
-          else
-              temp = ProductAttribute.new
-              temp.short = define.short
-              temp.description = define.description
-              temp.name = attri[:name]
-              temp.value = attri[:value]
-              temp.product_sku = @product.sku
-              temp.save
-          end
+          value = ProductAttributeValue.find(:first,:conditions => {:name => attri[:name],:value => attri[:value]})
+          temp = ProductAttribute.new
+          temp.short = define.short
+          temp.description = define.description
+          temp.product_attribute_value_id = value.id
+          temp.fix = define.fix
+          temp.multiple = define.multiple
+          temp.name = attri[:name]
+          temp.value = attri[:value]
+          temp.product_sku = @product.sku
+          temp.save
         end
       end
     end
@@ -99,9 +96,13 @@ class ProductsController < ApplicationController
       params[:product_attribute].each do |attri|
         if attri[:value] && attri[:value] != ''
           define = ProductAttributeDefine.find_by_name(attri[:name])
+          value = ProductAttributeValue.find(:first,:conditions => {:name => attri[:name],:value => attri[:value]})
           temp = ProductAttribute.new
           temp.short = define.short
           temp.description = define.description
+          temp.product_attribute_value_id = value.id
+          temp.fix = define.fix
+          temp.multiple = define.multiple
           temp.name = attri[:name]
           temp.value = attri[:value]
           temp.product_sku = @product.sku
