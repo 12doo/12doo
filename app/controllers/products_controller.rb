@@ -64,7 +64,10 @@ class ProductsController < ApplicationController
           temp = ProductAttribute.new
           temp.short = define.short
           temp.description = define.description
-          temp.product_attribute_value_id = value.id
+          if value
+            temp.product_attribute_value_id = value.id
+          end
+          
           temp.fix = define.fix
           temp.multiple = define.multiple
           temp.name = attri[:name]

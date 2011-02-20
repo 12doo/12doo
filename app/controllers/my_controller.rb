@@ -10,6 +10,14 @@ class MyController < ApplicationController
 
   end
 
+  def bought
+    @products = current_user.order_items.product
+    @products.each do |item|
+      logger.debug(item)
+    end
+    #@products = Product.join().where(:sku => skus, :visiable => true).paginate(:page => params[:page], :order => sort_by + ' ' + sort)
+  end
+
 #  def update_profile
 #    current_user.gender = params[:gender]
 #    current_user.name = params[:name]

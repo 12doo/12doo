@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110214085532) do
+ActiveRecord::Schema.define(:version => 20110218153400) do
 
   create_table "addresses", :force => true do |t|
     t.string   "detail"
@@ -68,6 +68,16 @@ ActiveRecord::Schema.define(:version => 20110214085532) do
     t.datetime "updated_at"
   end
 
+  create_table "favorites", :force => true do |t|
+    t.integer  "product_id"
+    t.integer  "user_id"
+    t.decimal  "price",      :precision => 10, :scale => 0
+    t.boolean  "deleted",                                   :default => false
+    t.datetime "deleted_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "order_changes", :force => true do |t|
     t.integer  "user_id"
     t.integer  "order_id"
@@ -89,6 +99,9 @@ ActiveRecord::Schema.define(:version => 20110214085532) do
     t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "order_id"
+    t.integer  "user_id"
+    t.integer  "product_id"
   end
 
   create_table "order_statuses", :force => true do |t|
@@ -154,6 +167,7 @@ ActiveRecord::Schema.define(:version => 20110214085532) do
     t.integer  "product_attribute_value_id", :default => 0
     t.boolean  "multiple",                   :default => false
     t.boolean  "fix",                        :default => true
+    t.integer  "product_id"
   end
 
   create_table "product_statuses", :force => true do |t|
@@ -169,6 +183,7 @@ ActiveRecord::Schema.define(:version => 20110214085532) do
     t.string   "value"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "product_id"
   end
 
   create_table "products", :force => true do |t|

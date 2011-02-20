@@ -1,5 +1,5 @@
 class Coupon < ActiveRecord::Base
-  has_many :coupon_used_records, :foreign_key => "coupon_id", :primary_key => "id"
+  has_many :coupon_used_records
   
   # 判断是否可用
   def can_use(user,order)

@@ -1,3 +1,4 @@
 class OrderItem < ActiveRecord::Base
-  belongs_to :orders, :foreign_key => "no", :primary_key => "order_no"
+  belongs_to :order
+  belongs_to :user
 end

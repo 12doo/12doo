@@ -57,7 +57,7 @@ staffid : "991234"
 	<br />
 	<% else %>
 	<input type="hidden" value="<%= attribute.name %>" name="product_attribute[][name]" />
-	<input type="text" name="product_attribute[][value]" value="<%= attribute.value %>" /><br />
+	<input type="text" name="product_attribute[][value]" value="<%= @product.get_attribute_value(attribute.short) %>" /><br />
 	<% end %>
 	
 <% end %>
