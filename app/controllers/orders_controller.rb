@@ -55,6 +55,8 @@ class OrdersController < ApplicationController
     cart = find_cart
     cart.items.each do |item|
       temp = OrderItem.new
+      temp.product_id = item.product.id
+      temp.user_id = current_user.id
       temp.product_name = item.product.name
       temp.product_sku = item.product.sku
       temp.price = item.product.price

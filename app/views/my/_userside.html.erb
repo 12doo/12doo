@@ -6,6 +6,8 @@
 		    </h3>
         <ul>
             <li><%= link_to "产品管理", "/admin/products" %></a></li>
+			<li><%= link_to "订单管理", "/admin/orders" %></a></li>
+			<li><%= link_to "用户管理", "/admin/users" %></a></li>
         </ul>
     </div>
     <% end %>
@@ -24,7 +26,7 @@
                 <h3>订单管理</h3>
                 <ul>
                     <li><div class='normal_link'><%= link_to "订单信息", orders_path %></div><li>
-                    <li><a href="/my/bought">已购商品</a></li>
+                    <li><a href="/products/bought">已购商品</a></li>
                 </ul>
             </div>
             <div class="mytea_list">

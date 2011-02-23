@@ -36,4 +36,5 @@
 <% end %>
 </p>
 
-<%= link_to 'Back', orders_path %>
+<%= link_to '返回', orders_path %>
+<%= link_to '支付', :action => 'check_out', :controller => 'orders', :id => @order.id %>

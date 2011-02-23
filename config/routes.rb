@@ -1,6 +1,6 @@
 V3::Application.routes.draw do
   resources :coupons, :deliveries, :addresses, :order_items, 
-            :products, :product_tags, :product_statuses, :product_attributes, :product_attribute_defines
+            :product_tags, :product_statuses, :product_attributes, :product_attribute_defines
             
   devise_for :users, :controllers => { :registrations => "registrations" }
   get "my/info", :to => "my#index"
@@ -16,6 +16,10 @@ V3::Application.routes.draw do
   get "orders/check_out"
 
   resources :orders
+  
+  get "products/bought"
+  
+  resources :products
 
   get "store/index"
   

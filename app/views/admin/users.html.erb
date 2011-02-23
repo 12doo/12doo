@@ -1,0 +1,20 @@
+<%= link_to "添加", :action => :new, :controller => :users %>
+<table>
+  <tr>
+	<th>用户名</th>
+    <th>注册时间</th>
+    <th></th>
+  </tr>
+
+<% @users.each do |user| %>
+  <tr>
+    <td><%= user.email %></td>
+    <td><%= user.created_at %></td>
+    <td><%= link_to '详情', :action => :show, :controller => :users, :id => user.id %></td>
+  </tr>
+<% end %>
+</table>
+<%= will_paginate @users %>
+<br />
+
+

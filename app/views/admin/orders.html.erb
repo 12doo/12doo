@@ -1,0 +1,20 @@
+<table>
+  <tr>
+	<th>编号</th>
+    <th>合计</th>
+    <th>状态</th>
+    <th></th>
+  </tr>
+
+<% @orders.each do |order| %>
+  <tr>
+    <td><%= order.no %></td>
+    <td><%= order.total %></td>
+    <td><%= order.status %></td>
+    <td><%= link_to '详情', order %></td>
+  </tr>
+<% end %>
+</table>
+<%= will_paginate @orders %>
+<br />
+

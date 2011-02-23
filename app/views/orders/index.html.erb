@@ -21,7 +21,10 @@
     <td><%= order.order_at %></td>
     <td><%= order.delivery_at %></td>
     <td><%= order.address_id %></td>
-    <td><%= link_to 'Show', order %></td>
+    <td>
+    	<%= link_to '详情', order %>
+		<%= link_to '支付', :action => 'check_out', :controller => 'orders', :id => order.id %>
+	</td>
     <td></td>
   </tr>
 <% end %>

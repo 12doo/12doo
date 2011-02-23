@@ -10,4 +10,13 @@ class AdminController < ApplicationController
   def products
     @products = Product.paginate :page => params[:page], :order => 'created_at DESC'
   end
+  
+  def orders
+    @orders = Order.paginate :page => params[:page], :order => 'created_at DESC'
+  end
+  
+  def users
+    @users = User.paginate :page => params[:page], :order => 'created_at DESC'
+  end
+  
 end
