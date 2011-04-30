@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddOrdersColumnsForDelivery < ActiveRecord::Migration
   def self.up
     add_column :orders, :delivery_type, :string

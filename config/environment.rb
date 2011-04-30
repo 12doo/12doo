@@ -1,3 +1,5 @@
+# -*- encoding : utf-8 -*-
+
 # Load the rails application
 require File.expand_path('../application', __FILE__)
 
@@ -17,3 +19,5 @@ ActiveMerchant::Billing::Integrations::Alipay::EMAIL = "zacharyzhang@msn.com"
 #WillPaginate
 WillPaginate::ViewHelpers.pagination_options[:previous_label] = '«上一页'
 WillPaginate::ViewHelpers.pagination_options[:next_label] = '下一页»'
+
+Encoding.default_internal = Encoding.find("UTF-8")

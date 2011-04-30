@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreateCouponUsedRecords < ActiveRecord::Migration
   def self.up
     create_table :coupon_used_records do |t|

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreateAreas < ActiveRecord::Migration
   def self.up
     create_table :areas do |t|

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreateOrderItems < ActiveRecord::Migration
   def self.up
     create_table :order_items do |t|

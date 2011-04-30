@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddCouponsColumns < ActiveRecord::Migration
   def self.up
     add_column :coupons, :use_time, :integer, :default => 0

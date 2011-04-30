@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class DeliveriesController < ApplicationController
   # GET /deliveries
   # GET /deliveries.xml

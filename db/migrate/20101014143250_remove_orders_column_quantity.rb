@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class RemoveOrdersColumnQuantity < ActiveRecord::Migration
   def self.up
     remove_column :orders, :quantity

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 V3::Application.routes.draw do
   resources :coupons, :deliveries, :addresses, :order_items, 
             :product_tags, :product_statuses, :product_attributes, :product_attribute_defines

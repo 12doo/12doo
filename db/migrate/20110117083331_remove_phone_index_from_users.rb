@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class RemovePhoneIndexFromUsers < ActiveRecord::Migration
   def self.up
     remove_index :users, :phone

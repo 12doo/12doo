@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 
 
   (1..99).each do |i|

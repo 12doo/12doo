@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class ProductAttributeDefinesController < ApplicationController
   # GET /product_attribute_defines
   # GET /product_attribute_defines.xml

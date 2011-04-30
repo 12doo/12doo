@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class RenameCouponsColumnUseTime < ActiveRecord::Migration
   def self.up
     rename_column :coupons, :use_time, :used_time

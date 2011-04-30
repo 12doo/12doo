@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddUsersColumnsForResetPhone < ActiveRecord::Migration
   def self.up
     add_column :users, :reset_phone_token, :string

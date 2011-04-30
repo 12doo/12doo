@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreateProductTags < ActiveRecord::Migration
   def self.up
     create_table :product_tags do |t|

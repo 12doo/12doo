@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Address < ActiveRecord::Base
   belongs_to :user
   validates_presence_of :detail, :province, :city, :region, :zip, :phone, :name

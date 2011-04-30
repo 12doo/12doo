@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module ProductsHelper
   
   # 生成查询URL,格式0-0-0-1,2,3-4,5-0

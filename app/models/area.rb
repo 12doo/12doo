@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Area < ActiveRecord::Base
   def get_provinces
     Area.where("province <> '' and city = ''")

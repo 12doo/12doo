@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Coupon < ActiveRecord::Base
   has_many :coupon_used_records
   
