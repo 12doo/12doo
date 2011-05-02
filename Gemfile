@@ -8,6 +8,8 @@ gem 'rails', '>=3.0.7'
 # gem 'sqlite3-ruby', :require => 'sqlite3'
 
 gem 'mysql2', '0.2.7'
+# gem 'mysql2'
+gem	'bundler'
 
 gem 'devise'
 # gem 'delayed_job', :git => 'git://github.com/collectiveidea/delayed_job.git'
