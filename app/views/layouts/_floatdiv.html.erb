@@ -1,0 +1,133 @@
+<div id="selectmywine" onmouseover="toBig()" onmouseout="toSmall()">
+    <table id="selectwine" border="0" cellSpacing="0" cellPadding="0">
+        <tbody>
+            <tr id="selectwineIn" vAlign="top">
+			<td>
+                <table class="qqtable" border="0" cellSpacing="0" cellPadding="0" align="center">
+                    <tbody>
+                        <tr>
+                            <td class="main_head" height="39" vAlign="top">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a href="javascript:btnWineClick('ptjzl','ptjzlBtn');"><img id="ptjzlBtn" border="0" src="images/jianhao.gif" /></a>
+								<span class="f-black-14">&nbsp;葡萄酒种类</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td id="ptjzl">
+                                <table>
+                                    <tr class="f-666666-14">
+                                     <td width="70"><a href="#">A种类</a></td>
+                                     <td width="70"><a href="#">B种类</a></td>
+                                    </tr>
+                                    <tr class="f-666666-14">
+                                     <td><a href="#">C种类</a></td>
+                                     <td><a href="#">D种类</a></td>
+                                	</tr>
+                                </table>
+                            </td>
+						</tr>
+                        <tr>
+                            <td>
+                                <a href="javascript:btnWineClick('jg','jgBtn');"><img id="jgBtn" border=0 src="images/jianhao.gif" /></a>
+								<span class="f-black-14">&nbsp;价格</span>
+                            </td>
+                        </tr>
+                        <tr>
+	                    	<td id="jg">
+	                        	<table>
+		                        	<tr class="f-666666-14">
+		                             	<td width="70"><a href="#">1-99元</a></td>
+		                             	<td width="70"><a href="#">100-199元</a></td>
+		                            </tr>
+		                            <tr class="f-666666-14">
+		                             	<td><a href="#">200-299元</a></td>
+		                             	<td><a href="#">300-499元</a></td>
+		                         	</tr>
+		                         	<tr class="f-666666-14">
+		                         		<td><a href="#">500-799元</a></td>
+		                         	</tr>
+		             	            <tr class="f-666666-14">
+		                          		<td><a href="#">不限</a></td>
+		                      		</tr>
+	                     		</table>
+	                 		</td>
+						</tr>
+                        <tr>
+                            <td>
+                                <a href="javascript:btnWineClick('gj','gjBtn');"><img id="gjBtn" border=0 src="images/jianhao.gif" /></a>
+								<span class="f-black-14">&nbsp;国家</span>
+                            </td>
+                        </tr>
+                        <tr>
+                        	<td id="gj">
+                            	<table>
+                                    <tr class="f-666666-14">
+                                    	<td width="70"><a href="#">法国</a></td>
+                                    	<td width="70"><a href="#">意大利</a></td>
+                                    </tr>
+                                    <tr class="f-666666-14">
+                                    	<td><a href="#">澳大利亚</a></td>
+                                       	<td><a href="#">德国</a></td>
+                                   	</tr>
+                                   	<tr class="f-666666-14">
+                                   		<td><a href="#">美国</a></td>
+                                   		<td><a href="#">西班牙</a></td>
+                                   	</tr>
+                                   	<tr class="f-666666-14">
+                                       	<td><a href="#">智利</a></td>
+                                       	<td><a href="#">新西兰</a></td>
+                                   	</tr>
+                               	</table>
+                        	</td>
+                        </tr>
+                        <tr>
+                        	<td colspan="2">
+                                <a href="javascript:btnWineClick('sych','sychBtn');"><img id="sychBtn" border=0 src="images/jianhao.gif" /></a>
+								<span class="f-black-14">&nbsp;使用场合</span>
+                        	</td>
+                        </tr>
+                        <tr>
+                            <td id="sych">
+                                <table>
+                                    <tr class="f-666666-14">
+                                		<td width="70"><a href="#">聚会用</a></td>
+                                  		<td width="70"><a href="#">约会用</a></td>
+                                    </tr>
+                                    <tr class="f-666666-14">
+                                    	<td><a href="#">自饮用</a></td>
+                                    	<td><a href="#">商务用</a></td>
+                                	</tr>
+                                	<tr class="f-666666-14">
+                                		<td><a href="#">婚宴用</a></td>
+                                		<td><a href="#">送礼用</a></td>
+                                	</tr>
+                            	</table>
+                            </td>
+						</tr>
+                    </tbody>
+                </table>
+			</td>
+            </tr>
+		</tbody>
+	</table>
+	<div class="Obtn"></div>
+</div>
+<script language="text/javascript">
+    挑选葡萄酒 = function(id, _top, _left){
+        var me = id.charAt ? document.getElementById(id) : id, d1 = document.body, d2 = document.documentElement;
+        d1.style.height = d2.style.height = '100%';
+        me.style.top = _top ? _top + 'px' : 0;
+        me.style.left = _left + "px";
+        me.style.position = 'absolute';
+        setInterval(function(){
+            me.style.top = parseInt(me.style.top) + (Math.max(d1.scrollTop, d2.scrollTop) + _top - parseInt(me.style.top)) * 0.1 + 'px';
+        }, 10 + parseInt(Math.random() * 20));
+        return arguments.callee;
+    };
+    window.onload = function(){
+        挑选葡萄酒('selectmywine', 100, -165)
+    }
+</script>
+<script language="text/javascript">
