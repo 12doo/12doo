@@ -1,49 +1,19 @@
-<div class="<%= cycle('box1', 'box2', 'box3', 'boxlast') %>" >
-  <table height="85" cellspacing="0" cellpadding="0" border="0" align="center">
-    <tbody>
-      <tr>
-        <td valign="top" align="left" width="35">       
-        
-        </td>
-        <td align="left" width="110">          
-        	<%= link_to image_tag(product.pic, :height => 180, :width => 110, :border => 0, :alt => product.cn_name), product_path(product) %>
-        </td>
-        <td align="left" width="35">
-          &nbsp;
-        </td>
-      </tr>
-      <tr>
-        <td height="21" align="left" colspan="3">
-        	<%= link_to product.cn_name, product_path(product) %>
-        </td>
-      </tr>
-      <tr>
-        <td height="21" align="left" colspan="3">
-        	<%= link_to product.name, product_path(product) %>
-        </td>
-      </tr>
-      <tr>
-        <td height="21" align="left" colspan="3">
-          <span class="snf8 delline">市场价：<%= format ("%.2f",product.indication_price) %>元</span>
-        </td>
-      </tr>
-      <tr>
-        <td height="21" align="left" colspan="3">
-          12doo价：<span class="snf6"><%= format ("%.2f",product.price) %>元</span>
-        </td>
-      </tr>
-      <tr>
-        <td height="30" align="left" colspan="3">
-          <a href="#" onclick="this.href='/cart/in_container?id=<%= product.id %>&height=400&width=500&modal=true&quantity=1'" class="thickbox"><img border="0" src="/images/buy.gif"></a>&nbsp;&nbsp;
-		  <a href="#" onclick="this.href='/favorites/in_container?id=<%= product.id %>&height=400&width=500&modal=true'" class="thickbox"><img border="0" src="/images/add_to_fav.gif"></a>
-        </td>
-      </tr>
-      <tr>
-        <td valign="middle" height="26" bgcolor="#f5f5f5" align="left" colspan="3">
-          已销售<%= product.sold_count %>瓶
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<% @products.each do |product| %>
+<li class="one">
+	<dl>
+		<dd class="grImg"><%= link_to image_tag(product.pic, :alt => product.cn_name), product_path(product) %></dd>
+		<dt class="wine_word"><%= link_to product.cn_name, :class => 'f-black-14-YaHei', product_path(product) %></dt>
+		<dt class="grPrice"><em class="f-grey-12">市场价:<%= format ("%.2f",product.indication_price) %>元</em></dt>
+        <dt class="grPrice">
+        	<em><span class="f-red-12">会员价:</span><span class="f-grey-20-Arial"><%= format ("%.2f",product.price) %></span><span class="f-red-12">元</span></em>
+            <a href="#"><img height="23"  width="23" style="float:right;" src="images/go-off.gif"/></a>
+        </dt> 
+    </dl>
+</li>
+<% end %>
 
+<!--
+<a href="#" onclick="this.href='/cart/in_container?id=<%= product.id %>&height=400&width=500&modal=true&quantity=1'" class="thickbox"><img border="0" src="/images/buy.gif"></a>&nbsp;&nbsp;
+<a href="#" onclick="this.href='/favorites/in_container?id=<%= product.id %>&height=400&width=500&modal=true'" class="thickbox"><img border="0" src="/images/add_to_fav.gif"></a>
+已销售<%= product.sold_count %>瓶
+-->

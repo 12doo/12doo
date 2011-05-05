@@ -1,75 +1,152 @@
-<!-- 取消上边的页面位置指示
-<div class="crumb">
-    <img src="/images/ico9.gif" align="absbottom"><a style="color:#383838;" href="#">首页</a>
-    ＞ <a href="#" style="color:#970005;">买酒荐酒</a>
-    <span class="snf1">
-	</span>
-</div> -->
-
-<div align="left">
-    <div id="indexInfo">
-    </div>
-    <div class="listwine">
-        <div class="left">
-            <%= render 'products/listsearch' %>         
-            <div class="searchbar">
-                找到 &nbsp;&nbsp;<a class="snf3"><span id="goodsTotalNu"><%= @products.total_entries %></span></a>&nbsp;&nbsp;件商品符合您的选择条件<span id="allSeach"></span>
-            </div>
+<script language="javascript">
+            function btnWineClick(subMenuID, subButtonID){
+                if (document.getElementById(subMenuID).style.display != "none") {
+                    document.getElementById(subMenuID).style.display = "none";
+                    document.getElementById(subButtonID).src = "images/jiahao.gif";
+                    
+                    return;
+                }
+                if (document.getElementById(subMenuID).style.display == "none") {
+                    document.getElementById(subMenuID).style.display = "block";
+                    document.getElementById(subButtonID).src = "images/jianhao.gif";
+                    return;
+                }
+            }
+</script>
+<script language="javascript">
+    lastScrollY = 0;
+    
+    var InterTime = 1;
+    var maxWidth = -1;
+    var minWidth = -165;
+    var numInter = 8;
+    
+    var BigInter;
+    var SmallInter;
+    
+    var o = document.getElementById("selectmywine");
+    var i = parseInt(o.style.left);
+    function Big(){
+        if (parseInt(o.style.left) < maxWidth) {
+            i = parseInt(o.style.left);
+            i += numInter;
+            o.style.left = i + "px";
+            if (i == maxWidth) 
+                clearInterval(BigInter);
+        }
+    }
+    
+    function toBig(){
+        clearInterval(SmallInter);
+        clearInterval(BigInter);
+        BigInter = setInterval(Big, InterTime);
+    }
+    
+    function Small(){
+        if (parseInt(o.style.left) > minWidth) {
+            i = parseInt(o.style.left);
+            i -= numInter;
+            o.style.left = i + "px";
             
-            <!-- 以下是修改列表方式和分页标签，上半部分 -->
-            
-            <div class="pailie">
-                <table width="349" height="28" border="0" cellpadding="3" cellspacing="0" style="float:left">
-                    <tbody>
-                        <tr>
-                            <td width="68" align="left" valign="middle">
-                                显示方式：
-                            </td>
-                            <td width="42" align="left" valign="middle">
-                                <a href="">
-                                	<img id="chooseDataSortShow1" src="/images/ico7a.gif">
-								                </a>
-								                <a href="">
-									                <img id="chooseDataSortShow0" src="/images/ico8b.gif" border="0">
-								                </a>
-                            </td>
-                            <td width="40" align="left" valign="middle">
-                                排序：
-                            </td>
-                            <td width="110" align="left" valign="middle">
-                                <!-- 这部分改为：价格，销量，两个排序按钮即可；默认为点击数从高到低 -->
-                                <select name="select" style="margin-bottom:4px;z-index=1;width:100px;" id="sortSelect" onchange="javascript:document.location.href = this.value;">
-                                    <option value="<%= search_path_without_sort %>">默认排序</option>
-                                    <option value="<%= search_path_with_sort("price",0) %>" <%= selected("price",0) ? "selected" : "" %>>价格由低到高</option>
-									<option value="<%= search_path_with_sort("price",1) %>" <%= selected("price",1) ? "selected" : "" %>>价格由高到低</option>
-                                    <option value="<%= search_path_with_sort("sold_count",0) %>" <%= selected("sold_count",0) ? "selected" : "" %>>销量由低到高</option>
-                                    <option value="<%= search_path_with_sort("sold_count",1) %>" <%= selected("sold_count",1) ? "selected" : "" %>>销量由高到低</option>
-                                </select>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div id="pagebox2">
-                    <div class="page" id="pageInfo1">
-                    	<%= will_paginate @products, :params => {:controller => "category", :action => nil }, :inner_window => 1, :outer_window => 0 %>
-                    </div>
-                </div>
-            </div>
-            <div class="winebox">
-              <%= render @products %>				     
-            </div>
-            <div id="pagebox2" style="width:700px;">
-                <div class="page" id="pageInfo2">
-                	<%= will_paginate @products, :params => {:controller => "category", :action => nil }, :inner_window => 1, :outer_window => 0 %>
-                </div>
-            </div>
-        </div>
+            if (i == minWidth) 
+                clearInterval(SmallInter);
+        }
+    }
+    
+    function toSmall(){
+        clearInterval(SmallInter);
+        clearInterval(BigInter);
+        SmallInter = setInterval(Small, InterTime);
         
-        <div class="right">
-          <%= render "products/righttop" %>
-          <%= render "products/rank" %>
-          <%= render "products/browsehistory" %>
+    }
+</script>
+<!--shoplist-->
+<h2 class="shopLtitle">
+	<div class="capname">
+		<img src="images/s_wine01.gif"  alt="葡萄酒" width="113" height="48" />
+	</div>
+</h2>
 
-        </div>
-    </div>
+<div class="shopLbox">
+	<div class="listL">
+		<UL>
+			<LI><span class="on"><a href="#">葡萄酒种类</a></span>
+				<ul class="wine">
+					<LI><a href="#">红葡萄酒</a></LI>
+					<LI><a href="#">白葡萄酒</a></LI>
+					<LI><a href="#">桃红葡萄酒</a></LI>
+					<LI><a href="#">起泡酒</a></LI>
+				</ul>
+
+			</LI>
+			<LI><span><a href="#">价 格</a></span>
+				<ul>
+					<LI><a href="#">1-99元</a></LI>
+					<LI><a href="#">100-199元</a></LI>
+					<LI><a href="#">200-299元</a></LI>
+					<LI><a href="#">300-399元</a></LI>
+					<LI><a href="#">400-799元</a></LI>
+					<LI><a href="#">不限</a></LI>
+				</ul>
+				<div class="clearit"></div>
+			</LI>
+			<LI><span><a href="#">国 家</a></span>
+				<ul>
+					<LI><a href="#">法国</a></LI>
+					<LI><a href="#">澳大利亚</a></LI>
+					<LI><a href="#">美国</a></LI>
+					<LI><a href="#">智利</a></LI>
+					<LI><a href="#">新西兰</a></LI>
+					<LI><a href="#">阿根廷</a></LI>
+				</ul>
+				<div class="clearit"></div>
+			</LI>
+			<LI><span><a href="#">使用场合</a></span>
+				<ul>
+					<LI><a href="#">聚餐用</a></LI>
+					<LI><a href="#">约会用</a></LI>
+					<LI><a href="#">自饮用</a></LI>
+					<LI><a href="#">商务用</a></LI>
+					<LI><a href="#">婚宴用</a></LI>
+					<LI><a href="#">送礼用</a></LI>
+				</ul>
+				<div class="clearit"></div>
+			</LI>
+		</UL>
+	</div>            
+       
+<!--#sort-->         
+	<div style="float:left;width:720px;">
+		<div class="goodsResult">
+			<ul class="pagePicView">
+				<% @products.each do |product| %>
+				<li class="one">
+					<dl>
+						<dd class="grImg"><%= link_to image_tag(product.pic, :alt => product.cn_name), product_path(product) %></dd>
+						<dt class="wine_word"><%= link_to product.cn_name, {:class => 'f-black-14-YaHei'}, product_path(product) %></dt>
+						<dt class="grPrice"><em class="f-grey-12">市场价:<%= format "%.2f", product.indication_price %>元</em></dt>
+				        <dt class="grPrice">
+				        	<em><span class="f-red-12">会员价:</span><span class="f-grey-20-Arial"><%= format "%.2f", product.price %></span><span class="f-red-12">元</span></em>
+				            <a href="#"><img height="23"  width="23" style="float:right;" src="images/go-off.gif"/></a>
+				        </dt> 
+				    </dl>
+				</li>
+				<% end %>
+			</ul>
+			<div class="clearit"></div>
+			<table border="0" align="center" cellpadding="0" cellspacing="5" class="list_num">
+  				<tr>
+				    <td class="current">1</td>
+				    <td><a href="#">2</a></td>
+				    <td><a href="#">3</a></td>
+				    <td><a href="#">4</a></td>
+				    <td><a href="#">5</a></td>
+				    <td><a href="#">6</a></td>
+				    <td><a href="#">7</a></td>
+				    <td><a href="#">8</a></td>
+				    <td><a href="#">&raquo;</a></td>
+				</tr>
+			</table>
+    	</div>
+	</div>
 </div>
