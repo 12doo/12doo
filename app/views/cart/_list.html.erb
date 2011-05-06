@@ -12,7 +12,7 @@
 		<td><%= item.name %></td>
 		<td><%= item.product.price %></td>
 		<td>
-			<%= form_tag ({:action=>'update_product', :id=>item.product.id}, :name=>'update_product_form_' + item.product.id.to_s) do %>
+			<%= form_tag({:action=>'update_product', :id=>item.product.id}, :name=>'update_product_form_' + item.product.id.to_s) do %>
 			<input type="text" value="<%= item.quantity %>" onchange="javascript:document.update_product_form_<%= item.product.id.to_s %>.submit();" name="quantity" />
 			<% end %>
 		</td>
