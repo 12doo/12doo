@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddProductAttributeDefinesColumnsForFix < ActiveRecord::Migration
   def self.up
     add_column :product_attribute_defines, :fix, :boolean, :default => true

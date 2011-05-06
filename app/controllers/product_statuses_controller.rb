@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class ProductStatusesController < ApplicationController
   # GET /product_statuses
   # GET /product_statuses.xml

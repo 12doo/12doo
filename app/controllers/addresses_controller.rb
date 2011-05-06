@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddressesController < ApplicationController
   # 身份验证
   before_filter :authorize_user!

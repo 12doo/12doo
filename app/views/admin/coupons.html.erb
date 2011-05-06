@@ -1,0 +1,18 @@
+<%= link_to "添加", :action => :new, :controller => :coupons %>
+<table>
+  <tr>
+	<th>编号</th>
+    <th>创建时间</th>
+    <th></th>
+  </tr>
+
+<% @coupons.each do |coupon| %>
+  <tr>
+    <td><%= coupon.no %></td>
+    <td><%= coupon.created_at %></td>
+    <td><%= link_to '详情', :action => :show, :controller => :coupons, :id => coupon.id %></td>
+  </tr>
+<% end %>
+</table>
+<%= will_paginate @coupons %>
+<br />

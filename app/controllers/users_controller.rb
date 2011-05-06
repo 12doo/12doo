@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class UsersController < ApplicationController
   def index
     
@@ -6,4 +7,5 @@ class UsersController < ApplicationController
   def show
     
   end
+  
 end

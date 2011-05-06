@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class ProductTagsController < ApplicationController
   # GET /product_tags
   # GET /product_tags.xml

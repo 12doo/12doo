@@ -1,0 +1,31 @@
+.main_head {
+	BACKGROUND: url(../images/choice_wine01.gif) 0 7px; no-repeat;
+}
+.info {
+	PADDING-BOTTOM: 10px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 5px
+}
+
+
+
+.Obtn {
+	MARGIN-TOP: 104px; WIDTH: 32px; BACKGROUND: url(../images/choice_wine.gif) no-repeat; FLOAT: left; HEIGHT: 139px; MARGIN-LEFT: -5px
+}
+
+.qqtable SPAN {
+	PADDING-BOTTOM: 5px; LINE-HEIGHT: 20px; PADDING-LEFT: 0px; WIDTH: 100px; PADDING-RIGHT: 0px;  FONT-SIZE: 13px; FONT-WEIGHT: bold; PADDING-TOP: 5px
+}
+.qqtable A {
+	TEXT-DECORATION: none
+}
+.qqtable A:hover {
+	TEXT-DECORATION: none
+}
+.qqtable td{
+	align:left;}
+
+.qun {
+	BORDER-BOTTOM: #ffd2bf 1px solid; BORDER-LEFT: #ffd2bf 1px solid; PADDING-BOTTOM: 5px; LINE-HEIGHT: 20px; BACKGROUND-COLOR: #ffffff; PADDING-LEFT: 0px; WIDTH: 100px; PADDING-RIGHT: 0px; FONT-SIZE: 12px; BORDER-TOP: #ffd2bf 1px solid; BORDER-RIGHT: #ffd2bf 1px solid; PADDING-TOP: 5px
+}
+.qun SPAN {
+	COLOR: #ff6600; FONT-SIZE: 13px; FONT-WEIGHT: bold
+}

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class RenameAllColumnsForJoin < ActiveRecord::Migration
   def self.up
     add_column :order_items, :order_id, :integer

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CartController < ApplicationController
   
   layout "application", :except => [:in_container]

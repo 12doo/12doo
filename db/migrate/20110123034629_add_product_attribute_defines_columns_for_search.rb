@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddProductAttributeDefinesColumnsForSearch < ActiveRecord::Migration
   def self.up
     add_column :product_attribute_defines, :sort, :integer, :default => 0

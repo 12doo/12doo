@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class ProductAttributesController < ApplicationController
   # GET /product_attributes
   # GET /product_attributes.xml

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 Area.create(:postcode => '110000', :province => '北京市', :city => '', :region => '')
 Area.create(:postcode => '110100', :province => '北京市', :city => '北京市', :region => '')
 Area.create(:postcode => '110101', :province => '北京市', :city => '北京市', :region => '东城区')

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddAddressToOrders < ActiveRecord::Migration
   def self.up
     add_column :orders, :fullname, :string

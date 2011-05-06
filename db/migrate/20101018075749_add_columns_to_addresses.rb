@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddColumnsToAddresses < ActiveRecord::Migration
   def self.up
     add_column :addresses, :default, :boolean

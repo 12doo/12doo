@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AreasController < ApplicationController
   def get_cities
     cities = Area.where(["province = ? and region = '' and city != ''",params[:province]])
