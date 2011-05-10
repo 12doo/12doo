@@ -1,101 +1,42 @@
-<div class="crumb">
-	  <img src="/images/ico9.gif" align="absbottom"><a class="snf3" href="/">首页</a>
-	  ＞<a href="#" class="snf1">会员注册</a>
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :post, :name => :user_new }) do |f| %>
+<div id="join_now"><img src="/images/reg_wyjr.gif" width="295" height="42" /></div>
+<table id="reg_table" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+	    <td class="tdtitle"><img src="/images/reg_username.gif" width="108" height="19" /></td>
+	    <td><label><%= f.text_field :email %></label></td>
+    	<td><img src="/images/reg_username_sm.gif" width="289" height="14" /></td>
+  	</tr>
+	<tr>
+	    <td><img src="/images/reg_password.gif" width="75" height="19" /></td>
+	    <td><%= f.password_field :password %></td>
+	    <td><img src="/images/reg_password_sm.gif" width="181" height="12" /></td>
+	</tr>
+  	<tr>
+	    <td><img src="/images/reg_password_confirm.gif" width="108" height="19" /></td>
+	    <td><%= f.password_field :password_confirmation %></td>
+	    <td>&nbsp;</td>
+  	</tr>
+  	<tr>
+	    <td><img src="/images/reg_suggestuser.gif" width="107" height="19" /></td>
+	    <td><%= f.text_field :ref %></td>
+	    <td><img src="/images/reg_suggestuser_sm.gif" width="108" height="15" /></td>
+  	</tr>
+  	<tr>
+    	<td><img src="/images/reg_verify.gif" width="80" height="18" /></td>
+	    <td colspan="2">
+			<input type="text" name="textfield5" id="textfield5" class="verify" />
+	    	<img src="/images/reg_yzm.gif" width="78" height="28" /> <a href="#">看不清 换一张</a>
+		</td>
+    </tr>
+</table>
+<div id="reg_submit">
+	<a href="javascript:document.user_new.submit();">
+		<img src="/images/reg_btn.gif" width="197" height="53" />
+	</a>
 </div>
-<div class="login">
-    <div class="left">
-        <div class="title">
-            <a class="snf6">会员注册</a>
-            <a class="snf7">* </a>为必填项
-        </div>
-        <div class="regbox">
-            <%= render 'devise/alert' %>
-            <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :post, :name => :user_new }) do |f| %>
-            <table width="600" border="0" align="left" cellpadding="0" cellspacing="0">
-                <tbody>
-                    <tr>
-                        <td width="75px" height="35" align="right" valign="middle">
-                            <span class="snf7">* </span><%= f.label :email %>：
-                        </td>
-                        <td width="210px" align="left" valign="middle">
-                            <%= f.text_field :email, :class => :areabox %>
-                        </td>
-                        <td width="315px" align="left">
-                            <span class="msg1" id="userNameDiv">
-                                请填写有效的Email邮箱地址作为您的登陆帐号
-                            </span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td height="35" align="right" valign="middle">
-                            <span class="snf7">* </span><%= f.label :password %>：
-                        </td>
-                        <td align="left" valign="middle">
-                            <%= f.password_field :password, :class => :areabox %>
-                        </td>
-                        <td align="left">
-                            <span class="msg1" id="passwordDiv">
-                                密码请设为6-16位字母或数字
-                            </span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td height="35" align="right" valign="middle">
-                            <span class="snf7">* </span><%= f.label :password_confirmation %>：
-                        </td>
-                        <td align="left" valign="middle">
-                            <%= f.password_field :password_confirmation, :class => :areabox %>
-                        </td>
-                        <td align="left">
-                            <span class="msg1" id="passwordDiv2">
-                                请再次输入密码确认
-                            </span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td height="35" align="right" valign="middle">
-                            推荐用户：
-                        </td>
-                        <td align="left" valign="middle">
-                            <%= f.text_field :ref, :class => :areabox %>
-                        </td>
-                        <td align="left">
-                            <span class="msg1" id="introDiv">
-                                您可以填写推荐人的Email邮箱地址，帮他获得积分
-                            </span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td height="35" align="right" valign="middle">
-                        </td>
-                        <td align="left" valign="middle">
-                            <input name="tiaokuan" id="tiaokuan" type="checkbox" value="checkbox" checked=""><a href="#" target="block">我已经阅读并同意12度服务条款</a>
-                            <div class="msg2" id="tiaokuanDiv" style="display: block">
-                            </div>
-                        </td>
-                        <td align="left">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td height="35" align="right" valign="middle"></td>
-                        <td align="left" valign="middle">
-                            <a href="javascript:document.user_new.submit();"><img src="/images/signup_button.gif" name="Image36" border="0" id="Image36"></a>
-                        </td>
-                        <td align="left">
-                            <span class="msg1" id="introDiv">
-                                <%= link_to "我有帐号，立刻登陆", new_session_path(resource_name) %>
-                            </span>
-                        </td>
-                    </tr>
-                    
-                </tbody>
-            </table>
-            <% end %>
-        </div>
-    </div>
-    <div class="right">
-
-        <br />
-        
-    </div>
+<div id="reg_policy">
+	<input name="" type="checkbox" value="" checked="checked" />
+  	<a href="#" class="f-grey2-14-u">已经阅读并同意&lt;12doo服务条款&gt;</a>
+	<%= link_to "我有帐号，立刻登陆", new_session_path(resource_name), :class => "f-grey2-14-u" %>
 </div>
+<% end %>
