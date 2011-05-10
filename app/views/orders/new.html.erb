@@ -1,3 +1,224 @@
+<div class="clearit bj-sp10"></div>
+<div id="mlist_step"><img src="/images/mlist_stepFst.gif" width="626" height="35" /></div>
+<div id="mlist_detail">
+	<div class="order_box">
+    	<h1 class="f-black-12"><img src="/images/msl_userinfo.gif" width="99" height="25" />[更换地址] [增加新地址]</h1>
+     	<table width="100%" cellspacing="0" cellpadding="0" border="0" id="table_address">
+			<tbody>
+				<tr>
+					<td width="3%" valign="middle" align="center">
+						<input type="radio" onchange="changeAddress(892255)" value="892255" checked="checked" id="addressId" name="addressId">
+					</td>
+					<td width="8%" valign="middle" align="left">叶灵</td>
+					<td width="41%" valign="middle" align="left">上海市&nbsp;上海市&nbsp;虹口区&nbsp;江西南路200号3楼</td>
+					<td width="16%" valign="middle" align="center">13629857845</td><td width="16%" valign="middle" align="center">200030</td>
+					<td width="16%" valign="middle" align="center">[ <a href="">编辑</a> ] [ <a href="">删除</a> ]</td>
+				</tr>
+			</tbody>
+		</table> 	
+      	<div id="table_addaddress"> 
+      		<table width="100%" cellspacing="0" cellpadding="0" border="0" align="center">
+        		<tbody>
+					<tr>
+			        	<td height="30" width="22">*</td>
+			          	<td width="88">收货人：</td>
+			          	<td width="174" align="left"><input type="text" onblur="" name="memberAddress.name" id="name" maxlength="10"></td>
+			       	  	<td align="left" colspan="2" class="f-red-12">您填写的信息有误，请核对</td>
+			        </tr>
+        			<tr>
+						<td height="30">*</td>
+						<td>地　址：</td>
+						<td align="left" colspan="3"> 
+							<select align="left" id="first" name="first">
+								<option value="" selected="true">请选择...</option>
+								<option value="68">重庆市</option><option value="1">上海市</option><option value="71">四川省</option><option value="65">湖南省</option><option value="5">北京市</option><option value="77">云南省</option><option value="9">广东省</option><option value="74">贵州省</option><option value="17">天津市</option><option value="86">甘肃省</option><option value="80">西藏自治区</option><option value="20">河北省</option><option value="83">陕西省</option><option value="23">山西省</option><option value="92">宁夏回族自治区</option><option value="95">新疆维吾尔自治区</option><option value="26">内蒙古自治区</option><option value="89">青海省</option><option value="29">辽宁省</option><option value="35">黑龙江省</option><option value="32">吉林省</option><option value="101">广西壮族自治区</option><option value="41">江苏省</option><option value="47">安徽省</option><option value="104">海南省</option><option value="44">浙江省</option><option value="50">福建省</option><option value="53">江西省</option><option value="59">河南省</option><option value="56">山东省</option><option value="62">湖北省</option>
+							</select> 
+							<select align="left" id="second" name="second"><option value="" selected="true">请选择...</option></select> 
+							<select align="left" id="third" name="third"><option value="" selected="true">请选择...</option></select>
+							<input type="text" value="请输入具体地址" onblur="if (value=='') {value='请输入具体地址'}" onfocus="if(value=='请输入具体地址') {value=''}" name="memberAddress.address" id="address" size="30">带*号的表示可支持货到付款的区域)[ <a href="#">运费计算</a> ]
+						</td>
+   					</tr>
+        			<tr>
+          				<td height="30">*</td>
+          				<td>手　机：</td>
+          				<td align="left"><input type="text" class="orderform1" onblur="" name="memberAddress.mobile" id="mobile"></td>
+          				<td align="left" colspan="2" class="f-red-12">您填写的信息有误，请核对</td>
+        			</tr>
+      				<tr>
+						<td height="30"><a class="snf3"></a></td>
+						<td>电　话：</td>
+						<td align="left" colspan="3">
+							<input type="text" style="width: 50px; float: left;" id="phone1" class="orderform1" name="phone1">
+							<span style="float: left; margin: 0pt 3px;">-</span>
+							<input type="text" onblur="" id="phone2" style="float: left;" class="orderform1" name="phone2"><div class="f-red-12">您填写的信息有误，请核对</div>
+						</td>
+        			</tr>
+        			<tr>
+          				<td height="30">*</td>
+          				<td>邮　编：</td>
+						<td align="left"><input type="text" class="orderform1" onblur="" name="memberAddress.zipCode" id="zipCode"> </td>
+						<td width="143" align="left">[ <a href="#">邮编查询</a> ]</td>
+						<td width="461" align="left" class="f-red-12">您填写的信息有误，请核对</td>
+        			</tr>
+					<tr>
+						<td height="30"><a class="snf3"></a></td>
+						<td>&nbsp;</td>
+						<td align="left"><a href=""><img height="21" width="138" border="0" id="addressImg" src="/images/save_address_btn.gif"></a></td>
+						<td align="left"><a href=""><img height="21" width="59" border="0" src="/images/cancel_btn.gif"></a></td>
+						<td align="left">&nbsp;</td>
+					</tr>
+      			</tbody>
+			</table> 	  
+        </div>  
+  		<h1 class="f-black-12"><img src="/images/msl_timeselect.gif" width="99" height="29" /></h1> 
+		<div id="selectime">
+			<input type="radio" checked="checked" value="SEND_DATE_TYPE_USUALLY" name="writeOrderParaDTO.sendDateType">周一至周五
+          	<input type="radio" value="SEND_DATE_TYPE_WEEKEND" name="writeOrderParaDTO.sendDateType">双休日
+            <input type="radio" value="SEND_DATE_TYPE_UNLIMIT" name="writeOrderParaDTO.sendDateType">不限
+		</div>
+		<div id="timetips" class="f-black-12">                
+     		<b>送货所需时间</b><br />
+			江浙沪 2-4天，其他地区 5天左右<br /><br />
+            <b>声明</b><br />
+            我们会努力按照您指定的时间配送，但因天气、交通等各类因素影响，您的订单有可能会有延误现象！敬请谅解！
+		</div>               
+ 		<h1 class="f-black-12"><img src="/images/msl_paperselect.gif" width="99" height="29" /></h1>              
+  		<ul>
+ 			<li><input type="radio" class="hover" checked="checked" value="-1" />不需要发票</li> 
+ 			<li><input type="radio" value="0" />普通发票</li>
+			<li><input type="radio" value="1" />增值税发票</li> 
+  		</ul>
+ 		<table width="100%" cellspacing="0" cellpadding="0" border="0" class="fpnormal f-black-12">
+        	<tbody>
+				<tr>
+          			<td>
+						<b>发票抬头</b><input type="text" size="50" id="title2" name="title" />
+          			</td>
+          		</tr>
+        		<tr>
+          			<td>
+						1.个人发票请填写您的姓名<br />
+            			2.单位发票请填写单位全称 
+					</td>
+          		</tr>
+        	</tbody>
+		</table>
+ 		<table width="100%" cellspacing="0" cellpadding="0" border="0" class="fpnormal">
+        	<tr>
+            	<td>
+					<span class="f-red-12">*</span>
+					公司名称 ：<input type="text" size="30" id="companyName" name="writeOrderParaDTO.companyName" />
+				</td>
+            	<td>
+					<span class="f-red-12">*</span>
+					寄送地址：<input type="text" size="30" id="companyAddr" name="writeOrderParaDTO.companyAddr" />
+				</td>
+            	<td>
+					<span class="f-red-12">*</span>
+					公司电话：<input type="text" size="30" id="companyPhone" name="writeOrderParaDTO.companyPhone" />
+				</td>
+            </tr>
+      		<tr>
+            	<td>
+					<span class="f-red-12">*</span>
+					开户行：<input type="text" size="30" id="bankName" name="writeOrderParaDTO.bankName" />
+				</td>
+            	<td>
+					<span class="f-red-12">*</span>
+					帐号：<input type="text" size="30" id="bankNo" name="writeOrderParaDTO.bankNo" />
+				</td>
+            	<td>
+					<span class="f-red-12">*</span>
+					税务号：<input type="text" size="30" id="companyRateNo" name="writeOrderParaDTO.companyRateNo" />
+				</td>
+            </tr>
+          	<tr>
+            	<td colspan="3">
+					<span class="f-red-12-b">提示：</span>
+					增值税发票只针对企业用户。<br />
+              		请在订单提交后将一般纳税人证书传真至 021-36368251（注明订单号），我们会在 7-15 个工作日将增值税发票快递给您。 
+				</td>
+            </tr>
+        </table>
+		<h1 class="f-black-12"><img src="/images/msl_pdlist.gif" width="99" height="29" /></h1>                           
+		<table width="100%" cellspacing="0" cellpadding="0" border="0" class="order_table">
+        	<tbody>
+				<tr bgcolor="#ebebeb" class="f-black-12-b">
+					<td width="20%" align="center">商品编号</td>
+					<td align="center">商品名称</td>
+					<td width="10%" align="center">数量</td>
+					<td width="10%" align="center">单价</td>
+					<td width="10%" align="center">优惠</td>
+					<td width="10%" align="center">小计</td>
+          	    </tr>
+				<tr>
+					<td align="center" class="f-blue-12">14603</td>
+					<td align="left">歌兰酒庄拉罗斯干红葡萄酒</td>
+					<td align="center">1</td>
+					<td align="center">68.0</td>
+					<td align="center">0.0</td>
+					<td align="center">68.0</td>
+				</tr>
+			</tbody>
+		</table>
+		<br />
+		<table width="100%" cellspacing="0" cellpadding="0" border="0">
+        	<tbody>
+				<tr>
+					<td> 商品数量总计：1 件 </td>
+					<td align="right"><a href="/cart2/showCart.jspa"><img src="/images/back to cart_btn.gif"></a></td>
+				</tr>
+          	</tbody>
+		</table>
+		<div class="order_comment f-black-12">
+			<b>您需要附加说明吗？</b><br />
+			<textarea rows="4" >（请输入您的留言，最多20字）</textarea>
+		</div>
+	</div>
+	<div id="totalprice" class="f-black-12-b">
+		商品金额总计： <span class="f-blue-20-Ar-b">￥68</span> 
+		折扣券抵扣： <span class="f-gren-20-Ar-b">-￥0</span> 
+		积分抵扣：     <span class="f-gren-20-Ar-b">-￥0</span> 
+		运费：      <span class="f-gren-20-Ar-b">+￥10</span>
+	</div>
+	<div class="f-black-20-hei lastprice">
+		订单金额： <span class="f-red-12-b">￥</span><span class="f-red-30-Ar-b">68</span>
+	</div>
+	<div align="center">
+		<img src="/images/next-step_btn.gif" width="145" height="45" />
+	</div>
+</div>
+<div class="clearit"></div>
+  
+
+            
+
+
+        
+        
+        
+
+        
+        
+        
+        
+        
+        
+        
+        
+
+         
+        
+        
+
+             
+
+
+
+
+
+
+
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('#check_coupon').click(function(){
