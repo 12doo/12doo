@@ -3520,6 +3520,14 @@ admin = User.create! do |u|
   u.admin = true
 end
 
+# create fake user account
+user = User.create! do |u|
+  u.email = 'test@12doo.com'
+  u.password = 'Password01'
+  u.password_confirmation = 'Password01'
+  u.admin = false
+end
+
 Area.all.each do |area|
   Delivery.create(:area_id => area.id, :door_step => 12)
 end
