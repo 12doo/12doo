@@ -1,7 +1,7 @@
 @charset "utf-8";
 .listsearch { border:1px #CCCCCC solid; margin:0 auto; margin-bottom:10px; background-image:url(http://img02.yesmywine.com/winelist/titbg0.gif); height:auto; overflow:auto; padding-top:10px;}
-.listsearch .title { height:25px; padding-left:5px; float:left; width:100px; text-align:left; font-weight:bold; margin-top:4px;}
-.listsearch .main { height:25px; width: 658px; float:left; text-align:left; margin-top:5px;}
+.listsearch .title { height:25px; padding-left:5px; float:left; width:58px; text-align:left; font-weight:bold; margin-top:4px;}
+.listsearch .main { height:25px; width: 700px; float:left; text-align:left; margin-top:5px;}
 .listsearch .main ul li { float:left; margin-left:5px; padding:0; height:25px;}
 .listsearch .main2 { height:25px; float:left; text-align:left; margin-top:5px;}
 .listsearch .main2 ul li { float:left; margin-right:3px; padding:0; height:25px;}
