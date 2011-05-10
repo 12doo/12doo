@@ -1,65 +1,3 @@
-<script language="javascript">
-            function btnWineClick(subMenuID, subButtonID){
-                if (document.getElementById(subMenuID).style.display != "none") {
-                    document.getElementById(subMenuID).style.display = "none";
-                    document.getElementById(subButtonID).src = "images/jiahao.gif";
-                    
-                    return;
-                }
-                if (document.getElementById(subMenuID).style.display == "none") {
-                    document.getElementById(subMenuID).style.display = "block";
-                    document.getElementById(subButtonID).src = "images/jianhao.gif";
-                    return;
-                }
-            }
-</script>
-<script language="javascript">
-    lastScrollY = 0;
-    
-    var InterTime = 1;
-    var maxWidth = -1;
-    var minWidth = -165;
-    var numInter = 8;
-    
-    var BigInter;
-    var SmallInter;
-    
-    var o = document.getElementById("selectmywine");
-    var i = parseInt(o.style.left);
-    function Big(){
-        if (parseInt(o.style.left) < maxWidth) {
-            i = parseInt(o.style.left);
-            i += numInter;
-            o.style.left = i + "px";
-            if (i == maxWidth) 
-                clearInterval(BigInter);
-        }
-    }
-    
-    function toBig(){
-        clearInterval(SmallInter);
-        clearInterval(BigInter);
-        BigInter = setInterval(Big, InterTime);
-    }
-    
-    function Small(){
-        if (parseInt(o.style.left) > minWidth) {
-            i = parseInt(o.style.left);
-            i -= numInter;
-            o.style.left = i + "px";
-            
-            if (i == minWidth) 
-                clearInterval(SmallInter);
-        }
-    }
-    
-    function toSmall(){
-        clearInterval(SmallInter);
-        clearInterval(BigInter);
-        SmallInter = setInterval(Small, InterTime);
-        
-    }
-</script>
 <!--shoplist-->
 <h2 class="shopLtitle">
 	<div class="capname">
@@ -149,4 +87,5 @@
 			</table>
     	</div>
 	</div>
+	<div class="clearit"></div>
 </div>

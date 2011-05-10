@@ -19,92 +19,90 @@
 								<tbody>
 									<tr>
 										<td valign="middle" align="center">
-											<img align="absmiddle" src="/images/shou1.gif">
+											<img align="absmiddle" src="/images/shou1.gif" />
 										</td>
 										<td valign="middle" align="center">
-											<img align="absmiddle" src="/images/shou3.gif">
+											<img align="absmiddle" src="/images/shou3.gif" />
 										</td>
-											<td valign="middle" align="center">
-												<img align="absmiddle" src="/images/shou2.gif">
-											</td>
-										</tr>
-										<tr>
-											<td valign="middle" align="center">70</td>
-											<td valign="middle" align="center">105</td>
-											<td valign="middle" align="center">15</td>
-										</tr>
-									</tbody>
-								</table>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="r5">
-				会员价：<span class="f-red-20-Ar">￥<%= format "%.2f", @product.price %></span>
-			</div>
-			<div class="r5">
-				<span class="f-grey-12">市场价：￥<%= format "%.2f", @product.indication_price %></span>
-			</div>
-			<div class="r5 underline">
-				银卡会员价：￥135.2&nbsp;&nbsp;&nbsp;&nbsp;
-				金卡会员价：￥133.9&nbsp;&nbsp;&nbsp;&nbsp;
-				铂金卡会员价：￥131.1
-			</div>
-			<table width="496" cellspacing="0" cellpadding="0" border="0" class="r4">
-				<tbody>
-					<tr>
-            			<td width="40" height="45" align="left">数量：</td>
-            			<td width="85" align="left">
-							<input type="text" id="winenum" class="winenum" value="1" name="textfield3" />
-            			</td>
-            			<td width="375" align="left" class="f-grey-12">
-							已经售出  <span class="f-blue-12"><b><%= @product.sold_count %></b></span> 瓶 有 <span class="f-blue-12"><b>53</b></span> 人评论 <a href="#"><span class="f-red-12">查看评论(12)</span></a>
-						</td>
-          			</tr>
-          			<tr>
-            			<td style="vertical-align: top; padding-bottom: 10px;" colspan="3">
-            				<ul id="winelabellist" class="jb_singleli">
-            				</ul>
-						</td>
-          			</tr>
-          			<tr>
-            			<td valign="middle" height="25" align="left" colspan="3">
-							<table width="500" height="28" cellspacing="0" cellpadding="0" border="0">
-              					<tbody>
+										<td valign="middle" align="center">
+											<img align="absmiddle" src="/images/shou2.gif" />
+										</td>
+									</tr>
 									<tr>
-                						<td valign="top" align="left" id="clickBox" colspan="2">
-                                        	<a href=""><img border="0" src="/images/add_cart.gif" id="buttonImg"></a>
-										</td>
-                						<td width="115" valign="top" align="left"><a href="#"><img border="0" src="/images/favourite_ico.gif"></a></td>
-                						<td width="260" align="left" valign="top"></td>
-              						</tr>
-            					</tbody>
+										<td valign="middle" align="center">70</td>
+										<td valign="middle" align="center">105</td>
+										<td valign="middle" align="center">15</td>
+									</tr>
+								</tbody>
 							</table>
 						</td>
-          			</tr>
-        		</tbody>
+					</tr>
+				</tbody>
 			</table>
-			<div class="activemsg">
-	  		</div>
-			<div class="activemsg">
-          		<ul class="kc">
-		  			<li style="margin: 0pt;"><b>库存：</b></li>
-					<li><span>上海仓</span><font id="shanghai">有货</font></li>
-					<li><span>北京仓</span><font id="beijing">无货</font></li>
-					<li><span>广州仓</span><font id="guangzhou">有货</font></li>
-					<li><span>成都仓</span><font id="chengdu">有货</font></li>
-					<li>上海仓可发送至全国</li>
-          		</ul>
-			</div>
 		</div>
-		<div class="clearit"></div>
+		<div class="r5">
+			会员价：<span class="f-red-20-Ar">￥<%= format "%.2f", @product.price %></span>
+		</div>
+		<div class="r5">
+			<span class="f-grey-12">市场价：￥<%= format "%.2f", @product.indication_price %></span>
+		</div>
+		<div class="r5 underline">
+			银卡会员价：￥135.2&nbsp;&nbsp;&nbsp;&nbsp;
+			金卡会员价：￥133.9&nbsp;&nbsp;&nbsp;&nbsp;
+			铂金卡会员价：￥131.1
+		</div>
+		<table width="496" cellspacing="0" cellpadding="0" border="0" class="r4">
+			<tbody>
+				<tr>
+           			<td width="40" height="45" align="left">数量：</td>
+           			<td width="85" align="left">
+						<input type="text" id="winenum" class="winenum" value="1" name="textfield3" />
+           			</td>
+           			<td width="375" align="left" class="f-grey-12">
+						已经售出  <span class="f-blue-12"><b><%= @product.sold_count %></b></span> 瓶 有 <span class="f-blue-12"><b>53</b></span> 人评论 <a href="#"><span class="f-red-12">查看评论(12)</span></a>
+					</td>
+         			</tr>
+         			<tr>
+           			<td style="vertical-align: top; padding-bottom: 10px;" colspan="3">
+           				<ul id="winelabellist" class="jb_singleli">
+           				</ul>
+					</td>
+         			</tr>
+         			<tr>
+           			<td valign="middle" height="25" align="left" colspan="3">
+						<table width="500" height="28" cellspacing="0" cellpadding="0" border="0">
+             					<tbody>
+								<tr>
+               						<td valign="top" align="left" id="clickBox" colspan="2">
+                                       	<a href=""><img border="0" src="/images/add_cart.gif" id="buttonImg"></a>
+									</td>
+               						<td width="115" valign="top" align="left"><a href="#"><img border="0" src="/images/favourite_ico.gif"></a></td>
+               						<td width="260" align="left" valign="top"></td>
+             						</tr>
+           					</tbody>
+						</table>
+					</td>
+         			</tr>
+       		</tbody>
+		</table>
+		<div class="activemsg"></div>
+		<div class="activemsg">
+         		<ul class="kc">
+	  			<li style="margin: 0pt;"><b>库存：</b></li>
+				<li><span>上海仓</span><font id="shanghai">有货</font></li>
+				<li><span>北京仓</span><font id="beijing">无货</font></li>
+				<li><span>广州仓</span><font id="guangzhou">有货</font></li>
+				<li><span>成都仓</span><font id="chengdu">有货</font></li>
+				<li>上海仓可发送至全国</li>
+         		</ul>
+		</div>
 	</div>
+	<div class="clearit"></div>
+</div>
 	<ul id="pd_infomenu">
 		<li class="on">产品描述</li>
 		<li><a href="product-comment.html">评价与咨询(201)</a></li>
 		<li><a href="#">其他评论</a></li>
 	</ul>
 	<div class="clearit"></div>
-	<div id="pd_moreinfo"><%= raw @product.memo %></div>  
-</div>
+	<div id="pd_moreinfo"><%= raw @product.memo %></div>
