@@ -1,211 +1,85 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>12度红酒网</title>
-        <link rel="stylesheet" type="text/css" href="css/home.css"/>
-        <LINK rel=stylesheet type=text/css href="css/floatdiv.css">
-                <script language="javascript">
-            function btnWineClick(subMenuID, subButtonID){
-            
-                if (document.getElementById(subMenuID).style.display != "none") {
-                    document.getElementById(subMenuID).style.display = "none";
-                    document.getElementById(subButtonID).src = "images/jiahao.gif";
-                    
-                    return;
-                }
-                if (document.getElementById(subMenuID).style.display == "none") {
-                    document.getElementById(subMenuID).style.display = "block";
-                    document.getElementById(subButtonID).src = "images/jianhao.gif";
-                    return;
-                }
-            }
-        </script>
-    </head>
-    <body>
-        <div class="wrap">
-<!--#header-->
-            <div id="header">
-                <div id="logo">
-                  <img src="images/blank.gif" width="204" height="97" />
-                </div>
-                <div id="shopcart">
-<div id="cartico">
-                    <img src="images/shopping_cart.gif" width="32" height="31" />
-                </div>
-                 <div id="carttext">
-                    <span class="f-black-arial-12">SHOPPING CART 购物车</span><br />
-                    <a href="#">现在您购物车有0件商品</a></div>
-              </div>
-              
-              <div id="pd_search">     
-            <input value="请输入您要搜索的商品名称"   type="text"   />
-             <a href="#"><img src="images/btn_search.gif" width="67" height="30" alt="限时抢购" /></a>
-             </div>
-              
-              
-              
-<div id="login" class="f-grey-12"><a href="#"><span class="f-red-12"><b>12doo首页</b></span></a>
-                    | 
-<a href="#">注册</a>
-                    | <a href="#">登录</a>
-                    |  <a href="#">我的账户</a>
-                   
-            </div>
-                  <div id="tele-usico">
-                     <img src="images/telephone.gif" width="139" height="23" />
-                </div>
-                <div id="tele-usnum">
-                    <img src="images/telephone_no.gif" width="196" height="22" />
-                </div>
-              
-            </div>
-<!--product-detail-->
-<div id="pd_breadnav"><a href="#">首页</a> > <a href="#">我的帐户</a></div>
-<div class="clearit"></div>
-<div id="my_ac">
-<div id="ac_header"><img src="images/myaccount_header.gif" width="130" height="130" /></div>
-<div id="ac_baseinfo">
-<table width="100%" border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td id="user_name" class="f-black-20-hei">JackieC</td>
-    <td><div id="user_ps"><span class="f-org-12-b">消息提醒：</span>您有 <span class="f-blue-12">0</span> 张优惠券可以使用</div></td>
-  </tr>
-</table>
-
-<table width="100%" border="0" cellspacing="0" cellpadding="0" id="user_detail">
-  <tr>
-    <td width="35%">上次登录时间：2011-04-15 14:15:25 </td>
-    <td width="35%">您的帐户余额： <span class="f-red-20-Ar-b">200.5</span> 元</td>
-    <td rowspan="3"><img src="images/chongzhi_btn.gif" width="114" height="32" /></td>
-  </tr>
-  <tr>
-    <td>手机绑定： 未绑定 <span class="f-blue-12">[立即绑定]</span> </td>
-    <td>现有可用积分： <span class="f-gren-20-Ar-b">255</span> 分 </td>
-    </tr>
-  <tr>
-    <td>会员级别： <span class="f-blue-12">[积分规则]</span> </td>
-    <td>历史累积积分： <span class="f-gren-20-Ar-b">635</span> 分 </td>
-    </tr>
-</table>
-</div>
-<div class="clearit"></div>
-</div>
+<%= render 'my/header' %>
 <div id="my_acinfo">
-<div id="ac_left">
-<div class="contentbox">
-<h2><img src="images/myac_h2.gif" width="79" height="40" /></h2>
-<UL>
-<LI><a href="#">个人资料</a></LI>
-<LI>修改密码</LI>
-<LI>我的账户</LI>
-<LI>我的积分</LI>
-<LI>我的地址簿</LI>
-</UL>
-</div>
-<div class="bj-sp10"></div>
-<div class="contentbox">
-<h2><img src="images/mylist_h2.gif" width="79" height="40" /></h2>
-<UL>
-<LI class="utitle">订单管理</LI>
-<LI>全部订单</LI>
-<LI>已购商品</LI>
-</UL>
-<UL>
-<LI class="utitle"><a href="#">我的信息</a></LI>
-<LI>我的优惠券</LI>
-<LI>我的特别优惠</LI>
-<LI>我的收藏</LI>
-<LI>我的预约管理</LI>
-</UL>
-
-
-
-</div>
-
-
-
-
-</div>
-<div id="ac_right">
-<ul id="pd_infomenu">
-<LI class="on">未处理订单（3）</LI>
-<LI><a href="#">未点评商品(201)</a></LI>
-</ul>
-<div class="clearit"></div>
-<div id="ac_more_detail">
-<table width="98%" cellspacing="0" cellpadding="0" border="0" align="center">
-                                <tbody><tr>
-                                    <td width="400" valign="middle">
-                                        下单日期：
-                                        <input type="text" value=""  style="width: 120px;" name="createdDateBegin" class="Wdate" id="createdDateBegin">
-                                        -
-                                        <input type="text" value=""  style="width: 120px;" name="createdDateEnd" class="Wdate" id="createdDateEnd">
-
-                                    </td>
-                                    <td width="340" valign="middle" align="left">
-                                        订单状态：
-                                        <select id="orderStateName" name="orderStateName">
-                                            <option value="">
-                                                --全部--
-                                            </option>
-                                            
-                                            <option value="ORDER_STATUS_CONFIRMED">
-                                                已确认
-                                            </option>
-                                            <option value="ORDER_STATUS_UN_CONFIRMED">
-                                                待确认
-                                            </option>
-                                            <option value="ORDER_STATUS_CANCEL">
-                                                已取消
-                                            </option>
-                                        </select>
-                                        付款方式：
-                                        <select id="payMethodName" name="payMethodName">
-                                            <option value="">
-                                                --全部--
-                                            </option>
-                                            <option value="PAY_TYPE_DOWN">
-                                                货到付款
-                                            </option>
-                                            <option value="PAY_TYPE_ONLINE_ZFB">
-                                                支付宝
-                                            </option>
-                                            <option value="PAY_TYPE_CHAINPAY">
-                                                网付通
-                                            </option>
-                                            <option value="PAY_TYPE_KUAIQIAN">
-                                                快钱支付
-                                            </option>
-                                            <option value="PAY_TYPE_BANK">
-                                                银行转帐
-                                            </option>
-                                            <option value="PAY_TYPE_POST">
-                                                邮局汇款
-                                            </option>
-                                            <option value="PAY_TYPE_ONLINE_CBC">
-                                                工商银行
-                                            </option>
-                                            <option value="PAY_TYPE_ONLINE_CMBC">
-                                                民生银行
-                                            </option>
-                                            <option value="PAY_TYPE_ONLINE_CMB">
-                                                招商银行
-                                            </option>
-                                            <option value="PAY_TYPE_ONLINE_PINGAN">
-                                                平安银行
-                                            </option>
-                                        </select>
-                                    </td>
-                                    <td valign="middle" align="right">
-                                        <a href=""><img align="absmiddle" alt="" src="images/confirm_btn.gif"> </a>
-                                    </td>
-                                </tr>
-                            </tbody></table>
-                            <div class="bj-sp10"></div>
-
-<table width="100%" cellspacing="0" cellpadding="0" border="0" class="tableinfo">
-                    <tbody>
+<%= render 'my/userside' %>
+	<div id="ac_right">
+		<ul id="pd_infomenu">
+			<li class="on">未处理订单（3）</li>
+			<li><a href="#">未点评商品(201)</a></li>
+		</ul>
+		<div class="clearit"></div>
+		<div id="ac_more_detail">
+			<table width="98%" cellspacing="0" cellpadding="0" border="0" align="center">
+            	<tbody>
+					<tr>
+				    	<td width="400" valign="middle">
+				            下单日期：
+				            <input type="text" value=""  style="width: 120px;" name="createdDateBegin" class="Wdate" id="createdDateBegin">
+				            -
+				            <input type="text" value=""  style="width: 120px;" name="createdDateEnd" class="Wdate" id="createdDateEnd">
+				        </td>
+				        <td width="340" valign="middle" align="left">
+				            订单状态：
+				            <select id="orderStateName" name="orderStateName">
+				                <option value="">
+				                    --全部--
+				                </option>
+                
+				                <option value="ORDER_STATUS_CONFIRMED">
+				                    已确认
+				                </option>
+				                <option value="ORDER_STATUS_UN_CONFIRMED">
+				                    待确认
+				                </option>
+				                <option value="ORDER_STATUS_CANCEL">
+				                    已取消
+				                </option>
+				            </select>
+				            付款方式：
+				            <select id="payMethodName" name="payMethodName">
+				                <option value="">
+				                    --全部--
+				                </option>
+				                <option value="PAY_TYPE_DOWN">
+				                    货到付款
+				                </option>
+				                <option value="PAY_TYPE_ONliNE_ZFB">
+				                    支付宝
+				                </option>
+				                <option value="PAY_TYPE_CHAINPAY">
+				                    网付通
+				                </option>
+				                <option value="PAY_TYPE_KUAIQIAN">
+				                    快钱支付
+				                </option>
+				                <option value="PAY_TYPE_BANK">
+				                    银行转帐
+				                </option>
+				                <option value="PAY_TYPE_POST">
+				                    邮局汇款
+				                </option>
+				                <option value="PAY_TYPE_ONliNE_CBC">
+				                    工商银行
+				                </option>
+				                <option value="PAY_TYPE_ONliNE_CMBC">
+				                    民生银行
+				                </option>
+				                <option value="PAY_TYPE_ONliNE_CMB">
+				                    招商银行
+				                </option>
+				                <option value="PAY_TYPE_ONliNE_PINGAN">
+				                    平安银行
+				                </option>
+				            </select>
+				        </td>
+				        <td valign="middle" align="right">
+				        	<a href=""><img align="absmiddle" alt="" src="/images/confirm_btn.gif"></a>
+				        </td>
+				    </tr>
+				</tbody>
+			</table>
+            <div class="bj-sp10"></div>
+			<table width="100%" cellspacing="0" cellpadding="0" border="0" class="tableinfo">
+            	<tbody>
                     <tr bgcolor="#f0f0f0" class="f-black-12-b">
                         <td height="30" width="70">
                             订单号
@@ -236,571 +110,66 @@
                             操作
                         </td>
                     </tr>
-                    
-                        <tr>
-                            <td height="30">
-                                <a class="f-blue-12" href="">10483861 </a>
-                            </td>
-                            <td>
-                                S247229
-                            </td>
-                            <td>
-                                2011-04-15
-                            </td>
-                            <td>
-                                叶灵
-                            </td>
-                            <td>
-                                ￥
-                                136
-                            </td>
-                            <td>
-                                货到付款</td>
-                            <td>已退货
- </td>
-                             <td>
-                             
-                             上海仓</td>
-                              
-                            <td>
-                                
-                                
-                                <a href="" class="f-red-12">[查看]</a>
-                                
-                                
-                                
-                                  
-                                
-                            </td>
-                        </tr>
                     <tr>
-                            <td height="30">
-                                <a class="f-blue-12" href="">10483861 </a>
-                            </td>
-                            <td>
-                                S247229
-                            </td>
-                            <td>
-                                2011-04-15
-                            </td>
-                            <td>
-                                叶灵
-                            </td>
-                            <td>
-                                ￥
-                                136
-                            </td>
-                            <td>
-                                货到付款</td>
-                            <td>已退货
- </td>
-                             <td>
-                             
-                             上海仓</td>
-                              
-                            <td>
-                                
-                                
-                                <a href="" class="f-red-12">[查看]</a>
-                                
-                                
-                                
-                                  
-                                
-                            </td>
-                        </tr>
-                        <tr>
-                            <td height="30">
-                                <a class="f-blue-12" href="">10483861 </a>
-                            </td>
-                            <td>
-                                S247229
-                            </td>
-                            <td>
-                                2011-04-15
-                            </td>
-                            <td>
-                                叶灵
-                            </td>
-                            <td>
-                                ￥
-                                136
-                            </td>
-                            <td>
-                                货到付款</td>
-                            <td>已退货
- </td>
-                             <td>
-                             
-                             上海仓</td>
-                              
-                            <td>
-                                
-                                
-                                <a href="" class="f-red-12">[查看]</a>
-                                
-                                
-                                
-                                  
-                                
-                            </td>
-                        </tr>
-                </tbody></table>
-                
-                <table border="0" align="center" cellpadding="0" cellspacing="5" class="list_num">
-  <tr>
-    <td class="current">1</td>
-    <td><a href="#">2</a></td>
-    <td><a href="#">3</a></td>
-     <td><a href="#">4</a></td>
-      <td><a href="#">5</a></td>
-       <td><a href="#">6</a></td>
-        <td><a href="#">7</a></td>
-         <td><a href="#">8</a></td>
-          <td><a href="#">&raquo;</a></td>
-  </tr>
-</table>
-                
-                </div>
+                        <td height="30"><a class="f-blue-12" href="">10483861 </a></td>
+                        <td>S247229</td>
+                        <td>2011-04-15</td>
+                        <td>叶灵</td>
+                        <td>￥136</td>
+                        <td>货到付款</td>
+                        <td>已退货</td>
+                        <td>上海仓</td>
+                        <td><a href="" class="f-red-12">[查看]</a></td>
+                    </tr>
+                    <tr>
+                        <td height="30"><a class="f-blue-12" href="">10483861 </a></td>
+                        <td>S247229</td>
+                        <td>2011-04-15</td>
+                        <td>叶灵</td>
+                        <td>￥136</td>
+                        <td>货到付款</td>
+                        <td>已退货</td>
+                        <td>上海仓</td>
+                        <td><a href="" class="f-red-12">[查看]</a></td>
+                    </tr>
+                    <tr>
+                        <td height="30"><a class="f-blue-12" href="">10483861 </a></td>
+                        <td>S247229</td>
+                        <td>2011-04-15</td>
+                        <td>叶灵</td>
+                        <td>￥136</td>
+                        <td>货到付款</td>
+                        <td>已退货</td>
+                        <td>上海仓</td>
+                        <td><a href="" class="f-red-12">[查看]</a></td>
+                    </tr>
+                    <tr>
+                        <td height="30"><a class="f-blue-12" href="">10483861 </a></td>
+                        <td>S247229</td>
+                        <td>2011-04-15</td>
+                        <td>叶灵</td>
+                        <td>￥136</td>
+                        <td>货到付款</td>
+                        <td>已退货</td>
+                        <td>上海仓</td>
+                        <td><a href="" class="f-red-12">[查看]</a></td>
+                    </tr>
+                </tbody>
+			</table>
+            <table border="0" align="center" cellpadding="0" cellspacing="5" class="list_num">
+  				<tr>
+					<td class="current">1</td>
+					<td><a href="#">2</a></td>
+					<td><a href="#">3</a></td>
+					<td><a href="#">4</a></td>
+					<td><a href="#">5</a></td>
+					<td><a href="#">6</a></td>
+					<td><a href="#">7</a></td>
+					<td><a href="#">8</a></td>
+					<td><a href="#">&raquo;</a></td>
+  				</tr>
+			</table>
+		</div>
+	</div>
 </div>
-</div>
-
-
-
-
-
-
-
-
-
 <div class="clearit"></div>
-  
-<!--#footer-->
-<div id="footer">
-
-
-	<!-- footer start -->
-        <div class="fLink">
-            <ul>
-                <li class="fLink01">
-                    <dl>
-                        <dt><img height="22"  width="95" src="images/footer01.gif"/></dt>
-                        <dd>
-                            <a  href="#">注册新用户</a>
-                        </dd>
-                          <dd>
-                            <a href="#">网站订购流程</a>
-                        </dd>
-                        <dd>
-                            <a  href="#">新积分规则</a>
-                        </dd>
-                        
-                    </dl>
-                </li>
-                <li class="fLink02">
-                    <dl>
-                        <dt><img height="23"  width="136" src="images/footer02.gif"/>	</dt>
-                        <dd>
-                            <a  href="#">支付方式</a>
-                         
-                            
-                        </dd>
-                           <dd>
-                            <a  href="#">各支付方式的付款等待期限</a>
-                        </dd>
-                        <dd>
-                             <a href="#">发票支付说明</a>
-                        </dd>
-                    </dl>
-                </li>
-                <li class="fLink03">
-                    <dl>
-                        <dt><img src="images/footer03.gif" width="106" height="25"/></dt>
-                        <dd>
-                            <a href="#">货到付款城市及配送时间</a>
-                            </dd>  <dd>
-                            <a href="#">配送费收取标准</a>
-                         
-                        </dd>
-                    </dl>
-                </li>
-                <li class="fLink04">
-                    <dl>
-                        <dt><img src="images/footer04.gif" width="96" height="22"/></dt>
-                        <dd>
-                            <a  href="#">退换货政策</a></dd>
-                          <dd>   <a  href="#">如何办理退换货</a>
-                        </dd>
-                    </dl>
-                 </li>
-                <li class="fLink05">
-                    <dl>
-                        <dt><img  src="images/footer05.gif"/></dt>
-                        <dd>
-                            <a href="#">常见热点问题</a></dd>
-                          <dd> 
-                            <a href="#">联系我们款</a></dd>
-                          <dd> 
-                            <a href="#">投诉与建议</a>
-                        </dd>
-                         <dd> 
-                            <a href="#">团购规则</a>
-                        </dd>
-                    </dl>
-                 </li>
-             
-            </ul>
-            <div class="clearit"></div>
-        </div>
-
-        <!--copyright start-->
-        <div class="copyright">
-        <div id="cp_logo"><a href="#"><img  src="images/copyright.gif"/></a></div>
-        <div id="cp_info">12度红酒网 版权所有 2011&copy;&nbsp;<a target="_blank" href="http://www.miibeian.gov.cn/">沪ICP备0123456789号</a></div>
-            
-        </div>
-        <!--copyright end-->
-    <!-- footer end -->
-</div>
-</div>
-            
-
-
-        
-        
-        
-
-        
-        
-        
-        
-        
-        
-        
-        
-
-         
-        
-        
-
-             
-        <DIV id=selectmywine onmouseover=toBig() onmouseout=toSmall()>
-            <TABLE id="selectwine" border=0 cellSpacing=0 cellPadding=0>
-                <TBODY>
-                    <TD id="selectwineIn" vAlign=top>
-                        <TABLE class=qqtable border=0 cellSpacing=0 cellPadding=0 align=center>
-                            <TBODY>
-                                <TR>
-                                    <TD class="main_head" height=39 vAlign=top>&nbsp;
-                                        
-                                    </TD>
-                                </TR>
-                                <TR>
-                                    <TR>
-                                        <TD>
-                                            <a href="javascript:btnWineClick('ptjzl','ptjzlBtn');"><IMG id="ptjzlBtn" border=0 src="images/jianhao.gif"></a><span class="f-black-14">&nbsp;葡萄酒种类</span>
-                                        </TD>
-                                    </TR>
-                                    <TR>
-                                        <td id="ptjzl">
-                                            <table>
-                                                <TR class="f-666666-14">
-                                                <TD width="70">
-                                                    <a href="#">A种类</a>
-                                                </TD>
-                                                <TD width="70">
-                                                    <a href="#">B种类</a>
-                                                </TD>
-                                                </tr>
-                                                <TR class="f-666666-14">
-                                                <TD>
-                                                    <a href="#">C种类</a>
-                                                </TD>
-                                                <TD>
-                                                    <a href="#">D种类</a>
-                                                </TD>
-                                            </tr>
-                                            </table>
-                                        </td>
-                                        <TR>
-                                            <TD>
-                                                <a href="javascript:btnWineClick('jg','jgBtn');"><IMG id="jgBtn" border=0 src="images/jianhao.gif"></a><span class="f-black-14">&nbsp;价格</span>
-                                            </TD>
-                                        </TR>
-                                        <TR>
-                                            <td id="jg">
-                                                <table>
-                                                    <TR class="f-666666-14">
-                                                    <TD width="70">
-                                                        <a href="#">1-99元</a>
-                                                    </TD>
-                                                    <TD width="70">
-                                                        <a href="#">100-199元</a>
-                                                    </TD>
-                                                    </tr>
-                                                    <TR class="f-666666-14">
-                                                    <TD>
-                                                        <a href="#">200-299元</a>
-                                                    </TD>
-                                                    <TD>
-                                                        <a href="#">300-499元</a>
-                                                    </TD>
-                                                </tr>
-                                                <TR class="f-666666-14">
-                                                <TD>
-                                                    <a href="#">500-799元</a>
-                                                </TD>
-                                                </tr>
-                                                <TR class="f-666666-14">
-                                                <TD>
-                                                    <a href="#">不限</a>
-                                                </TD>
-                                            </tr>
-                                            </table>
-                                        </td>
-                                        <TR>
-                                            <TD>
-                                                <a href="javascript:btnWineClick('gj','gjBtn');"><IMG id="gjBtn" border=0 src="images/jianhao.gif"></a><span class="f-black-14">&nbsp;国家</span>
-                                            </TD>
-                                        </TR>
-                                        <TR>
-                                            <TR>
-                                                <td id="gj">
-                                                    <table>
-                                                        <TR class="f-666666-14">
-                                                        <TD width="70">
-                                                            <a href="#">法国</a>
-                                                        </TD>
-                                                        <TD width="70">
-                                                            <a href="#">意大利</a>
-                                                        </TD>
-                                                        </tr>
-                                                        <TR class="f-666666-14">
-                                                        <TD>
-                                                            <a href="#">澳大利亚</a>
-                                                        </TD>
-                                                        <TD>
-                                                            <a href="#">德国</a>
-                                                        </TD>
-                                                    </tr>
-                                                    <TR class="f-666666-14">
-                                                    <TD>
-                                                        <a href="#">美国</a>
-                                                    </TD>
-                                                    <TD>
-                                                        <a href="#">西班牙</a>
-                                                    </TD>
-                                                    </tr>
-                                                    <TR class="f-666666-14">
-                                                        <TD>
-                                                            <a href="#">智利</a>
-                                                        </TD>
-                                                        <TD>
-                                                            <a href="#">新西兰</a>
-                                                        </TD>
-                                                    </TR>
-                                                </table>
-                                                </td>
-                                            </tr>
-                                            <TR>
-                                                <TD colspan="2">
-                                                    <a href="javascript:btnWineClick('sych','sychBtn');"><IMG id="sychBtn" border=0 src="images/jianhao.gif"></a><span class="f-black-14">&nbsp;使用场合</span>
-                                                </TD>
-                                            </TR>
-                                            <tr>
-                                                <td id="sych">
-                                                    <table>
-                                                        <TR class="f-666666-14">
-                                                        <TD width="70">
-                                                            <a href="#">聚会用</a>
-                                                        </TD>
-                                                        <TD width="70">
-                                                            <a href="#">约会用</a>
-                                                        </TD>
-                                                        </tr>
-                                                        <TR class="f-666666-14">
-                                                        <TD>
-                                                            <a href="#">自饮用</a>
-                                                        </TD>
-                                                        <TD>
-                                                            <a href="#">商务用</a>
-                                                        </TD>
-                                                    </tr>
-                                                    <TR class="f-666666-14">
-                                                    <TD>
-                                                        <a href="#">婚宴用</a>
-                                                    </TD>
-                                                    <TD>
-                                                        <a href="#">送礼用</a>
-                                                    </TD>
-                                                    </tr>
-                                                </table>
-                                                </td>
-                                            </TBODY>
-                                            </TABLE>
-                                        </TD>
-                                    </TR>
-                                    </TBODY>
-                                </TABLE>
-                                <DIV class=Obtn>
-                                </DIV>
-                                </DIV>
-                                <SCRIPT language=javascript>
-                                    挑选葡萄酒 = function(id, _top, _left){
-                                        var me = id.charAt ? document.getElementById(id) : id, d1 = document.body, d2 = document.documentElement;
-                                        d1.style.height = d2.style.height = '100%';
-                                        me.style.top = _top ? _top + 'px' : 0;
-                                        me.style.left = _left + "px";
-                                        me.style.position = 'absolute';
-                                        setInterval(function(){
-                                            me.style.top = parseInt(me.style.top) + (Math.max(d1.scrollTop, d2.scrollTop) + _top - parseInt(me.style.top)) * 0.1 + 'px';
-                                        }, 10 + parseInt(Math.random() * 20));
-                                        return arguments.callee;
-                                    };
-                                    window.onload = function(){
-                                        挑选葡萄酒('selectmywine', 100, -165)
-                                    }
-                                </SCRIPT>
-                                <SCRIPT language=javascript>
-                                    lastScrollY = 0;
-                                    
-                                    var InterTime = 1;
-                                    var maxWidth = -1;
-                                    var minWidth = -165;
-                                    var numInter = 8;
-                                    
-                                    var BigInter;
-                                    var SmallInter;
-                                    
-                                    var o = document.getElementById("selectmywine");
-                                    var i = parseInt(o.style.left);
-                                    function Big(){
-                                        if (parseInt(o.style.left) < maxWidth) {
-                                            i = parseInt(o.style.left);
-                                            i += numInter;
-                                            o.style.left = i + "px";
-                                            if (i == maxWidth) 
-                                                clearInterval(BigInter);
-                                        }
-                                    }
-                                    
-                                    function toBig(){
-                                        clearInterval(SmallInter);
-                                        clearInterval(BigInter);
-                                        BigInter = setInterval(Big, InterTime);
-                                    }
-                                    
-                                    function Small(){
-                                        if (parseInt(o.style.left) > minWidth) {
-                                            i = parseInt(o.style.left);
-                                            i -= numInter;
-                                            o.style.left = i + "px";
-                                            
-                                            if (i == minWidth) 
-                                                clearInterval(SmallInter);
-                                        }
-                                    }
-                                    
-                                    function toSmall(){
-                                        clearInterval(SmallInter);
-                                        clearInterval(BigInter);
-                                        SmallInter = setInterval(Small, InterTime);
-                                        
-                                    }
-                                </SCRIPT>
-
-    </body>
-</html>
-
-
-
-<%= render 'my/crumb' %>
-<%= render 'my/userside' %>
-
-
-<div class="all_content">
-
-  <div class="regbox">
-    <%# render 'devise/alert' %>
-    <%= form_for(:current_user, :html => {:name =>"user_info" }) do |f| %>
-        
-    <table width="600" border="0" align="left" cellpadding="0" cellspacing="0">
-      <tbody>
-          <tr>
-              <td width="75px" height="35" align="right" valign="middle">
-                <%= f.label :email %>：
-              </td>
-              <td width="210px" align="left" valign="middle">
-              	<%= @current_user.email %>
-              </td>
-              <td width="315px" align="left">
-              
-              </td>
-          </tr>
-          <tr>
-              <td height="35" align="right" valign="middle">
-                <%= f.label :name %>：
-              </td>
-              <td align="left" valign="middle">
-              	<%= @current_user.name %>
-              </td>
-              <td align="left">
-              
-              </td>
-          </tr>    
-          <tr>
-              <td height="35" align="right" valign="middle">
-                <%= f.label :phone %>：
-              </td>
-              <td align="left" valign="middle">
-              	 <%= @current_user.phone %>
-              </td>
-              <td align="left">
-              
-              </td>
-          </tr> 
-          <tr>
-              <td height="35" align="right" valign="middle">
-                <%= f.label :gender %>：
-              </td>
-              <td align="left" valign="middle">
-                <%= @current_user.gender %>
-              </td>
-              <td align="left">
-              
-              </td>
-          </tr>        
-          <tr>
-              <td height="35" align="right" valign="middle">
-                <%= f.label :birth %>：
-              </td>
-              <td align="left" valign="middle">
-              	<%= @current_user.birth.to_s %>
-              </td>
-              <td align="left">
-              
-              </td>
-          </tr>                                                              
- 
-          <tr>
-              <td height="35" align="right" valign="middle">
-                
-              </td>
-              <td align="left" valign="middle">
-                <%= link_to "我要修改上述信息", edit_user_registration_path %>
-              	<%# f.submit "更新个人信息" %>
-              </td>
-              <td align="left">
-              
-              </td>
-          </tr>                     
-      </tbody>
-    </table>               
-    <% end %>
-  </div>
-</div>
-
-
-
-
-

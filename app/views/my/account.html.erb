@@ -1,0 +1,41 @@
+<%= render 'my/header' %>
+<div id="my_acinfo">
+<%= render 'my/userside' %>
+	<div id="ac_right">
+		<ul id="pd_infomenu">
+			<li class="on">未处理订单（3）</li>
+			<li><a href="#">未点评商品(201)</a></li>
+		</ul>
+		<div class="clearit"></div>
+		<div id="ac_more_detail">
+			<table width="100%" cellspacing="0" cellpadding="0" border="0" class="tableinfo">
+            	<tbody>
+                    <tr>
+                        <td height="30">Email</td>
+                        <td><%= @current_user.email %></td>
+                    </tr>
+                    <tr>
+                        <td height="30">姓名</td>
+                        <td><%= @current_user.name %></td>
+                    </tr>
+                    <tr>
+                        <td height="30">电话</td>
+                        <td><%= @current_user.phone %></td>
+                    </tr>
+                </tbody>
+			</table>
+            <div class="bj-sp10"></div>
+			<table width="98%" cellspacing="0" cellpadding="0" border="0" align="center">
+            	<tbody>
+					<tr>
+				    	<td width="100%" valign="middle" align="middle">
+							<%= link_to "我要修改上述信息", edit_user_registration_path %>
+				        	<a href=""><img align="absmiddle" alt="" src="/images/confirm_btn.gif"></a>
+				        </td>
+				    </tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+<div class="clearit"></div>

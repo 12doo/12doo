@@ -1,45 +1,28 @@
-<div class="all_sidebar">
-    <% if current_user.admin %>
-    <div class="ymw">
-        <h3>
-            <p style="color:#FF6600;">管理员功能</p>
-		    </h3>
-        <ul>
-            <li><%= link_to "产品管理", "/admin/products" %></a></li>
-			<li><%= link_to "订单管理", "/admin/orders" %></a></li>
-			<li><%= link_to "用户管理", "/admin/users" %></a></li>
-			<li><%= link_to "优惠券管理", "/admin/coupons" %></a></li>
-			<li><%= link_to "产品属性管理", "/admin/product_attributes" %></a></li>
-        </ul>
-    </div>
-    <% end %>
-    <div class="ymj">
-        <h3><%= link_to "编辑个人信息", edit_user_registration_path %></h3>
-        <div class="mytea_list">
-            <h3>我的信息</h3>
-            <ul>
-                <li><div class='normal_link'><%= link_to "地址信息", addresses_path %></div><li>
-                <li><a href="#">我的优惠券</a></li>
-                <li><a href="/favorites">我的收藏</a></li>
-            </ul>
-        </div>
-        <div id="mycenter2">
-            <div class="mytea_list">
-                <h3>订单管理</h3>
-                <ul>
-                    <li><div class='normal_link'><%= link_to "订单信息", orders_path %></div><li>
-                    <li><a href="/products/bought">已购商品</a></li>
-                </ul>
-            </div>
-            <div class="mytea_list">
-                <h3>我的客服</h3>
-                <ul>
-                    <li><a href="#">我的投诉</a></li>
-                </ul>
-            </div>
-            <div class="mytea_list">
-            </div>
-        </div>
-    </div>
+<div id="ac_left">
+	<div class="contentbox">
+		<h2><img src="/images/myac_h2.gif" width="79" height="40" /></h2>
+		<ul>
+			<li><a href="#">个人资料</a></li>
+			<li><a href="/my/password">修改密码</a></li>
+			<li><a href="/my/account">我的账户</a></li>
+			<li><a href="/my/bought">我的积分</a></li>
+			<li><a href="/my/money">充值提现</a></li>
+			<li><a href="/my/addresses">我的地址簿</a></li>
+		</ul>
+	</div>
+	<div class="bj-sp10"></div>
+	<div class="contentbox">
+		<h2><img src="/images/mylist_h2.gif" width="79" height="40" /></h2>
+		<ul>
+			<li class="utitle">订单管理</li>
+			<li><a href="/my/orders">全部订单</a></li>
+			<li><a href="/my/bought">已购商品</a></li>
+		</ul>
+		<ul>
+			<li class="utitle"><a href="#">我的信息</a></li>
+			<li><a href="/my/coupons">我的优惠券</a></li>
+			<li><a href="/my/favorites">我的收藏</a></li>
+			<li><a href="/my/books">我的预约</a></li>
+		</ul>
+	</div>
 </div>
-
