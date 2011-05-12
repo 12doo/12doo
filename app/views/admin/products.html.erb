@@ -46,7 +46,7 @@
 					    <td><%= product.count %></td>
 						<td><%= product.status %></td>
 						<td>
-							<%= link_to "[编辑]", :action => :edit, :controller => :products, :id => product.id, :class => 'f-red-12' %>
+							<%= link_to "[编辑]", edit_product_path(product), :class => 'f-red-12' %>
 							<%= link_to '[详情]', product, :class => 'f-red-12' %>
 						</td>
 				  	</tr>
