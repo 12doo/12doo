@@ -280,3 +280,11 @@ zhcn:
       create: "新增%{model}"
       update: "更新%{model}"
       submit: "储存%{model}"
+      
+  views:
+    pagination:
+      previous: "<"
+      next: ">"
+      truncate: "..."
+      last: ">>"
+      first: "<<"
