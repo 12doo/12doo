@@ -9,7 +9,7 @@ class AdminController < ApplicationController
   end
   
   def products
-    @products = Product.paginate :page => params[:page], :order => 'created_at DESC'
+    @products = Product.order("id desc").page(params[:page])
   end
   
   def orders

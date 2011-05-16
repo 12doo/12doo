@@ -5,6 +5,7 @@
         <title>12度红酒网</title>
         <link rel="stylesheet" type="text/css" href="/css/home.css" />
         <link rel="stylesheet" type="text/css" href="/css/floatdiv.css" />
+		<%= javascript_include_tag "jquery-1.4.4.min.js" %>
         <script language="text/javascript">
             function btnWineClick(subMenuID, subButtonID){
             
@@ -61,9 +62,9 @@
            					<li><a  href="#"><img src="/images/buy_limit.gif" width="80" height="31" alt="限时抢购" /></a></li>
            				</ul>
                     </div>
-	               	<div id="search">     
-	            		<input value="请输入您要搜索的商品名称" type="text" />
-	             		<a href="#"><img src="/images/btn_search.gif" width="67" height="30" alt="限时抢购" /></a>
+	               	<div id="search">
+						<input type="text" id="keywordTop" onkeydown="javascript:if(event.keyCode == 13){window.location.href = '<%= search_path_without_keywords %>' + $('#keywordTop').val();}"  value="<%= params[:keywords] %>" />
+	             		<a href="javascript:window.location.href = '<%= search_path_without_keywords %>' + $('#keywordTop').val();"><img src="/images/btn_search.gif" width="67" height="30" alt="限时抢购" /></a>
 	             	</div>
 				</div>
 				<%= yield %>

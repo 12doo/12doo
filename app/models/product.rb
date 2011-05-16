@@ -6,7 +6,7 @@ class Product < ActiveRecord::Base
   has_many :product_attributes
   has_many :product_tags
   cattr_reader :per_page
-  @@per_page = 8
+  paginates_per 5
   
   def has_attribute(short,value)
     self.product_attributes.each do | attr |
