@@ -78,6 +78,30 @@ class ProductsController < ApplicationController
         end
       end
     end
+    
+    @product.pic = ''
+    # save pic
+    if params[:product][:pic]
+      
+      #create path
+      directory = "public/pics"
+      unless File.directory?directory
+        Dir.mkdir(directory)
+      end
+      
+      name = params[:product][:pic].original_filename
+      @product.pic = name
+
+      #create path
+      directory = directory + "/" + @product.sku
+      path = File.join(directory, name)
+      unless File.directory?directory
+        Dir.mkdir(directory)
+      end
+      #save file
+      File.open(path, "wb") { |f| f.write(params[:product][:pic].read) }
+    end
+    
     #params[:product_tag].each do |tag|
     #  temp = ProductTag.new
     #  temp.key = tag[:key]

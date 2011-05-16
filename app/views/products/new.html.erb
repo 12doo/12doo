@@ -8,7 +8,7 @@
 		</ul>
 		<div class="clearit"></div>
 		<div id="ac_more_detail">
-			<%= form_tag 'create' do %>
+			<%= form_tag 'create', :multipart => true do %>
 			<%= render 'form' %>
 			<input type="submit" value="保存" />
 			<% end %>
