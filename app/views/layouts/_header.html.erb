@@ -1,0 +1,26 @@
+<div id="logo"><img src="/images/blank.gif" width="204" height="97" /></div>
+<div id="shopcart">
+  <div id="cartico">
+    	<img src="/images/shopping_cart.gif" width="32" height="31" />
+  </div>
+  <div id="carttext">
+    	<span class="f-black-arial-12">SHOPPING CART 购物车</span><br />
+    	<a href="/cart/show">现在您购物车有0件商品</a>
+  </div>
+</div>
+<div id="login" class="f-grey-12">
+  <% if user_signed_in? %>
+  您好，<%= current_user.display_name %>
+  <% end %>
+  <% if user_signed_in? %>
+  <%= link_to "注销", destroy_user_session_path %>
+  <% else %>
+  <%= link_to "注册", new_user_registration_path %> | <%= link_to "登陆", new_user_session_path %>
+  <% end %>
+</div>
+<div id="tele-usico">
+  	<img src="/images/telephone.gif" width="139" height="23" />
+</div>
+<div id="tele-usnum">
+  	<img src="/images/telephone_no.gif" width="196" height="22" />
+</div>

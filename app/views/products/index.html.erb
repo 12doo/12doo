@@ -6,59 +6,14 @@
 </h2>
 
 <div class="shopLbox">
-	<div class="listL">
-		<ul>
-			<li><span class="on"><a href="#">葡萄酒种类</a></span>
-				<ul class="wine">
-					<li><a href="#">红葡萄酒</a></li>
-					<li><a href="#">白葡萄酒</a></li>
-					<li><a href="#">桃红葡萄酒</a></li>
-					<li><a href="#">起泡酒</a></li>
-				</ul>
-
-			</li>
-			<li><span><a href="#">价 格</a></span>
-				<ul>
-					<li><a href="#">1-99元</a></li>
-					<li><a href="#">100-199元</a></li>
-					<li><a href="#">200-299元</a></li>
-					<li><a href="#">300-399元</a></li>
-					<li><a href="#">400-799元</a></li>
-					<li><a href="#">不限</a></li>
-				</ul>
-				<div class="clearit"></div>
-			</li>
-			<li><span><a href="#">国 家</a></span>
-				<ul>
-					<li><a href="#">法国</a></li>
-					<li><a href="#">澳大利亚</a></li>
-					<li><a href="#">美国</a></li>
-					<li><a href="#">智利</a></li>
-					<li><a href="#">新西兰</a></li>
-					<li><a href="#">阿根廷</a></li>
-				</ul>
-				<div class="clearit"></div>
-			</li>
-			<li><span><a href="#">使用场合</a></span>
-				<ul>
-					<li><a href="#">聚餐用</a></li>
-					<li><a href="#">约会用</a></li>
-					<li><a href="#">自饮用</a></li>
-					<li><a href="#">商务用</a></li>
-					<li><a href="#">婚宴用</a></li>
-					<li><a href="#">送礼用</a></li>
-				</ul>
-				<div class="clearit"></div>
-			</li>
-		</ul>
-	</div>            
+  <%= render :partial => "products/shopleftbar" %>
        
 <!--#sort-->         
-	<div style="float:left;width:720px;">
+	<div style="float:left;width:725px;">
 		<div class="goodsResult">
 			<ul class="pagePicView">
 				<% @products.each do |product| %>
-				<li class="one">
+				<li>
 					<dl>
 						<dd class="grImg"><%= link_to image_tag(product.pic, :alt => product.cn_name), product_path(product) %></dd>
 						<dt class="wine_word"><%= link_to product.cn_name, product_path(product), {:class => 'f-black-14-YaHei'} %></dt>
