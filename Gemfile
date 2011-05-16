@@ -20,6 +20,9 @@ gem 'activemerchant_patch_for_china'
 # version 2.3 has some bugs with rails3
 gem 'will_paginate','3.0.pre2'
 
+gem 'jquery-rails'  
+gem 'client_side_validations' 
+
 # Use unicorn as the web server
 # gem 'unicorn'
 
