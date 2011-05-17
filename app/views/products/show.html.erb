@@ -1,7 +1,9 @@
 <!--product-detail-->
+<!--
 <div id="pd_breadnav">
 	<a href="/">首页</a> > <a href="#">起泡酒</a> > <a href="#"><%= @product.cn_name %></a>
 </div>
+-->
 <div class="clearit"></div>
 <div id="pd_baseinfo">
 	<div class="pd_img"><img src="/pics/<%= @product.sku %>/<%= @product.pic %>" width="270" height="270" /></div>
@@ -15,6 +17,7 @@
 							<%= @product.name %>
 						</td>
 						<td width="111">
+							<!--
 							<table width="111" cellspacing="0" cellpadding="0" border="0" align="right">
 								<tbody>
 									<tr>
@@ -35,6 +38,7 @@
 									</tr>
 								</tbody>
 							</table>
+							-->
 						</td>
 					</tr>
 				</tbody>
@@ -47,9 +51,11 @@
 			<span class="f-grey-12">市场价：￥<%= format "%.2f", @product.indication_price %></span>
 		</div>
 		<div class="r5 underline">
+			<!--
 			银卡会员价：￥135.2&nbsp;&nbsp;&nbsp;&nbsp;
 			金卡会员价：￥133.9&nbsp;&nbsp;&nbsp;&nbsp;
 			铂金卡会员价：￥131.1
+			-->
 		</div>
 		<table width="496" cellspacing="0" cellpadding="0" border="0" class="r4">
 			<tbody>
@@ -59,7 +65,10 @@
 						<input type="text" id="winenum" class="winenum" value="1" name="textfield3" />
            			</td>
            			<td width="375" align="left" class="f-grey-12">
-						已经售出  <span class="f-blue-12"><b><%= @product.sold_count %></b></span> 瓶 有 <span class="f-blue-12"><b>53</b></span> 人评论 <a href="#"><span class="f-red-12">查看评论(12)</span></a>
+						已经售出  <span class="f-blue-12"><b><%= @product.sold_count %></b></span> 瓶 
+						<!--
+						有 <span class="f-blue-12"><b>53</b></span> 人评论 <a href="#"><span class="f-red-12">查看评论(12)</span></a>
+						-->
 					</td>
          			</tr>
          			<tr>
@@ -90,9 +99,11 @@
          		<ul class="kc">
 	  			<li style="margin: 0pt;"><b>库存：</b></li>
 				<li><span>上海仓</span><font id="shanghai">有货</font></li>
+				<!--
 				<li><span>北京仓</span><font id="beijing">无货</font></li>
 				<li><span>广州仓</span><font id="guangzhou">有货</font></li>
 				<li><span>成都仓</span><font id="chengdu">有货</font></li>
+				-->
 				<li>上海仓可发送至全国</li>
          		</ul>
 		</div>
@@ -101,8 +112,10 @@
 </div>
 	<ul id="pd_infomenu">
 		<li class="on">产品描述</li>
+		<!--
 		<li><a href="product-comment.html">评价与咨询(201)</a></li>
 		<li><a href="#">其他评论</a></li>
+		-->
 	</ul>
 	<div class="clearit"></div>
 	<div id="pd_moreinfo"><%= raw @product.memo %></div>
