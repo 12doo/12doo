@@ -1,9 +1,13 @@
 <div class="clearit bj-sp10"></div>
 <ul id="pd_infomenu">
 	<li class="on">我的购物车</li>
+	<!--
 	<li>我的收藏夹</li>
+	
 	<li>我的预约商品</li>
-	<li>我浏览的商品</li> 	  
+	
+	<li>我浏览的商品</li> 
+	-->
 </ul>
 <div class="clearit bj-sp10"></div>
 <div id="cart">
@@ -19,12 +23,12 @@
             </tr>
 			<% cart.items.each do |item| %>
             <tr>
-            	<td height="30"><a class="f-blue-12-b" href=""><%= item.name %></a></td>
+            	<td height="30"><a class="f-blue-12-b" href="/products/<%= item.product.id %>"><%= item.name %></a></td>
                 <td>￥<%= format "%.2f", item.product.price %></td>
                 <td align="center">
 					<%= form_tag({:action=>'update_product', :id=>item.product.id}, :name=>'update_product_form_' + item.product.id.to_s) do %>
 					<a title="减少" href=""><img src="/images/minus_btn.gif"></a>
-					<input type="text" maxlength="4" class="con_mycart_input" value="2" size="2" value="<%= item.quantity %>" onchange="javascript:document.update_product_form_<%= item.product.id.to_s %>.submit();" name="quantity" />
+					<input type="text" maxlength="4" class="con_mycart_input" size="2" value="<%= item.quantity %>" onchange="javascript:document.update_product_form_<%= item.product.id.to_s %>.submit();" name="quantity" />
                     <a title="增加" href=""><img src="/images/plus_btn.gif"></a>
 					<% end %>
                 </td>
@@ -37,8 +41,8 @@
     <div class="f-black-20-hei lastprice">合计金额： <span class="f-red-12-b">￥</span><span class="f-red-30-Ar-b"><%= format "%.2f", cart.total %></span></div>
  	<table width="100%" border="0" cellspacing="0" cellpadding="0">
   		<tr>
-    		<td><img src="/images/continue_buy_btn.gif" width="118" height="35" /></td>
-    		<td align="right"><img src="/images/check out_btn.gif" width="119" height="35" /></td>
+    		<td><a href="" onclick="javascript:window.history.back(); return false;"><img src="/images/continue_buy_btn.gif" width="118" height="35" /></a></td>
+    		<td align="right"><a href="/orders/new"><img src="/images/check out_btn.gif" width="119" height="35" /></a></td>
   		</tr>
 	</table>
 </div>
