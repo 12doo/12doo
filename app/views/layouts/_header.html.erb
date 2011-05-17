@@ -5,7 +5,8 @@
   </div>
   <div id="carttext">
     	<span class="f-black-arial-12">SHOPPING CART 购物车</span><br />
-    	<a href="/cart/show">现在您购物车有0件商品</a>
+		<% cart = find_cart %>
+    	<a href="/cart/show">现在您购物车有<%= cart.quantity %>件商品</a>
   </div>
 </div>
 <div id="login" class="f-grey-12">

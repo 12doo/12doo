@@ -15,7 +15,7 @@
 				<% @products.each do |product| %>
 				<li>
 					<dl>
-						<dd class="grImg"><%= link_to image_tag(product.pic, :alt => product.cn_name), product_path(product) %></dd>
+						<dd class="grImg"><%= link_to image_tag('/pics/' + product.sku + '/' + product.pic, :alt => product.cn_name), product_path(product) %></dd>
 						<dt class="wine_word"><%= link_to product.cn_name, product_path(product), {:class => 'f-black-14-YaHei'} %></dt>
 						<dt class="grPrice"><em class="f-grey-12">市场价:<%= format "%.2f", product.indication_price %>元</em></dt>
 				        <dt class="grPrice">
@@ -27,19 +27,7 @@
 				<% end %>
 			</ul>
 			<div class="clearit"></div>
-			<table border="0" align="center" cellpadding="0" cellspacing="5" class="list_num">
-  				<tr>
-				    <td class="current">1</td>
-				    <td><a href="#">2</a></td>
-				    <td><a href="#">3</a></td>
-				    <td><a href="#">4</a></td>
-				    <td><a href="#">5</a></td>
-				    <td><a href="#">6</a></td>
-				    <td><a href="#">7</a></td>
-				    <td><a href="#">8</a></td>
-				    <td><a href="#">&raquo;</a></td>
-				</tr>
-			</table>
+			<%= paginate @products %>
     	</div>
 	</div>
 	<div class="clearit"></div>

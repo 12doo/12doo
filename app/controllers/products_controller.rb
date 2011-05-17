@@ -16,7 +16,7 @@ class ProductsController < ApplicationController
     end
     
     if (params[:tags] == nil) && (params[:keywords] == nil)
-      @products = Product.paginate(:page => params[:page], :order => sort_by + ' ' + sort , :conditions => "visiable = true")
+      @products = Product.where(:visiable => true).order('id desc').page(params[:page]).per(9)#.paginate(:page => params[:page], :order => sort_by + ' ' + sort , :conditions => "visiable = true")
     else
       sku = []
       
