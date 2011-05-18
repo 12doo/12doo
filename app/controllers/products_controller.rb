@@ -127,6 +127,18 @@ class ProductsController < ApplicationController
 
   def update
     @product = Product.find(params[:id])
+    
+    @product.sku = params[:product][:sku]
+    @product.name = params[:product][:name]
+    @product.cn_name = params[:product][:cn_name]
+    @product.price = params[:product][:price]
+    @product.indication_price = params[:product][:indication_price]
+    @product.memo = params[:product][:memo]
+    @product.status = params[:product][:status]
+    @product.count = params[:product][:count]
+    @product.sold_count = params[:product][:sold_count]
+    @product.visiable = params[:product][:visiable]
+    
     @product.product_attributes.each do |item|
       item.destroy
     end
@@ -148,6 +160,27 @@ class ProductsController < ApplicationController
         end
       end
     end
+    
+    if params[:product][:pic]
+      
+      #create path
+      directory = "public/pics"
+      unless File.directory?directory
+        Dir.mkdir(directory)
+      end
+      
+      name = params[:product][:pic].original_filename
+      @product.pic = name
+
+      #create path
+      directory = directory + "/" + @product.sku
+      path = File.join(directory, name)
+      unless File.directory?directory
+        Dir.mkdir(directory)
+      end
+      #save file
+      File.open(path, "wb") { |f| f.write(params[:product][:pic].read) }
+    end
 
     #params[:product_tag].each do |tag|
     #  if tag[:key] != ""
@@ -163,7 +196,7 @@ class ProductsController < ApplicationController
     #end
     
     respond_to do |format|
-      if @product.update_attributes(params[:product])
+      if @product.save
         format.html { redirect_to :action => "products", :controller => "admin" }
       else
         format.html { render :action => "edit" }

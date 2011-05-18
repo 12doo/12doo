@@ -15,7 +15,10 @@
 <div id="mlist_detail">
 	<%= form_tag 'create' do %>
 	<div class="order_box">
-    	<h1 class="f-black-12"><img src="/images/msl_userinfo.gif" width="99" height="25" />[更换地址] [增加新地址]</h1>
+    	<h1 class="f-black-12">
+			<img src="/images/msl_userinfo.gif" width="99" height="25" />
+			<a href="/addresses/new">[增加新地址]</a>
+		</h1>
      	<table width="100%" cellspacing="0" cellpadding="0" border="0" id="table_address">
 			<tbody>
 				<% current_user.addresses.each do |address| %>
@@ -177,7 +180,7 @@
         	<tbody>
 				<tr>
 					<td> 商品数量总计：0 件 </td>
-					<td align="right"><a href="/cart2/showCart.jspa"><img src="/images/back to cart_btn.gif"></a></td>
+					<td align="right"><a href="/cart/show"><img src="/images/back to cart_btn.gif"></a></td>
 				</tr>
           	</tbody>
 		</table>
