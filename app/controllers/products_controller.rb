@@ -36,7 +36,7 @@ class ProductsController < ApplicationController
         skus << item.product_sku
       end
       
-      @products = Product.where(:sku => skus, :visiable => true).paginate(:page => params[:page], :order => sort_by + ' ' + sort)
+      @products = Product.where(:sku => skus, :visiable => true).order('id desc').page(params[:page])
     end
   end
 
