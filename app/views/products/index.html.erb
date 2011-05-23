@@ -20,7 +20,7 @@
 						<dt class="grPrice"><em class="f-grey-12">市场价:<%= format "%.2f", product.indication_price %>元</em></dt>
 				        <dt class="grPrice">
 				        	<em><span class="f-red-12">会员价:</span><span class="f-grey-20-Arial"><%= format "%.2f", product.price %></span><span class="f-red-12">元</span></em>
-				            <a href="#"><img height="23"  width="23" style="float:right;" src="images/go-off.gif"/></a>
+				            <a href="<%= product_path(product) %>"><img height="23"  width="23" style="float:right;" src="/images/go-off.gif"/></a>
 				        </dt> 
 				    </dl>
 				</li>
