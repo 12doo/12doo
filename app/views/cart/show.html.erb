@@ -47,7 +47,7 @@
  	<table width="100%" border="0" cellspacing="0" cellpadding="0">
   		<tr>
     		<td><a href="/"><img src="/images/continue_buy_btn.gif" width="118" height="35" /></a></td>
-    		<td align="right"><a href="/orders/new"><img src="/images/check out_btn.gif" width="119" height="35" /></a></td>
+    		<td align="right"><a href="/orders/new" onclick="javascript:if(<%= cart.quantity %> == 0){return false;}"><img src="/images/check out_btn.gif" width="119" height="35" /></a></td>
   		</tr>
 	</table>
 </div>

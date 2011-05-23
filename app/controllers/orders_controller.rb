@@ -12,10 +12,17 @@ class OrdersController < ApplicationController
   end
 
   def new
-    @order = temp_order
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @order }
+    cart = find_cart
+    if cart.quantity == 0
+      respond_to do |format|
+        format.html { redirect_to :action => "show", :controller => "cart" }
+      end
+    else
+      @order = temp_order
+      respond_to do |format|
+        format.html # new.html.erb
+        format.xml  { render :xml => @order }
+      end
     end
   end
 
