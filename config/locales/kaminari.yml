@@ -1,0 +1,19 @@
+# Sample localization file for Kaminari. You can override these values in your app's locales file if you want.
+
+en:
+  views:
+    pagination:
+      first: "&laquo; First"
+      last: "Last &raquo;"
+      previous: "&lsaquo; Prev"
+      next: "Next &rsaquo;"
+      truncate: "..."
+      
+zhcn:
+  views:
+    pagination:
+      first: "&laquo;第一页"
+      last: "最后一页&raquo;"
+      previous: "&lsaquo;前一页"
+      next: "后一页&rsaquo;"
+      truncate: "..."

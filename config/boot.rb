@@ -12,3 +12,7 @@ rescue Bundler::GemNotFound => e
   STDERR.puts "Try running `bundle install`."
   exit!
 end if File.exist?(gemfile)
+
+# Fix yaml engine problem by change to use syck as engine
+require 'yaml'
+YAML::ENGINE.yamler= 'syck'
