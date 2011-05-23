@@ -1,18 +1,58 @@
-<%= link_to "添加", :action => :new, :controller => :coupons %>
-<table>
-  <tr>
-	<th>编号</th>
-    <th>创建时间</th>
-    <th></th>
-  </tr>
-
-<% @coupons.each do |coupon| %>
-  <tr>
-    <td><%= coupon.no %></td>
-    <td><%= coupon.created_at %></td>
-    <td><%= link_to '详情', :action => :show, :controller => :coupons, :id => coupon.id %></td>
-  </tr>
-<% end %>
-</table>
-<%= will_paginate @coupons %>
-<br />
+<%= render 'admin/header' %>
+<div id="my_acinfo">
+<%= render 'admin/userside' %>
+	<div id="ac_right">
+		<ul id="pd_infomenu">
+			<li class="on">所有优惠券</li>
+		</ul>
+		<div class="clearit"></div>
+		<div id="ac_more_detail">
+			<table width="100%" cellspacing="0" cellpadding="0" border="0" class="tableinfo">
+            	<tbody>
+                    <tr bgcolor="#f0f0f0" class="f-black-12-b">
+                        <td height="30" width="170">
+                            编号
+                        </td>
+                        <td width="65">
+                            折扣金额
+                        </td>
+                        <td width="70">
+                            所有用户可用
+                        </td>
+                        <td width="70">
+                            一次性
+                        </td>
+                        <td width="65" valign="middle" bgcolor="#f0f0f0" align="center">
+                        	启用时间
+                        </td>
+                        <td width="70" valign="middle" bgcolor="#f0f0f0" align="center">
+                            截止时间
+                        </td>
+                        <td width="70" valign="middle" bgcolor="#f0f0f0" align="center">
+                            可用次数
+                        </td>
+                        <td width="70" valign="middle" bgcolor="#f0f0f0" align="center">
+                        	创建时间 
+                        </td>
+                    </tr>
+					<% @coupons.each do |coupon| %>
+				 	<tr>
+					    <td height="30"><%= coupon.code %></td>
+					    <td><%= format "%.2f", coupon.discount %></td>
+					    <td></td>
+					    <td></td>
+						<td></td>
+					    <td></td>
+						<td></td>
+						<td>
+							<%= coupon.created_at.strftime('%Y-%m-%d %H:%M:%S') %>
+						</td>
+				  	</tr>
+					<% end %>
+                </tbody>
+			</table>
+			<%= paginate @coupons %>
+		</div>
+	</div>
+</div>
+<div class="clearit"></div>

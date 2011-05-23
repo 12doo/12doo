@@ -1,20 +1,58 @@
-<table>
-  <tr>
-	<th>编号</th>
-    <th>合计</th>
-    <th>状态</th>
-    <th></th>
-  </tr>
-
-<% @orders.each do |order| %>
-  <tr>
-    <td><%= order.no %></td>
-    <td><%= order.total %></td>
-    <td><%= order.status %></td>
-    <td><%= link_to '详情', order %></td>
-  </tr>
-<% end %>
-</table>
-<%= will_paginate @orders %>
-<br />
-
+<%= render 'admin/header' %>
+<div id="my_acinfo">
+<%= render 'admin/userside' %>
+	<div id="ac_right">
+		<ul id="pd_infomenu">
+			<li class="on">所有订单</li>
+		</ul>
+		<div class="clearit"></div>
+		<div id="ac_more_detail">
+			<table width="100%" cellspacing="0" cellpadding="0" border="0" class="tableinfo">
+            	<tbody>
+                    <tr bgcolor="#f0f0f0" class="f-black-12-b">
+                        <td height="30" width="170">
+                            编号
+                        </td>
+                        <td width="65">
+                            总金额
+                        </td>
+                        <td width="70">
+                            时间
+                        </td>
+                        <td width="70">
+                            状态
+                        </td>
+                        <td width="65" valign="middle" bgcolor="#f0f0f0" align="center">
+                          	
+                        </td>
+                        <td width="70" valign="middle" bgcolor="#f0f0f0" align="center">
+                            
+                        </td>
+                        <td width="70" valign="middle" bgcolor="#f0f0f0" align="center">
+                            
+                        </td>
+                        <td width="70" valign="middle" bgcolor="#f0f0f0" align="center">
+                            操作
+                        </td>
+                    </tr>
+					<% @orders.each do |order| %>
+				 	<tr>
+					    <td height="30"><%= order.no %></td>
+					    <td><%= format "%.2f", order.total %></td>
+					    <td><%= order.order_at %></td>
+					    <td><%= order.status %></td>
+						<td></td>
+					    <td></td>
+						<td></td>
+						<td>
+							
+						</td>
+				  	</tr>
+					<% end %>
+                </tbody>
+			</table>
+			<%= paginate @orders %>
+		</div>
+	</div>
+</div>
+<div class="clearit"></div>

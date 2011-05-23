@@ -13,15 +13,15 @@ class AdminController < ApplicationController
   end
   
   def orders
-    @orders = Order.paginate :page => params[:page], :order => 'created_at DESC'
+    @orders = Order.order("id desc").page(params[:page])
   end
   
   def users
-    @users = User.paginate :page => params[:page], :order => 'created_at DESC'
+    @users = User.order("id desc").page(params[:page])
   end
   
   def coupons
-    @coupons = Coupon.paginate :page => params[:page], :order => 'created_at DESC'
+    @coupons = Coupon.order("id desc").page(params[:page])
   end
   
 end
