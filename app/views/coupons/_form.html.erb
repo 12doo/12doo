@@ -1,57 +1,46 @@
-<%= form_for(@coupon) do |f| %>
-  <% if @coupon.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@coupon.errors.count, "error") %> prohibited this coupon from being saved:</h2>
-
-      <ul>
-      <% @coupon.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-  
-  <div class="field">
-    <%= f.label :code %><br />
-    <%= f.text_field :code %>
-  </div>
-  <div class="field">
-    <%= f.label :discount %><br />
-    <%= f.text_field :discount %>
-  </div>
-  <div class="field">
-    <%= f.label :threshold %><br />
-    <%= f.text_field :threshold %>
-  </div>
-  <div class="field">
-    <%= f.label :used_time %><br />
-    <%= f.text_field :used_time %>
-  </div>
-  <div class="field">
-    <%= f.label :product_category %><br />
-    <%= f.text_field :product_category %>
-  </div>
-  <div class="field">
-    <%= f.label :belongs_to %><br />
-    <%= f.text_field :belongs_to %>
-  </div>
-  <div class="field">
-    <%= f.label :all_user %><br />
-    <%= f.text_field :all_user %>
-  </div>
-  <div class="field">
-    <%= f.label :one_off %><br />
-    <%= f.text_field :one_off %>
-  </div>
-  <div class="field">
-    <%= f.label :begin %><br />
-    <%= f.text_field :begin %>
-  </div>
-  <div class="field">
-    <%= f.label :end %><br />
-    <%= f.text_field :end %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+<table width="100%" cellspacing="0" cellpadding="0" border="0" class="tableinfo">
+	<tbody>
+		<tr>
+		    <td height="30" width="70">编码</td>
+		    <td>
+				<input type="text" name="coupon[code]" value="<%= @coupon.code %>" />
+			</td>
+		</tr>
+		<tr>
+		    <td height="30">折扣</td>
+		    <td><input type="text" name="coupon[discount]" value="<%= @coupon.discount %>" /></td>
+		</tr>
+		<tr>
+		    <td height="30">订单金额</td>
+		    <td><input type="text" name="coupon[threshold]" value="<%= @coupon.threshold %>" /></td>
+		</tr>
+		<tr>
+		    <td height="30">使用次数</td>
+		    <td><input type="text" name="coupon[used_time]" value="<%= @coupon.used_time %>" /></td>
+		</tr>
+		<tr>
+		    <td height="30">用于分类</td>
+		    <td><input type="text" name="coupon[product_category]" value="<%= @coupon.product_category %>" /></td>
+		</tr>
+		<tr>
+		    <td height="30">属于</td>
+		    <td><input type="text" name="coupon[belongs_to]" value="<%= @coupon.belongs_to %>" /></td>
+		</tr>
+		<tr>
+		    <td height="30">所有人可用</td>
+		    <td><input type="text" name="coupon[all_user]" value="<%= @coupon.all_user %>" /></td>
+		</tr>
+		<tr>
+		    <td height="30">一次性</td>
+		    <td><input type="text" name="coupon[one_off]" value="<%= @coupon.one_off %>" /></td>
+		</tr>
+		<tr>
+		    <td height="30">启用时间</td>
+		    <td><input type="text" name="coupon[begin]" value="<%= @coupon.begin %>" /></td>
+		</tr>
+		<tr>
+		    <td height="30">结束时间</td>
+		    <td><input type="text" name="coupon[end]" value="<%= @coupon.end %>" /></td>
+		</tr>
+    </tbody>
+</table>
