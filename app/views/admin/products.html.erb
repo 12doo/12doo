@@ -38,7 +38,7 @@
                     </tr>
 					<% @products.each do |product| %>
 				 	<tr>
-					    <td height="30"><%= product.name %></td>
+					    <td height="30"><%= link_to product.name, product, :class => 'f-red-12', :target => :_blank %></td>
 					    <td><%= product.sku %></td>
 					    <td><%= format "%.2f", product.price %></td>
 					    <td><%= format "%.2f", product.indication_price %></td>
@@ -46,8 +46,8 @@
 					    <td><%= product.count %></td>
 						<td><%= product.status %></td>
 						<td>
-							<%= link_to "[编辑]", edit_product_path(product), :class => 'f-red-12' %>
-							<%= link_to '[详情]', product, :class => 'f-red-12', :target => '_blank' %>
+							<%= link_to '[编辑]', product_path(product), :class => 'f-red-12' %>
+							<%= link_to '[删除]', product, :method => :delete, :class => 'f-red-12' %>
 						</td>
 				  	</tr>
 					<% end %>
