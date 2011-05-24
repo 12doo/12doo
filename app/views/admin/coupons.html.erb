@@ -4,17 +4,21 @@
 	<div id="ac_right">
 		<ul id="pd_infomenu">
 			<li class="on">所有优惠券</li>
+			<li>创建<%= link_to '创建优惠券', :action => :new, :controller => : %></li>
 		</ul>
 		<div class="clearit"></div>
 		<div id="ac_more_detail">
 			<table width="100%" cellspacing="0" cellpadding="0" border="0" class="tableinfo">
             	<tbody>
                     <tr bgcolor="#f0f0f0" class="f-black-12-b">
-                        <td height="30" width="170">
+                        <td height="30" width="70">
                             编号
                         </td>
                         <td width="65">
                             折扣金额
+                        </td>
+                        <td width="65">
+                            最低订单金额
                         </td>
                         <td width="70">
                             所有用户可用
@@ -29,21 +33,22 @@
                             截止时间
                         </td>
                         <td width="70" valign="middle" bgcolor="#f0f0f0" align="center">
-                            可用次数
+                        	创建时间 
                         </td>
                         <td width="70" valign="middle" bgcolor="#f0f0f0" align="center">
-                        	创建时间 
+                        	操作 
                         </td>
                     </tr>
 					<% @coupons.each do |coupon| %>
 				 	<tr>
 					    <td height="30"><%= coupon.code %></td>
 					    <td><%= format "%.2f", coupon.discount %></td>
-					    <td></td>
-					    <td></td>
-						<td></td>
-					    <td></td>
-						<td></td>
+						<td><%= format "%.2f", coupon.threshold %></td>
+					    <td><%= coupon.all_user %></td>
+					    <td><%= coupon.one_off %></td>
+						<td><%= coupon.begin.strftime('%Y-%m-%d %H:%M:%S') %></td>
+					    <td><%= coupon.end.strftime('%Y-%m-%d %H:%M:%S') %></td>
+						<td><%= coupon.create_at.strftime('%Y-%m-%d %H:%M:%S') %></td>
 						<td>
 							<%= coupon.created_at.strftime('%Y-%m-%d %H:%M:%S') %>
 						</td>

@@ -213,7 +213,7 @@ class ProductsController < ApplicationController
     @product.destroy
 
     respond_to do |format|
-      format.html { redirect_to('/admin/products') }
+      format.html { redirect_to :action => :products, :controller => :admin  }
       format.xml  { head :ok }
     end
   end
