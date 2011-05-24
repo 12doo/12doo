@@ -11,7 +11,7 @@
 </div>
 <div id="login" class="f-grey-12">
   <% if user_signed_in? %>
-  您好，<%= current_user.display_name %>
+  您好，<a href="/my"><%= current_user.display_name %></a>
   <% end %>
   <% if user_signed_in? %>
   <%= link_to "注销", destroy_user_session_path %>
