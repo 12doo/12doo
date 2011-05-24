@@ -1,5 +1,5 @@
 <div id="join_now"><img src="/images/login_ljdl.gif" width="379" height="42" /></div>
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:method => :post, :name => :new_user}) do |f| %>
+<%= form_for(resource, :as => resource_name, :url => session_path(resource_name) + "?return_url=" + request.fullpath, :html => {:method => :post, :name => :new_user}) do |f| %>
 <table id="reg_table" border="0" cellspacing="0" cellpadding="0">
 	<tr>
     	<td class="tdtitle"><img src="/images/reg_username.gif" width="108" height="19" /></td>
