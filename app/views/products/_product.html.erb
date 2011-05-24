@@ -1,6 +1,6 @@
 <li>
 	<dl>
-		<dd class="grImg"><%= link_to image_tag('/pics/' + product.sku + '/' + product.pic, :alt => product.cn_name), product_path(product) %></dd>
+		<dd class="grImg"><%= link_to image_tag('/pics/' + product.sku + '/' + product.pic, :alt => product.cn_name, :height => '225', :width => '225'), product_path(product) %></dd>
 		<dt class="wine_word"><%= link_to product.cn_name, product_path(product), {:class => 'f-black-14-YaHei'} %></dt>
 		<dt class="grPrice"><em class="f-grey-12">市场价:<%= format "%.2f", product.indication_price %>元</em></dt>
         <dt class="grPrice">

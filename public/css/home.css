@@ -550,13 +550,12 @@ border:1px solid #9e0a0e;
 color:#9e0a0e;
 	}
 .list_num{
-margin:20px auto;	
+    margin:20px auto;	
 	}
 .list_num td{
 	font-family:Arial;
 	font-size:10px;
 	height:16px;
-
 	color:#000;
 	}
 .list_num td a{
@@ -566,13 +565,15 @@ margin:20px auto;
 	border:1px solid #ccc;
 	}
 .list_num td a:hover{
-border:1px solid #9d0b0e;
-color:#9d0b0e;
+    border:1px solid #9d0b0e;
+    color:#9d0b0e;
 	}
 .list_num td.current{
-padding:5px 10px;
-background:#9d0b0e;
-color:#fff;
+    padding:5px 10px;
+    height:8px;
+    background:#9d0b0e;
+    color:#fff;
+    border:1px solid #9d0b0e;
 	}
 
 
