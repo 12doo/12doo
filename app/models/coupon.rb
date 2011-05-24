@@ -15,7 +15,7 @@ class Coupon < ActiveRecord::Base
         end
       else
         # 是单人优惠券,是否是当前用户的
-        if self.user_id == user.id
+        if self.belongs_to == user.id
           # 除非是一次性并且已经用过的,其余都返回true
           unless self.one_off && self.used(user)
             result = true

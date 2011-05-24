@@ -2,7 +2,7 @@
 class ProductsController < ApplicationController
 
   # 身份验证  
-  before_filter :authorize_admin!, :except => [:index, :show, :destroy]
+  before_filter :authorize_admin!, :except => [:index, :show]
   
   def index
     sort_by = "created_at"
