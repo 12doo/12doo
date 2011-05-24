@@ -10,8 +10,9 @@
   <div class="goodsResult">
     <ul class="pagePicView">
       <li class="one">
-        <%= render :partial => "product_item4" %>
-   	  </li>
+     
+        <%= render :partial => "product", :object => @product %>
+      </li>
       <li>
         <%= render :partial => "product_item5" %>
     	</li>
@@ -97,7 +98,7 @@
         <%= render :partial => "product_item10" %>
       </li>
       <li>
-        <%= render :partial => "product_item1" %>
+        <%= render :partial => "product", :object => @product %>
       </li>
         
    	</ul>
@@ -117,7 +118,7 @@
   <div class="goodsResult">
     <ul class="pagePicView">
       <li class="one">
-        <%= render :partial => "product_item1" %>
+        <%= render :partial => "product", :object => @product %>
    	  </li>
       <li>
         <%= render :partial => "product_item2" %>
