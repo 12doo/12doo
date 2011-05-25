@@ -129,7 +129,7 @@ padding:0;
 height: 33px; position: absolute; right:0; bottom:0;
 	}
 #nav input {
-    border-color: #666666 #BBBBBB #BBBBBB #666666;
+    border-color: #666 #bbb #bbb #666;
     border-style: solid;
     border-width: 1px;
     height: 29px;
@@ -269,7 +269,7 @@ width:180px;
     border: 1px solid #e5e5e5;
 }
 .underline {
-    border-bottom: 1px solid #CCCCCC;
+    border-bottom: 1px solid #ccc;
     height: 20px;
     padding-bottom: 5px;
 }
@@ -353,7 +353,7 @@ font-weight:bold;
 .f-grey-12, .f-grey-12 a, a.f-grey-12 {
     font-size: 12px;
     font-weight: normal;
-    color: #999999;
+    color: #999;
 }
 .f-grey2-14-u, .f-grey2-14-u a, a.f-grey2-14-u {
     font-size: 14px;
@@ -583,7 +583,7 @@ height: 31px; position: absolute;
 left:400px;top:60px;
 	}
 #pd_search input {
-    border-color: #666666 #BBBBBB #BBBBBB #666666;
+    border-color: #666 #bbb #bbb #666;
     border-style: solid;
     border-width: 1px;
     height: 29px;
@@ -615,15 +615,15 @@ border:1px solid #dcdedc;
 		color:#383838;
 }
 #pd_baseinfo .basedetail .r1 {
-    border-bottom: 1px solid #CCCCCC;
+    border-bottom: 1px solid #ccc;
     clear: both;
     height: 25px;
     padding-top: 8px;
     text-align: left;
 }
 #pd_baseinfo .basedetail .r2 {
-	border-top: 1px solid #CCCCCC;
-    border-bottom: 1px solid #CCCCCC;
+	border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
     clear: both;
     height: 48px;
     line-height: 200%;
@@ -654,7 +654,7 @@ border:1px solid #dcdedc;
 
 }
 #pd_baseinfo .basedetail .winenum {
-    border: 1px solid #CCCCCC;
+    border: 1px solid #ccc;
     height: 18px;
     width: 50px;
 }
@@ -675,7 +675,7 @@ border:1px solid #dcdedc;
 	line-height:20px;
 }
 .activemsg ul.kc li span {
-    background: none repeat scroll 0 0 #DDDDDD;
+    background: none repeat scroll 0 0 #ddd;
     display: inline-block;
     margin: -2px 5px 0 0;
     padding: 3px 4px;
@@ -716,7 +716,7 @@ float:left;
 margin:20px 0;	
 	}
 .pllist {
-    border-bottom: 1px dotted #CCCCCC;
+    border-bottom: 1px dotted #ccc;
     clear: both;
     margin-bottom: 15px;
     padding-bottom: 10px;
@@ -735,7 +735,7 @@ padding:10px 20px;
 margin:20px 0;
 	}
 #make_comment #df{
-border-bottom:1px dotted #cccccc;
+border-bottom:1px dotted #ccc;
 height:50px;
 _height:30px;
 color:#000;
@@ -833,7 +833,7 @@ padding:10px;
     border-collapse: collapse;
 }
 #my_acinfo #ac_more_detail table.tableinfo td{
-	  border: 1px solid #cccccc;	
+	  border: 1px solid #ccc;	
 	}
 /**make shoplist**/
 #mlist_step{
@@ -877,7 +877,7 @@ margin:10px 0;
  border-collapse: collapse;	
 	}
 #mlist_detail .order_box .order_table td{
-border: 1px solid #cccccc;	
+border: 1px solid #ccc;	
 padding:5px;
 	}
 #mlist_detail .order_box .order_comment{
@@ -910,7 +910,7 @@ padding:15px;
 	border:1px solid #dcdedc;
 }
 #cart table.tableinfo td{
-	  border-bottom: 1px solid #cccccc;
+	  border-bottom: 1px solid #ccc;
 	  vertical-align:middle;
 	  padding:5px;
 	}
