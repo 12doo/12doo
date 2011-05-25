@@ -1,5 +1,8 @@
 # -*- encoding : utf-8 -*-
 class CouponsController < ApplicationController
+  
+  # 身份验证  
+  before_filter :authorize_admin!
 
   def index
     @coupons = Coupon.all
@@ -37,8 +40,7 @@ class CouponsController < ApplicationController
 
     respond_to do |format|
       if @coupon.save
-        format.html { redirect_to(@coupon, :notice => 'Coupon was successfully created.') }
-        format.xml  { render :xml => @coupon, :status => :created, :location => @coupon }
+        format.html { redirect_to :action => :coupons, :controller => :admin }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @coupon.errors, :status => :unprocessable_entity }

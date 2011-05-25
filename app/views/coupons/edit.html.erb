@@ -1,6 +1,19 @@
-<h1>Editing coupon</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @coupon %> |
-<%= link_to 'Back', coupons_path %>
+<%= render 'admin/header' %>
+<div id="my_acinfo">
+<%= render 'admin/userside' %>
+	<div id="ac_right">
+		<ul id="pd_infomenu">
+			<li><%= link_to '所有优惠券', :action => :coupons, :controller => :admin %></li>
+			<li><%= link_to '创建优惠券', :action => :new, :controller => :coupons %></li>
+			<li class="on">编辑优惠券</li>
+		</ul>
+		<div class="clearit"></div>
+		<div id="ac_more_detail">
+			<%= form_tag '/coupons/update/' + @coupon.id.to_s, :multipart => true do %>
+			<%= render 'form' %>
+			<input type="submit" value="保存" />
+			<% end %>
+		</div>
+	</div>
+</div>
+<div class="clearit"></div>

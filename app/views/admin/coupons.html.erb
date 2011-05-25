@@ -4,7 +4,7 @@
 	<div id="ac_right">
 		<ul id="pd_infomenu">
 			<li class="on">所有优惠券</li>
-			<li>创建<%= link_to '创建优惠券', :action => :new, :controller => : %></li>
+			<li><%= link_to '创建优惠券', :action => :new, :controller => :coupons %></li>
 		</ul>
 		<div class="clearit"></div>
 		<div id="ac_more_detail">
@@ -15,7 +15,7 @@
                             编号
                         </td>
                         <td width="65">
-                            折扣金额
+                            抵扣金额
                         </td>
                         <td width="65">
                             最低订单金额
@@ -24,7 +24,16 @@
                             所有用户可用
                         </td>
                         <td width="70">
+                            所有者
+                        </td>
+                        <td width="70">
+                            适用产品分类
+                        </td>
+                        <td width="70">
                             一次性
+                        </td>
+                        <td width="70">
+                            已使用次数
                         </td>
                         <td width="65" valign="middle" bgcolor="#f0f0f0" align="center">
                         	启用时间
@@ -36,21 +45,25 @@
                         	创建时间 
                         </td>
                         <td width="70" valign="middle" bgcolor="#f0f0f0" align="center">
-                        	操作 
+                        	操作
                         </td>
                     </tr>
 					<% @coupons.each do |coupon| %>
 				 	<tr>
-					    <td height="30"><%= coupon.code %></td>
+					    <td height="30"><%= link_to coupon.code, coupon, :class => 'f-red-12' %></td>
 					    <td><%= format "%.2f", coupon.discount %></td>
 						<td><%= format "%.2f", coupon.threshold %></td>
-					    <td><%= coupon.all_user %></td>
-					    <td><%= coupon.one_off %></td>
+					    <td><%= coupon.all_user ? "是" : "否" %></td>
+						<td><%= coupon.belongs_to %></td>
+						<td><%= coupon.product_category %></td>
+					    <td><%= coupon.one_off ? "是" : "否" %></td>
+						<td><%= coupon.used_time %></td>
 						<td><%= coupon.begin.strftime('%Y-%m-%d %H:%M:%S') %></td>
 					    <td><%= coupon.end.strftime('%Y-%m-%d %H:%M:%S') %></td>
-						<td><%= coupon.create_at.strftime('%Y-%m-%d %H:%M:%S') %></td>
+						<td><%= coupon.created_at.strftime('%Y-%m-%d %H:%M:%S') %></td>
 						<td>
-							<%= coupon.created_at.strftime('%Y-%m-%d %H:%M:%S') %>
+							<%= link_to '[编辑]', edit_coupon_path(coupon), :class => 'f-red-12' %>
+							<%= link_to '[删除]', coupon, :method => :delete, :class => 'f-red-12' %>
 						</td>
 				  	</tr>
 					<% end %>
