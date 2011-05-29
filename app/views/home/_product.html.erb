@@ -1,17 +1,18 @@
 <dl>
 
-    <dd class="grImg"><%= link_to image_tag('/pics/' + product.sku + '/' + product.pic, :alt => product.cn_name, :height => '225', :width => '225'), product_path(product) %>
-    </dd>
-    <dt  class="wine_word"><%= link_to product.cn_name, product_path(product), {:class => 'f-black-14-YaHei'} %>
-
-    </dt>
-    <dt class="grPrice">
-  	  <em class="f-grey-12">市场价:<%= format "%.2f", product.indication_price %>元</em>
-    </dt>
-    <dt class="grPrice">
-  	<em ><span class="f-red-12">会员价:</span><span class="f-grey-20-Arial"><%= format "%.2f", product.price %></span><span class="f-red-12">元</span></em>
-        <a href="#"><img height="23"  width="23" style="float:right;" src="images/go-off.gif"/></a>
-	  </dt>
+  <dd class="grImg">
+    <%= link_to image_tag('/pics/' + product.sku + '/' + product.pic, :alt => product.cn_name, :title => product.name, :height => '225', :width => '225'), product_path(product) %>
+  </dd>
+  <dt  class="wine_word">
+    <%= link_to product.cn_name, product_path(product), {:class => 'f-black-14-YaHei'} %>
+  </dt>
+  <dt class="grPrice">
+    <em class="f-grey-12">市场价:<%= format "%.2f", product.indication_price %>元</em>
+  </dt>
+  <dt class="grPrice">
+    <em ><span class="f-red-12">会员价:</span><span class="f-grey-20-Arial"><%= format "%.2f", product.price %></span><span class="f-red-12">元</span></em>
+    <%= link_to image_tag('/images/go-off.gif', :height => '23', :width => '23', :title => '放入购物车', :style => 'float: right;'), product_path(product) %>
+  </dt>
  
 </dl>
 

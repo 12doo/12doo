@@ -23,7 +23,7 @@
             </tr>
 			<% cart.items.each do |item| %>
             <tr>
-            	<td height="30"><a class="f-blue-12-b" href="/products/<%= item.product.id %>"><%= item.name %></a></td>
+            	<td height="30"><%= link_to item.name, product_path(item.product), :class=>"f-blue-12-b" %></td>
                 <td>￥<%= format "%.2f", item.product.price %></td>
                 <td align="center">
 					<%= form_tag({:action=>'update_product', :id=>item.product.id}, :name=>'update_product_form_' + item.product.id.to_s) do %>
