@@ -11,7 +11,7 @@ class Cart
       if current_item
         current_item.update_quantity(current_item.quantity + quantity)
       else
-        @items << CartItem.new(product,quantity)
+        @items << CartItem.new(product.id,quantity)
       end
     end
   end

@@ -24,18 +24,18 @@
             </tr>
 			<% cart.items.each do |item| %>
             <tr>
-            	<td height="30"><%= link_to item.name, product_path(item.product), :class=>"f-blue-12-b" %></td>
+            	<td height="30"><%= link_to item.product.cn_name, product_path(item.product), :class=>"f-blue-12-b" %></td>
                 <td>￥<%= format "%.2f", item.product.price %></td>
                 <td align="center">
-					<%= form_tag({:action=>'update_product', :id=>item.product.id}, :name=>'update_product_form_' + item.product.id.to_s) do %>
-					<a title="减少" href="javascript:if($('#quantity_<%= item.product.id %>').val() > 1){$('#quantity_<%= item.product.id %>').val($('#quantity_<%= item.product.id %>').val() - 1);$('#quantity_<%= item.product.id %>').change();}"><img src="/images/minus_btn.gif"></a>
-					<input id="quantity_<%= item.product.id %>" type="text" maxlength="4" class="con_mycart_input" size="2" value="<%= item.quantity %>" onchange="javascript:if(parseInt($('#quantity_<%= item.product.id %>').val()) > 0){document.update_product_form_<%= item.product.id.to_s %>.submit();}" name="quantity" />
-                    <a title="增加" href="javascript:if($('#quantity_<%= item.product.id %>').val() >= 0){$('#quantity_<%= item.product.id %>').val($('#quantity_<%= item.product.id %>').val() - 0 + 1);$('#quantity_<%= item.product.id %>').change();}"><img src="/images/plus_btn.gif"></a>
+					<%= form_tag({:action=>'update_product', :id=>item.productid}, :name=>'update_product_form_' + item.productid.to_s) do %>
+					<a title="减少" href="javascript:if($('#quantity_<%= item.productid %>').val() > 1){$('#quantity_<%= item.productid %>').val($('#quantity_<%= item.productid %>').val() - 1);$('#quantity_<%= item.productid %>').change();}"><img src="/images/minus_btn.gif"></a>
+					<input id="quantity_<%= item.productid %>" type="text" maxlength="4" class="con_mycart_input" size="2" value="<%= item.quantity %>" onchange="javascript:if(parseInt($('#quantity_<%= item.productid %>').val()) > 0){document.update_product_form_<%= item.productid.to_s %>.submit();}" name="quantity" />
+                    <a title="增加" href="javascript:if($('#quantity_<%= item.productid %>').val() >= 0){$('#quantity_<%= item.productid %>').val($('#quantity_<%= item.productid %>').val() - 0 + 1);$('#quantity_<%= item.productid %>').change();}"><img src="/images/plus_btn.gif"></a>
 					<% end %>
                 </td>
                 <td>￥<%= format "%.2f", item.subtotal %></td>
                 <td class="f-red-12">
-					<a href="/cart/delete_product/<%= item.product.id %>">删除</a> 
+					<a href="/cart/delete_product/<%= item.productid %>">删除</a> 
 					<!--
 					<a href="">收藏</a>
 					-->
@@ -48,12 +48,12 @@
 	
  	<table width="100%" border="0" cellspacing="0" cellpadding="0">
   		<tr>
-    		<td><a href="/"><img src="/images/continue_buy_btn.gif" width="118" height="35" /></a></td>
+    		<td><a href="/products"><img src="/images/continue_buy_btn.gif" width="118" height="35" /></a></td>
     		<td align="right"><a href="/orders/new" onclick="javascript:if(<%= cart.quantity %> == 0){return false;}"><img src="/images/check out_btn.gif" width="119" height="35" /></a></td>
   		</tr>
 	</table>
 	<% else %>
-	<a href="/">啥都没,去买点啥的吧...</a>
+	<a href="/products">啥都没,去买点啥的吧...</a>
 	<% end %>
 </div>
 <div class="clearit"></div>
