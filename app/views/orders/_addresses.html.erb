@@ -1,3 +1,39 @@
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#province').change(function(){
+			$.getJSON("/areas/get_cities?province=" + $('#province').val(), function(data){
+				$('#city option').remove();
+			  	$.each(data, function(i,item){
+			    	$('#city').append("<option value='"+ item.area.city +"'>"+ item.area.city +"</option>");
+			  	});
+				$('#city').change();
+			});
+		});
+	});
+	
+	$(document).ready(function(){
+		$('#city').change(function(){
+			$.getJSON("/areas/get_regions?province=" + $('#province').val() + "&city=" + $('#city').val(), function(data){
+				$('#region option').remove();
+			  	$.each(data, function(i,item){
+			    	$('#region').append("<option value='"+ item.area.region +"'>"+ item.area.region +"</option>");
+			  	});
+				$('#region').change();
+			});
+		});
+	});
+	
+	$(document).ready(function(){
+		$('#region').change(function(){
+			$.getJSON("/areas/get_detail?province=" + $('#province').val() + "&city=" + $('#city').val() + "&region=" + $('#region').val(), function(data){
+				$('#zip').val(data[0].area.postcode);
+				$('#zip').change();
+			});
+		});
+	});
+
+</script>
+
 <div id="addresses_div" style="display:none">
 	<h1 class="f-black-12">
 		<img src="/images/msl_userinfo.gif" width="99" height="25" />
@@ -18,36 +54,41 @@
   		<table width="100%" cellspacing="0" cellpadding="0" border="0" align="center">
     		<tbody>
 				<tr>
-		        	<td height="30" width="22">*</td>
-		          	<td width="88">收货人：</td>
-		          	<td width="174" align="left"><input type="text" name="fullname" maxlength="10" /></td>
-		       	  	<td align="left" colspan="2" class="f-red-12"></td>
+		          	<td width="88">收货人</td>
+		          	<td width="174" align="left"><input type="text" name="address[name]" /></td>
 		        </tr>
     			<tr>
-					<td height="30">*</td>
-					<td>地　址：</td>
-					<td align="left" colspan="3">
-						<input type="text" name="province" />
-						<input type="text" name="city" />
-						<input type="text" name="region" />
-						<input type="text" name="address" />带*号的表示可支持货到付款的区域.[ <a href="#">运费计算</a> ]
+					<td>地址</td>
+					<td align="left">
+						<% areas = Area.new.get_provinces %>
+						<select name="address[province]" id="province">
+							<option value=""></option>
+						    <% areas.each do |item| %>
+							    <option value="<%= item.province %>">
+							      <%= item.province %>
+							    </option>
+						    <% end %>
+						</select>
+						<select name="address[city]" id="city">
+						</select>
+						<select name="address[region]" id="region">
+						</select>
 					</td>
 				</tr>
-    			<tr>
-      				<td height="30">*</td>
-      				<td>电 话：</td>
-      				<td align="left"><input type="text" name="phone" style="width: 50px; float: left;" id="phone1" class="orderform1" /></td>
-      				<td align="left" colspan="2" class="f-red-12">您填写的信息有误，请核对</td>
+				<tr>
+      				<td>详细地址</td>
+      				<td align="left"><input type="text" id="address" name="address[detail]" /></td>
     			</tr>
     			<tr>
-      				<td height="30">*</td>
-      				<td>邮　编：</td>
-					<td align="left"><input type="text" name="zip" class="orderform1" /></td>
-					<td width="143" align="left"></td>
-					<td width="461" align="left" class="f-red-12">您填写的信息有误，请核对</td>
+      				<td>电话</td>
+      				<td align="left"><input type="text" name="address[phone]" /></td>
+    			</tr>
+    			<tr>
+      				<td>邮编</td>
+					<td align="left"><input type="text" id="zip" name="address[zip]" /></td>
     			</tr>
   			</tbody>
-		</table> 	  
+		</table>	  
     </div>
 	<input type="button" onclick="select_address();" value="确认收货人信息(这里需要修改一下样式)" />
 </div>
