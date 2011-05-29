@@ -12,6 +12,7 @@
 <div class="clearit bj-sp10"></div>
 <div id="cart">
 	<% cart = find_cart %>
+	<% if cart.quantity > 0 %>
 	<table width="100%" cellspacing="0" cellpadding="0" border="0" class="tableinfo">
     	<tbody>
         	<tr bgcolor="#f0f0f0" class="f-black-12-b">
@@ -44,11 +45,15 @@
          </tbody>
 	</table>
     <div class="f-black-20-hei lastprice">合计金额： <span class="f-red-12-b">￥</span><span class="f-red-30-Ar-b"><%= format "%.2f", cart.total %></span></div>
+	
  	<table width="100%" border="0" cellspacing="0" cellpadding="0">
   		<tr>
     		<td><a href="/"><img src="/images/continue_buy_btn.gif" width="118" height="35" /></a></td>
     		<td align="right"><a href="/orders/new" onclick="javascript:if(<%= cart.quantity %> == 0){return false;}"><img src="/images/check out_btn.gif" width="119" height="35" /></a></td>
   		</tr>
 	</table>
+	<% else %>
+	<a href="/">啥都没,去买点啥的吧...</a>
+	<% end %>
 </div>
 <div class="clearit"></div>

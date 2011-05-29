@@ -3,6 +3,7 @@ class MyController < ApplicationController
   # 身份验证
   before_filter :authorize_user!
   
+  # address manage
   def addresses
     @addresses = current_user.addresses.order("id desc").page(params[:page])
   end
@@ -66,6 +67,10 @@ class MyController < ApplicationController
     redirect_to :action => "addresses"
   end
 
+  # orders
+  def orders
+    @orders = current_user.orders.order("id desc").page(params[:page])
+  end
 
 #  def update_profile
 #    current_user.gender = params[:gender]

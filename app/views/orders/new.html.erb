@@ -9,74 +9,109 @@
 			});
 		});
 	});
+	
+	function change_address(){
+		$('#address_div').hide();
+		$('#addresses_div').show();
+	}
+	
+	function select_address(){
+		$('#address_div').show();
+		$('#addresses_div').hide();
+	}
+	
 </script>
 <div class="clearit bj-sp10"></div>
 <div id="mlist_step"><img src="/images/mlist_stepFst.gif" width="626" height="35" /></div>
 <div id="mlist_detail">
 	<%= form_tag 'create' do %>
 	<div class="order_box">
-    	<h1 class="f-black-12">
-			<img src="/images/msl_userinfo.gif" width="99" height="25" />
-			<a href="/addresses/new">[增加新地址]</a>
-		</h1>
-     	<table width="100%" cellspacing="0" cellpadding="0" border="0" id="table_address">
-			<tbody>
-				<% current_user.addresses.each do |address| %>
-				<tr>
-					<td width="3%" valign="middle" align="center"><input type="radio" name="address_id" value="<%= address.id %>"></td>
-					<td width="8%" valign="middle" align="left"><%= address.name %></td>
-					<td width="41%" valign="middle" align="left"><%= address.province %>&nbsp;<%= address.city %>&nbsp;<%= address.region %>&nbsp;<%= address.detail %></td>
-					<td width="16%" valign="middle" align="center"><%= address.phone %></td>
-					<td width="16%" valign="middle" align="center"><%= address.zip %></td>
-					<td width="16%" valign="middle" align="center">[ <%= link_to '修改', :action => :edit, :id => address.id %> ] [ <%= link_to '删除', address, :method => :delete %> ]</td>
-				</tr>
-				<% end %>
-			</tbody>
-		</table>
-		<input type="radio" name="address_id" value="0" />新地址:
-      	<div id="table_addaddress">
-      		<table width="100%" cellspacing="0" cellpadding="0" border="0" align="center">
-        		<tbody>
+		<div id="address_div">
+	    	<h1 class="f-black-12">
+				<img src="/images/msl_userinfo.gif" width="99" height="25" />
+				<a href="javascript:change_address()">[修改]</a>
+			</h1>
+			<table width="100%" cellspacing="0" cellpadding="0" border="0" id="table_address">
+				<tbody>
+					<% current_user.addresses.each do |address| %>
+					<% if address.default %>
 					<tr>
-			        	<td height="30" width="22">*</td>
-			          	<td width="88">收货人：</td>
-			          	<td width="174" align="left"><input type="text" name="fullname" maxlength="10" /></td>
-			       	  	<td align="left" colspan="2" class="f-red-12">您填写的信息有误，请核对</td>
-			        </tr>
-        			<tr>
-						<td height="30">*</td>
-						<td>地　址：</td>
-						<td align="left" colspan="3">
-							<input type="text" name="province" />
-							<input type="text" name="city" />
-							<input type="text" name="region" />
-							<input type="text" name="address" />带*号的表示可支持货到付款的区域.[ <a href="#">运费计算</a> ]
-						</td>
-   					</tr>
-        			<tr>
-          				<td height="30">*</td>
-          				<td>电 话：</td>
-          				<td align="left"><input type="text" name="phone" style="width: 50px; float: left;" id="phone1" class="orderform1" /></td>
-          				<td align="left" colspan="2" class="f-red-12">您填写的信息有误，请核对</td>
-        			</tr>
-        			<tr>
-          				<td height="30">*</td>
-          				<td>邮　编：</td>
-						<td align="left"><input type="text" name="zip" class="orderform1" /></td>
-						<td width="143" align="left">[ <a href="#">邮编查询</a> ]</td>
-						<td width="461" align="left" class="f-red-12">您填写的信息有误，请核对</td>
-        			</tr>
-					<tr>
-						<td height="30"><a class="snf3"></a></td>
-						<td>&nbsp;</td>
-						<td align="left"><a href=""><img height="21" width="138" border="0" id="addressImg" src="/images/save_address_btn.gif"></a></td>
-						<td align="left"><a href=""><img height="21" width="59" border="0" src="/images/cancel_btn.gif"></a></td>
-						<td align="left">&nbsp;</td>
+						<td width="3%" valign="middle" align="center"><input type="radio" style="display:none;" name="address_id" value="<%= address.id %>" <%= address.default ? "checked" : "" %>></td>
+						<td width="8%" valign="middle" align="left"><%= address.name %></td>
+						<td width="41%" valign="middle" align="left"><%= address.province %>&nbsp;<%= address.city %>&nbsp;<%= address.region %>&nbsp;<%= address.detail %></td>
+						<td width="16%" valign="middle" align="center"><%= address.phone %></td>
+						<td width="16%" valign="middle" align="center"><%= address.zip %></td>
 					</tr>
-      			</tbody>
-			</table> 	  
-        </div>
-  		<h1 class="f-black-12"><img src="/images/msl_timeselect.gif" width="99" height="29" /></h1> 
+					<% end %>
+
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+		<div id="addresses_div" style="display:none">
+			<h1 class="f-black-12">
+				<img src="/images/msl_userinfo.gif" width="99" height="25" />
+				<a href="javascript:select_address()">[关闭]</a>
+			</h1>
+	     	<table width="100%" cellspacing="0" cellpadding="0" border="0" id="table_address">
+				<tbody>
+					<% current_user.addresses.each do |address| %>
+					<tr>
+						<td width="3%" valign="middle" align="center"><input type="radio" name="address_id" value="<%= address.id %>" <%= address.default ? "checked" : "" %>></td>
+						<td width="8%" valign="middle" align="left"><%= address.name %></td>
+						<td width="41%" valign="middle" align="left"><%= address.province %>&nbsp;<%= address.city %>&nbsp;<%= address.region %>&nbsp;<%= address.detail %></td>
+						<td width="16%" valign="middle" align="center"><%= address.phone %></td>
+						<td width="16%" valign="middle" align="center"><%= address.zip %></td>
+						<td width="16%" valign="middle" align="center">[<%= link_to '修改', :action => :edit, :id => address.id %>] [<%= link_to '删除', address, :method => :delete %>]</td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+			<input type="radio" name="address_id" value="0" />新地址:
+	      	<div id="table_addaddress">
+	      		<table width="100%" cellspacing="0" cellpadding="0" border="0" align="center">
+	        		<tbody>
+						<tr>
+				        	<td height="30" width="22">*</td>
+				          	<td width="88">收货人：</td>
+				          	<td width="174" align="left"><input type="text" name="fullname" maxlength="10" /></td>
+				       	  	<td align="left" colspan="2" class="f-red-12">您填写的信息有误，请核对</td>
+				        </tr>
+	        			<tr>
+							<td height="30">*</td>
+							<td>地　址：</td>
+							<td align="left" colspan="3">
+								<input type="text" name="province" />
+								<input type="text" name="city" />
+								<input type="text" name="region" />
+								<input type="text" name="address" />带*号的表示可支持货到付款的区域.[ <a href="#">运费计算</a> ]
+							</td>
+	   					</tr>
+	        			<tr>
+	          				<td height="30">*</td>
+	          				<td>电 话：</td>
+	          				<td align="left"><input type="text" name="phone" style="width: 50px; float: left;" id="phone1" class="orderform1" /></td>
+	          				<td align="left" colspan="2" class="f-red-12">您填写的信息有误，请核对</td>
+	        			</tr>
+	        			<tr>
+	          				<td height="30">*</td>
+	          				<td>邮　编：</td>
+							<td align="left"><input type="text" name="zip" class="orderform1" /></td>
+							<td width="143" align="left">[ <a href="#">邮编查询</a> ]</td>
+							<td width="461" align="left" class="f-red-12">您填写的信息有误，请核对</td>
+	        			</tr>
+						<tr>
+							<td height="30"><a class="snf3"></a></td>
+							<td>&nbsp;</td>
+							<td align="left"><a href=""><img height="21" width="138" border="0" id="addressImg" src="/images/save_address_btn.gif"></a></td>
+							<td align="left"><a href=""><img height="21" width="59" border="0" src="/images/cancel_btn.gif"></a></td>
+							<td align="left">&nbsp;</td>
+						</tr>
+	      			</tbody>
+				</table> 	  
+	        </div>
+  		</div>
+		<h1 class="f-black-12"><img src="/images/msl_timeselect.gif" width="99" height="29" /></h1> 
 		<div id="selectime">
 			<input type="radio" checked="checked" value="SEND_DATE_TYPE_USUALLY" name="writeOrderParaDTO.sendDateType">周一至周五
           	<input type="radio" value="SEND_DATE_TYPE_WEEKEND" name="writeOrderParaDTO.sendDateType">双休日
