@@ -10,17 +10,17 @@ class HomeController < ApplicationController
     @red1=Product.find(5)
     @red2=Product.find(8)
     @red3=Product.find(10)
-    @red4=Product.find(28)
+    @red4=Product.find(1)
     
-    @white1=Product.find(29)
+    @white1=Product.find(1)
     @white2=Product.find(1)
-    @white3=Product.find(11)
-    @white4=Product.find(12)
+    @white3=Product.find(8)
+    @white4=Product.find(9)
     
     @other1=Product.find(9)
     @other2=Product.find(1)
-    @other3=Product.find(15)
-    @other4=Product.find(15)
+    @other3=Product.find(10)
+    @other4=Product.find(5)
    
   end
 end

@@ -1,9 +1,9 @@
 # -*- encoding : utf-8 -*-
 class CartItem
-  attr_reader :product, :quantity
+  attr_reader :productid, :quantity
   
-  def initialize(product,quantity = 1) 
-    @product = product
+  def initialize(productid,quantity = 1) 
+    @productid = productid
     @quantity = quantity
   end
   
@@ -12,10 +12,14 @@ class CartItem
   end
   
   def name
-    @product.name
+    product.name
+  end
+  
+  def product
+    Product.find(productid)
   end
   
   def subtotal
-    (@product.price * @quantity).to_f
+    (product.price * @quantity).to_f
   end 
 end
