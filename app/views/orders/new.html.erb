@@ -21,7 +21,9 @@
 	}
 	
 	function select_address(){
-
+		var address_id = $('input[name="address_id"]:checked').val();
+		$('#div_address_selected').html($('#address_' + address_id).html());
+		cancel_select_address();
 	}
 
 	function show_addaddress(){
@@ -62,9 +64,9 @@
 				<% current_user.addresses.each do |address| %>
 					<% if address.default %>
 					<%= address.name %>,
-					<%= address.province %>,&nbsp;
-					<%= address.city %>,&nbsp;
-					<%= address.region %>,&nbsp;
+					<%= address.province %>,
+					<%= address.city %>,
+					<%= address.region %>,
 					<%= address.detail %>,
 					<%= address.phone %>,
 					<%= address.zip %>
@@ -78,7 +80,7 @@
 				<img src="/images/msl_payselect.gif" width="99" height="29" />
 				<a href="javascript:change_pay()">[修改]</a>
 			</h1>
-			<div id="div_pay_selected">网上支付</div>(这个地方样式表需要调整一下)
+			<div id="div_pay_selected">支付宝</div>(这个地方样式表需要调整一下)
 		</div>
 		<%= render "pay" %>
 		<!-- <h1 class="f-black-12"><img src="/images/msl_timeselect.gif" width="99" height="29" /></h1> 

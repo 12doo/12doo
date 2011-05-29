@@ -3,19 +3,16 @@
 		<img src="/images/msl_userinfo.gif" width="99" height="25" />
 		<a href="javascript:cancel_select_address()">[关闭]</a>
 	</h1>
- 	<table width="100%" cellspacing="0" cellpadding="0" border="0" id="table_address">
-		<tbody>
-			<% current_user.addresses.each do |address| %>
-			<tr>
-				<td width="3%" valign="middle" align="center"><input type="radio" onclick="hide_addaddress();" name="address_id" value="<%= address.id %>" <%= address.default ? "checked" : "" %>></td>
-				<td width="8%" valign="middle" align="left"><%= address.name %></td>
-				<td valign="middle" align="left"><%= address.province %>&nbsp;<%= address.city %>&nbsp;<%= address.region %>&nbsp;<%= address.detail %></td>
-				<td width="16%" valign="middle" align="center"><%= address.phone %></td>
-				<td width="16%" valign="middle" align="center"><%= address.zip %></td>
-			</tr>
-			<% end %>
-		</tbody>
-	</table>
+	<ul>
+		<% current_user.addresses.each do |address| %>
+		<li>
+			<input type="radio" onclick="hide_addaddress();" name="address_id" value="<%= address.id %>" <%= address.default ? "checked" : "" %> />
+			<div id="address_<%= address.id %>">
+				<%= address.name %>,<%= address.province %>,<%= address.city %>,<%= address.region %>,<%= address.detail %>,<%= address.phone %>,<%= address.zip %>
+			</div>
+		</li>
+		<% end %>
+	</ul>
 	<input type="radio" name="address_id" value="0" onclick="show_addaddress();" />使用新地址:
   	<div id="table_addaddress" style="display:none;">
   		<table width="100%" cellspacing="0" cellpadding="0" border="0" align="center">
@@ -52,5 +49,5 @@
   			</tbody>
 		</table> 	  
     </div>
-	<input type="button" value="确认收货人信息(这里需要修改一下样式)" />
+	<input type="button" onclick="select_address();" value="确认收货人信息(这里需要修改一下样式)" />
 </div>
