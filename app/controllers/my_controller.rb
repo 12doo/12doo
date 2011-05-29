@@ -3,14 +3,68 @@ class MyController < ApplicationController
   # 身份验证
   before_filter :authorize_user!
   
-  def index
-    
+  def addresses
+    @addresses = current_user.addresses.order("id desc").page(params[:page])
   end
   
-  def profile
-
+  def new_address
+    @address = Address.new
   end
-
+  
+  def create_address
+    @address = Address.new(params[:address])
+    @address.user_id = current_user.id
+    
+    respond_to do |format|
+      if @address.save
+        if params[:default] == "true"
+          @address.set_as_default
+        else
+          @address.default = false
+          @address.save
+        end
+        format.html { redirect_to :action => "addresses" }
+      else
+        format.html { render :action => "new_address" }
+      end
+    end
+  end
+  
+  def edit_address
+    @address = Address.find(params[:id])
+    unless @address.user_id == current_user.id
+      redirect_to :action => "addresses"
+    end
+  end
+  
+  def update_address
+    @address = Address.find(params[:id])
+    if @address.user_id == current_user.id
+      respond_to do |format|
+        if @address.update_attributes(params[:address])
+          if params[:default] == "true"
+            @address.set_as_default
+          else
+            @address.default = false
+            @address.save
+          end
+          format.html { redirect_to :action => "addresses" }
+        else
+          format.html { render :action => "edit_address" }
+        end
+      end
+    else
+      redirect_to :action => "addresses"
+    end
+  end
+  
+  def destroy_address
+    @address = Address.find(params[:id])
+    if @address.user_id == current_user.id
+      @address.destroy
+    end
+    redirect_to :action => "addresses"
+  end
 
 
 #  def update_profile
