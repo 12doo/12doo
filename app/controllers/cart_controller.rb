@@ -5,19 +5,19 @@ class CartController < ApplicationController
 
   def add_product
     cart = find_cart
-    cart.add_product(find_product)
+    cart.add_product(find_productid)
     redirect_to :action => 'show'
   end
 
   def update_product
     cart = find_cart
-    cart.update_product(find_product,params[:quantity].to_i)
+    cart.update_product(find_productid,params[:quantity].to_i)
     redirect_to :action => 'show'
   end
   
   def delete_product
     cart = find_cart
-    cart.delete_product(find_product)
+    cart.delete_product(find_productid)
     redirect_to :action => 'show'
   end
   
@@ -30,7 +30,7 @@ class CartController < ApplicationController
   def in_container
     if params[:id] && params[:quantity]
       cart = find_cart
-      cart.add_product(find_product,params[:quantity].to_i)
+      cart.add_product(find_productid,params[:quantity].to_i)
     end
   end
   
@@ -41,6 +41,10 @@ class CartController < ApplicationController
   
   def find_cart
     session[:cart] ||= Cart.new
+  end
+  
+  def find_productid
+    params[:id]
   end
   
   def find_product
