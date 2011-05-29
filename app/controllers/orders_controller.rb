@@ -161,6 +161,7 @@ class OrdersController < ApplicationController
       order.order_items << temp
     end
     order.total = cart.total
+    order.quantity = cart.quantity
     return order
   end
 end

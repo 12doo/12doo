@@ -15,196 +15,166 @@
 		$('#addresses_div').show();
 	}
 	
-	function select_address(){
+	function cancel_select_address(){
 		$('#address_div').show();
 		$('#addresses_div').hide();
+	}
+	
+	function select_address(){
+
+	}
+
+	function show_addaddress(){
+		$('#table_addaddress').show();
+	}
+	
+	function hide_addaddress(){
+		$('#table_addaddress').hide();
+	}
+	
+	function change_pay(){
+		$('#pay_div').hide();
+		$('#selectpay_div').show();
+	}
+	
+	function cancel_select_pay(){
+		$('#pay_div').show();
+		$('#selectpay_div').hide();
+	}
+	
+	function select_pay(){
+		$('#div_pay_selected').html($('input[name="pay_type"]:checked').val());
+		cancel_select_pay();
 	}
 	
 </script>
 <div class="clearit bj-sp10"></div>
 <div id="mlist_step"><img src="/images/mlist_stepFst.gif" width="626" height="35" /></div>
 <div id="mlist_detail">
-	<%= form_tag 'create' do %>
+	<%= form_tag 'create', :id => :create_order do %>
 	<div class="order_box">
 		<div id="address_div">
 	    	<h1 class="f-black-12">
 				<img src="/images/msl_userinfo.gif" width="99" height="25" />
 				<a href="javascript:change_address()">[修改]</a>
 			</h1>
-			<table width="100%" cellspacing="0" cellpadding="0" border="0" id="table_address">
-				<tbody>
-					<% current_user.addresses.each do |address| %>
+			<div id="div_address_selected">
+				<% current_user.addresses.each do |address| %>
 					<% if address.default %>
-					<tr>
-						<td width="3%" valign="middle" align="center"><input type="radio" style="display:none;" name="address_id" value="<%= address.id %>" <%= address.default ? "checked" : "" %>></td>
-						<td width="8%" valign="middle" align="left"><%= address.name %></td>
-						<td width="41%" valign="middle" align="left"><%= address.province %>&nbsp;<%= address.city %>&nbsp;<%= address.region %>&nbsp;<%= address.detail %></td>
-						<td width="16%" valign="middle" align="center"><%= address.phone %></td>
-						<td width="16%" valign="middle" align="center"><%= address.zip %></td>
-					</tr>
+					<%= address.name %>,
+					<%= address.province %>,&nbsp;
+					<%= address.city %>,&nbsp;
+					<%= address.region %>,&nbsp;
+					<%= address.detail %>,
+					<%= address.phone %>,
+					<%= address.zip %>
 					<% end %>
-
-					<% end %>
-				</tbody>
-			</table>
+				<% end %>
+			</div>(这个地方样式表需要调整一下)
 		</div>
-		<div id="addresses_div" style="display:none">
+		<%= render "addresses" %>
+		<div id="pay_div">
 			<h1 class="f-black-12">
-				<img src="/images/msl_userinfo.gif" width="99" height="25" />
-				<a href="javascript:select_address()">[关闭]</a>
+				<img src="/images/msl_payselect.gif" width="99" height="29" />
+				<a href="javascript:change_pay()">[修改]</a>
 			</h1>
-	     	<table width="100%" cellspacing="0" cellpadding="0" border="0" id="table_address">
-				<tbody>
-					<% current_user.addresses.each do |address| %>
-					<tr>
-						<td width="3%" valign="middle" align="center"><input type="radio" name="address_id" value="<%= address.id %>" <%= address.default ? "checked" : "" %>></td>
-						<td width="8%" valign="middle" align="left"><%= address.name %></td>
-						<td width="41%" valign="middle" align="left"><%= address.province %>&nbsp;<%= address.city %>&nbsp;<%= address.region %>&nbsp;<%= address.detail %></td>
-						<td width="16%" valign="middle" align="center"><%= address.phone %></td>
-						<td width="16%" valign="middle" align="center"><%= address.zip %></td>
-						<td width="16%" valign="middle" align="center">[<%= link_to '修改', :action => :edit, :id => address.id %>] [<%= link_to '删除', address, :method => :delete %>]</td>
-					</tr>
-					<% end %>
-				</tbody>
-			</table>
-			<input type="radio" name="address_id" value="0" />新地址:
-	      	<div id="table_addaddress">
-	      		<table width="100%" cellspacing="0" cellpadding="0" border="0" align="center">
-	        		<tbody>
-						<tr>
-				        	<td height="30" width="22">*</td>
-				          	<td width="88">收货人：</td>
-				          	<td width="174" align="left"><input type="text" name="fullname" maxlength="10" /></td>
-				       	  	<td align="left" colspan="2" class="f-red-12">您填写的信息有误，请核对</td>
-				        </tr>
-	        			<tr>
-							<td height="30">*</td>
-							<td>地　址：</td>
-							<td align="left" colspan="3">
-								<input type="text" name="province" />
-								<input type="text" name="city" />
-								<input type="text" name="region" />
-								<input type="text" name="address" />带*号的表示可支持货到付款的区域.[ <a href="#">运费计算</a> ]
-							</td>
-	   					</tr>
-	        			<tr>
-	          				<td height="30">*</td>
-	          				<td>电 话：</td>
-	          				<td align="left"><input type="text" name="phone" style="width: 50px; float: left;" id="phone1" class="orderform1" /></td>
-	          				<td align="left" colspan="2" class="f-red-12">您填写的信息有误，请核对</td>
-	        			</tr>
-	        			<tr>
-	          				<td height="30">*</td>
-	          				<td>邮　编：</td>
-							<td align="left"><input type="text" name="zip" class="orderform1" /></td>
-							<td width="143" align="left">[ <a href="#">邮编查询</a> ]</td>
-							<td width="461" align="left" class="f-red-12">您填写的信息有误，请核对</td>
-	        			</tr>
-						<tr>
-							<td height="30"><a class="snf3"></a></td>
-							<td>&nbsp;</td>
-							<td align="left"><a href=""><img height="21" width="138" border="0" id="addressImg" src="/images/save_address_btn.gif"></a></td>
-							<td align="left"><a href=""><img height="21" width="59" border="0" src="/images/cancel_btn.gif"></a></td>
-							<td align="left">&nbsp;</td>
-						</tr>
-	      			</tbody>
-				</table> 	  
-	        </div>
-  		</div>
-		<h1 class="f-black-12"><img src="/images/msl_timeselect.gif" width="99" height="29" /></h1> 
+			<div id="div_pay_selected">网上支付</div>(这个地方样式表需要调整一下)
+		</div>
+		<%= render "pay" %>
+		<!-- <h1 class="f-black-12"><img src="/images/msl_timeselect.gif" width="99" height="29" /></h1> 
 		<div id="selectime">
 			<input type="radio" checked="checked" value="SEND_DATE_TYPE_USUALLY" name="writeOrderParaDTO.sendDateType">周一至周五
           	<input type="radio" value="SEND_DATE_TYPE_WEEKEND" name="writeOrderParaDTO.sendDateType">双休日
             <input type="radio" value="SEND_DATE_TYPE_UNLIMIT" name="writeOrderParaDTO.sendDateType">不限
 		</div>
+		
 		<div id="timetips" class="f-black-12">                
      		<b>送货所需时间</b><br />
 			江浙沪 2-4天，其他地区 5天左右<br /><br />
             <b>声明</b><br />
             我们会努力按照您指定的时间配送，但因天气、交通等各类因素影响，您的订单有可能会有延误现象！敬请谅解！
-		</div>
-		<h1 class="f-black-12"><img src="/images/msl_deliveryselect.gif" width="99" height="29" /></h1>              
-  		<ul>
- 			<li><input type="radio" name="delivery_type" value="door_step" checked="true" />送货上门</li> 
- 			<li><input type="radio" name="delivery_type" value="door_step" checked="false" />EMS</li>
-			<li><input type="radio" name="delivery_type" value="door_step" checked="false" />快递</li> 
-  		</ul>               
- 		<h1 class="f-black-12"><img src="/images/msl_paperselect.gif" width="99" height="29" /></h1>              
-  		<ul>
- 			<li><input type="radio" class="hover" checked="checked" value="-1" />不需要发票</li> 
- 			<li><input type="radio" value="0" />普通发票</li>
-			<li><input type="radio" value="1" />增值税发票</li> 
-  		</ul>
- 		<table width="100%" cellspacing="0" cellpadding="0" border="0" class="fpnormal f-black-12">
-        	<tbody>
-				<tr>
-          			<td>
-						<b>发票抬头</b><input type="text" size="50" id="title2" name="title" />
-          			</td>
-          		</tr>
-        		<tr>
-          			<td>
-						1.个人发票请填写您的姓名<br />
-            			2.单位发票请填写单位全称 
-					</td>
-          		</tr>
-        	</tbody>
-		</table>
- 		<table width="100%" cellspacing="0" cellpadding="0" border="0" class="fpnormal">
-        	<tr>
-            	<td>
-					<span class="f-red-12">*</span>
-					公司名称 ：<input type="text" size="30" id="companyName" name="writeOrderParaDTO.companyName" />
-				</td>
-            	<td>
-					<span class="f-red-12">*</span>
-					寄送地址：<input type="text" size="30" id="companyAddr" name="writeOrderParaDTO.companyAddr" />
-				</td>
-            	<td>
-					<span class="f-red-12">*</span>
-					公司电话：<input type="text" size="30" id="companyPhone" name="writeOrderParaDTO.companyPhone" />
-				</td>
-            </tr>
-      		<tr>
-            	<td>
-					<span class="f-red-12">*</span>
-					开户行：<input type="text" size="30" id="bankName" name="writeOrderParaDTO.bankName" />
-				</td>
-            	<td>
-					<span class="f-red-12">*</span>
-					帐号：<input type="text" size="30" id="bankNo" name="writeOrderParaDTO.bankNo" />
-				</td>
-            	<td>
-					<span class="f-red-12">*</span>
-					税务号：<input type="text" size="30" id="companyRateNo" name="writeOrderParaDTO.companyRateNo" />
-				</td>
-            </tr>
-          	<tr>
-            	<td colspan="3">
-					<span class="f-red-12-b">提示：</span>
-					增值税发票只针对企业用户。<br />
-              		请在订单提交后将一般纳税人证书传真至 021-36368251（注明订单号），我们会在 7-15 个工作日将增值税发票快递给您。 
-				</td>
-            </tr>
-        </table>
+		</div> -->
+		
+		<!-- <h1 class="f-black-12"><img src="/images/msl_deliveryselect.gif" width="99" height="29" /></h1>              
+		  		<ul>
+		 			<li><input type="radio" name="delivery_type" value="door_step" checked="true" />送货上门</li> 
+		 			<li><input type="radio" name="delivery_type" value="door_step" checked="false" />EMS</li>
+					<li><input type="radio" name="delivery_type" value="door_step" checked="false" />快递</li> 
+		  		</ul>               
+		 		<h1 class="f-black-12"><img src="/images/msl_paperselect.gif" width="99" height="29" /></h1>              
+		  		<ul>
+		 			<li><input type="radio" class="hover" checked="checked" value="-1" />不需要发票</li> 
+		 			<li><input type="radio" value="0" />普通发票</li>
+					<li><input type="radio" value="1" />增值税发票</li> 
+		  		</ul>
+		 		<table width="100%" cellspacing="0" cellpadding="0" border="0" class="fpnormal f-black-12">
+		        	<tbody>
+						<tr>
+		          			<td>
+								<b>发票抬头</b><input type="text" size="50" id="title2" name="title" />
+		          			</td>
+		          		</tr>
+		        		<tr>
+		          			<td>
+								1.个人发票请填写您的姓名<br />
+		            			2.单位发票请填写单位全称 
+							</td>
+		          		</tr>
+		        	</tbody>
+				</table>
+		 		<table width="100%" cellspacing="0" cellpadding="0" border="0" class="fpnormal">
+		        	<tr>
+		            	<td>
+							<span class="f-red-12">*</span>
+							公司名称 ：<input type="text" size="30" id="companyName" name="writeOrderParaDTO.companyName" />
+						</td>
+		            	<td>
+							<span class="f-red-12">*</span>
+							寄送地址：<input type="text" size="30" id="companyAddr" name="writeOrderParaDTO.companyAddr" />
+						</td>
+		            	<td>
+							<span class="f-red-12">*</span>
+							公司电话：<input type="text" size="30" id="companyPhone" name="writeOrderParaDTO.companyPhone" />
+						</td>
+		            </tr>
+		      		<tr>
+		            	<td>
+							<span class="f-red-12">*</span>
+							开户行：<input type="text" size="30" id="bankName" name="writeOrderParaDTO.bankName" />
+						</td>
+		            	<td>
+							<span class="f-red-12">*</span>
+							帐号：<input type="text" size="30" id="bankNo" name="writeOrderParaDTO.bankNo" />
+						</td>
+		            	<td>
+							<span class="f-red-12">*</span>
+							税务号：<input type="text" size="30" id="companyRateNo" name="writeOrderParaDTO.companyRateNo" />
+						</td>
+		            </tr>
+		          	<tr>
+		            	<td colspan="3">
+							<span class="f-red-12-b">提示：</span>
+							增值税发票只针对企业用户。<br />
+		              		请在订单提交后将一般纳税人证书传真至 021-36368251（注明订单号），我们会在 7-15 个工作日将增值税发票快递给您。 
+						</td>
+		            </tr>
+		        </table> -->
 		<h1 class="f-black-12"><img src="/images/msl_pdlist.gif" width="99" height="29" /></h1>                           
 		<table width="100%" cellspacing="0" cellpadding="0" border="0" class="order_table">
         	<tbody>
 				<tr bgcolor="#ebebeb" class="f-black-12-b">
-					<td width="20%" align="center">商品编号</td>
+					<td width="10%" align="center">商品编号</td>
 					<td align="center">商品名称</td>
 					<td width="10%" align="center">数量</td>
 					<td width="10%" align="center">单价</td>
-					<td width="10%" align="center">优惠</td>
 					<td width="10%" align="center">小计</td>
           	    </tr>
 				<% @order.order_items.each do |item| %>
 				<tr>
-					<td align="center" class="f-blue-12">14603</td>
-					<td align="left"><%= item.product_name %></td>
+					<td align="center"><%= item.product_sku %></td>
+					<td align="center"><%= item.product_name %></td>
 					<td align="center"><%= item.quantity %></td>
 					<td align="center">￥<%= format "%.2f", item.price %></td>
-					<td align="center">0.0</td>
 					<td align="center">￥<%= format "%.2f", item.subtotal %></td>
 				</tr>
 				<% end %>
@@ -214,7 +184,7 @@
 		<table width="100%" cellspacing="0" cellpadding="0" border="0">
         	<tbody>
 				<tr>
-					<td> 商品数量总计：0 件 </td>
+					<td> 商品数量总计：<%= @order.quantity %> 件 </td>
 					<td align="right"><a href="/cart/show"><img src="/images/back to cart_btn.gif"></a></td>
 				</tr>
           	</tbody>
@@ -237,15 +207,15 @@
 	</div>
 	<div id="totalprice" class="f-black-12-b">
 		商品金额总计： <span class="f-blue-20-Ar-b">￥</span> 
-		折扣券抵扣： <span class="f-gren-20-Ar-b">-￥</span> 
-		积分抵扣：     <span class="f-gren-20-Ar-b">-￥</span> 
-		运费：      <span class="f-gren-20-Ar-b">+￥</span>
+		优惠券抵扣： <span class="f-gren-20-Ar-b">-￥</span> 
+		<!-- 积分抵扣：     <span class="f-gren-20-Ar-b">-￥</span>  -->
+		运费：      <span class="f-gren-20-Ar-b">+￥ <%= @order.total >= 200 ? "0.00" : "20.00" %></span>
 	</div>
 	<div class="f-black-20-hei lastprice">
 		订单金额： <span class="f-red-12-b">￥</span><span class="f-red-30-Ar-b"><%= format "%.2f", @order.total %></span>
 	</div>
 	<div align="center">
-		<img src="/images/next-step_btn.gif" width="145" height="45" />
+		<a href="javascript:$('#create_order').submit();"><img src="/images/next-step_btn.gif" width="145" height="45" /></a>
 	</div>
 	<% end %>
 </div>

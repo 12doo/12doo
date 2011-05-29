@@ -1,0 +1,56 @@
+<div id="addresses_div" style="display:none">
+	<h1 class="f-black-12">
+		<img src="/images/msl_userinfo.gif" width="99" height="25" />
+		<a href="javascript:cancel_select_address()">[关闭]</a>
+	</h1>
+ 	<table width="100%" cellspacing="0" cellpadding="0" border="0" id="table_address">
+		<tbody>
+			<% current_user.addresses.each do |address| %>
+			<tr>
+				<td width="3%" valign="middle" align="center"><input type="radio" onclick="hide_addaddress();" name="address_id" value="<%= address.id %>" <%= address.default ? "checked" : "" %>></td>
+				<td width="8%" valign="middle" align="left"><%= address.name %></td>
+				<td valign="middle" align="left"><%= address.province %>&nbsp;<%= address.city %>&nbsp;<%= address.region %>&nbsp;<%= address.detail %></td>
+				<td width="16%" valign="middle" align="center"><%= address.phone %></td>
+				<td width="16%" valign="middle" align="center"><%= address.zip %></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+	<input type="radio" name="address_id" value="0" onclick="show_addaddress();" />使用新地址:
+  	<div id="table_addaddress" style="display:none;">
+  		<table width="100%" cellspacing="0" cellpadding="0" border="0" align="center">
+    		<tbody>
+				<tr>
+		        	<td height="30" width="22">*</td>
+		          	<td width="88">收货人：</td>
+		          	<td width="174" align="left"><input type="text" name="fullname" maxlength="10" /></td>
+		       	  	<td align="left" colspan="2" class="f-red-12"></td>
+		        </tr>
+    			<tr>
+					<td height="30">*</td>
+					<td>地　址：</td>
+					<td align="left" colspan="3">
+						<input type="text" name="province" />
+						<input type="text" name="city" />
+						<input type="text" name="region" />
+						<input type="text" name="address" />带*号的表示可支持货到付款的区域.[ <a href="#">运费计算</a> ]
+					</td>
+				</tr>
+    			<tr>
+      				<td height="30">*</td>
+      				<td>电 话：</td>
+      				<td align="left"><input type="text" name="phone" style="width: 50px; float: left;" id="phone1" class="orderform1" /></td>
+      				<td align="left" colspan="2" class="f-red-12">您填写的信息有误，请核对</td>
+    			</tr>
+    			<tr>
+      				<td height="30">*</td>
+      				<td>邮　编：</td>
+					<td align="left"><input type="text" name="zip" class="orderform1" /></td>
+					<td width="143" align="left"></td>
+					<td width="461" align="left" class="f-red-12">您填写的信息有误，请核对</td>
+    			</tr>
+  			</tbody>
+		</table> 	  
+    </div>
+	<input type="button" value="确认收货人信息(这里需要修改一下样式)" />
+</div>
