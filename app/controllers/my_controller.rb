@@ -10,7 +10,10 @@ class MyController < ApplicationController
   def profile
 
   end
-
+  
+  def addresses
+    @addresses = current_user.addresses.order("id desc").page(params[:page])
+  end
 
 
 #  def update_profile

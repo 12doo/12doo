@@ -30,7 +30,7 @@
                             操作
                         </td>
                     </tr>
-					<% current_user.addresses.each do |address| %>
+					<% @addresses.each do |address| %>
                     <tr>
                         <td height="30"><a class="f-blue-12" href=""><%= address.name %></a></td>
                         <td><%= address.province %>/<%= address.city %>/<%= address.region %>/<%= address.detail %></td>
@@ -45,19 +45,7 @@
 					<% end %> 
                 </tbody>
 			</table>
-            <table border="0" align="center" cellpadding="0" cellspacing="5" class="list_num">
-  				<tr>
-					<td class="current">1</td>
-					<td><a href="#">2</a></td>
-					<td><a href="#">3</a></td>
-					<td><a href="#">4</a></td>
-					<td><a href="#">5</a></td>
-					<td><a href="#">6</a></td>
-					<td><a href="#">7</a></td>
-					<td><a href="#">8</a></td>
-					<td><a href="#">&raquo;</a></td>
-  				</tr>
-			</table>
+			<%= paginate @addresses %>
 		</div>
 	</div>
 </div>

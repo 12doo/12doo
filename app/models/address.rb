@@ -2,6 +2,7 @@
 class Address < ActiveRecord::Base
   belongs_to :user
   validates_presence_of :detail, :province, :city, :region, :zip, :phone, :name
+  paginates_per 10
   
   def set_as_default
     user = User.find(self.user_id)
