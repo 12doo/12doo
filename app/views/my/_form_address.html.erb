@@ -1,0 +1,83 @@
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#province').change(function(){
+			$.getJSON("/areas/get_cities?province=" + $('#province').val(), function(data){
+				$('#city option').remove();
+			  	$.each(data, function(i,item){
+			    	$('#city').append("<option value='"+ item.area.city +"'>"+ item.area.city +"</option>");
+			  	});
+				$('#city').change();
+			});
+		});
+	});
+	
+	$(document).ready(function(){
+		$('#city').change(function(){
+			$.getJSON("/areas/get_regions?province=" + $('#province').val() + "&city=" + $('#city').val(), function(data){
+				$('#region option').remove();
+			  	$.each(data, function(i,item){
+			    	$('#region').append("<option value='"+ item.area.region +"'>"+ item.area.region +"</option>");
+			  	});
+				$('#region').change();
+			});
+		});
+	});
+	
+	$(document).ready(function(){
+		$('#region').change(function(){
+			$.getJSON("/areas/get_detail?province=" + $('#province').val() + "&city=" + $('#city').val() + "&region=" + $('#region').val(), function(data){
+				$('#zip').val(data[0].area.postcode);
+				$('#zip').change();
+			});
+		});
+	});
+
+</script>
+<table width="100%" cellspacing="0" cellpadding="0" border="0" class="tableinfo">
+	<tbody>
+		<tr>
+		    <td height="30" width="70">收货人</td>
+		    <td><input type="text" name="address[name]" value="<%= @address.name %>" /></td>
+		</tr>
+		<tr>
+		    <td height="30">地址</td>
+		    <td>
+				<% areas = Area.new.get_provinces %>
+				<select name="address[province]" id="province">
+					<option value=""></option>
+				    <% areas.each do |item| %>
+					    <option value="<%= item.province %>" <%- if (@address.province == item.province) %>selected='true'<% end -%>	>
+					      <%= item.province %>
+					    </option>
+				    <% end %>
+				</select>
+				<select name="address[city]" id="city">
+					<% if @address.city %>
+					<option value="<%= @address.city %>"><%= @address.city %></option>
+					<% end %>
+				</select>
+				<select name="address[region]" id="region">
+					<% if @address.region %>
+					<option value="<%= @address.region %>"><%= @address.region %></option>
+					<% end %>
+				</select>
+			</td>
+		</tr>
+		<tr>
+		    <td height="30">详细地址</td>
+		    <td><input type="text" id="address" name="address[detail]" value="<%= @address.detail %>" /></td>
+		</tr>
+		<tr>
+		    <td height="30">邮政编码</td>
+		    <td><input type="text" id="zip" name="address[zip]" value="<%= @address.zip %>" /></td>
+		</tr>
+		<tr>
+		    <td height="30">联系电话</td>
+		    <td><input type="text" name="address[phone]" value="<%= @address.phone %>" /></td>
+		</tr>
+		<tr>
+		    <td height="30">默认订单地址</td>
+		    <td><input type="checkbox" name="default" <%= @address.default ? "checked" : "" %> value="true" /></td>
+		</tr>
+    </tbody>
+</table>

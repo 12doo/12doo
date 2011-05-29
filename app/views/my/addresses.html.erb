@@ -32,14 +32,14 @@
                     </tr>
 					<% @addresses.each do |address| %>
                     <tr>
-                        <td height="30"><a class="f-blue-12" href=""><%= address.name %></a></td>
+                        <td height="30"><%= address.name %></td>
                         <td><%= address.province %>/<%= address.city %>/<%= address.region %>/<%= address.detail %></td>
                         <td><%= address.zip %></td>
                         <td><%= address.phone %></td>
                         <td><%= address.default ? "是" : "否" %></td>
                         <td>
-							<%= link_to '[修改]', :action => :edit_address, :id => address.id, :class=>"f-red-12" %>
-							<%= link_to '[删除]', address, :method => :delete, :class=>"f-red-12" %>
+							<%= link_to '[修改]', {:action => :edit_address, :id => address.id}, :class=>"f-red-12" %>
+							<%= link_to '[删除]', {:action => :destroy_address, :id => address.id}, :method => :delete, :class=>"f-red-12" %>
 						</td>
                     </tr>
 					<% end %> 

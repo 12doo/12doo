@@ -1,0 +1,19 @@
+<%= render 'my/header' %>
+<div id="my_acinfo">
+<%= render 'my/userside' %>
+	<div id="ac_right">
+		<ul id="pd_infomenu">
+			<li><a href="/my/addresses">我的地址簿</a></li>
+			<li><a href="/my/new_address">添加地址</a></li>
+			<li class="on">编辑地址</li>
+		</ul>
+		<div class="clearit"></div>
+		<div id="ac_more_detail">
+			<%= form_tag '/my/update_address/' + @address.id.to_s do %>
+			<%= render 'form_address' %>
+			<input type="submit" value="保存" />
+			<% end %>
+		</div>
+	</div>
+</div>
+<div class="clearit"></div>
