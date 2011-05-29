@@ -45,7 +45,8 @@
 	}
 	
 	function select_pay(){
-		$('#div_pay_selected').html($('input[name="pay_type"]:checked').val());
+		$('#div_pay_selected').html($('input[name="pay_type_radio"]:checked').val());
+		$('#pay_type').val($('input[name="pay_type_radio"]:checked').val());
 		cancel_select_pay();
 	}
 	
@@ -80,6 +81,7 @@
 				<img src="/images/msl_payselect.gif" width="99" height="29" />
 				<a href="javascript:change_pay()">[修改]</a>
 			</h1>
+			<input type="hidden" name="pay_type" value="支付宝" />
 			<div id="div_pay_selected">支付宝</div>(这个地方样式表需要调整一下)
 		</div>
 		<%= render "pay" %>

@@ -32,6 +32,7 @@ class OrdersController < ApplicationController
     @order.status = 'Init';
     @order.order_at = Time.now
     @order.user_id = current_user.id
+    @order.pay_type = params[:pay_type]
     
     #if select a exsit address
     if params[:address_id]
@@ -76,6 +77,7 @@ class OrdersController < ApplicationController
     
     respond_to do |format|
       if @order.save
+        cart.clear
         if @order.pay_type == '支付宝'
           format.html { redirect_to :action => "check_out", :id => @order.id }
         else
