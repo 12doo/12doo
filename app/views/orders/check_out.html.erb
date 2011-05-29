@@ -5,8 +5,7 @@
 		});
 	});
 </script>
-订单号码:<%= @order.no %><br />
-金额:<%= @order.total %>
+您的订单<%= @order.no %>已经提交,您需要支付￥<%= format "%.2f", @order.total %>
 			<% payment_service_for @order.no, ActiveMerchant::Billing::Integrations::Alipay::ACCOUNT, 
 		                            :service => :alipay,  
 		                            :html => { :id => 'payment-form', :method => :get } do |service| %>  

@@ -76,7 +76,11 @@ class OrdersController < ApplicationController
     
     respond_to do |format|
       if @order.save
-        format.html { redirect_to :action => "check_out", :id => @order.id }
+        if @order.pay_type == '支付宝'
+          format.html { redirect_to :action => "check_out", :id => @order.id }
+        else
+          format.html { redirect_to :action => "info", :id => @order.id }
+        end
       else
         format.html { render :action => "new" }
       end
@@ -84,6 +88,10 @@ class OrdersController < ApplicationController
   end
   
   def check_out
+    @order = Order.find(params[:id])
+  end
+  
+  def info
     @order = Order.find(params[:id])
   end
   
