@@ -34,32 +34,24 @@ class OrdersController < ApplicationController
     @order.user_id = current_user.id
     @order.pay_type = params[:pay_type]
     
+    address = nil
+    
     #if select a exsit address
-    if params[:address_id]
-      address = Address.new(params[:address_id])
-      
-      #check hack
-      #if address && address.user_id == current_user.id
-        @order.fullname = address.name
-        @order.address = address.detail
-        @order.province = address.province
-        @order.city = address.city
-        @order.region = address.region
-        @order.zip = address.zip
-        @order.phone = address.phone
-      #end
-    else
-      address = Address.new
+    if params[:address_id] == "0"
+      address = Address.new(params[:address])
       address.user_id = current_user.id
-      address.name = @order.fullname
-      address.detail = @order.address
-      address.province = @order.province
-      address.city = @order.city
-      address.region = @order.region
-      address.zip = @order.zip
-      address.phone = @order.phone
       address.save
+    else
+      address = Address.find(params[:address_id])
     end
+   
+    @order.fullname = address.name
+    @order.address = address.detail
+    @order.province = address.province
+    @order.city = address.city
+    @order.region = address.region
+    @order.zip = address.zip
+    @order.phone = address.phone 
     
     cart = find_cart
     cart.items.each do |item|

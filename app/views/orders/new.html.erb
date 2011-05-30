@@ -27,10 +27,19 @@
 	
 	function select_address(){
 		var address_id = $('input[name="address_id"]:checked').val();
-		$('#div_address_selected').html($('#address_' + address_id).html());
+		if (address_id > 0){
+			$('#div_address_selected').html($('#address_' + address_id).html());
+		}else{
+			$('#div_address_selected').html(generate_new_address());
+		}
+
 		cancel_select_address();
 		$('#close_link_address').show();
 		flag_address = true;
+	}
+	
+	function generate_new_address(){
+		return $('#name').val() + ',' + $('#province').val() + ',' + $('#city').val() + ',' + $('#region').val() + ',' + $('#detail').val() + ',' + $('#phone').val() + $('#zip').val();
 	}
 
 	function show_addaddress(){

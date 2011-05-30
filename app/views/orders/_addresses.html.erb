@@ -55,13 +55,13 @@
     		<tbody>
 				<tr>
 		          	<td width="88">收货人</td>
-		          	<td width="174" align="left"><input type="text" name="address[name]" /></td>
+		          	<td width="174" align="left"><input type="text" id="name" name="address[name]" /></td>
 		        </tr>
     			<tr>
 					<td>地址</td>
 					<td align="left">
 						<% areas = Area.new.get_provinces %>
-						<select name="address[province]" id="province">
+						<select id="province" name="address[province]" id="province">
 							<option value=""></option>
 						    <% areas.each do |item| %>
 							    <option value="<%= item.province %>">
@@ -69,19 +69,19 @@
 							    </option>
 						    <% end %>
 						</select>
-						<select name="address[city]" id="city">
+						<select id="city" name="address[city]" id="city">
 						</select>
-						<select name="address[region]" id="region">
+						<select id="region" name="address[region]" id="region">
 						</select>
 					</td>
 				</tr>
 				<tr>
       				<td>详细地址</td>
-      				<td align="left"><input type="text" id="address" name="address[detail]" /></td>
+      				<td align="left"><input type="text" id="detail" name="address[detail]" /></td>
     			</tr>
     			<tr>
       				<td>电话</td>
-      				<td align="left"><input type="text" name="address[phone]" /></td>
+      				<td align="left"><input type="text" id="phone" name="address[phone]" /></td>
     			</tr>
     			<tr>
       				<td>邮编</td>
