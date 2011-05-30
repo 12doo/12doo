@@ -10,20 +10,27 @@
 		});
 	});
 	
+	var flag_address = false;
+	var flag_pay = false;
+	
 	function change_address(){
 		$('#address_div').hide();
 		$('#addresses_div').show();
+		flag_address = false;
 	}
 	
 	function cancel_select_address(){
 		$('#address_div').show();
 		$('#addresses_div').hide();
+		flag_address = true;
 	}
 	
 	function select_address(){
 		var address_id = $('input[name="address_id"]:checked').val();
 		$('#div_address_selected').html($('#address_' + address_id).html());
 		cancel_select_address();
+		$('#close_link_address').show();
+		flag_address = true;
 	}
 
 	function show_addaddress(){
@@ -37,17 +44,37 @@
 	function change_pay(){
 		$('#pay_div').hide();
 		$('#selectpay_div').show();
+		flag_pay = false;
 	}
 	
 	function cancel_select_pay(){
 		$('#pay_div').show();
 		$('#selectpay_div').hide();
+		flag_pay = true;
 	}
 	
 	function select_pay(){
 		$('#div_pay_selected').html($('input[name="pay_type_radio"]:checked').val());
 		$('#pay_type').val($('input[name="pay_type_radio"]:checked').val());
 		cancel_select_pay();
+		$('#close_link_pay').show();
+		flag_pay = true;
+	}
+	
+	function next_step(){
+		var flag_submit = true;
+		if (!flag_address){
+			alert('请选择送货地址.');
+			flag_submit = false;
+		}
+		if (!flag_pay){
+			alert('请选择支付方式.');
+			flag_submit = false;
+		}
+		
+		if (flag_submit){
+			$('#create_order').submit();
+		}	
 	}
 	
 </script>
@@ -56,7 +83,7 @@
 <div id="mlist_detail">
 	<%= form_tag 'create', :id => :create_order do %>
 	<div class="order_box">
-		<div id="address_div">
+		<div id="address_div" style="display:none">
 	    	<h1 class="f-black-12">
 				<img src="/images/msl_userinfo.gif" width="99" height="25" />
 				<a href="javascript:change_address()">[修改]</a>
@@ -76,7 +103,7 @@
 			</div>(这个地方样式表需要调整一下)
 		</div>
 		<%= render "addresses" %>
-		<div id="pay_div">
+		<div id="pay_div" style="display:none">
 			<h1 class="f-black-12">
 				<img src="/images/msl_payselect.gif" width="99" height="29" />
 				<a href="javascript:change_pay()">[修改]</a>
@@ -219,7 +246,7 @@
 		订单金额： <span class="f-red-12-b">￥</span><span class="f-red-30-Ar-b"><%= format "%.2f", @order.total %></span>
 	</div>
 	<div align="center">
-		<a href="javascript:$('#create_order').submit();"><img src="/images/next-step_btn.gif" width="145" height="45" /></a>
+		<a href="javascript:next_step();"><img src="/images/next-step_btn.gif" width="145" height="45" /></a>
 	</div>
 	<% end %>
 </div>

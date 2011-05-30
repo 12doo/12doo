@@ -34,10 +34,10 @@
 
 </script>
 
-<div id="addresses_div" style="display:none">
+<div id="addresses_div">
 	<h1 class="f-black-12">
 		<img src="/images/msl_userinfo.gif" width="99" height="25" />
-		<a href="javascript:cancel_select_address()">[关闭]</a>
+		<a id="close_link_address" style="display:none;" href="javascript:cancel_select_address()">[关闭]</a>
 	</h1>
 	<ul>
 		<% current_user.addresses.each do |address| %>
