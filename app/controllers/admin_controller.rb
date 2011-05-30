@@ -5,6 +5,7 @@ class AdminController < ApplicationController
   before_filter :authorize_admin!
   
   def index
+    redirect_to :action => :orders
     
   end
   
