@@ -856,7 +856,14 @@ margin:10px 0;
 border:1px solid #dcdedc;
 padding:10px;
 background:#f1f1f1;
-margin:20px 0;
+margin:10px 0;
+	}
+#mlist_detail .order_box .confirm_btn{
+margin:10px 0 10px 50px;	
+	}
+#mlist_detail .order_box .address_list p{
+line-height:25px;
+height:25px;
 	}
 #mlist_detail .order_box #selectime{
 margin:20px 0;	
@@ -934,7 +941,31 @@ margin:0 0 50px 0;
 border:1px solid #dcdedc;
 width:310px;
 height:40px;
+font-size:14px;
+line-height:40px;
+color:#666;
 	}
+#reg_table td input.iptnormal{
+border:none;
+width:auto;
+height:auto;
+	}
+#reg_table td .ipterror{
+color:#9e0a10;
+font-size:12px;
+line-height:40px;
+padding:0 0 0 10px;
+	}
+#reg_table td .attention{
+font-size:12px;
+line-height:40px;
+color:#15a5d7;
+padding:0 0 0 10px;
+	}
+#reg_table td .attention a{
+	text-decoration:underline;	
+	color:#15a5d7;
+	}	
 #reg_table td input.verify{
 width:185px;	
 	}

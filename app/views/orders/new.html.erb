@@ -39,7 +39,7 @@
 	}
 	
 	function generate_new_address(){
-		return $('#name').val() + ',' + $('#province').val() + ',' + $('#city').val() + ',' + $('#region').val() + ',' + $('#detail').val() + ',' + $('#phone').val() + $('#zip').val();
+		return $('#name').val() + ',&nbsp;&nbsp;' + $('#province').val() + '&nbsp;&nbsp;' + $('#city').val() + '&nbsp;&nbsp;' + $('#region').val() + '&nbsp;&nbsp;' + $('#detail').val() + '&nbsp;&nbsp;' + $('#phone').val() + '&nbsp;&nbsp;' + $('#zip').val();
 	}
 
 	function show_addaddress(){
@@ -100,16 +100,16 @@
 			<div id="div_address_selected">
 				<% current_user.addresses.each do |address| %>
 					<% if address.default %>
-					<%= address.name %>,
-					<%= address.province %>,
-					<%= address.city %>,
-					<%= address.region %>,
-					<%= address.detail %>,
-					<%= address.phone %>,
+					<%= address.name %>,&nbsp;&nbsp;
+					<%= address.province %>&nbsp;&nbsp;
+					<%= address.city %>&nbsp;&nbsp;
+					<%= address.region %>&nbsp;&nbsp;
+					<%= address.detail %>&nbsp;&nbsp;
+					<%= address.phone %>&nbsp;&nbsp;
 					<%= address.zip %>
 					<% end %>
 				<% end %>
-			</div>(这个地方样式表需要调整一下)
+			</div>
 		</div>
 		<%= render "addresses" %>
 		<div id="pay_div" style="display:none">
@@ -118,7 +118,7 @@
 				<a href="javascript:change_pay()">[修改]</a>
 			</h1>
 			<input type="hidden" name="pay_type" value="支付宝" />
-			<div id="div_pay_selected">支付宝</div>(这个地方样式表需要调整一下)
+			<div id="div_pay_selected">支付宝</div>
 		</div>
 		<%= render "pay" %>
 		<!-- <h1 class="f-black-12"><img src="/images/msl_timeselect.gif" width="99" height="29" /></h1> 
