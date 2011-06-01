@@ -39,29 +39,32 @@
 		<img src="/images/msl_userinfo.gif" width="99" height="25" />
 		<a id="close_link_address" style="display:none;" href="javascript:cancel_select_address()">[关闭]</a>
 	</h1>
-	<ul>
+	<div class="address_list">
 		<% current_user.addresses.each do |address| %>
-		<li>
+		<p>
 			<input type="radio" onclick="hide_addaddress();" name="address_id" value="<%= address.id %>" <%= address.default ? "checked" : "" %> />
-			<div id="address_<%= address.id %>">
-				<%= address.name %>,<%= address.province %>,<%= address.city %>,<%= address.region %>,<%= address.detail %>,<%= address.phone %>,<%= address.zip %>
-			</div>
-		</li>
+			<span id="address_<%= address.id %>"><%= address.name %>,&nbsp;&nbsp;<%= address.province %>&nbsp;&nbsp;<%= address.city %>&nbsp;&nbsp;<%= address.region %>&nbsp;&nbsp;<%= address.detail %>&nbsp;&nbsp;<%= address.phone %>&nbsp;&nbsp;<%= address.zip %></span>
+		</p>
 		<% end %>
-	</ul>
-	<input type="radio" name="address_id" value="0" onclick="show_addaddress();" />使用新地址:
+		<p>
+			<input type="radio" name="address_id" value="0" onclick="show_addaddress();" />使用新地址:
+		</p>
+	</div>
+	
   	<div id="table_addaddress" style="display:none;">
   		<table width="100%" cellspacing="0" cellpadding="0" border="0" align="center">
     		<tbody>
 				<tr>
-		          	<td width="88">收货人</td>
-		          	<td width="174" align="left"><input type="text" id="name" name="address[name]" /></td>
+					<td height="30" width="10">*</td>
+		          	<td width="70">收货人</td>
+		          	<td align="left"><input type="text" id="name" name="address[name]" maxlength="10" /></td>
 		        </tr>
     			<tr>
+					<td height="30" width="10">*</td>
 					<td>地址</td>
 					<td align="left">
 						<% areas = Area.new.get_provinces %>
-						<select id="province" name="address[province]" id="province">
+						<select align="left" id="province" name="address[province]" id="province">
 							<option value=""></option>
 						    <% areas.each do |item| %>
 							    <option value="<%= item.province %>">
@@ -69,26 +72,29 @@
 							    </option>
 						    <% end %>
 						</select>
-						<select id="city" name="address[city]" id="city">
+						<select align="left" id="city" name="address[city]" id="city">
 						</select>
-						<select id="region" name="address[region]" id="region">
+						<select align="left" id="region" name="address[region]" id="region">
 						</select>
 					</td>
 				</tr>
 				<tr>
+					<td height="30" width="10">*</td>
       				<td>详细地址</td>
-      				<td align="left"><input type="text" id="detail" name="address[detail]" /></td>
+      				<td align="left"><input type="text" id="detail" size="30" name="address[detail]" /></td>
     			</tr>
     			<tr>
+					<td height="30" width="10">*</td>
       				<td>电话</td>
       				<td align="left"><input type="text" id="phone" name="address[phone]" /></td>
     			</tr>
     			<tr>
+					<td height="30" width="10">*</td>
       				<td>邮编</td>
 					<td align="left"><input type="text" id="zip" name="address[zip]" /></td>
     			</tr>
   			</tbody>
 		</table>	  
     </div>
-	<input type="button" onclick="select_address();" value="确认收货人信息(这里需要修改一下样式)" />
+	<a href="javascript:select_address();"><img src="/images/confirm_address.gif" width="120" height="30" class="confirm_btn" /></a>
 </div>
