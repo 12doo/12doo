@@ -1,42 +1,44 @@
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :post, :name => :user_new }) do |f| %>
 <div id="join_now"><img src="/images/reg_wyjr.gif" width="295" height="42" /></div>
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :post, :name => :user_new }) do |f| %>
 <table id="reg_table" border="0" cellspacing="0" cellpadding="0">
 	<tr>
 	    <td class="tdtitle"><img src="/images/reg_username.gif" width="108" height="19" /></td>
-	    <td><label><%= f.text_field :email %></label></td>
-    	<td><img src="/images/reg_username_sm.gif" width="289" height="14" /></td>
+	    <td><label><%= f.text_field :email %></label><span class="ipterror"></span></td>
   	</tr>
 	<tr>
 	    <td><img src="/images/reg_password.gif" width="75" height="19" /></td>
-	    <td><%= f.password_field :password %></td>
-	    <td><img src="/images/reg_password_sm.gif" width="181" height="12" /></td>
+	    <td><%= f.password_field :password %><span class="ipterror"></span></td>
 	</tr>
   	<tr>
 	    <td><img src="/images/reg_password_confirm.gif" width="108" height="19" /></td>
-	    <td><%= f.password_field :password_confirmation %></td>
-	    <td>&nbsp;</td>
+	    <td><%= f.password_field :password_confirmation %><span class="ipterror"></span></td>
   	</tr>
-  	<tr>
+  	<!-- <tr>
 	    <td><img src="/images/reg_suggestuser.gif" width="107" height="19" /></td>
-	    <td><%= f.text_field :ref %></td>
-	    <td><img src="/images/reg_suggestuser_sm.gif" width="108" height="15" /></td>
+	    <td><%= f.text_field :ref %><span class="ipterror"></span></td>
   	</tr>
   	<tr>
     	<td><img src="/images/reg_verify.gif" width="80" height="18" /></td>
 	    <td colspan="2">
 			<input type="text" name="textfield5" id="textfield5" class="verify" />
-	    	<img src="/images/reg_yzm.gif" width="78" height="28" /> <a href="#">看不清 换一张</a>
+	    	<img src="/images/reg_yzm.gif" width="78" height="28" /><a href="#">看不清 换一张</a>
 		</td>
-    </tr>
+    </tr> -->
+  	<tr>
+    	<td>&nbsp;</td>
+    	<td>
+			<div id="reg_submit">
+				<a href="javascript:document.user_new.submit();">
+					<img src="/images/reg_btn.gif" width="197" height="53" />
+				</a>
+				<input name="" type="checkbox" value="" checked="checked" />
+				<a href="#" class="f-grey2-14-u">已经阅读并同意&lt;12doo服务条款&gt;</a>
+				<span class="attention">
+					<%= link_to "我有帐号，立刻登陆", new_session_path(resource_name), :class => "f-grey2-14-u" %>
+				</span>
+			</div>
+		</td>
+  	</tr>
 </table>
-<div id="reg_submit">
-	<a href="javascript:document.user_new.submit();">
-		<img src="/images/reg_btn.gif" width="197" height="53" />
-	</a>
-</div>
-<div id="reg_policy">
-	<input name="" type="checkbox" value="" checked="checked" />
-  	<a href="#" class="f-grey2-14-u">已经阅读并同意&lt;12doo服务条款&gt;</a>
-	<%= link_to "我有帐号，立刻登陆", new_session_path(resource_name), :class => "f-grey2-14-u" %>
-</div>
 <% end %>
+<div class="clearit"></div>

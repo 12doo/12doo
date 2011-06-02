@@ -1,14 +1,12 @@
-<script type="text/javascript">
-	$(document).ready(function(){
-		$('#check_coupon').click(function(){
-			$.getJSON("/orders/get_coupon?code=" + $('#coupon_code').val(), function(data){
-			  	$.each(data, function(i,item){
-					$('#total').val(item.discount);
-			  	});
-				$('#total').change();
-			});
+<script type="text/javascript">	
+	function check_coupon(){
+		$.getJSON("/orders/get_coupon?code=" + $('#coupon_code').val(), function(data){
+		  	$.each(data, function(i,item){
+				$('#total').val(item.discount);
+		  	});
+			$('#total').change();
 		});
-	});
+	}
 	
 	var flag_address = false;
 	var flag_pay = false;
@@ -240,7 +238,8 @@
 				<tr>
           			<td>
 						<b>优惠券</b>
-						<input type="text" name="coupon_code" id="coupon_code" size="50" /><input type="button" id="check_coupon" value="使用(这个按钮要换成图片)" />
+						<input type="text" name="coupon_code" id="coupon_code" size="50" />
+						<a href="javascript:check_coupon();"><img src="/images/use_discount.gif" width="120" height="30" /></a>
           			</td>
           		</tr>
         	</tbody>
