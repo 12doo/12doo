@@ -70,13 +70,22 @@
 	
 	function next_step(){
 		var flag_submit = true;
+		
 		if (!flag_address){
-			alert('请选择送货地址.');
+			alert('请确认送货地址和支付方式.');
 			flag_submit = false;
+			return false;
+		}
+		
+		if (!flag_address){
+			alert('请确认送货地址.');
+			flag_submit = false;
+			return false;
 		}
 		if (!flag_pay){
-			alert('请选择支付方式.');
+			alert('请确认支付方式.');
 			flag_submit = false;
+			return false;
 		}
 		
 		if (flag_submit){
@@ -115,7 +124,7 @@
 				<img src="/images/msl_payselect.gif" width="97" height="27" />
 				<a href="javascript:change_pay()">[修改]</a>
 			</h1>
-			<input type="hidden" name="pay_type" value="支付宝" />
+			<input id="pay_type" type="hidden" name="pay_type" value="支付宝" />
 			<div id="div_pay_selected">支付宝</div>
 		</div>
 		<%= render "pay" %>

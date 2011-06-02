@@ -3,17 +3,15 @@
 	<img src="/images/mlist_stepTrd.gif" />
 </div>
 <div id="mlist_detail">
-	<div id="pay_bg">
-		<div class="f-black-14-YaHei">您的订单&nbsp;<%= @order.no %>&nbsp;已经提交.确认订单后我们将在第一时间为您发货.</div>
-		<div class="f-black-14-YaHei">订单金额： <span class="f-red-12-b">￥</span><span class="f-red-30-Ar-b"><%= format "%.2f", @order.total %></span></div>
+	<div id="nopay_bg">
+		<div class="f-black-14-YaHei">您的订单&nbsp;<%= @order.no %>&nbsp;已经提交.</div>
+		<div class="f-black-14-YaHei">确认订单后我们将在第一时间为您发货.</div>
 	</div>
 	<div align="center">
-			<a href="javascript:$('#submit').click();">
-				<img src="/images/next-step_btn.gif" width="145" height="45" />
-			</a>&nbsp;
-			<span class="f-grey-12">（点击按钮转到订单管理）</span>
-		    <input type="submit" value="支付" class="mini_btn" id="submit" style="display:none;">
-	    <% end %>
+		<a href="/my/orders">
+			<img src="/images/next-step_btn.gif" width="145" height="45" />
+		</a>&nbsp;
+		<span class="f-grey-12">（点击按钮转到订单管理）</span>
 	</div>
 </div>
 <div class="clearit"></div>

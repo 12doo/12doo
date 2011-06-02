@@ -850,6 +850,13 @@ padding:30px;
 	padding:90px 0 0 200px;
 	height:120px;
 	}
+#mlist_detail #nopay_bg{
+	background:url(../images/msl_gotonopay_bg.gif) 0 0 no-repeat;
+	width:400px;
+	margin:0 auto;
+	padding:90px 0 0 200px;
+	height:120px;
+	}
 #mlist_detail .order_box {
 line-height:18px;	
 	}
