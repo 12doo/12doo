@@ -5,21 +5,37 @@
 		});
 	});
 </script>
-您的订单<%= @order.no %>已经提交,您需要支付￥<%= format "%.2f", @order.total %>
-			<% payment_service_for @order.no, ActiveMerchant::Billing::Integrations::Alipay::ACCOUNT, 
-		                            :service => :alipay,  
-		                            :html => { :id => 'payment-form', :method => :get } do |service| %>  
-		        <% service.price @order.total %>
-		        <% service.quantity 1 %>
-		        <% service.seller :email => ActiveMerchant::Billing::Integrations::Alipay::EMAIL %>
-		        <% service.notify_url url_for(:only_path => false, :action => 'notify', :id => @order.id) %>
-		        <% service.return_url url_for(:only_path => false, :action => 'done', :id => @order.id) %>
-		        <% service.show_url url_for(:only_path => false, :action => 'show', :id => @order.id) %>
-		        <% service.body @order.no %>
-		        <% service.charset "utf-8" %>
-		        <% service.service ActiveMerchant::Billing::Integrations::Alipay::Helper::CREATE_DIRECT_PAY_BY_USER %>
-		        <% service.payment_type 1 %>
-		        <% service.subject @order.no %>
-		        <% service.sign %>
-			    <input type="submit" value="支付" class="mini_btn" id="submit">
-		    <% end %>
+<div class="clearit bj-sp10"></div>
+<div id="mlist_step">
+	<img src="/images/mlist_stepSec.gif" width="626" height="35" />
+</div>
+<div id="mlist_detail">
+	<div id="pay_bg">
+		<div class="f-black-14-YaHei">您的订单&nbsp;<%= @order.no %>&nbsp;已经提交.</div>
+		<div class="f-black-14-YaHei">订单金额： <span class="f-red-12-b">￥</span><span class="f-red-30-Ar-b"><%= format "%.2f", @order.total %></span></div>
+	</div>
+	<div align="center">
+		<% payment_service_for @order.no, ActiveMerchant::Billing::Integrations::Alipay::ACCOUNT, 
+	                            :service => :alipay,  
+	                            :html => { :id => 'payment-form', :method => :get } do |service| %>  
+	        <% service.price @order.total %>
+	        <% service.quantity 1 %>
+	        <% service.seller :email => ActiveMerchant::Billing::Integrations::Alipay::EMAIL %>
+	        <% service.notify_url url_for(:only_path => false, :action => 'notify', :id => @order.id) %>
+	        <% service.return_url url_for(:only_path => false, :action => 'done', :id => @order.id) %>
+	        <% service.show_url url_for(:only_path => false, :action => 'show', :id => @order.id) %>
+	        <% service.body @order.no %>
+	        <% service.charset "utf-8" %>
+	        <% service.service ActiveMerchant::Billing::Integrations::Alipay::Helper::CREATE_DIRECT_PAY_BY_USER %>
+	        <% service.payment_type 1 %>
+	        <% service.subject @order.no %>
+	        <% service.sign %>
+			<a href="javascript:$('#submit').click();">
+				<img src="/images/next-step_btn.gif" width="145" height="45" />
+			</a>&nbsp;
+			<span class="f-grey-12">（点击按钮转到支付宝）</span>
+		    <input type="submit" value="支付" class="mini_btn" id="submit" style="display:none;">
+	    <% end %>
+	</div>
+</div>
+<div class="clearit"></div>
