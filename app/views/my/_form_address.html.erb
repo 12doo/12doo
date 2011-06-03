@@ -33,15 +33,15 @@
 	});
 
 </script>
-<table width="100%" cellspacing="0" cellpadding="0" border="0" class="tableinfo">
+<table width="100%" cellspacing="0" cellpadding="0" border="0" class="tableinfo" align="center">
 	<tbody>
 		<tr>
-		    <td height="30" width="70">收货人</td>
-		    <td><input type="text" name="address[name]" value="<%= @address.name %>" /></td>
+		    <td height="30" width="100">收货人</td>
+		    <td align="left"><input type="text" name="address[name]" value="<%= @address.name %>" /></td>
 		</tr>
 		<tr>
 		    <td height="30">地址</td>
-		    <td>
+		    <td align="left">
 				<% areas = Area.new.get_provinces %>
 				<select name="address[province]" id="province">
 					<option value=""></option>
@@ -65,19 +65,19 @@
 		</tr>
 		<tr>
 		    <td height="30">详细地址</td>
-		    <td><input type="text" id="address" name="address[detail]" value="<%= @address.detail %>" /></td>
+		    <td align="left"><input type="text" id="address" name="address[detail]" value="<%= @address.detail %>" /></td>
 		</tr>
 		<tr>
 		    <td height="30">邮政编码</td>
-		    <td><input type="text" id="zip" name="address[zip]" value="<%= @address.zip %>" /></td>
+		    <td align="left"><input type="text" id="zip" name="address[zip]" value="<%= @address.zip %>" /></td>
 		</tr>
 		<tr>
 		    <td height="30">联系电话</td>
-		    <td><input type="text" name="address[phone]" value="<%= @address.phone %>" /></td>
+		    <td align="left"><input type="text" name="address[phone]" value="<%= @address.phone %>" /></td>
 		</tr>
 		<tr>
 		    <td height="30">默认订单地址</td>
-		    <td><input type="checkbox" name="default" <%= @address.default ? "checked" : "" %> value="true" /></td>
+		    <td align="left"><input type="checkbox" name="default" <%= @address.default ? "checked" : "" %> value="true" /></td>
 		</tr>
     </tbody>
 </table>
