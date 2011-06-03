@@ -9,6 +9,10 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    unless @order.user_id == current_user.id
+      redirect_to :action => "index"
+    end
+    
   end
 
   def new
@@ -61,7 +65,7 @@ class OrdersController < ApplicationController
       temp = OrderItem.new
       temp.product_id = item.product.id
       temp.user_id = current_user.id
-      temp.product_name = item.product.name
+      temp.product_name = item.product.cn_name
       temp.product_sku = item.product.sku
       temp.price = item.product.price
       temp.quantity = item.quantity
@@ -79,7 +83,8 @@ class OrdersController < ApplicationController
         if @order.pay_type == '支付宝'
           format.html { redirect_to :action => "check_out", :id => @order.id }
         else
-          format.html { redirect_to :action => "info", :id => @order.id }
+          flash[:info] = '我们已经收到您的订单 ' + @order.no + ' ，完成确认后我们将尽快为您安排配送。';
+          format.html { render :action => "info" }
         end
       else
         format.html { render :action => "new" }
@@ -88,10 +93,6 @@ class OrdersController < ApplicationController
   end
   
   def check_out
-    @order = Order.find(params[:id])
-  end
-  
-  def info
     @order = Order.find(params[:id])
   end
   
@@ -122,10 +123,16 @@ class OrdersController < ApplicationController
   end
   
   def done
-    r = ActiveMerchant::Billing::Integrations::Alipay::Return.new(request.query_string)  
-    unless @result = r.success?
-      logger.warn(r.message)
-    end  
+    # r = ActiveMerchant::Billing::Integrations::Alipay::Return.new(request.query_string)
+    
+    # unless @result = r.success?
+    #    logger.warn(r.message)
+    # end
+    order = Order.find(params[:id])
+    flash[:info] = '您的订单 ' + order.no + ' 已经支付完成，我们将尽快为您安排配送。';
+    respond_to do |format|
+        format.html { render :action => "info" }
+      end
   end
 
 
@@ -160,7 +167,7 @@ class OrdersController < ApplicationController
     cart = find_cart
     cart.items.each do |item|
       temp = OrderItem.new
-      temp.product_name = item.product.name
+      temp.product_name = item.product.cn_name
       temp.product_sku = item.product.sku
       temp.price = item.product.price
       temp.quantity = item.quantity
