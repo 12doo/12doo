@@ -1,7 +1,7 @@
 # -*- encoding : utf-8 -*-
 class OrdersController < ApplicationController
   # 身份验证
-  before_filter :authorize_user!
+  before_filter :authorize_user!, :except => [:notify, :done]
 
   def index
     @orders = Order.paginate :page => params[:page], :order => 'created_at DESC',:conditions => ['user_id = ?', current_user.id]
@@ -109,14 +109,13 @@ class OrdersController < ApplicationController
 
     case notification.status
     when "WAIT_BUYER_PAY"
-      order.status_code = "WAIT_BUYER_PAY"
       order.status = "等待付款"
       #@order.pend_payment!
     when "TRADE_FINISHED"
-      order.status_code = "TRADE_FINISHED"
       order.status = "完成付款"
       #@order.pay!
     else
+      @order.status = notification.status
       #@order.fail_payment!
     end
     order.save
