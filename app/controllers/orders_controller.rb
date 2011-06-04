@@ -109,14 +109,13 @@ class OrdersController < ApplicationController
 
     case notification.status
     when "WAIT_BUYER_PAY"
-      order.status_code = "WAIT_BUYER_PAY"
       order.status = "等待付款"
       #@order.pend_payment!
     when "TRADE_FINISHED"
-      order.status_code = "TRADE_FINISHED"
       order.status = "完成付款"
       #@order.pay!
     else
+      @order.status = notification.status
       #@order.fail_payment!
     end
     order.save
