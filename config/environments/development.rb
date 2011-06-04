@@ -24,8 +24,8 @@ V3::Application.configure do
     :address              => "smtp.gmail.com",
     :port                 => 587,
     :domain               => '12doo.net',
-    :user_name            => 'admin@12doo.net',
-    :password             => 'Password01',
+    :user_name            => 'czhang@12doo.net',
+    :password             => 'Zcy770213',
     :authentication       => 'plain',
     :enable_starttls_auto => true  }
   
