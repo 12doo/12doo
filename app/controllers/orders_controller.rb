@@ -1,7 +1,7 @@
 # -*- encoding : utf-8 -*-
 class OrdersController < ApplicationController
   # 身份验证
-  before_filter :authorize_user!
+  before_filter :authorize_user!, :except => [:notify, :done]
 
   def index
     @orders = Order.paginate :page => params[:page], :order => 'created_at DESC',:conditions => ['user_id = ?', current_user.id]
