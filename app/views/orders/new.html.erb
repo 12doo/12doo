@@ -1,10 +1,21 @@
 <script type="text/javascript">	
 	function check_coupon(){
-		$.getJSON("/orders/get_coupon?code=" + $('#coupon_code').val(), function(data){
-		  	$.each(data, function(i,item){
-				$('#total').val(item.discount);
-		  	});
-			$('#total').change();
+		$.ajax({
+		  url: "/orders/get_coupon?code=" + $('#coupon_code').val(),
+		  dataType: 'json',
+		  success: function(data){
+				if (data){
+					$.each(data, function(i,item){
+						$('#discount').html(parseFloat(item.discount).toFixed(2));
+						$('#total').html((parseFloat($('#total').html()) - parseFloat(item.discount)).toFixed(2))
+						$('#coupon_code_show').html($('#coupon_code').val()).show();
+						$('#coupon_code').hide();
+						$('#coupon_button').hide();
+				  	});
+				}else{
+					alert("您输入的优惠券无法识别或者当前订单不符合使用条件。");
+				}
+			},
 		});
 	}
 	
@@ -238,7 +249,7 @@
 		</table>
 		<div class="order_comment f-black-12">
 			<b>您需要附加说明吗？</b><br />
-			<textarea rows="4" >（请输入您的留言，最多20字）</textarea>
+			<textarea rows="4" name="memo"></textarea>
 		</div>
  		<h1 class="f-black-12"><img src="/images/msl_couponuse.gif" width="99" height="29" /></h1>              
  		<table width="100%" cellspacing="0" cellpadding="0" border="0" class="fpnormal f-black-12">
@@ -246,21 +257,22 @@
 				<tr>
           			<td>
 						<b>优惠券</b>
+						<span id="coupon_code_show" style="display:none;"></span>
 						<input type="text" name="coupon_code" id="coupon_code" size="50" />
-						<a href="javascript:check_coupon();"><img src="/images/use_discount.gif" width="120" height="30" /></a>
+						<a id="coupon_button" href="javascript:check_coupon();"><img src="/images/use_discount.gif" width="120" height="30" /></a>
           			</td>
           		</tr>
         	</tbody>
 		</table>
 	</div>
 	<div id="totalprice" class="f-black-12-b">
-		商品金额总计： <span class="f-blue-20-Ar-b">￥</span> 
-		优惠券抵扣： <span class="f-gren-20-Ar-b">-￥</span> 
+		商品金额总计： <span class="f-blue-20-Ar-b">￥<%= format "%.2f", @order.total %></span> 
+		优惠券抵扣： <span class="f-gren-20-Ar-b">-￥<span id="discount">0.00</span></span> 
 		<!-- 积分抵扣：     <span class="f-gren-20-Ar-b">-￥</span>  -->
 		运费：      <span class="f-gren-20-Ar-b">+￥ <%= @order.total >= 200 ? "0.00" : "20.00" %></span>
 	</div>
 	<div class="f-black-20-hei lastprice">
-		订单金额： <span class="f-red-12-b">￥</span><span class="f-red-30-Ar-b"><%= format "%.2f", @order.total %></span>
+		订单金额： <span class="f-red-12-b">￥</span><span id="total" class="f-red-30-Ar-b"><%= format "%.2f", @order.total %></span>
 	</div>
 	<div align="center">
 		<a href="javascript:next_step();"><img src="/images/next-step_btn.gif" width="145" height="45" /></a>

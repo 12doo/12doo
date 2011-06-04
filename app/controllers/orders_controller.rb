@@ -141,6 +141,10 @@ class OrdersController < ApplicationController
       respond_to do |format| 
         format.json { render :json => detail } 
       end
+    else
+      respond_to do |format| 
+        format.json { render :json => nil } 
+      end
     end
   end
   

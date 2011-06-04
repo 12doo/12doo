@@ -21,8 +21,4 @@ class AdminController < ApplicationController
     @users = User.order("id desc").page(params[:page])
   end
   
-  def coupons
-    @coupons = Coupon.order("id desc").page(params[:page])
-  end
-  
 end
