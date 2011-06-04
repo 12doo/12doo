@@ -1,5 +1,5 @@
 <div id="join_now"><img src="/images/login_ljdl.gif" width="379" height="42" /></div>
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name) + (params[:return_url] ? '?return_url=' + params[:return_url] : '?return_url=' + request.fullpath), :validate => true, :html => {:method => :post, :name => :new_user}) do |f| %>
+<%= form_for(resource, :as => resource_name, :url => session_path(resource_name) + (params[:return_url] ? '?return_url=' + params[:return_url] : '?return_url=' + request.fullpath), :html => {:method => :post, :name => :new_user}) do |f| %>
 
 <%= render 'devise/alert' %>
 
