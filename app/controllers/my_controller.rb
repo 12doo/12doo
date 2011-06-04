@@ -73,7 +73,12 @@ class MyController < ApplicationController
 
   # orders
   def orders
-    @orders = current_user.orders.order("id desc").page(params[:page])
+    @orders = Order.order("id desc").where(:user_id => current_user.id).page(params[:page])
+  end
+  
+  # coupons
+  def coupons
+    @coupons = Coupon.order("id desc").where(:belongs_to => current_user.id).page(params[:page])
   end
 
 #  def update_profile

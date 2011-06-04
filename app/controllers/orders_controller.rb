@@ -3,10 +3,6 @@ class OrdersController < ApplicationController
   # 身份验证
   before_filter :authorize_user!, :except => [:notify, :done]
 
-  def index
-    @orders = Order.paginate :page => params[:page], :order => 'created_at DESC',:conditions => ['user_id = ?', current_user.id]
-  end
-
   def show
     @order = Order.find(params[:id])
     unless @order.user_id == current_user.id
