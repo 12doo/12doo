@@ -4,8 +4,9 @@
 </div>
 <div id="mlist_detail">
 	<div id="nopay_bg">
-		<div class="f-black-14-YaHei">您的订单&nbsp;<%= @order.no %>&nbsp;已经提交.</div>
-		<div class="f-black-14-YaHei">确认订单后我们将在第一时间为您发货.</div>
+		<% if flash[:info] %>
+		<div class="f-black-14-YaHei"><%= flash[:info] %></div>
+		<% end %>
 	</div>
 	<div align="center">
 		<a href="/my/orders">
