@@ -100,34 +100,24 @@ class OrdersController < ApplicationController
     order = Order.find(params[:id])
     notification = ActiveMerchant::Billing::Integrations::Alipay::Notification.new(request.raw_post)
 
-    AlipayTxn.create(:notify_id => notification.notify_id, 
-                     :total_fee => notification.total_fee, 
-                     :status => notification.trade_status, 
-                     :trade_no => notification.trade_no, 
-                     :received_at => notification.notify_time)
+    # AlipayTxn.create(:notify_id => notification.notify_id, 
+    #                  :total_fee => notification.total_fee, 
+    #                  :status => notification.trade_status, 
+    #                  :trade_no => notification.trade_no, 
+    #                  :received_at => notification.notify_time)
 
     notification.acknowledge
 
     case notification.status
-    when "WAIT_BUYER_PAY"
-      order.status = "等待付款"
-      #@order.pend_payment!
-    when "TRADE_FINISHED"
+    when "TRADE_SUCCESS"
       order.status = "完成付款"
-      #@order.pay!
     else
       @order.status = notification.status
-      #@order.fail_payment!
     end
     order.save
   end
   
   def done
-    # r = ActiveMerchant::Billing::Integrations::Alipay::Return.new(request.query_string)
-    
-    # unless @result = r.success?
-    #    logger.warn(r.message)
-    # end
     order = Order.find(params[:id])
     flash[:info] = '您的订单 ' + order.no + ' 已经支付完成，我们将尽快为您安排配送。';
     respond_to do |format|
