@@ -70,6 +70,9 @@ class OrdersController < ApplicationController
       temp.save
     end
     
+    #temp test
+    @order.total = 1
+    
     respond_to do |format|
       if @order.save
         cart.clear
