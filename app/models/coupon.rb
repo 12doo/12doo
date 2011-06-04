@@ -1,6 +1,7 @@
 # -*- encoding : utf-8 -*-
 class Coupon < ActiveRecord::Base
   has_many :coupon_used_records
+  paginates_per 10
   
   # 判断是否可用
   def can_use(user,order)

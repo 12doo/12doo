@@ -3,6 +3,10 @@ class MyController < ApplicationController
   # 身份验证
   before_filter :authorize_user!
   
+  def index
+    @orders = current_user.orders.order("id desc").page(params[:page])
+  end
+  
   # address manage
   def addresses
     @addresses = current_user.addresses.order("id desc").page(params[:page])
@@ -69,7 +73,12 @@ class MyController < ApplicationController
 
   # orders
   def orders
-    @orders = current_user.orders.order("id desc").page(params[:page])
+    @orders = Order.order("id desc").where(:user_id => current_user.id).page(params[:page])
+  end
+  
+  # coupons
+  def coupons
+    @coupons = Coupon.order("id desc").where(:belongs_to => current_user.id).page(params[:page])
   end
 
 #  def update_profile

@@ -28,24 +28,25 @@
                     </tr>
 					<% @orders.each do |order| %>
 				 	<tr>
-					    <td height="30"><%= link_to order.no, order_path(order), :class => 'f-red-12' %></td>
-					    <td><%= format "%.2f", order.total %></td>
+					    <td height="30"><%= order.no %></td>
+					    <td><%= format "%.2f", order.pay_price %></td>
 					    <td><%= order.order_at.strftime('%Y-%m-%d %H:%M:%S') %></td>
 					    <td><%= order.status %></td>
 						<td>
 							<% case order.status %>
 							<% when '等待付款' %>
-							<%= link_to '付款', {:action => :check_out, :controller => :orders, :id => order.id }, :class => 'f-red-12' %>
+							<%= link_to '[取消]', {:action => :cancel, :controller => :orders, :id => order.id }, :class => 'f-red-12' %>
+							<%= link_to '[付款]', {:action => :check_out, :controller => :orders, :id => order.id }, :class => 'f-red-12' %>
 							<% when '等待确认订单' %>
-							<%= link_to '取消', {:action => :cancel, :controller => :orders, :id => order.id }, :class => 'f-red-12' %>
+							<%= link_to '[取消]', {:action => :cancel, :controller => :orders, :id => order.id }, :class => 'f-red-12' %>
 							<% when '等待发货' %>
-							<%= link_to '取消', {:action => :cancel, :controller => :orders, :id => order.id }, :class => 'f-red-12' %>
+							<%= link_to '[取消]', {:action => :cancel, :controller => :orders, :id => order.id }, :class => 'f-red-12' %>
 							<% when '等待确认收货' %>
-							<%= link_to '确认收货', :action => :confirm, :controller => :orders, :id => order.id, :class => 'f-red-12' %>
+							<%= link_to '[确认收货]', :action => :confirm, :controller => :orders, :id => order.id, :class => 'f-red-12' %>
 							<% when '订单完成' %>
 							<% when '订单取消' %>
 							<% end %>
-							<%= link_to '查看', {:action => :show, :controller => :orders, :id => order.id }, :class => 'f-red-12' %>
+							<%= link_to '[查看]', {:action => :show, :controller => :orders, :id => order.id }, :class => 'f-red-12' %>
 						</td>
 				  	</tr>
 					<% end %>
