@@ -3,14 +3,10 @@ class OrdersController < ApplicationController
   # 身份验证
   before_filter :authorize_user!, :except => [:notify, :done]
 
-  def index
-    @orders = Order.paginate :page => params[:page], :order => 'created_at DESC',:conditions => ['user_id = ?', current_user.id]
-  end
-
   def show
     @order = Order.find(params[:id])
     unless @order.user_id == current_user.id
-      redirect_to :action => "index"
+      redirect_to :action => :orders, :controller => :my
     end
     
   end
@@ -34,6 +30,7 @@ class OrdersController < ApplicationController
     @order = temp_order
     @order.no = Time.now.strftime("SO%Y%m%d%H%M%S")
     @order.status = '等待确认订单';
+    @order.memo = params[:memo]
     @order.order_at = Time.now
     @order.user_id = current_user.id
     @order.pay_type = params[:pay_type]
@@ -59,6 +56,7 @@ class OrdersController < ApplicationController
     @order.region = address.region
     @order.zip = address.zip
     @order.phone = address.phone 
+    @order.carriage = 20
     
     cart = find_cart
     cart.items.each do |item|
@@ -74,8 +72,16 @@ class OrdersController < ApplicationController
       temp.save
     end
     
-    #temp test
-    @order.total = 1
+    #coupon
+    if params[:coupon_code]
+      coupon = Coupon.find_by_code(params[:coupon_code])
+      if coupon && coupon.can_use(current_user,temp_order)
+        @order.pay_price = @order.total - coupon.discount
+        @order.discount = coupon.discount
+        @order.coupon_code = params[:coupon_code]
+        coupon.use(current_user, @order)
+      end
+    end
     
     respond_to do |format|
       if @order.save
@@ -111,10 +117,18 @@ class OrdersController < ApplicationController
     case notification.status
     when "TRADE_SUCCESS"
       order.status = "完成付款"
+      order.pay_time = Time.now
     else
       @order.status = notification.status
     end
     order.save
+    
+    respond_to do |format|
+      flash[:info] = 'Hello Alipay。';
+      respond_to do |format|
+          format.html { render :action => "info" }
+      end
+    end
   end
   
   def done
@@ -122,18 +136,16 @@ class OrdersController < ApplicationController
     flash[:info] = '您的订单 ' + order.no + ' 已经支付完成，我们将尽快为您安排配送。';
     respond_to do |format|
         format.html { render :action => "info" }
-      end
+    end
   end
 
-
-  def destroy
+  def cancel
     @order = Order.find(params[:id])
-    @order.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(orders_url) }
-      format.xml  { head :ok }
+    if @order.user_id == current_user.id
+      @order.status = '订单取消'
+      @order.save
     end
+    redirect_to :action => :orders, :controller => :my
   end
   
   def get_coupon
@@ -141,6 +153,10 @@ class OrdersController < ApplicationController
     if detail && detail.can_use(current_user,temp_order)
       respond_to do |format| 
         format.json { render :json => detail } 
+      end
+    else
+      respond_to do |format| 
+        format.json { render :json => nil } 
       end
     end
   end
@@ -165,6 +181,10 @@ class OrdersController < ApplicationController
       order.order_items << temp
     end
     order.total = cart.total
+    # if cart.total > 200
+    #   
+    # end
+    order.pay_price = cart.total
     order.quantity = cart.quantity
     return order
   end

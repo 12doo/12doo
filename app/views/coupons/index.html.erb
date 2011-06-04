@@ -14,35 +14,23 @@
                         <td height="30" width="70">
                             编号
                         </td>
-                        <td width="65">
+                        <td width="40">
                             抵扣金额
                         </td>
-                        <td width="65">
-                            最低订单金额
+                        <td width="40">
+                            最低金额
                         </td>
-                        <td width="70">
-                            所有用户可用
-                        </td>
-                        <td width="70">
-                            所有者
-                        </td>
-                        <td width="70">
-                            适用产品分类
-                        </td>
-                        <td width="70">
+                        <td width="40">
                             一次性
                         </td>
-                        <td width="70">
-                            已使用次数
+                        <td width="40">
+                            已使用
                         </td>
-                        <td width="65" valign="middle" bgcolor="#f0f0f0" align="center">
+                        <td width="80" valign="middle" bgcolor="#f0f0f0" align="center">
                         	启用时间
                         </td>
-                        <td width="70" valign="middle" bgcolor="#f0f0f0" align="center">
+                        <td width="80" valign="middle" bgcolor="#f0f0f0" align="center">
                             截止时间
-                        </td>
-                        <td width="70" valign="middle" bgcolor="#f0f0f0" align="center">
-                        	创建时间 
                         </td>
                         <td width="70" valign="middle" bgcolor="#f0f0f0" align="center">
                         	操作
@@ -53,14 +41,10 @@
 					    <td height="30"><%= link_to coupon.code, coupon, :class => 'f-red-12' %></td>
 					    <td><%= format "%.2f", coupon.discount %></td>
 						<td><%= format "%.2f", coupon.threshold %></td>
-					    <td><%= coupon.all_user ? "是" : "否" %></td>
-						<td><%= coupon.belongs_to %></td>
-						<td><%= coupon.product_category %></td>
-					    <td><%= coupon.one_off ? "是" : "否" %></td>
+						<td><%= coupon.one_off ? '是' : '否' %></td>
 						<td><%= coupon.used_time %></td>
 						<td><%= coupon.begin.strftime('%Y-%m-%d %H:%M:%S') %></td>
 					    <td><%= coupon.end.strftime('%Y-%m-%d %H:%M:%S') %></td>
-						<td><%= coupon.created_at.strftime('%Y-%m-%d %H:%M:%S') %></td>
 						<td>
 							<%= link_to '[编辑]', edit_coupon_path(coupon), :class => 'f-red-12' %>
 							<%= link_to '[删除]', coupon, :method => :delete, :class => 'f-red-12' %>

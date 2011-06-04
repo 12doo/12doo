@@ -38,7 +38,7 @@
 					<% @orders.each do |order| %>
 				 	<tr>
 					    <td height="30"><%= order.no %></td>
-					    <td><%= format "%.2f", order.total %></td>
+					    <td><%= format "%.2f", order.pay_price %></td>
 					    <td><%= order.order_at %></td>
 					    <td><%= order.status %></td>
 						<td></td>

@@ -5,30 +5,15 @@ class CouponsController < ApplicationController
   before_filter :authorize_admin!
 
   def index
-    @coupons = Coupon.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @coupons }
-    end
+    @coupons = Coupon.order("id desc").page(params[:page])
   end
 
   def show
     @coupon = Coupon.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @coupon }
-    end
   end
 
   def new
     @coupon = Coupon.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @coupon }
-    end
   end
 
   def edit
