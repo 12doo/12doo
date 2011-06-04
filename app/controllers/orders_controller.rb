@@ -29,10 +29,13 @@ class OrdersController < ApplicationController
   def create
     @order = temp_order
     @order.no = Time.now.strftime("SO%Y%m%d%H%M%S")
-    @order.status = 'Init';
+    @order.status = '等待确认订单';
     @order.order_at = Time.now
     @order.user_id = current_user.id
     @order.pay_type = params[:pay_type]
+    if @order.pay_type == '支付宝'
+      @order.status = '等待付款'
+    end
     
     address = nil
     
@@ -66,6 +69,9 @@ class OrdersController < ApplicationController
       temp.order_no = @order.no
       temp.save
     end
+    
+    #temp test
+    @order.total = 1
     
     respond_to do |format|
       if @order.save
