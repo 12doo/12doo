@@ -10,7 +10,7 @@ class OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
     unless @order.user_id == current_user.id
-      redirect_to :action => "index"
+      redirect_to :action => :orders, :controller => :my
     end
     
   end
@@ -74,9 +74,6 @@ class OrdersController < ApplicationController
       temp.save
     end
     
-    #temp test
-    @order.total = 1
-    
     respond_to do |format|
       if @order.save
         cart.clear
@@ -111,10 +108,18 @@ class OrdersController < ApplicationController
     case notification.status
     when "TRADE_SUCCESS"
       order.status = "完成付款"
+      order.pay_time = Time.now
     else
       @order.status = notification.status
     end
     order.save
+    
+    respond_to do |format|
+      flash[:info] = 'Hello Alipay。';
+      respond_to do |format|
+          format.html { render :action => "info" }
+      end
+    end
   end
   
   def done
@@ -122,18 +127,16 @@ class OrdersController < ApplicationController
     flash[:info] = '您的订单 ' + order.no + ' 已经支付完成，我们将尽快为您安排配送。';
     respond_to do |format|
         format.html { render :action => "info" }
-      end
+    end
   end
 
-
-  def destroy
+  def cancel
     @order = Order.find(params[:id])
-    @order.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(orders_url) }
-      format.xml  { head :ok }
+    if @order.user_id == current_user.id
+      @order.status = '订单取消'
+      @order.save
     end
+    redirect_to :action => :orders, :controller => :my
   end
   
   def get_coupon

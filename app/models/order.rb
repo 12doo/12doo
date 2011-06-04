@@ -3,5 +3,5 @@ class Order < ActiveRecord::Base
     has_many :order_items
     belongs_to :user
     cattr_reader :per_page
-    paginates_per 20
+    paginates_per 10
 end
