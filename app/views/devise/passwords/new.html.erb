@@ -1,21 +1,15 @@
-<div class="crumb">
-    <a href="/">首页</a> 
-    &gt;<span id="dangqian1">用户资料</span>
-    &gt;<span style="color: rgb(151, 0, 5);" id="dangqian">增加地址</span>
-</div>
-<%= render 'devise/userside' %>
 
 <div class="all_content">
 
-<h2>重设密码 Forgot your password?</h2>
+<h2>忘记密码了，通过电子邮件找回密码</h2>
 
 <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
   <%= devise_error_messages! %>
 
-  <p><%= f.label :email %><br />
+  <p><%= f.label :email %>
   <%= f.text_field :email %></p>
 
-  <p><%= f.submit "重设密码 Send me reset password instructions" %></p>
+  <p><%= f.submit "找回密码" %></p>
 <% end %>
 
 <%= render :partial => "devise/shared/links" %>
