@@ -231,8 +231,9 @@
 		<table width="100%" cellspacing="0" cellpadding="0" border="0">
         	<tbody>
 				<tr>
-					<td> 商品数量总计：<%= @order.quantity %> 件 </td>
-					<td align="right"><a href="/cart/show"><img src="/images/back to cart_btn.gif"></a></td>
+					
+					<td align="left"><% link_to image_tag("/images/back to cart_btn.gif"), "/cart/show" %></td>
+					<td> 商品数量总计：<%= @order.quantity %> 件，共计：<%= @order.total %>元 </td>
 				</tr>
           	</tbody>
 		</table>

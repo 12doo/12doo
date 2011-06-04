@@ -916,6 +916,7 @@ height:90px;
 	margin:20px 0;
 	}
 #mlist_detail #totalprice span{
+
 padding:0 30px 0 0;
 	}
 .lastprice{
@@ -992,3 +993,17 @@ margin:10px 0;
 #reg_policy{
 margin:10px 0 50px 0;		
 	}
+	
+	
+	
+	
+.field_with_errors {
+    display: inline; 
+    }
+    
+.field_with_errors .message {
+    color:#9e0a10;
+    font-size:12px;
+    line-height:40px;
+    padding-left:10px;
+    }

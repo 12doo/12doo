@@ -5,7 +5,7 @@
 
   <div class="regbox">
     <%= render 'devise/alert' %>
-    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :name =>"user_edit" }) do |f| %>
+    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :validate => true, :html => { :method => :put, :name =>"user_edit" }) do |f| %>
         
     <table width="600" border="0" align="left" cellpadding="0" cellspacing="0">
       <tbody>
