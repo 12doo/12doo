@@ -30,6 +30,7 @@ class OrdersController < ApplicationController
     @order = temp_order
     @order.no = Time.now.strftime("SO%Y%m%d%H%M%S")
     @order.status = '等待确认订单';
+    @order.memo = params[:memo]
     @order.order_at = Time.now
     @order.user_id = current_user.id
     @order.pay_type = params[:pay_type]
@@ -55,6 +56,7 @@ class OrdersController < ApplicationController
     @order.region = address.region
     @order.zip = address.zip
     @order.phone = address.phone 
+    @order.carriage = 20
     
     cart = find_cart
     cart.items.each do |item|
@@ -68,6 +70,17 @@ class OrdersController < ApplicationController
       temp.subtotal = item.subtotal
       temp.order_no = @order.no
       temp.save
+    end
+    
+    #coupon
+    if params[:coupon_code]
+      coupon = Coupon.find_by_code(params[:coupon_code])
+      if coupon && coupon.can_use(current_user,temp_order)
+        @order.pay_price = @order.total - coupon.discount
+        @order.discount = coupon.discount
+        @order.coupon_code = params[:coupon_code]
+        coupon.use(current_user, @order)
+      end
     end
     
     respond_to do |format|
@@ -168,6 +181,10 @@ class OrdersController < ApplicationController
       order.order_items << temp
     end
     order.total = cart.total
+    # if cart.total > 200
+    #   
+    # end
+    order.pay_price = cart.total
     order.quantity = cart.quantity
     return order
   end

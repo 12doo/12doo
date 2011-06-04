@@ -12,7 +12,7 @@
 <div id="mlist_detail">
 	<div id="pay_bg">
 		<div class="f-black-14-YaHei">您的订单&nbsp;<%= @order.no %>&nbsp;已经提交.</div>
-		<div class="f-black-14-YaHei">订单金额： <span class="f-red-12-b">￥</span><span class="f-red-30-Ar-b"><%= format "%.2f", @order.total %></span></div>
+		<div class="f-black-14-YaHei">订单金额： <span class="f-red-12-b">￥</span><span class="f-red-30-Ar-b"><%= format "%.2f", @order.pay_price %></span></div>
 	</div>
 	<div align="center">
 		<% payment_service_for @order.no, ActiveMerchant::Billing::Integrations::Alipay::ACCOUNT, 

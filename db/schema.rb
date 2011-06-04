@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110604090946) do
+ActiveRecord::Schema.define(:version => 20110604120913) do
 
   create_table "addresses", :force => true do |t|
     t.string   "detail"
@@ -137,6 +137,7 @@ ActiveRecord::Schema.define(:version => 20110604090946) do
     t.string   "pay_type",                                     :default => ""
     t.datetime "pay_at"
     t.string   "memo",                                         :default => ""
+    t.decimal  "pay_price",     :precision => 10, :scale => 0
   end
 
   create_table "product_attribute_defines", :force => true do |t|
