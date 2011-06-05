@@ -14,7 +14,7 @@
                             编号
                         </td>
                         <td width="65">
-                            总金额
+                            付款金额
                         </td>
                         <td width="170">
                             创建时间
@@ -29,7 +29,7 @@
 					<% @orders.each do |order| %>
 				 	<tr>
 					    <td height="30"><%= order.no %></td>
-					    <td><%= format "%.2f", order.total %></td>
+					    <td><%= format "%.2f", order.pay_price %></td>
 					    <td><%= order.order_at.strftime('%Y-%m-%d %H:%M:%S') %></td>
 					    <td><%= order.status %></td>
 						<td>
