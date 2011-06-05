@@ -1,0 +1,86 @@
+<%= render 'admin/header' %>
+<div id="my_acinfo">
+<%= render 'admin/userside' %>
+	<div id="ac_right">
+		<ul id="pd_infomenu">
+			<li><%= link_to '所有支付宝记录',:action => :index, :controller => :alipaylog %></li>
+			<li class="on">支付宝记录</li>
+		</ul>
+		<div class="clearit"></div>
+		<div id="ac_more_detail">
+			<table width="100%" cellspacing="0" cellpadding="0" border="0" class="tableinfo">
+				<tbody>
+					<tr>
+					    <td height="30" width="70">notify_id</td>
+					    <td><%= @alipaylog.notify_id %></td>
+					</tr>
+					<tr>
+					    <td height="30">notify_type</td>
+					    <td><%= @alipaylog.notify_type %></td>
+					</tr>
+					<tr>
+					    <td height="30">out_trade_no</td>
+					    <td><%= @alipaylog.out_trade_no %></td>
+					</tr>
+					<tr>
+					    <td height="30">trade_no</td>
+					    <td><%= @alipaylog.trade_no %></td>
+					</tr>
+					<tr>
+					    <td height="30">payment_type</td>
+					    <td><%= @alipaylog.payment_type %></td>
+					</tr>
+					<tr>
+					    <td height="30">subject</td>
+					    <td><%= @alipaylog.subject %></td>
+					</tr>
+					<tr>
+					    <td height="30">body</td>
+					    <td><%= @alipaylog.body %></td>
+					</tr>
+					<tr>
+					    <td height="30">seller_email</td>
+					    <td><%= @alipaylog.seller_email %></td>
+					</tr>
+					<tr>
+					    <td height="30">seller_id</td>
+					    <td><%= @alipaylog.seller_id %></td>
+					</tr>
+					<tr>
+					    <td height="30">buyer_email</td>
+					    <td><%= @alipaylog.buyer_email %></td>
+					</tr>
+					<tr>
+					    <td height="30">buyer_id</td>
+					    <td><%= @alipaylog.buyer_id %></td>
+					</tr>
+					<tr>
+					    <td height="30">price</td>
+					    <td><%= @alipaylog.price %></td>
+					</tr>
+					<tr>
+					    <td height="30">quantity</td>
+					    <td><%= @alipaylog.quantity %></td>
+					</tr>
+					<tr>
+					    <td height="30">total_fee</td>
+					    <td><%= @alipaylog.total_fee %></td>
+					</tr>
+					<tr>
+					    <td height="30">trade_status</td>
+					    <td><%= @alipaylog.trade_status %></td>
+					</tr>
+					<tr>
+					    <td height="30">refund_status</td>
+					    <td><%= @alipaylog.refund_status %></td>
+					</tr>
+					<tr>
+					    <td height="30">notify_time</td>
+					    <td><%= @alipaylog.notify_time %></td>
+					</tr>
+			    </tbody>
+			</table>
+		</div>
+	</div>
+</div>
+<div class="clearit"></div>

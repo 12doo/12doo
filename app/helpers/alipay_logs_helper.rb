@@ -1,0 +1,2 @@
+module AlipayLogsHelper
+end
