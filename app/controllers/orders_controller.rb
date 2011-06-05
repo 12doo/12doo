@@ -147,7 +147,7 @@ class OrdersController < ApplicationController
     respond_to do |format|
       flash[:info] = 'Hello Alipay。';
       respond_to do |format|
-          format.html { render :action => "info" }
+          format.xml { render :action => "info" }
       end
     end
   end
