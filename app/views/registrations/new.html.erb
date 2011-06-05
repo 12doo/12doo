@@ -1,18 +1,45 @@
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#password_confirmation').keydown(function(e){ 
+		if(e.keyCode == 13){
+			$('#password_confirmation').change();
+			document.user_new.submit();
+		} 
+	});
+	
+	$('#email').keydown(function(e){ 
+		if(e.keyCode == 13){ 
+			$('#email').change();
+			$('#password').focus();
+		} 
+	});
+	
+	$('#password').keydown(function(e){ 
+		if(e.keyCode == 13){ 
+			$('#password').change();
+			$('#password_confirmation').focus();
+		} 
+	});
+	
+	$('#email').focus();
+});
+</script>
+
 <div id="join_now"><img src="/images/reg_wyjr.gif" width="295" height="42" /></div>
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :validate => true, :html => { :method => :post, :name => :user_new }) do |f| %>
 <table id="reg_table" border="0" cellspacing="0" cellpadding="0">
 	<tr>
 	    <td class="tdtitle"><img src="/images/reg_username.gif" width="108" height="19" /></td>
-	    <td><%= f.text_field :email %></td>
+	    <td><%= f.text_field :email, :id => :email %></td>
   	</tr>
 	<tr>
 	    <td><img src="/images/reg_password.gif" width="75" height="19" /></td>
-	    <td><%= f.password_field :password %></td>
+	    <td><%= f.password_field :password, :id => :password %></td>
 	</tr>
   	<tr>
 	    <td><img src="/images/reg_password_confirm.gif" width="108" height="19" /></td>
-	    <td><%= f.password_field :password_confirmation %><!-- span class="ipterror"></span --></td>
+	    <td><%= f.password_field :password_confirmation, :id => :password_confirmation %><!-- span class="ipterror"></span --></td>
   	</tr>
   	<!-- <tr>
 	    <td><img src="/images/reg_suggestuser.gif" width="107" height="19" /></td>
