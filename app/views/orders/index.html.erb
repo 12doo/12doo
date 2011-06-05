@@ -39,7 +39,7 @@
 						<% when '等待确认订单' %>
 						<%= link_to '[确认]', {:action => :confirm, :controller => :orders, :id => order.id }, :class => 'f-red-12' %>
 						<% when '等待发货' %>
-						<%= link_to '[发货]', {:action => :send, :controller => :orders, :id => order.id }, :class => 'f-red-12' %>	
+						<%= link_to '[发货]', {:action => :delivery, :controller => :orders, :id => order.id }, :class => 'f-red-12' %>	
 						<% when '等待确认收货' %>
 						<% when '订单完成' %>
 						<% when '订单取消' %>

@@ -172,21 +172,21 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @order.status = '等待发货'
     @order.save
-    redirect_to :action => :orders, :controller => :admin
+    redirect_to :action => :index, :controller => :orders
   end
   
-  def send
+  def delivery
     @order = Order.find(params[:id])
     @order.status = '等待确认收货'
     @order.save
-    redirect_to :action => :orders, :controller => :admin
+    redirect_to :action => :index, :controller => :orders
   end
   
   def pay
     @order = Order.find(params[:id])
     @order.status = '等待发货'
     @order.save
-    redirect_to :action => :orders, :controller => :admin
+    redirect_to :action => :index, :controller => :orders
   end
   
   def get_coupon
