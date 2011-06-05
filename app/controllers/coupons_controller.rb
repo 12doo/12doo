@@ -25,7 +25,7 @@ class CouponsController < ApplicationController
 
     respond_to do |format|
       if @coupon.save
-        format.html { redirect_to :action => :coupons, :controller => :admin }
+        format.html { redirect_to :action => :index, :controller => :coupons }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @coupon.errors, :status => :unprocessable_entity }
