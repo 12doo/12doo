@@ -144,11 +144,9 @@ class OrdersController < ApplicationController
     alipay.notify_time = notification.notify_time
     alipay.save
     
+    flash[:info] = 'Hello Alipay。';
     respond_to do |format|
-      flash[:info] = 'Hello Alipay。';
-      respond_to do |format|
-          format.xml { render :action => "info" }
-      end
+      format.html { render :action => "info" }
     end
   end
   
