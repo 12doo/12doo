@@ -57,8 +57,7 @@ class OrdersController < ApplicationController
     @order.zip = address.zip
     @order.phone = address.phone 
     
-    #@order.pay_price = @order.total + @order.carriage
-    @order.pay_price = 0.01
+    #@order.pay_price = 0.01
     
     cart = find_cart
     cart.items.each do |item|
