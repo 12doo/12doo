@@ -10,36 +10,32 @@
 			<table width="100%" cellspacing="0" cellpadding="0" border="0" class="tableinfo">
             	<tbody>
                     <tr bgcolor="#f0f0f0" class="f-black-12-b">
-                        <td width="40" width="70">
-                            notify_id
+                        <td height="40" width="70">
+                            外部订单号
                         </td>
-						<td height="30" >
-                            notify_type
-                        </td>
-                        <td width="40">
-                            out_trade_no
+						<td width="30" >
+                            通知标识
                         </td>
                         <td width="40">
-                            trade_no
-                        </td>
-                        <td width="40">
-                            payment_type
+                            内部交易号
                         </td>
                         <td width="80">
-                        	subject
+                            主题
                         </td>
-                        <td width="80" valign="middle" bgcolor="#f0f0f0" align="center">
-                            trade_status
+                        <td width="40">
+                            金额
+                        </td>
+                        <td width="40">
+                        	交易状态
                         </td>
                     </tr>
 					<% @alipay_logs.each do |alipaylog| %>
 				 	<tr>
-					    <td height="30"><%= link_to alipaylog.notify_id, alipaylog, :class => 'f-red-12' %></td>
+					    <td height="30"><%= link_to alipaylog.out_trade_no, alipaylog, :class => 'f-red-12' %></td>
 					    <td><%= alipaylog.notify_type %></td>
-						<td><%= alipaylog.out_trade_no %></td>
 						<td><%= alipaylog.trade_no %></td>
-						<td><%= alipaylog.payment_type %></td>
 						<td><%= alipaylog.subject %></td>
+						<td><%= format "%.2f", alipaylog.total_fee %></td>
 						<td><%= alipaylog.trade_status %></td>
 				  	</tr>
 					<% end %>

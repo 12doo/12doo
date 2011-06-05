@@ -2,10 +2,14 @@
 class OrdersController < ApplicationController
   # 身份验证
   before_filter :authorize_user!, :except => [:notify, :done]
+  
+  def index
+    @orders = Order.order("id desc").page(params[:page])
+  end
 
   def show
     @order = Order.find(params[:id])
-    unless @order.user_id == current_user.id
+    unless @order.user_id == current_user.id || !current_user.admin
       redirect_to :action => :orders, :controller => :my
     end
     
@@ -101,23 +105,20 @@ class OrdersController < ApplicationController
   
   def check_out
     @order = Order.find(params[:id])
+    unless @order.status == '等待付款'
+      flash[:info] = '您的订单 ' + @order.no + ' 目前无法支付，这有可能因为已经完成付款或者需要等待确认金额。';
+      format.html { render :action => "info" }
+    end
   end
   
   def notify
     order = Order.find(params[:id])
     notification = ActiveMerchant::Billing::Integrations::Alipay::Notification.new(request.raw_post)
-
-    # AlipayTxn.create(:notify_id => notification.notify_id, 
-    #                  :total_fee => notification.total_fee, 
-    #                  :status => notification.trade_status, 
-    #                  :trade_no => notification.trade_no, 
-    #                  :received_at => notification.notify_time)
-
     notification.acknowledge
 
     case notification.status
     when "TRADE_SUCCESS"
-      order.status = "完成付款"
+      order.status = "等待发货"
       order.pay_at = Time.now
     else
       @order.status = notification.status
@@ -165,6 +166,27 @@ class OrdersController < ApplicationController
       @order.save
     end
     redirect_to :action => :orders, :controller => :my
+  end
+  
+  def confirm
+    @order = Order.find(params[:id])
+    @order.status = '等待发货'
+    @order.save
+    redirect_to :action => :index, :controller => :orders
+  end
+  
+  def delivery
+    @order = Order.find(params[:id])
+    @order.status = '等待确认收货'
+    @order.save
+    redirect_to :action => :index, :controller => :orders
+  end
+  
+  def pay
+    @order = Order.find(params[:id])
+    @order.status = '等待发货'
+    @order.save
+    redirect_to :action => :index, :controller => :orders
   end
   
   def get_coupon

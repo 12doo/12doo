@@ -2,5 +2,5 @@
 class Order < ActiveRecord::Base
     has_many :order_items
     belongs_to :user
-    paginates_per 20
+    paginates_per 10
 end
