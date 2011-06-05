@@ -1,5 +1,21 @@
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#loginPassword').keydown(function(e){ 
+		if(e.keyCode == 13){ 
+			document.new_user.submit();
+		} 
+	});
+	
+	$('#loginName').keydown(function(e){ 
+		if(e.keyCode == 13){ 
+			$('#loginPassword').focus();
+		} 
+	});
+	
+	$('#loginName').focus();
+});
+</script>
 <div id="join_now"><img src="/images/login_ljdl.gif" width="379" height="42" /></div>
-
 <table>
     <tr>
       <td width="160px"></td>
