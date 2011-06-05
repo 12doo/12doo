@@ -19,6 +19,13 @@
 		});
 	}
 	
+	$(document).ready(function(){
+		var address_id = $('input[name="address_id"]:checked').val();
+		if (address_id == null){
+			$('#address_id_0').click();
+		}
+	});
+	
 	var flag_address = false;
 	var flag_pay = false;
 	
@@ -39,7 +46,12 @@
 		if (address_id > 0){
 			$('#div_address_selected').html($('#address_' + address_id).html());
 		}else{
-			$('#div_address_selected').html(generate_new_address());
+			if (verify_address()){
+				$('#div_address_selected').html(generate_new_address());
+			}else{
+				alert('请填写完整地址信息。');
+				return;
+			}
 		}
 
 		cancel_select_address();
@@ -77,6 +89,14 @@
 		cancel_select_pay();
 		$('#close_link_pay').show();
 		flag_pay = true;
+	}
+	
+	function verify_address(){
+		if ($('#name').val() && $('#province').val() && $('#city').val() && $('#region').val() && $('#detail').val() && $('#phone').val() && $('#zip').val()){
+			return true;
+		}else{
+			return false;
+		}
 	}
 	
 	function next_step(){
