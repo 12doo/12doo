@@ -3,12 +3,12 @@
 		<h2><img src="/images/myac_h2.gif" width="79" height="40" /></h2>
 		<ul>
 			<li><a href="/admin/products">产品管理</a></li>
-			<li><a href="/orders">订单管理</a></li>
+			<li><%= link_to '订单管理', orders_path %></li>
 			<li><a href="/admin/users">账户管理</a></li>
-			<li><a href="/admin/points">积分管理</a></li>
-			<li><a href="/admin/moneys">资金管理</a></li>
-			<li><a href="/coupons">优惠券管理</a></li>
-			<li><a href="/alipay_logs">支付宝记录</a></li>
+			<li><a href="#">积分管理</a></li>
+			<li><a href="#">资金管理</a></li>
+			<li><%= link_to '优惠券管理', coupons_path %></li>
+			<li><%= link_to '支付记录', alipay_logs_path %></li>
 			<!-- <li><a href="/admin/addresses">地址管理</a></li> -->
 		</ul>
 	</div>

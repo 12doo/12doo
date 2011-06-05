@@ -43,8 +43,8 @@
 						<td><%= format "%.2f", coupon.threshold %></td>
 						<td><%= coupon.one_off ? '是' : '否' %></td>
 						<td><%= coupon.used_time %></td>
-						<td><%= coupon.begin.strftime('%Y-%m-%d %H:%M:%S') %></td>
-					    <td><%= coupon.end.strftime('%Y-%m-%d %H:%M:%S') %></td>
+						<td><%= coupon.begin.strftime('%Y-%m-%d') %></td>
+					    <td><%= coupon.end.strftime('%Y-%m-%d') %></td>
 						<td>
 							<%= link_to '[编辑]', edit_coupon_path(coupon), :class => 'f-red-12' %>
 							<%= link_to '[删除]', coupon, :method => :delete, :class => 'f-red-12' %>
