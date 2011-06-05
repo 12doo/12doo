@@ -57,12 +57,6 @@ class OrdersController < ApplicationController
     @order.zip = address.zip
     @order.phone = address.phone 
     
-    if order.total < 200
-      @order.carriage = 20
-    else
-      @order.carriage = 0
-    end
-    
     #@order.pay_price = @order.total + @order.carriage
     @order.pay_price = 0.01
     
@@ -209,7 +203,13 @@ class OrdersController < ApplicationController
       order.order_items << temp
     end
     order.total = cart.total
-    order.pay_price = cart.total
+    
+    if order.total < 200
+      order.carriage = 20
+    else
+      order.carriage = 0
+    end
+    order.pay_price = order.carriage + order.total
     order.quantity = cart.quantity
     return order
   end
