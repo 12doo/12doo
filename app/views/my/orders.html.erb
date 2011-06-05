@@ -1,59 +1,8 @@
 <%= render 'my/header' %>
 <div id="my_acinfo">
-<%= render 'my/userside' %>
-	<div id="ac_right">
-		<ul id="pd_infomenu">
-			<li class="on">我的订单</li>
-		</ul>
-		<div class="clearit"></div>
-		<div id="ac_more_detail">
-			<table width="100%" cellspacing="0" cellpadding="0" border="0" class="tableinfo">
-            	<tbody>
-                    <tr bgcolor="#f0f0f0" class="f-black-12-b">
-                        <td height="30" width="150">
-                            编号
-                        </td>
-                        <td width="65">
-                            付款金额
-                        </td>
-                        <td width="170">
-                            创建时间
-                        </td>
-                        <td width="100">
-                            状态
-                        </td>
-                        <td width="170" valign="middle" bgcolor="#f0f0f0" align="center">
-                            操作
-                        </td>
-                    </tr>
-					<% @orders.each do |order| %>
-				 	<tr>
-					    <td height="30"><%= order.no %></td>
-					    <td><%= format "%.2f", order.pay_price %></td>
-					    <td><%= order.order_at.strftime('%Y-%m-%d %H:%M:%S') %></td>
-					    <td><%= order.status %></td>
-						<td>
-							<% case order.status %>
-							<% when '等待付款' %>
-							<%= link_to '[取消]', {:action => :cancel, :controller => :orders, :id => order.id }, :class => 'f-red-12' %>
-							<%= link_to '[付款]', {:action => :check_out, :controller => :orders, :id => order.id }, :class => 'f-red-12' %>
-							<% when '等待确认订单' %>
-							<%= link_to '[取消]', {:action => :cancel, :controller => :orders, :id => order.id }, :class => 'f-red-12' %>
-							<% when '等待发货' %>
-							<%= link_to '[取消]', {:action => :cancel, :controller => :orders, :id => order.id }, :class => 'f-red-12' %>
-							<% when '等待确认收货' %>
-							<%= link_to '[确认收货]', :action => :confirm, :controller => :orders, :id => order.id, :class => 'f-red-12' %>
-							<% when '订单完成' %>
-							<% when '订单取消' %>
-							<% end %>
-							<%= link_to '[查看]', {:action => :show, :controller => :orders, :id => order.id }, :class => 'f-red-12' %>
-						</td>
-				  	</tr>
-					<% end %>
-                </tbody>
-			</table>
-			<%= paginate @orders %>
-		</div>
-	</div>
+  <%= render 'my/userside' %>
+  <div id="ac_right">
+    <%= render :partial => "orderlist" %>
+  </div>
 </div>
 <div class="clearit"></div>

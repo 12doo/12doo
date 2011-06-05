@@ -34,8 +34,8 @@
           	    </tr>
 				<% @order.order_items.each do |item| %>
 				<tr>
-					<td align="center"><%= item.product_sku %></td>
-					<td align="center"><%= item.product_name %></td>
+					<td align="center"><%= link_to item.product_sku, product_path(item.product), :target => "_blank" %></td>
+					<td align="center"><%= link_to item.product.cn_name , product_path(item.product), :target => "_blank"%></td>
 					<td align="center"><%= item.quantity %></td>
 					<td align="center">￥<%= format "%.2f", item.price %></td>
 					<td align="center">￥<%= format "%.2f", item.subtotal %></td>
@@ -74,7 +74,7 @@
 		运费：      <span class="f-gren-20-Ar-b">+￥ <%= @order.total >= 200 ? "0.00" : "20.00" %></span>
 	</div>
 	<div class="f-black-20-hei lastprice">
-		订单金额： <span class="f-red-12-b">￥</span><span class="f-red-30-Ar-b"><%= format "%.2f", @order.total %></span>
+		订单金额： <span class="f-red-12-b">￥</span><span class="f-red-30-Ar-b"><%= format "%.2f", @order.pay_price %></span>
 	</div>
 	<div align="center">
 		<% if @order.status == '等待付款' %>

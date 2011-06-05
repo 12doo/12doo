@@ -25,6 +25,9 @@ gem 'kaminari'
 gem 'jquery-rails'  
 gem 'client_side_validations', :git => 'git://github.com/bcardarella/client_side_validations.git'
 
+# Rails CKeditor for HTML editor with file and image upload feature
+# gem 'ckeditor'
+
 # Use unicorn as the web server
 # gem 'unicorn'
 
