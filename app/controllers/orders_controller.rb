@@ -56,7 +56,15 @@ class OrdersController < ApplicationController
     @order.region = address.region
     @order.zip = address.zip
     @order.phone = address.phone 
-    @order.carriage = 20
+    
+    if order.total < 200
+      @order.carriage = 20
+    else
+      @order.carriage = 0
+    end
+    
+    #@order.pay_price = @order.total + @order.carriage
+    @order.pay_price = 0.01
     
     cart = find_cart
     cart.items.each do |item|
@@ -117,7 +125,7 @@ class OrdersController < ApplicationController
     case notification.status
     when "TRADE_SUCCESS"
       order.status = "完成付款"
-      order.pay_time = Time.now
+      order.pay_at = Time.now
     else
       @order.status = notification.status
     end
@@ -201,9 +209,6 @@ class OrdersController < ApplicationController
       order.order_items << temp
     end
     order.total = cart.total
-    # if cart.total > 200
-    #   
-    # end
     order.pay_price = cart.total
     order.quantity = cart.quantity
     return order

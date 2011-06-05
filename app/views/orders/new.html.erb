@@ -292,7 +292,7 @@
 		运费：      <span class="f-gren-20-Ar-b">+￥ <%= @order.total >= 200 ? "0.00" : "20.00" %></span>
 	</div>
 	<div class="f-black-20-hei lastprice">
-		订单金额： <span class="f-red-12-b">￥</span><span id="total" class="f-red-30-Ar-b"><%= format "%.2f", @order.total %></span>
+		订单金额： <span class="f-red-12-b">￥</span><span id="total" class="f-red-30-Ar-b"><%= format "%.2f", @order.pay_price %></span>
 	</div>
 	<div align="center">
 		<a href="javascript:next_step();"><img src="/images/next-step_btn.gif" width="145" height="45" /></a>
