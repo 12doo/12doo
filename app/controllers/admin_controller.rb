@@ -14,7 +14,7 @@ class AdminController < ApplicationController
   end
   
   def orders
-    @orders = Order.order("id desc").page(params[:page])
+    
   end
   
   def users
