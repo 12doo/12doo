@@ -123,6 +123,26 @@ class OrdersController < ApplicationController
     end
     order.save
     
+    alipay = AlipayLog.new
+    alipay.notify_type = notification.notify_type
+    alipay.notify_id = notification.notify_id
+    alipay.out_trade_no = notification.out_trade_no
+    alipay.trade_no = notification.trade_no
+    alipay.payment_type = notification.payment_type
+    alipay.subject = notification.subject
+    alipay.body = notification.body
+    alipay.seller_email = notification.seller_email
+    alipay.seller_id = notification.seller_id
+    alipay.buyer_email = notification.buyer_email
+    alipay.buyer_id = notification.buyer_id
+    alipay.price = notification.price
+    alipay.quantity = notification.quantity
+    alipay.total_fee = notification.total_fee
+    alipay.trade_status = notification.trade_status
+    alipay.refund_status = notification.refund_status
+    alipay.notify_time = notification.notify_time
+    alipay.save
+    
     respond_to do |format|
       flash[:info] = 'Hello Alipay。';
       respond_to do |format|

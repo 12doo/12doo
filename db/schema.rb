@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110604120913) do
+ActiveRecord::Schema.define(:version => 20110605065712) do
 
   create_table "addresses", :force => true do |t|
     t.string   "detail"
@@ -24,6 +24,28 @@ ActiveRecord::Schema.define(:version => 20110604120913) do
     t.datetime "updated_at"
     t.boolean  "default"
     t.integer  "user_id"
+  end
+
+  create_table "alipay_logs", :force => true do |t|
+    t.string   "notify_type"
+    t.string   "notify_id"
+    t.string   "out_trade_no"
+    t.string   "trade_no"
+    t.string   "payment_type"
+    t.string   "subject"
+    t.string   "body"
+    t.string   "seller_email"
+    t.string   "seller_id"
+    t.string   "buyer_email"
+    t.string   "buyer_id"
+    t.decimal  "price",         :precision => 10, :scale => 0
+    t.integer  "quantity"
+    t.decimal  "total_fee",     :precision => 10, :scale => 0
+    t.string   "trade_status"
+    t.string   "refund_status"
+    t.datetime "notify_time"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "areas", :force => true do |t|
