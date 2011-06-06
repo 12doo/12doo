@@ -39,13 +39,12 @@
 				 	<tr>
 					    <td height="30"><%= user.email %></td>
 					    <td><%= user.created_at.strftime('%Y-%m-%d %H:%M:%S') %></td>
-					    <td></td>
-					    <td></td>
-						<td></td>
+					    <td><%= user.display_name %></td>
 					    <td></td>
 						<td></td>
-						<td>
-						</td>
+					    <td></td>
+						<td></td>
+						<td><%= link_to "[删除]", "#" %>	</td>
 				  	</tr>
 					<% end %>
                 </tbody>
