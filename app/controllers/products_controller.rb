@@ -36,7 +36,8 @@ class ProductsController < ApplicationController
         skus << item.product_sku
       end
       
-      @products = Product.where(:sku => skus, :visiable => true).order('id desc').page(params[:page])
+      #@products = Product.where(:sku => skus, :visiable => true).order('id desc').page(params[:page])
+      @products = Product.where("(sku in (:skus) or cn_name like :cn_name or name like :name) and visiable = :visiable", :skus => skus, :cn_name => "%#{params[:keywords]}%", :name => "%#{params[:keywords]}%", :visiable => true).order('id desc').page(params[:page])
     end
   end
 
