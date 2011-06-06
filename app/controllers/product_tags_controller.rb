@@ -1,5 +1,9 @@
 # -*- encoding : utf-8 -*-
 class ProductTagsController < ApplicationController
+  
+  # 身份验证
+  before_filter :authorize_admin!
+  
   # GET /product_tags
   # GET /product_tags.xml
   def index

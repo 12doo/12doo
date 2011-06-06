@@ -1,5 +1,8 @@
 # -*- encoding : utf-8 -*-
 class ProductAttributesController < ApplicationController
+  # 身份验证
+  before_filter :authorize_admin!
+  
   # GET /product_attributes
   # GET /product_attributes.xml
   def index
