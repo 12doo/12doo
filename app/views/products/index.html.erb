@@ -1,26 +1,56 @@
-<!--shoplist-->
-<h2 class="shopLtitle">
-	<div class="capname">
-		<img src="/images/s_wine01.gif"  alt="葡萄酒" width="113" height="48" />
-	</div>
-</h2>
-
-<div class="shopLbox">
-  <%= render :partial => "products/shopleftbar" %>
-       
-<!--#sort-->
-	<div style="float:left;width:725px;">
-		<div class="goodsResult">
-			
-			<ul class="pagePicView">
-				<% if @products.length == 0 %>
-				没有符合条件的产品.
-				<% end %>
-        <%= render @products %>
-			</ul>
-			<div class="clearit"></div>
+<%= render 'admin/header' %>
+<div id="my_acinfo">
+<%= render 'admin/userside' %>
+	<div id="ac_right">
+		<ul id="pd_infomenu">
+			<li class="on">所有产品</li>
+			<li><%= link_to "添加产品", :action => :new, :controller => :products %></li>
+		</ul>
+		<div class="clearit"></div>
+		<div id="ac_more_detail">
+			<table width="100%" cellspacing="0" cellpadding="0" border="0" class="tableinfo">
+            	<tbody>
+                    <tr bgcolor="#f0f0f0" class="f-black-12-b">
+                        <td height="30">
+                            中文名称
+                        </td>
+                        <td>
+                            SKU
+                        </td>
+                        <td width="50">
+                            单价
+                        </td>
+                        <td width="50">
+                          	售出
+                        </td>
+                        <td width="50">
+                            库存
+                        </td>
+                        <td width="70">
+                            状态
+                        </td>
+                        <td width="80">
+                            操作
+                        </td>
+                    </tr>
+					<% @products.each do |product| %>
+				 	<tr>
+					    <td height="30"><%= link_to product.cn_name, product, :class => 'f-red-12', :target => :_blank %></td>
+					    <td><%= product.sku %></td>
+					    <td><%= format "%.2f", product.price %></td>
+						<td><%= product.sold_count %></td>
+					    <td><%= product.count %></td>
+						<td><%= product.status %></td>
+						<td>
+							<%= link_to '[编辑]', edit_product_path(product), :class => 'f-red-12' %>
+							<%= link_to '[删除]', product, :method => :delete, :class => 'f-red-12' %>
+						</td>
+				  	</tr>
+					<% end %>
+                </tbody>
+			</table>
 			<%= paginate @products %>
-    </div>
+		</div>
 	</div>
-	<div class="clearit"></div>
 </div>
+<div class="clearit"></div>
