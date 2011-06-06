@@ -14,12 +14,14 @@ gem	'bundler'
 
 gem 'devise'
 # gem 'delayed_job', :git => 'git://github.com/collectiveidea/delayed_job.git'
+gem 'ar_mailer_rails3'
 
 gem 'active_merchant'
 gem 'activemerchant_patch_for_china'
 
 # version 2.3 has some bugs with rails3
 gem 'will_paginate','3.0.pre2'
+# to replace will_paginate
 gem 'kaminari'
 
 gem 'jquery-rails'  
