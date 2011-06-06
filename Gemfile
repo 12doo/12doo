@@ -25,7 +25,7 @@ gem 'will_paginate','3.0.pre2'
 gem 'kaminari'
 
 gem 'jquery-rails'  
-gem 'client_side_validations', :git => 'git://github.com/bcardarella/client_side_validations.git'
+gem 'client_side_validations'
 
 # Rails CKeditor for HTML editor with file and image upload feature
 # gem 'ckeditor'
