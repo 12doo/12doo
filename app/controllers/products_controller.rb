@@ -2,9 +2,13 @@
 class ProductsController < ApplicationController
 
   # 身份验证  
-  before_filter :authorize_admin!, :except => [:index, :show]
+  before_filter :authorize_admin!, :except => [:query_result, :show]
   
   def index
+    @products = Product.order("id desc").page(params[:page])
+  end
+  
+  def query_result
     sort_by = "created_at"
     sort = "desc"
     if params[:sort] && params[:sort] == "0"

@@ -9,10 +9,6 @@ class AdminController < ApplicationController
     
   end
   
-  def products
-    @products = Product.order("id desc").page(params[:page])
-  end
-  
   def orders
     
   end
