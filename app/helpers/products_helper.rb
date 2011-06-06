@@ -60,6 +60,11 @@ module ProductsHelper
     end
   end
   
+  def init_search_path
+    tags_count = ProductAttributeDefine.where(:search => true).count(:id)
+    return "/category/#{Array.new(tags_count, "0").join('-')}/"
+  end
+  
   def search_path_without_sort
     search_path_without_keywords + "#{params[:keywords]}"
   end
