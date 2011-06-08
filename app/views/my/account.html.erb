@@ -22,6 +22,14 @@
                         <td height="30">电话</td>
                         <td><%= @current_user.phone %></td>
                     </tr>
+                    <tr>
+                        <td height="30">性别</td>
+                        <td><%= @current_user.gender %></td>
+                    </tr>
+                    <tr>
+                        <td height="30">生日</td>
+                        <td><%= @current_user.birth ? @current_user.birth.strftime('%Y-%m-%d') : '' %></td>
+                    </tr>
                 </tbody>
 			</table>
 		</div>

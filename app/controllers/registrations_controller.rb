@@ -61,6 +61,6 @@ class RegistrationsController < ApplicationController
     end
         
     def after_update_path_for(resource)
-      my_info_path # You can put whatever path you want here
+      '/my/account' # You can put whatever path you want here
     end    
 end
