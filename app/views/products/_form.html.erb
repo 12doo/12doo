@@ -40,7 +40,15 @@ staffid : "991234"
 });
 
 </script>
+<div id="error_explanation">
+  <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product_attribute_define from being saved:</h2>
 
+  <ul>
+  <% @product.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+  </ul>
+</div>
 <table width="100%" cellspacing="0" cellpadding="0" border="0" class="tableinfo" text-align="left">
 	<tbody>
 		<tr>
@@ -107,6 +115,7 @@ staffid : "991234"
 			<input type="hidden" value="<%= attribute.name %>" name="product_attribute[][name]" />
 			<input type="text" name="product_attribute[][value]" value="<%= @product.get_attribute_value(attribute.short) %>" /><br />
 			<% end %>
+			<%= link_to '编辑属性', :action => :index, :controller => :product_attribute_defines %>
 			</td>
 		</tr>
 		<% end %>

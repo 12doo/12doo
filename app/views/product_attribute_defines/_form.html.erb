@@ -1,29 +1,47 @@
-<%= form_for(@product_attribute_define) do |f| %>
-  <% if @product_attribute_define.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@product_attribute_define.errors.count, "error") %> prohibited this product_attribute_define from being saved:</h2>
+<% if @product_attribute_define.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@product_attribute_define.errors.count, "error") %> prohibited this product_attribute_define from being saved:</h2>
 
-      <ul>
-      <% @product_attribute_define.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :short %><br />
-    <%= f.text_field :short %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_field :description %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+    <ul>
+    <% @product_attribute_define.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
   </div>
 <% end %>
+
+<table width="100%" cellspacing="0" cellpadding="0" border="0" class="tableinfo" text-align="left">
+	<tbody>
+		<tr>
+		    <td height="30" width="70">名称</td>
+		    <td><input type="text" name="product_attribute_define[name]" value="<%= @product_attribute_define.name %>" /></td>
+		</tr>
+		<tr>
+		    <td height="30">缩写</td>
+		    <td><input type="text" name="product_attribute_define[short]" value="<%= @product_attribute_define.short %>" /></td>
+		</tr>
+		<tr>
+		    <td height="30">简单说明</td>
+		    <td><input type="text" name="product_attribute_define[description]" value="<%= @product_attribute_define.description %>" /></td>
+		</tr>
+		<tr>
+		    <td height="30">多个值</td>
+		    <td><input type="text" name="product_attribute_define[multiple]" value="<%= @product_attribute_define.multiple %>" /></td>
+		</tr>
+		<tr>
+		    <td height="30">可以搜索</td>
+		    <td><input type="text" name="product_attribute_define[search]" value="<%= @product_attribute_define.search %>" /></td>
+		</tr>
+		<tr>
+		    <td height="30">固定值</td>
+		    <td><input type="text" name="product_attribute_define[fix]" value="<%= @product_attribute_define.fix %>" /></td>
+		</tr>
+		<tr>
+		    <td height="30">值</td>
+		    <td>
+			<input type="text" name="values" value="<%= @product_attribute_define.get_values %>" />
+			多个用逗号隔开.
+			</td>
+		</tr>
+    </tbody>
+</table>

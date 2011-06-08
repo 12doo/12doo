@@ -1,6 +1,28 @@
-<h1>Editing product_attribute_define</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @product_attribute_define %> |
-<%= link_to 'Back', product_attribute_defines_path %>
+<%= render 'admin/header' %>
+<div id="my_acinfo">
+<%= render 'admin/userside' %>
+	<div id="ac_right">
+		<ul id="pd_infomenu">
+			<li><%= link_to "所有属性", product_attribute_defines_path %></li>
+			<li><%= link_to "添加属性", new_product_attribute_define_path %></li>
+			<li class="on">编辑属性</li>
+		</ul>
+		<div class="clearit"></div>
+		<div id="ac_more_detail">
+			<%= form_tag '/product_attribute_defines/update/' + @product_attribute_define.id.to_s , :multipart => true, :id => :edit_product_attribute_define do %>
+			<%= render 'form' %>
+			<div class="bj-sp10"></div>
+			<table width="98%" cellspacing="0" cellpadding="0" border="0" align="center">
+            	<tbody>
+					<tr>
+				    	<td width="100%" valign="middle" align="middle">
+				        	<a href="javascript:$('#edit_product_attribute_define').submit();"><img align="absmiddle" alt="" src="/images/confirm_btn.gif" /></a>
+				        </td>
+				    </tr>
+				</tbody>
+			</table>
+			<% end %>
+		</div>
+	</div>
+</div>
+<div class="clearit"></div>

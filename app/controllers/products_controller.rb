@@ -144,28 +144,6 @@ class ProductsController < ApplicationController
     @product.sold_count = params[:product][:sold_count]
     @product.visiable = params[:product][:visiable]
     
-    @product.product_attributes.each do |item|
-      item.destroy
-    end
-    if params[:product_attribute]
-      params[:product_attribute].each do |attri|
-        if attri[:value] && attri[:value] != ''
-          define = ProductAttributeDefine.find_by_name(attri[:name])
-          value = ProductAttributeValue.find(:first,:conditions => {:name => attri[:name],:value => attri[:value]})
-          temp = ProductAttribute.new
-          temp.short = define.short
-          temp.description = define.description
-          temp.product_attribute_value_id = value.id
-          temp.fix = define.fix
-          temp.multiple = define.multiple
-          temp.name = attri[:name]
-          temp.value = attri[:value]
-          temp.product_sku = @product.sku
-          temp.save
-        end
-      end
-    end
-    
     if params[:product][:pic]
       
       #create path
@@ -199,18 +177,39 @@ class ProductsController < ApplicationController
     #   temp.save
     #  end
     #end
-    
+
     respond_to do |format|
       if @product.save
-        format.html { redirect_to :action => "products", :controller => "admin" }
+        @product.product_attributes.each do |item|
+          item.destroy
+        end
+        if params[:product_attribute]
+          params[:product_attribute].each do |attri|
+            if attri[:value] && attri[:value] != ''
+              define = ProductAttributeDefine.find_by_name(attri[:name])
+              value = ProductAttributeValue.find(:first,:conditions => {:name => attri[:name],:value => attri[:value]})
+              temp = ProductAttribute.new
+              temp.short = define.short
+              temp.description = define.description
+              temp.product_attribute_value_id = value.id
+              temp.fix = define.fix
+              temp.multiple = define.multiple
+              temp.name = attri[:name]
+              temp.value = attri[:value]
+              temp.product_sku = @product.sku
+              temp.product_id = @product.id
+              temp.save
+            end
+          end
+        end
+        format.html { redirect_to products_path }
       else
+        @statuses = ProductStatus.all
+        @years = (Time.now.year).downto(Time.now.year - 30).map{ |x| x }
+        @attributes = ProductAttributeDefine.all
         format.html { render :action => "edit" }
       end
     end
-  end
-  
-  def bought  
-    @items = Product.joins('LEFT OUTER JOIN order_items ON order_items.product_id = products.id').where("order_items.user_id" => current_user.id)
   end
 
   def destroy
@@ -218,7 +217,7 @@ class ProductsController < ApplicationController
     @product.destroy
 
     respond_to do |format|
-      format.html { redirect_to :action => :products, :controller => :admin  }
+      format.html { redirect_to :action => :index, :controller => :products  }
       format.xml  { head :ok }
     end
   end
