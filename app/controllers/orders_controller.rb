@@ -31,6 +31,11 @@ class OrdersController < ApplicationController
   end
 
   def create
+    
+    change = OrderChange.new
+    change.user_id = current_user.id
+    change.before = ''
+    
     @order = temp_order
     @order.no = Time.now.strftime("SO%Y%m%d%H%M%S")
     @order.status = '等待确认订单';
@@ -41,6 +46,9 @@ class OrdersController < ApplicationController
     if @order.pay_type == '支付宝'
       @order.status = '等待付款'
     end
+    
+    change.after = @order.status
+    change.changed_at = Time.now
     
     address = nil
     
@@ -91,6 +99,8 @@ class OrdersController < ApplicationController
     respond_to do |format|
       if @order.save
         cart.clear
+        change.order_id = @order.id
+        change.save
         if @order.pay_type == '支付宝'
           format.html { redirect_to :action => "check_out", :id => @order.id }
         else
@@ -118,8 +128,18 @@ class OrdersController < ApplicationController
 
     case notification.status
     when "TRADE_SUCCESS"
+      
+      change = OrderChange.new
+      change.user_id = order.user_id
+      change.before = order.status
+      
       order.status = "等待发货"
       order.pay_at = Time.now
+      
+      change.after = order.status
+      change.changed_at = Time.now
+      change.save
+      
     else
       @order.status = notification.status
     end
@@ -162,30 +182,71 @@ class OrdersController < ApplicationController
   def cancel
     @order = Order.find(params[:id])
     if @order.user_id == current_user.id
+      
+      change = OrderChange.new
+      change.user_id = @order.user_id
+      change.before = @order.status
+       
       @order.status = '订单取消'
       @order.save
+      
+      change.after = @order.status
+      change.changed_at = Time.now
+      change.save
+
     end
     redirect_to :action => :orders, :controller => :my
   end
   
   def confirm
     @order = Order.find(params[:id])
+    
+    change = OrderChange.new
+    change.user_id = @order.user_id
+    change.before = @order.status
+     
     @order.status = '等待发货'
     @order.save
+    
+    change.after = @order.status
+    change.changed_at = Time.now
+    change.save
+
     redirect_to :action => :index, :controller => :orders
   end
   
   def delivery
     @order = Order.find(params[:id])
+    
+    change = OrderChange.new
+    change.user_id = @order.user_id
+    change.before = @order.status
+     
     @order.status = '等待确认收货'
     @order.save
+    
+    change.after = @order.status
+    change.changed_at = Time.now
+    change.save
+
     redirect_to :action => :index, :controller => :orders
   end
   
   def pay
     @order = Order.find(params[:id])
+    
+    change = OrderChange.new
+    change.user_id = @order.user_id
+    change.before = @order.status
+     
     @order.status = '等待发货'
     @order.save
+    
+    change.after = @order.status
+    change.changed_at = Time.now
+    change.save
+    
+
     redirect_to :action => :index, :controller => :orders
   end
   
