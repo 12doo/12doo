@@ -822,10 +822,11 @@ color:#000;
 border:1px solid #dcdedc;
 margin:10px 0;
 padding:10px;
+overflow: auto;
 	}
 #my_acinfo #ac_more_detail td{
 	vertical-align:middle;
-	text-align:center;
+	text-align:left;
 
 	}
 	
@@ -916,6 +917,7 @@ height:90px;
 	margin:20px 0;
 	}
 #mlist_detail #totalprice span{
+
 
 padding:0 30px 0 0;
 	}
