@@ -2,7 +2,7 @@
 V3::Application.routes.draw do
   resources :alipay_logs
 
-  resources :coupons, :deliveries, :addresses, :order_items, 
+  resources :coupons, :deliveries, :addresses, :order_items, :order_changes,
             :product_tags, :product_statuses, :product_attributes, :product_attribute_defines
             
   devise_for :users, :controllers => { :registrations => "registrations" }
