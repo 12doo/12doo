@@ -115,6 +115,7 @@ staffid : "991234"
 			<input type="hidden" value="<%= attribute.name %>" name="product_attribute[][name]" />
 			<input type="text" name="product_attribute[][value]" value="<%= @product.get_attribute_value(attribute.short) %>" /><br />
 			<% end %>
+			<%= link_to '编辑属性', :action => :index, :controller => :product_attribute_defines %>
 			</td>
 		</tr>
 		<% end %>
