@@ -202,7 +202,7 @@ class ProductsController < ApplicationController
     
     respond_to do |format|
       if @product.save
-        format.html { redirect_to :action => "products", :controller => "admin" }
+        format.html { redirect_to products_path }
       else
         format.html { render :action => "edit" }
       end

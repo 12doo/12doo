@@ -1,123 +1,80 @@
 <%= render 'my/header' %>
 <div id="my_acinfo">
 <%= render 'my/userside' %>
-  <div id="ac_right">
-  	<ul id="pd_infomenu">
+	<div id="ac_right">
+		<ul id="pd_infomenu">
+			<li><%= link_to '账户信息', :action => :account, :controller => :my %></li>
 			<li class="on">编辑账户</li>
 		</ul>
-    <div class="clearit"></div>
+		<div class="clearit"></div>
 		<div id="ac_more_detail">
-    <%= render 'devise/alert' %>
-    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :validate => true, :html => { :method => :put, :name =>"user_edit" }) do |f| %>
-        
-    <table width="100%" border="0" align="left" cellpadding="0" cellspacing="0" >
-      <tbody>
-          <tr>
-              <td width="10%" height="35" align="right" valign="middle">
-                <%= f.label :email %>：
-              </td>
-              <td width="40%" align="left" valign="middle">
-              	<%= f.text_field :email, :class => :areabox %>
-              </td>
-              <td width="70%" align="left">
-              
-              </td>
-          </tr>
-          <tr>
-              <td height="35" align="right" valign="middle">
-                <%= f.label :name %>：
-              </td>
-              <td align="left" valign="middle">
-              	<%= f.text_field :name, :class => :areabox %>
-              </td>
-              <td align="left">
-              
-              </td>
-          </tr>    
-          <tr>
-              <td height="35" align="right" valign="middle">
-                <%= f.label :phone %>：
-              </td>
-              <td align="left" valign="middle">
-              	 <%= f.text_field :phone, :class => :areabox %>
-              </td>
-              <td align="left">
-              
-              </td>
-          </tr> 
-          <tr>
-              <td height="35" align="right" valign="middle">
-                <%= f.label :gender %>：
-              </td>
-              <td align="left" valign="middle">
-              	<%= f.radio_button :gender, '男' %><%= label_tag(:gender_male, "男") %>
-                <%= f.radio_button :gender, '女' %><%= label_tag(:gender_female, "女") %>
-                <%= f.radio_button :gender, '保密' %><%= label_tag(:gender_NA, "保密") %>
-              </td>
-              <td align="left">
-              
-              </td>
-          </tr>        
-          <tr>
-              <td height="35" align="right" valign="middle">
-                <%= f.label :birth %>：
-              </td>
-              <td align="left" valign="middle">
-              	<%= f.date_select :birth, :start_year => 2010, :end_year => 1960 %>
-              </td>
-              <td align="left">
-              
-              </td>
-          </tr>                                                              
-          <tr>
-              <td height="35" align="right" valign="middle">
-                <%= f.label :current_password %>：
-              </td>
-              <td align="left" valign="middle">
-              	<%= f.password_field :current_password, :class => :areabox %>
-              </td>
-              <td align="left">
-                要更新您的帐号资料，请输入当前密码
-              </td>
-          </tr>                                                              
-          <tr>
-              <td height="35" align="right" valign="middle">
-                <%= f.label :password %>：
-              </td>
-              <td align="left" valign="middle">
-              	<%= f.password_field :password, :class => :areabox %>
-              </td>
-              <td align="left">
-                如果不打算更改密码，此处请留空
-              </td>
-          </tr>                                                              
-          <tr>
-              <td height="35" align="right" valign="middle">
-                <%= f.label :password_confirmation %>：
-              </td>
-              <td align="left" valign="middle">
-              	<%= f.password_field :password_confirmation, :class => :areabox %>
-              </td>
-              <td align="left">
-              
-              </td>
-          </tr>
-          <tr>
-              <td height="35" align="right" valign="middle">
-                
-              </td>
-              <td align="left" valign="middle">
-              	<%= f.submit "更新个人信息" %>
-              </td>
-              <td align="left">
-              
-              </td>
-          </tr>                     
-      </tbody>
-    </table>               
-    <% end %>
-    </div>
-  </div>
+			<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :validate => true, :html => { :method => :put, :name =>"user_edit" }) do |f| %>
+			<table width="100%" cellspacing="0" cellpadding="0" border="0" class="tableinfo" align="center">
+				<tbody>
+					<tr>
+					    <td height="30" width="100">账户</td>
+					    <td align="left"><%= f.label :email %></td>
+						<td></td>
+					</tr>
+					<tr>
+					    <td height="30"></td>
+					    <td align="left"><%= f.text_field :name %></td>
+					<td></td>
+					</tr>
+					<tr>
+					    <td height="30"></td>
+					    <td align="left"><%= f.text_field :phone %></td>
+					<td></td>
+					</tr>
+					<tr>
+					    <td height="30"></td>
+					    <td align="left">
+					    	<%= f.radio_button :gender, '男' %><%= label_tag(:gender_male, "男") %>
+			                <%= f.radio_button :gender, '女' %><%= label_tag(:gender_female, "女") %>
+			                <%= f.radio_button :gender, '保密' %><%= label_tag(:gender_NA, "保密") %>
+					    </td>
+					<td></td>
+					</tr>
+					<tr>
+					    <td height="30"></td>
+					    <td align="left"><%= f.date_select :birth, :start_year => 2010, :end_year => 1960 %></td>
+					<td></td>
+					</tr>
+					<tr>
+					    <td height="30"></td>
+					    <td align="left"><%= f.password_field :current_password %></td>
+					<td></td>
+					</tr>
+					<tr>
+					    <td height="30"></td>
+					    <td align="left"><%= f.password_field :password %></td>
+					<td></td>
+					</tr>
+					<tr>
+					    <td height="30"></td>
+					    <td align="left"><%= f.password_field :password_confirmation %></td>
+					<td></td>
+					</tr>
+					<tr>
+					    <td height="30"></td>
+					    <td align="left"><%= f.password_field :current_password %></td>
+					<td></td>
+					</tr>
+			    </tbody>
+			</table>
+			<div class="bj-sp10"></div>
+			<table width="98%" cellspacing="0" cellpadding="0" border="0" align="center">
+            	<tbody>
+					<tr>
+				    	<td width="100%" valign="middle" align="middle">
+				        	<a href="javascript:$('#submitButton').click();"><img align="absmiddle" alt="" src="/images/confirm_btn.gif" /></a>
+				        </td>
+				    </tr>
+				</tbody>
+			</table>
+			<input id="submitButton" type="submit" style="display:none;" value="保存" />
+			<% end %>
+		</div>
+	</div>
 </div>
-
 <div class="clearit"></div>

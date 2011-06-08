@@ -3,7 +3,8 @@
 <%= render 'my/userside' %>
 	<div id="ac_right">
 		<ul id="pd_infomenu">
-			<li class="on">我的账户</li>
+			<li class="on">账户信息</li>
+			<li><%= link_to "编辑账户", edit_user_registration_path %></li>
 		</ul>
 		<div class="clearit"></div>
 		<div id="ac_more_detail">
@@ -22,17 +23,6 @@
                         <td><%= @current_user.phone %></td>
                     </tr>
                 </tbody>
-			</table>
-            <div class="bj-sp10"></div>
-			<table width="98%" cellspacing="0" cellpadding="0" border="0" align="center">
-            	<tbody>
-					<tr>
-				    	<td width="100%" valign="middle" align="middle">
-							<%= link_to "我要修改上述信息", edit_user_registration_path %>
-				        	<a href=""><img align="absmiddle" alt="" src="/images/confirm_btn.gif"></a>
-				        </td>
-				    </tr>
-				</tbody>
 			</table>
 		</div>
 	</div>
