@@ -1,27 +1,52 @@
-<h1>Listing product_attribute_defines</h1>
+<%= render 'admin/header' %>
+<div id="my_acinfo">
+<%= render 'admin/userside' %>
+	<div id="ac_right">
+		<ul id="pd_infomenu">
+			<li class="on">所有属性</li>
+			<li><%= link_to "添加属性", new_product_attribute_define_path %></li>
+		</ul>
+		<div class="clearit"></div>
+		<div id="ac_more_detail">
+			<table width="100%" cellspacing="0" cellpadding="0" border="0" class="tableinfo">
+            	<tbody>
+                    <tr bgcolor="#f0f0f0" class="f-black-12-b">
+                        <td width="50" height="30">
+                            名称
+                        </td>
+                        <td width="50">
+                            缩写
+                        </td>
+                        <td width="50">
+                            是否可搜
+                        </td>
+                        <td width="50">
+                          	是否固定值
+                        </td>
+                        <td width="50">
+                            是否多个值
+                        </td>
+                        <td width="80">
+                            操作
+                        </td>
+                    </tr>
+					<% @product_attribute_defines.each do |product_attribute_define| %>
+				 	<tr>
+					    <td height="30"><%= link_to product_attribute_define.name, product_attribute_define, :class => 'f-red-12' %></td>
+					    <td><%= product_attribute_define.short %></td>
+					    <td><%= product_attribute_define.search ? "是" : "否" %></td>
+						<td><%= product_attribute_define.fix ? "是" : "否" %></td>
+					    <td><%= product_attribute_define.multiple ? "是" : "否" %></td>
+						<td>
+							<%= link_to '[编辑]', edit_product_attribute_define_path(product_attribute_define), :class => 'f-red-12' %>
+							<%= link_to '[删除]', product_attribute_define, :method => :delete, :class => 'f-red-12' %>
+						</td>
+				  	</tr>
+					<% end %>
+                </tbody>
+			</table>
+		</div>
+	</div>
+</div>
+<div class="clearit"></div>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Short</th>
-    <th>Description</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @product_attribute_defines.each do |product_attribute_define| %>
-  <tr>
-    <td><%= product_attribute_define.name %></td>
-    <td><%= product_attribute_define.short %></td>
-    <td><%= product_attribute_define.description %></td>
-    <td><%= link_to 'Show', product_attribute_define %></td>
-    <td><%= link_to 'Edit', edit_product_attribute_define_path(product_attribute_define) %></td>
-    <td><%= link_to 'Destroy', product_attribute_define, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Product attribute define', new_product_attribute_define_path %>
