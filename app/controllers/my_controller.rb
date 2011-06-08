@@ -80,6 +80,10 @@ class MyController < ApplicationController
   def coupons
     @coupons = current_user.coupons.order("id desc").page(params[:page])
   end
+  
+  def bought  
+    @items = Product.joins('LEFT OUTER JOIN order_items ON order_items.product_id = products.id').where("order_items.user_id" => current_user.id)
+  end
 
 #  def update_profile
 #    current_user.gender = params[:gender]
