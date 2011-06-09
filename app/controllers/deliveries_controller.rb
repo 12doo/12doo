@@ -1,5 +1,8 @@
 # -*- encoding : utf-8 -*-
 class DeliveriesController < ApplicationController
+  
+  before_filter :authorize_admin!
+  
   # GET /deliveries
   # GET /deliveries.xml
   def index

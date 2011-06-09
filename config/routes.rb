@@ -1,5 +1,9 @@
 # -*- encoding : utf-8 -*-
 V3::Application.routes.draw do
+  resources :dispatch_items
+
+  resources :dispatches
+
   resources :alipay_logs
 
   resources :coupons, :deliveries, :addresses, :order_items, :order_changes,

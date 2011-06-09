@@ -549,6 +549,14 @@ border:1px solid #fff;
 border:1px solid #9e0a0e;
 color:#9e0a0e;
 	}
+.listL LI LI.on{
+background:#9e0a0e;
+border:1px solid #9e0a0e;
+color:#fff
+	}
+.listL LI LI.on a,.listL LI LI.on a:hover{
+color:#fff;	
+	}
 .list_num{
     margin:20px auto;	
 	}
@@ -707,6 +715,49 @@ height:100%;
 line-height:200%;
 font-size:14px;
 	}
+#pd_moreinfo #pd_attribute{
+background:#f5f3ec url(../images/pd_attribute_bg.gif);	
+padding:80px 0 0 35px;
+	}	
+#pd_moreinfo #pd_attribute td{
+height:37px;
+line-height:37px;
+color:#000;
+text-indent:50px;
+font-size:12px;
+font-weight:bold;
+	}	
+#pd_moreinfo #pd_attribute td.colSTa{
+text-indent:80px;
+	}	
+#pd_moreinfo #pd_attribute td.colSTb{
+text-indent:0;
+line-height:20px;
+padding:10px 0 0 80px;
+height:50px;
+	}	
+#pd_moreinfo #pd_attribute td.colSTc{
+text-indent:100px;
+	}
+#pd_moreinfo .pd_section{
+border:1px dotted #cdc4a6;
+padding:10px;
+margin:20px 0;
+color:#333;
+font-size:12px;
+	}
+#pd_moreinfo .pd_section .insection{
+background:#f5f3ec;
+padding:10px;
+	}
+#pd_moreinfo .pd_section h1{
+border-bottom:1px solid #dcdedc;
+color:#9e0a0e;
+line-height:30px;
+font-size:16px;
+font-weight:bold;
+margin:0 0 20px 0;
+	}
 #pd_moreinfo h2{
 background:#f1f1f1;
 padding:5px 20px;
@@ -822,19 +873,22 @@ color:#000;
 border:1px solid #dcdedc;
 margin:10px 0;
 padding:10px;
-overflow: auto;
 	}
 #my_acinfo #ac_more_detail td{
 	vertical-align:middle;
-	text-align:left;
+	text-align:center;
 
 	}
 	
-#my_acinfo #ac_more_detail table.tableinfo {
+#my_acinfo #ac_more_detail table.tableinfo,#my_acinfo #ac_more_detail table.tableinfoL {
     border-collapse: collapse;
 }
-#my_acinfo #ac_more_detail table.tableinfo td{
-	  border: 1px solid #ccc;	
+#my_acinfo #ac_more_detail table.tableinfo td,#my_acinfo #ac_more_detail table.tableinfoL td{
+	  border: 1px solid #ccc;
+	}
+#my_acinfo #ac_more_detail table.tableinfoL td{
+	text-align:left;
+	padding:0 0 0 15px;
 	}
 /**make shoplist**/
 #mlist_step{
@@ -851,7 +905,7 @@ padding:30px;
 	padding:90px 0 0 200px;
 	height:120px;
 	}
-#mlist_detail #nopay_bg{
+#mlist_detail #payno_bg{
 	background:url(../images/msl_gotonopay_bg.gif) 0 0 no-repeat;
 	width:400px;
 	margin:0 auto;
@@ -917,8 +971,6 @@ height:90px;
 	margin:20px 0;
 	}
 #mlist_detail #totalprice span{
-
-
 padding:0 30px 0 0;
 	}
 .lastprice{
@@ -941,14 +993,26 @@ padding:15px;
 /**reg**/
 #join_now{
 margin:40px 0 50px 0;
-width:465px;
+width:562px;
 border-bottom:1px solid #dcdedc;
 padding:0 0 10px 0;
+	}
+.submit_error{
+width:500px;
+background:#f1f1f1 url(../images/error_ico.gif) 10px 8px no-repeat;
+padding:10px 30px;
+color:#e60012;
+font-weight:bold;
+border:1px solid #dcdedc;
+
+
 	}
 #reg_table{
 width:750px;
 margin:0 0 50px 0;
 	}
+	
+	
 #reg_table td{
 	vertical-align:middle;
 	padding:10px 10px 10px 0;
@@ -995,17 +1059,3 @@ margin:10px 0;
 #reg_policy{
 margin:10px 0 50px 0;		
 	}
-	
-	
-	
-	
-.field_with_errors {
-    display: inline; 
-    }
-    
-.field_with_errors .message {
-    color:#9e0a10;
-    font-size:12px;
-    line-height:40px;
-    padding-left:10px;
-    }

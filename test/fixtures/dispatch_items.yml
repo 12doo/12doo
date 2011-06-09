@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  dispatch_id: 1
+  product_id: 1
+  product_name: MyString
+  count: 1
+
+two:
+  dispatch_id: 1
+  product_id: 1
+  product_name: MyString
+  count: 1
