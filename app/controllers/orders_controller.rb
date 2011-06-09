@@ -3,8 +3,14 @@ class OrdersController < ApplicationController
   # 身份验证
   before_filter :authorize_user!, :except => [:notify, :done]
   
+  layout "application", :except => [:print]
+  
   def index
     @orders = Order.order("id desc").page(params[:page])
+  end
+  
+  def print
+    @order = Order.find(params[:id])
   end
 
   def show

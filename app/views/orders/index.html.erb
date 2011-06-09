@@ -45,6 +45,7 @@
 						<% when '订单取消' %>
 						<% end %>
 						<%= link_to '[查看]', order_path(order), :class => 'f-red-12', :target => '_blank' %>
+						<%= link_to '[打印发货单]', {:action => :print, :controller => :orders, :id => order.id }, :class => 'f-red-12', :target => '_blank' %>
 					</td>
 			  	</tr>
 				<% end %>

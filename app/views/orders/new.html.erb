@@ -1,3 +1,4 @@
+<script type="text/javascript" src="/javascripts/jquery-impromptu.3.1.min.js"></script>
 <script type="text/javascript">	
 	function check_coupon(){
 		$.ajax({
@@ -13,7 +14,12 @@
 						$('#coupon_button').hide();
 				  	});
 				}else{
-					alert("您输入的优惠券无法识别或者当前订单不符合使用条件。");
+					$.prompt('您输入的优惠券无法识别或者当前订单不符合使用条件。',
+						{
+						buttons:{ 确定:true },
+						callback:function(v,m,f){ $(this).remove();},
+						});
+					return;
 				}
 			},
 		});
@@ -49,7 +55,11 @@
 			if (verify_address()){
 				$('#div_address_selected').html(generate_new_address());
 			}else{
-				alert('请填写完整地址信息。');
+				$.prompt('请填写完整地址信息。',
+					{
+					buttons:{ 确定:true },
+					callback:function(v,m,f){ $(this).remove();},
+					});
 				return;
 			}
 		}
@@ -100,29 +110,37 @@
 	}
 	
 	function next_step(){
+		
+		var txt = '';
+		
 		var flag_submit = true;
 		
-		if (!flag_address){
-			alert('请确认送货地址和支付方式.');
+		if (!flag_pay && !flag_address){
+			txt = '请确认送货地址和支付方式.';
 			flag_submit = false;
-			return false;
 		}
 		
 		if (!flag_address){
-			alert('请确认送货地址.');
+			txt = '请确认送货地址.';
 			flag_submit = false;
-			return false;
 		}
 		if (!flag_pay){
-			alert('请确认支付方式.');
+			txt = '请确认支付方式.';
 			flag_submit = false;
-			return false;
 		}
 		
 		if (flag_submit){
 			$('#create_order').submit();
-		}	
+		}else{
+			$.prompt(txt,
+				{ 
+				//buttons:{ 确定:true, 取消:false},
+				buttons:{ 确定:true },
+				callback:function(v,m,f){ $(this).remove();},
+				});
+		}
 	}
+	
 	
 </script>
 <div class="clearit bj-sp10"></div>

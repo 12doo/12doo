@@ -1,0 +1,19 @@
+			body,img,p,h1,h2,h3,h4,h5,h6,fieldset,form,table,td,ul,li,pre,blockquote,code{ margin:0; padding:0; border:0; }
+
+			#users{  }
+			#users .user{ border: solid 1px #bbbbbb; background-color: #dddddd; padding: 10px; margin: 5px; }
+			#users .user .controls{ float: right; }
+			
+			/*-------------impromptu---------- */
+			.jqifade{ position: absolute; background-color: #aaaaaa; }
+			div.jqi{ width: 400px; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; position: absolute; background-color: #ffffff; font-size: 11px; text-align: left; border: solid 1px #eeeeee; -moz-border-radius: 10px; -webkit-border-radius: 10px; padding: 7px; }
+			div.jqi .jqicontainer{ font-weight: bold; }
+			div.jqi .jqiclose{ position: absolute; top: 4px; right: -2px; width: 18px; cursor: default; color: #bbbbbb; font-weight: bold; }
+			div.jqi .jqimessage{ padding: 10px; line-height: 20px; color: #000;font-size:14px; }
+			div.jqi .jqibuttons{ text-align: center; padding: 5px 0 5px 0; border: solid 1px #eeeeee; background-color: #f4f4f4; }
+			div.jqi button{ padding: 5px 10px; margin: 0 10px; background-color: #999; border: solid 1px #f4f4f4; color: #ffffff; font-weight: bold; font-size: 14px; }
+			div.jqi button:hover{ background-color: #728A8C; }
+			div.jqi button.jqidefaultbutton{ background-color: #9e0a0e; }
+			.jqiwarning .jqi .jqibuttons{ background-color: #BF5E26; }
+			/*-------------------------------- */
+
