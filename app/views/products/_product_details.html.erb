@@ -5,29 +5,29 @@
     <td width="255"><img src="/images/pd_detail_img.gif" width="255" height="350" /></td>
     <td id="pd_attribute"><table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
-        <td width="262">Rose 玫瑰红葡萄酒</td>
-        <td>法国</td>
+        <td width="262">R<%= @product.product_attributes.find_by_short("type").value %></td>
+        <td><%= @product.product_attributes.find_by_short("country").value %></td>
       </tr>
       <tr>
-        <td class="colSTa">2008年</td>
-        <td>法国隆河RHONE</td>
+        <td class="colSTa"><%= @product.product_attributes.find_by_short("vintage").value %></td>
+        <td><%= @product.product_attributes.find_by_short("region").value %></td>
       </tr>
       <tr>
-        <td class="colSTa">聚会、约会、独饮</td>
-        <td>Domaine du Bois de Saint Jean</td>
+        <td class="colSTa"><%= render :partial => "attribute_value", :collection => @product.product_attributes.find_all_by_short("use_for") %></td>
+        <td><%= @product.product_attributes.find_by_short("made_by").value %></td>
       </tr>
       <tr>
         <td>清亮玫瑰红</td>
-        <td>AOC</td>
+        <td><%= @product.product_attributes.find_by_short("level").value %></td>
       </tr>
       <tr>
         <td class="colSTc">10℃-16℃</td>
-        <td class="colSTa">14.5（％）</td>
+        <td class="colSTa"><%= @product.product_attributes.find_by_short("abv").value %>（％Vol）</td>
       </tr>
       <tr>
-        <td class="colSTb">60%歌海娜 30%幕尔伟德 <br />
-          10%席拉</td>
-        <td>750ml</td>
+        <td class="colSTb">
+          <%= render :partial => "attribute_value", :collection => @product.product_attributes.find_all_by_short("grape") %></td>
+        <td><%= @product.product_attributes.find_by_short("vol").value %></td>
       </tr>
     </table></td>
   </tr>
