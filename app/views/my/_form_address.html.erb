@@ -33,7 +33,18 @@
 	});
 
 </script>
-<%= render 'alert' %>
+<% if @address.errors.any? %>
+<div class="common_error">
+	<ul>
+    <% @address.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+</div>
+
+<br />
+<% end %>
+
 <table width="100%" cellspacing="0" cellpadding="0" border="0" class="tableinfoL" align="center">
 	<tbody>
 		<tr>
