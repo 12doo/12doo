@@ -9,7 +9,7 @@ $(document).ready(function(){
 	$('#loginName').focus();
 });
 </script>
-<div id="join_now"><img src="/images/fogtten_password_title.gif" width="379" height="42" /></div>
+<div id="join_now"><img src="/images/fogtten_password_title.gif" /></div>
 <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post, :id => :forgetten_psw }) do |f| %>
 <%= render 'devise/alert' %>
   <table id="reg_table" border="0" cellspacing="0" cellpadding="0">
