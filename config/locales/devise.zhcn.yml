@@ -4,6 +4,7 @@ zhcn:
       not_found: '没有找到'
       already_confirmed: '已经确认'
       not_locked: '没有锁定'
+      invalid: '请用电子邮件地址作为登录帐户名'
   devise:
     failure:
       unauthenticated: '请登录后继续'
