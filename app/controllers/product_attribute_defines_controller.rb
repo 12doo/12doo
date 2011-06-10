@@ -45,13 +45,13 @@ class ProductAttributeDefinesController < ApplicationController
     end
   end
 
-  def destroy
-    @product_attribute_define = ProductAttributeDefine.find(params[:id])
-    @product_attribute_define.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(product_attribute_defines_url) }
-      format.xml  { head :ok }
-    end
-  end
+  # def destroy
+  #   @product_attribute_define = ProductAttributeDefine.find(params[:id])
+  #   @product_attribute_define.destroy
+  # 
+  #   respond_to do |format|
+  #     format.html { redirect_to(product_attribute_defines_url) }
+  #     format.xml  { head :ok }
+  #   end
+  # end
 end
