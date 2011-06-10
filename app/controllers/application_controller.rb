@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   # 判断是否管理员
   def authorize_admin!
     unless current_user && current_user.admin
+        sign_out
         redirect_to new_user_session_path + "?return_url=" + request.fullpath
     end
   end

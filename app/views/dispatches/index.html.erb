@@ -10,13 +10,27 @@
 		<table width="100%" cellspacing="0" cellpadding="0" border="0" class="tableinfo">
 	        	<tbody>
 	                <tr bgcolor="#f0f0f0" class="f-black-12-b">
-	                    <td height="30" width="150">
+	                    <td height="30" width="70">
 	                        编号
+	                    </td>
+	                    <td height="30" width="70">
+	                        订单编号
+	                    </td>
+	                    <td height="30" width="70">
+	                        金额
+	                    </td>
+	                    <td height="30" width="70">
+	                        操作
 	                    </td>
 	                </tr>
 				<% @dispatches.each do |dispatch| %>
 			 	<tr>
-				    <td height="30"><%= link_to dispatch.no, dispatch_path(order), :class => 'f-red-12', :target => '_blank'  %></td>
+				    <td height="30"><%= link_to dispatch.no, dispatch_path(dispatch), :class => 'f-red-12', :target => '_blank'  %></td>
+					<td height="30"><%= dispatch.order_no  %></td>
+					<td height="30"><%= format "%.2f", dispatch.order_total  %></td>
+					<td height="30">
+						<%= link_to '[打印]', {:action => :print, :controller => :dispatches, :id => dispatch.id }, :class => 'f-red-12', :target => '_blank' %>
+					</td>
 			  	</tr>
 				<% end %>
 	            </tbody>

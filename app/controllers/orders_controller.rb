@@ -3,16 +3,10 @@ class OrdersController < ApplicationController
   # 身份验证
   before_filter :authorize_user!, :except => [:notify, :done]
   
-  layout "application", :except => [:print]
-  
   def index
     @orders = Order.order("id desc").page(params[:page])
   end
   
-  def print
-    @order = Order.find(params[:id])
-  end
-
   def show
     @order = Order.find(params[:id])
     unless @order.user_id == current_user.id || current_user.admin
@@ -234,6 +228,39 @@ class OrdersController < ApplicationController
     change.after = @order.status
     change.changed_at = Time.now
     change.save
+    
+    # create dispatch
+    dispatch = Dispatch.new
+    dispatch.no = Time.now.strftime("DP%Y%m%d%H%M%S")
+    dispatch.order_no = @order.no
+    dispatch.order_total = @order.total
+    dispatch.order_carriage = @order.carriage
+    dispatch.order_fullname = @order.fullname
+    dispatch.order_address = @order.address
+    dispatch.order_province = @order.province
+    dispatch.order_city = @order.city
+    dispatch.order_region = @order.region
+    dispatch.order_zip = @order.zip
+    dispatch.order_phone = @order.phone
+    dispatch.order_delivery_type = @order.delivery_type
+    dispatch.order_pay_price = @order.pay_price
+    dispatch.order_discount = @order.discount
+    dispatch.order_quantity = @order.quantity
+    dispatch.order_memo = @order.memo
+    dispatch.order_pay_type = @order.pay_type
+    
+    @order.order_items.each do |item|
+      dispatch_item = DispatchItem.new
+      dispatch_item.product_id = item.product_id
+      dispatch_item.product_name = item.product_name
+      dispatch_item.product_price = item.price
+      dispatch_item.product_sku = item.product_sku
+      dispatch_item.quantity = item.quantity
+      dispatch_item.subtotal = item.subtotal
+      dispatch.dispatch_items << dispatch_item
+    end
+    
+    dispatch.save
 
     redirect_to :action => :index, :controller => :orders
   end
