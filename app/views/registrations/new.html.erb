@@ -3,7 +3,7 @@ $(document).ready(function(){
 	$('#password_confirmation').keydown(function(e){ 
 		if(e.keyCode == 13){
 			$('#password_confirmation').change();
-			document.user_new.submit();
+			$('#user_new').submit();
 		} 
 	});
 	
@@ -56,7 +56,7 @@ $(document).ready(function(){
     	<td>&nbsp;</td>
     	<td>
 			<div id="reg_submit">
-				<a href="javascript:document.user_new.submit();">
+				<a href="javascript:$('#user_new').submit();">
 					<img src="/images/reg_btn.gif" width="197" height="53" />
 				</a>
 				<input name="" type="checkbox" value="" checked="checked" class="iptnormal" />

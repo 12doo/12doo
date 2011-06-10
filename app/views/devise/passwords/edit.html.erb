@@ -1,21 +1,44 @@
-
-<div class="all_content">
-
-<h2>修改密码 Change your password</h2>
-
-<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :validate => true, :html => { :method => :put }) do |f| %>
-  <%= devise_error_messages! %>
-  <%= f.hidden_field :reset_password_token %>
-
-  <p><%= f.label :password %><br />
-  <%= f.password_field :password %></p>
-
-  <p><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></p>
-
-  <p><%= f.submit "改密码 Change my password" %></p>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#loginPasswordConfirm').keydown(function(e){ 
+		if(e.keyCode == 13){ 
+			$('#resetpsw').submit();
+		} 
+	});
+	
+	$('#loginPassword').keydown(function(e){ 
+		if(e.keyCode == 13){ 
+			$('#loginPasswordConfirm').focus();
+		} 
+	});
+	
+	$('#loginPassword').focus();
+});
+</script>
+<div id="join_now"><img src="/images/login_ljdl.gif" width="379" height="42" /></div>
+<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :validate => true, :html => { :method => :put, :id => 'resetpsw' }) do |f| %>
+<%= render 'devise/alert' %>
+<%= f.hidden_field :reset_password_token %>
+  <table id="reg_table" border="0" cellspacing="0" cellpadding="0">
+  	<tr>
+    	<td><img src="/images/reg_password.gif" width="75" height="19" /></td>
+    	<td><label><%= f.password_field :password, :class => :areabox, :size => '30', :id => :loginPassword %></label><span class="ipterror"></span></td>
+    </tr>
+  	<tr>
+    	<td><img src="/images/reg_password.gif" width="75" height="19" /></td>
+    	<td><label><%= f.password_field :password_confirmation, :class => :areabox, :size => '30', :id => :loginPasswordConfirm %></label><span class="ipterror"></span></td>
+    </tr>
+  	<tr>
+  	  <td> </td>
+    	<td>
+			  <div id="reg_submit">
+				  <a href="javascript:$('#resetpsw').submit();">
+					  <img src="/images/login_btn.gif" width="197" height="53" />
+				  </a>
+			  </div>
+		  </td>
+  	</tr>
+  </table>
 <% end %>
 
-<%= render :partial => "devise/shared/links" %>
-
-</div>
+<div class="clearit"></div>

@@ -105,6 +105,15 @@ ActiveRecord::Schema.define(:version => 20110609024253) do
     t.datetime "updated_at"
   end
 
+  create_table "dispatchitems", :force => true do |t|
+    t.integer  "dispatch_id"
+    t.integer  "product_id"
+    t.string   "product_name"
+    t.integer  "count"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "emails", :force => true do |t|
     t.string   "from"
     t.string   "to"
@@ -255,7 +264,6 @@ ActiveRecord::Schema.define(:version => 20110609024253) do
   create_table "users", :force => true do |t|
     t.string   "email",                               :default => "",    :null => false
     t.string   "encrypted_password",   :limit => 128, :default => "",    :null => false
-    t.string   "password_salt",                       :default => "",    :null => false
     t.string   "reset_password_token"
     t.string   "remember_token"
     t.datetime "remember_created_at"
