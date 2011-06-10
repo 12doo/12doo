@@ -78,7 +78,7 @@ class MyController < ApplicationController
   
   # coupons
   def coupons
-    @coupons = current_user.coupons.order("id desc").page(params[:page])
+    @coupons = Coupon.where(:belongs_to =>  current_user.id).order("id desc").page(params[:page])
   end
   
   def bought  

@@ -132,8 +132,6 @@
 	</ul>
 	<div class="clearit"></div>
 	<div id="pd_moreinfo">
-
-	<%= raw @product.memo %>
-	
-	
+    <%= render :partial => "product_details" %>
+	  <%= raw @product.memo %>
 	</div>
