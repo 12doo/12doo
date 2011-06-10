@@ -2,10 +2,16 @@ class DispatchesController < ApplicationController
   
   before_filter :authorize_admin!
   
+  layout "application", :except => [:print]
+  
+  def print
+    @dispatch = Dispatch.find(params[:id])
+  end
+  
   # GET /dispatches
   # GET /dispatches.xml
   def index
-    @dispatches = Dispatch.all
+    @dispatches = Dispatch.order("id desc").page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb

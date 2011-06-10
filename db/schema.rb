@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110609024253) do
+ActiveRecord::Schema.define(:version => 20110610095907) do
 
   create_table "addresses", :force => true do |t|
     t.string   "detail"
@@ -94,24 +94,34 @@ ActiveRecord::Schema.define(:version => 20110609024253) do
     t.integer  "dispatch_id"
     t.integer  "product_id"
     t.string   "product_name"
-    t.integer  "count"
+    t.integer  "quantity"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.decimal  "product_price", :precision => 10, :scale => 0
+    t.decimal  "subtotal",      :precision => 10, :scale => 0
+    t.string   "product_sku"
   end
 
   create_table "dispatches", :force => true do |t|
     t.string   "no"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "dispatchitems", :force => true do |t|
-    t.integer  "dispatch_id"
-    t.integer  "product_id"
-    t.string   "product_name"
-    t.integer  "count"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string   "order_no"
+    t.decimal  "order_total",         :precision => 10, :scale => 0
+    t.decimal  "order_carriage",      :precision => 10, :scale => 0
+    t.string   "order_fullname"
+    t.string   "order_address"
+    t.string   "order_province"
+    t.string   "order_city"
+    t.string   "order_region"
+    t.string   "order_zip"
+    t.string   "order_phone"
+    t.string   "order_delivery_type"
+    t.decimal  "order_pay_price",     :precision => 10, :scale => 0
+    t.decimal  "order_discount",      :precision => 10, :scale => 0
+    t.decimal  "order_quantity",      :precision => 10, :scale => 0
+    t.string   "order_memo"
+    t.string   "order_pay_type"
   end
 
   create_table "emails", :force => true do |t|
