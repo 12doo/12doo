@@ -3,38 +3,46 @@
 		<li><span class="on"><a>葡萄酒种类</a></span>
 			<ul>
 				<% values = ProductAttributeValue.where(:short => :type) %>
+				<% sort = get_attribute_define_sort_by_short('type') %>
 				<% values.each do |value|%>
-				<li class="<%= checked?(value.id, 7) ? '' : 'on' %>"><a href="<%= search_path value.id, 7 %>"><%= value.value %></a></li>
+				<li class="<%= checked?(value.id, sort) ? '' : 'on' %>"><a href="<%= search_path value.id, sort %>"><%= value.value %></a></li>
 				<% end %>
+				<li><a href="<%= search_path 0, sort %>">不限</a></li>
 			</ul>
-			<div class="clearit"></div>
+			<div class="blankline"></div>
 		</li>
 		<li><span class="on"><a>价 格</a></span>
 			<ul>
 				<% values = ProductAttributeValue.where(:short => :price) %>
+				<% sort = get_attribute_define_sort_by_short('price') %>
 	        	<% values.each do |value|%>
-	          	<li class="<%= checked?(value.id, 8) ? '' : 'on' %>" ><a href="<%= search_path value.id, 8 %>"><%= value.value %></a></li>
+	          	<li class="<%= checked?(value.id, sort) ? '' : 'on' %>" ><a href="<%= search_path value.id, sort %>"><%= value.value %></a></li>
 	      		<% end %>
+				<li><a href="<%= search_path 0, sort %>">不限</a></li>
 			</ul>
-			<div class="clearit"></div>
+			<div class="blankline"></div>
 		</li>
 		<li><span class="on"><a>国 家</a></span>
 			<ul>
 				<% values = ProductAttributeValue.where(:short => :country) %>
+				<% sort = get_attribute_define_sort_by_short('country') %>
 	          	<% values.each do |value|%>
-	          	<li class="<%= checked?(value.id, 5) ? '' : 'on' %>"><a href="<%= search_path value.id, 5 %>"><%= value.value %></a></li>
-	          <% end %>
+	          	<li class="<%= checked?(value.id, sort) ? '' : 'on' %>"><a href="<%= search_path value.id, sort %>"><%= value.value %></a></li>
+	          	<% end %>
+				<li><a href="<%= search_path 0, sort %>">不限</a></li>
 			</ul>
-			<div class="clearit"></div>
+			<div class="blankline"></div>
 		</li>
 		<li><span class="on"><a>使用场合</a></span>
 			<ul>
 				<% values = ProductAttributeValue.where(:short => :use_for) %>
+				<% sort = get_attribute_define_sort_by_short('use_for') %>
 	          	<% values.each do |value|%>
-	          	<li class="<%= checked?(value.id, 9) ? '' : 'on' %>"><a href="<%= search_path value.id, 9 %>"><%= value.value %></a></li>
-	          <% end %>
+	          	<li class="<%= checked?(value.id, sort) ? '' : 'on' %>"><a href="<%= search_path value.id, sort %>"><%= value.value %></a></li>
+	          	<% end %>
+				<li><a href="<%= search_path 0, sort %>">不限</a></li>
 			</ul>
-			<div class="clearit"></div>
+			<div class="blankline"></div>
 		</li>
 	</ul>
 </div>            
