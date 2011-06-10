@@ -1,5 +1,5 @@
 <% if (devise_error_messages! != nil && devise_error_messages! != '') || (flash[:alert] != nil && flash[:alert] != '') %>
-<div class="alert_infor">
+<div class="submit_error">
   <%= devise_error_messages! %>
 	<%= flash[:alert] %>
 </div>
