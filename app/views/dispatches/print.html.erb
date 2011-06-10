@@ -1,0 +1,82 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+    <head> 
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+        <title>发货单<%= @dispatch.no %></title> 
+	</head>
+    <body>
+		发货单
+		<table width="100%" cellspacing="0" cellpadding="0" border="1"> 
+			<tbody> 
+				<tr> 
+				    <td>发货单号</td> 
+				    <td><%= @dispatch.no %></td>
+					<td>销售单号</td>
+					<td><%= @dispatch.order_no %></td>
+				</tr>
+				<tr> 
+				    <td>收货人</td> 
+				    <td><%= @dispatch.order_fullname %></td>
+					<td>联系电话</td>
+					<td><%= @dispatch.order_phone %></td>
+				</tr>
+				<tr> 
+				    <td>送货地址</td> 
+				    <td colspan="3">
+					<%= @dispatch.order_province %>,&nbsp;&nbsp;
+					<%= @dispatch.order_city %>,&nbsp;&nbsp;
+					<%= @dispatch.order_region %>,&nbsp;&nbsp;
+					<%= @dispatch.order_address %>,&nbsp;&nbsp;
+					<%= @dispatch.order_zip %>,&nbsp;&nbsp;
+					</td>
+				</tr>
+				<tr> 
+				    <td>附加说明</td> 
+				    <td colspan="3">
+					<%= @dispatch.order_memo %>
+					</td>
+				</tr>
+		    </tbody>
+		</table>
+		<br />
+		<table width="100%" cellspacing="0" cellpadding="0" border="1"> 
+			<tbody>
+				<tr>
+					<td>商品名称</td>
+					<td>单价</td>
+					<td>数量</td>
+					<td>小计</td>
+				</tr>
+				<% @dispatch.dispatch_items.each do |item| %>
+				<tr>
+					<td><%= item.product_name %></td>
+					<td><%= format "%.2f", item.product_price %></td>
+					<td><%= item.quantity %></td>
+					<td><%= format "%.2f", item.subtotal %></td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+		<br />
+		<table width="100%" cellspacing="0" cellpadding="0" border="1"> 
+			<tbody>
+				<tr>
+					<td>货品总计</td>
+					<td><%= format "%.2f", @dispatch.order_total %></td>
+					<td>运费</td>
+					<td><%= format "%.2f", @dispatch.order_carriage %></td>
+				</tr>
+				<tr>
+					<td>支付方式</td>
+					<td><%= @dispatch.order_pay_type %></td>
+					<td>应付总额</td>
+					<td><%= format "%.2f", @dispatch.order_pay_price %></td>
+				</tr>
+			</tbody>
+		</table>
+		<script type="text/javascript">
+			window.print();
+		</script>
+    </body> 
+</html>

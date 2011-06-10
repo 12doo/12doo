@@ -3,7 +3,7 @@ $(document).ready(function(){
 	$('#password_confirmation').keydown(function(e){ 
 		if(e.keyCode == 13){
 			$('#password_confirmation').change();
-			document.user_new.submit();
+			$('#user_new').submit();
 		} 
 	});
 	
@@ -22,6 +22,23 @@ $(document).ready(function(){
 	});
 	
 	$('#email').focus();
+	
+	var txt = '请用电子邮件地址作为登录帐户名.';
+	
+	$('#email').val(txt);
+	
+	$('#email').blur(function(){
+		if ($('#email').val() == ''){
+			$('#email').val(txt);
+		};
+	});
+	
+	$('#email').focus(function(){
+		if ($('#email').val() == txt){
+			$('#email').val('');
+		}
+	});
+	
 });
 </script>
 
@@ -31,7 +48,7 @@ $(document).ready(function(){
 <table id="reg_table" border="0" cellspacing="0" cellpadding="0">
 	<tr>
 	    <td class="tdtitle"><img src="/images/reg_username.gif" width="108" height="19" /></td>
-	    <td><%= f.text_field :email, :id => :email %>&nbsp 请用电子邮件地址作为登录帐户名</td>
+	    <td><%= f.text_field :email, :id => :email %></td>
   	</tr>
 	<tr>
 	    <td><img src="/images/reg_password.gif" width="75" height="19" /></td>
@@ -56,7 +73,7 @@ $(document).ready(function(){
     	<td>&nbsp;</td>
     	<td>
 			<div id="reg_submit">
-				<a href="javascript:document.user_new.submit();">
+				<a href="javascript:$('#user_new').submit();">
 					<img src="/images/reg_btn.gif" width="197" height="53" />
 				</a>
 				<input name="" type="checkbox" value="" checked="checked" class="iptnormal" />

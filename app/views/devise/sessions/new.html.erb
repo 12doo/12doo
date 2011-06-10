@@ -2,7 +2,7 @@
 $(document).ready(function(){
 	$('#loginPassword').keydown(function(e){ 
 		if(e.keyCode == 13){ 
-			document.new_user.submit();
+			$('#new_user').submit();
 		} 
 	});
 	
@@ -16,7 +16,7 @@ $(document).ready(function(){
 });
 </script>
 <div id="join_now"><img src="/images/login_ljdl.gif" width="379" height="42" /></div>
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name) + (params[:return_url] ? '?return_url=' + params[:return_url] : '?return_url=' + request.fullpath), :html => {:method => :post, :name => :new_user}) do |f| %>
+<%= form_for(resource, :as => resource_name, :url => session_path(resource_name) + (params[:return_url] ? '?return_url=' + params[:return_url] : '?return_url=' + request.fullpath), :html => {:method => :post, :name => :new_user, :id => :new_user}) do |f| %>
 <%= render 'devise/alert' %>
   <table id="reg_table" border="0" cellspacing="0" cellpadding="0">
 	  <tr>
@@ -31,7 +31,7 @@ $(document).ready(function(){
   	  <td> </td>
     	<td>
 			  <div id="reg_submit">
-				  <a href="javascript:document.new_user.submit();">
+				  <a href="javascript:$('#new_user').submit();">
 					  <img src="/images/login_btn.gif" width="197" height="53" />
 				  </a>
 				  <%= f.check_box :remember_me, :class => :iptnormal, :id => :flagLoginSelf %>记住我

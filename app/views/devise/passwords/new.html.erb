@@ -1,17 +1,35 @@
-
-<div class="all_content">
-
-<h2>忘记密码了，通过电子邮件找回密码</h2>
-
-<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
-  <%= devise_error_messages! %>
-
-  <p><%= f.label :email %>
-  <%= f.text_field :email %></p>
-
-  <p><%= f.submit "找回密码" %></p>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#loginName').keydown(function(e){ 
+		if(e.keyCode == 13){ 
+			$('#forgetten_psw').submit();
+		} 
+	});
+	
+	$('#loginName').focus();
+	
+	$('.message').hide();
+});
+</script>
+<div id="join_now"><img src="/images/fogtten_password_title.gif" /></div>
+<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post, :id => :forgetten_psw }) do |f| %>
+<%= render 'devise/alert' %>
+  <table id="reg_table" border="0" cellspacing="0" cellpadding="0">
+	  <tr>
+    	<td class="tdtitle"><img src="/images/reg_username.gif" width="108" height="19" /></td>
+    	<td><label><%= f.text_field :email, :class => :areabox, :size => '30', :id => :loginName %></label><span class="ipterror"></span></td>
+    </tr>
+  	<tr>
+  	  <td> </td>
+    	<td>
+			  <div id="reg_submit">
+				  <a href="javascript:$('#forgetten_psw').submit();">
+					  <img src="/images/fogtten_password_btn.gif" width="197" height="53" />
+				  </a>
+			  </div>
+		  </td>
+  	</tr>
+  </table>
 <% end %>
 
-<%= render :partial => "devise/shared/links" %>
-
-</div>
+<div class="clearit"></div>

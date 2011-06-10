@@ -9,6 +9,15 @@
 		<div class="clearit"></div>
 		<div id="ac_more_detail">
 			<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :validate => true, :html => { :method => :put, :name =>"user_edit" }) do |f| %>
+			<% if resource.errors.any? %>
+			<div class="common_error">
+				<ul>
+			    <% resource.errors.full_messages.each do |msg| %>
+			      <li><%= msg %></li>
+			    <% end %>
+			    </ul>
+			</div>
+			<% end %>
 			<table width="100%" cellspacing="0" cellpadding="0" border="0" class="tableinfoL">
 				<tbody>
 					<tr>
@@ -34,18 +43,6 @@
 					<tr>
 					    <td height="30" class="tcenter">生日</td>
 					    <td><%= f.date_select :birth, :start_year => 2010, :end_year => 1960 %></td>
-					</tr>
-					<tr>
-					    <td height="30" class="tcenter">当前密码</td>
-					    <td><%= f.password_field :current_password %>不希望修改请留空.</td>
-					</tr>
-					<tr>
-					    <td height="30" class="tcenter">新密码</td>
-					    <td><%= f.password_field :password %>不希望修改请留空.</td>
-					</tr>
-					<tr>
-					    <td height="30" class="tcenter">确认密码</td>
-					    <td><%= f.password_field :password_confirmation %>不希望修改请留空.</td>
 					</tr>
 			    </tbody>
 			</table>

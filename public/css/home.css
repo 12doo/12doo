@@ -1015,6 +1015,13 @@ border:1px solid #dcdedc;
 
 
 	}
+.common_error{
+background:#f1f1f1 url(../images/error_ico.gif) 10px 8px no-repeat;
+padding:10px 30px;
+color:#e60012;
+font-weight:bold;
+border:1px solid #dcdedc;
+	}
 #reg_table{
 width:750px;
 margin:0 0 50px 0;
