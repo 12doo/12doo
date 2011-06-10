@@ -13,6 +13,8 @@ $(document).ready(function(){
 	});
 	
 	$('#loginPassword').focus();
+	
+	$('.message').hide();
 });
 </script>
 <div id="join_now"><img src="/images/changePW_title.gif" /></div>
@@ -21,11 +23,11 @@ $(document).ready(function(){
 <%= f.hidden_field :reset_password_token %>
   <table id="reg_table" border="0" cellspacing="0" cellpadding="0">
   	<tr>
-    	<td><img src="/images/reg_password.gif" width="75" height="19" /></td>
+    	<td><img src="/images/reg_password.gif" /></td>
     	<td><label><%= f.password_field :password, :class => :areabox, :size => '30', :id => :loginPassword %></label><span class="ipterror"></span></td>
     </tr>
   	<tr>
-    	<td><img src="/images/reg_password.gif" width="75" height="19" /></td>
+    	<td><img src="/images/reg_password_confirm.gif" /></td>
     	<td><label><%= f.password_field :password_confirmation, :class => :areabox, :size => '30', :id => :loginPasswordConfirm %></label><span class="ipterror"></span></td>
     </tr>
   	<tr>
