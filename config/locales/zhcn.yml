@@ -255,7 +255,7 @@ zhcn:
     messages:
       inclusion: "不在列表中"
       exclusion: "是保留关键字"
-      invalid: "是无效的"
+      invalid: "无效输入"
       confirmation: "与确认值不匹配"
       accepted: "必须是可被接受的"
       empty: "不能留空"
