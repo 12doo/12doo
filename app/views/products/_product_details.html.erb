@@ -13,7 +13,7 @@
         <td><%= @product.get_attribute_value("region") %></td>
       </tr>
       <tr>
-        <td class="colSTa"><%= render :partial => "attribute_value", :collection => @product.product_attributes.find_all_by_short("use_for") %></td>
+        <td class="colSTa"><%= @product.get_attribute_value("use_for") %></td>
         <td><%= @product.get_attribute_value("made_by") %></td>
       </tr>
       <tr>
@@ -22,11 +22,11 @@
       </tr>
       <tr>
         <td class="colSTc">10℃-16℃</td>
-        <td class="colSTa"><%= @product.get_attribute_value("abv") %>（％Vol）</td>
+        <td class="colSTa"><%= @product.get_attribute_value("abv") %> %Vol</td>
       </tr>
       <tr>
         <td class="colSTb">
-          <%= render :partial => "attribute_value", :collection => @product.product_attributes.find_all_by_short("grape") %></td>
+          <%= @product.get_attribute_value("grape") %></td>
         <td><%= @product.get_attribute_value("vol") %></td>
       </tr>
     </table></td>

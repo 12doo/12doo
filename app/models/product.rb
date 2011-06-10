@@ -19,13 +19,16 @@ class Product < ActiveRecord::Base
   
   # TODO: 需要修改成判断多个值的方式
   def get_attribute_value(short)
-    self.product_attributes.each do | attr |
-      if attr.short == short
-        return attr.value
-      end
+    value = ''
+    self.product_attributes.find_all_by_short(short).each_with_index do | attr , index|
+      if index > 0 
+        value = value + '，' + attr.value
+      else
+        value = attr.value
+      end 
     end
     
-    return ''
+    return value
   end
   
 end
