@@ -10,37 +10,38 @@
   </div>
 <% end %>
 
-<table width="100%" cellspacing="0" cellpadding="0" border="0" class="tableinfo" text-align="left">
+<table width="100%" cellspacing="0" cellpadding="0" border="0" class="tableinfoL">
 	<tbody>
 		<tr>
-		    <td height="30" width="70">名称</td>
+		    <td height="30" width="100" class="tcenter">名称</td>
 		    <td><input type="text" name="product_attribute_define[name]" value="<%= @product_attribute_define.name %>" /></td>
 		</tr>
 		<tr>
-		    <td height="30">缩写</td>
+		    <td height="30" class="tcenter">缩写</td>
 		    <td><input type="text" name="product_attribute_define[short]" value="<%= @product_attribute_define.short %>" /></td>
 		</tr>
 		<tr>
-		    <td height="30">简单说明</td>
-		    <td><input type="text" name="product_attribute_define[description]" value="<%= @product_attribute_define.description %>" /></td>
+		    <td height="30" class="tcenter">简单说明</td>
+		    <td><input type="text" name="product_attribute_define[description]" size="50" value="<%= @product_attribute_define.description %>" /></td>
 		</tr>
 		<tr>
-		    <td height="30">多个值</td>
+		    <td height="30" class="tcenter">多个值</td>
 		    <td><input type="text" name="product_attribute_define[multiple]" value="<%= @product_attribute_define.multiple %>" /></td>
 		</tr>
 		<tr>
-		    <td height="30">可以搜索</td>
+		    <td height="30" class="tcenter">可以搜索</td>
 		    <td><input type="text" name="product_attribute_define[search]" value="<%= @product_attribute_define.search %>" /></td>
 		</tr>
 		<tr>
-		    <td height="30">固定值</td>
+		    <td height="30" class="tcenter">固定值</td>
 		    <td><input type="text" name="product_attribute_define[fix]" value="<%= @product_attribute_define.fix %>" /></td>
 		</tr>
 		<tr>
-		    <td height="30">值</td>
+		    <td class="tcenter">值</td>
 		    <td>
-			<input type="text" name="values" value="<%= @product_attribute_define.get_values %>" />
-			多个用逗号隔开.
+				<textarea rows="10" cols="70" name="values"><%= @product_attribute_define.get_values %></textarea>
+				<br />
+				多个用逗号隔开.
 			</td>
 		</tr>
     </tbody>
