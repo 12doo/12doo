@@ -2,7 +2,7 @@
 module ProductsHelper
   
   # 生成查询URL,格式0-0-0-1,2,3-4,5-0
-  def search_path(id, sort)    
+  def search_path(id, sort)
     tags = []
     if params[:tags]
       tags = params[:tags].split('-')
@@ -36,9 +36,7 @@ module ProductsHelper
           end
         end
       end
-
     end
-    
     "/category/#{tags.join('-')}/#{params[:keywords]}"
   end
   
@@ -71,6 +69,18 @@ module ProductsHelper
   
   def search_path_with_sort(sort_by, sort)
     search_path_without_keywords + "#{params[:keywords]}?sort_by=#{sort_by}&sort=#{sort}"
+  end
+  
+  def search_path_by_short_value(short, value)
+    tags_count = ProductAttributeDefine.where(:search => true).count(:id)
+    tags = Array.new(tags_count, "0")
+    
+    item = ProductAttributeDefine.find_by_short(short)
+    value = ProductAttributeValue.where(:short => short, :value => value).first
+    if item && value
+      tags[item.sort] = value.id
+    end
+    "/category/#{tags.join('-')}"
   end
   
   def selected(sort_by,sort)
