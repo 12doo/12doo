@@ -7,8 +7,17 @@ class Product < ActiveRecord::Base
   has_many :product_tags
   cattr_reader :per_page
   paginates_per 20
-  has_attached_file :pic_label, :styles => { :medium => "300x300" }
-  has_attached_file :pic_main, :styles => { :medium => "270x270", :thumb => "224x224" }
+  has_attached_file :pic_label, :styles => { :medium => "300x300>" },
+                    :url  => "/photos/products/:id/:style/:basename.:extension",
+                    :path => ":rails_root/public/photos/products/:id/:style/:basename.:extension"
+                    
+  has_attached_file :pic_main, :styles => { :medium => "270x270>", :thumb => "224x224>" },
+                    :url  => "/photos/products/:id/:style/:basename.:extension",
+                    :path => ":rails_root/public/photos/products/:id/:style/:basename.:extension"
+
+  validates_attachment_presence :pic_main
+  validates_attachment_size :pic_main, :less_than => 2.megabytes
+  validates_attachment_content_type :pic_main, :content_type => ['image/jpeg', 'image/png']
   
   def has_attribute(short,value)
     self.product_attributes.each do | attr |

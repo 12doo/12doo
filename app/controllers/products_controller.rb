@@ -62,27 +62,27 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(params[:product])
     
-    # if params[:product_attribute]
-    #   params[:product_attribute].each do |attri|
-    #     if attri[:value] && attri[:value] != ''
-    #       define = ProductAttributeDefine.find_by_name(attri[:name])
-    #       value = ProductAttributeValue.find(:first,:conditions => {:name => attri[:name],:value => attri[:value]})
-    #       temp = ProductAttribute.new
-    #       temp.short = define.short
-    #       temp.description = define.description
-    #       if value
-    #         temp.product_attribute_value_id = value.id
-    #       end
-    #       
-    #       temp.fix = define.fix
-    #       temp.multiple = define.multiple
-    #       temp.name = attri[:name]
-    #       temp.value = attri[:value]
-    #       temp.product_sku = @product.sku
-    #       temp.save
-    #     end
-    #   end
-    # end
+    if params[:product_attribute]
+      params[:product_attribute].each do |attri|
+        if attri[:value] && attri[:value] != ''
+          define = ProductAttributeDefine.find_by_name(attri[:name])
+          value = ProductAttributeValue.find(:first,:conditions => {:name => attri[:name],:value => attri[:value]})
+          temp = ProductAttribute.new
+          temp.short = define.short
+          temp.description = define.description
+          if value
+            temp.product_attribute_value_id = value.id
+          end
+          
+          temp.fix = define.fix
+          temp.multiple = define.multiple
+          temp.name = attri[:name]
+          temp.value = attri[:value]
+          temp.product_sku = @product.sku
+          temp.save
+        end
+      end
+    end
     
     # @product.pic = ''
     # # save pic
@@ -120,6 +120,8 @@ class ProductsController < ApplicationController
         format.html { redirect_to :action => "index" }
       else
         @statuses = ProductStatus.all
+        @years = (Time.now.year).downto(Time.now.year - 30).map{ |x| x }
+        @attributes = ProductAttributeDefine.all
         format.html { render :action => "new" }
       end
     end
@@ -146,26 +148,26 @@ class ProductsController < ApplicationController
     @product.sold_count = params[:product][:sold_count]
     @product.visiable = params[:product][:visiable]
     
-    if params[:product][:pic]
-      
-      #create path
-      directory = "public/pics"
-      unless File.directory?directory
-        Dir.mkdir(directory)
-      end
-      
-      name = params[:product][:pic].original_filename
-      @product.pic = name
-
-      #create path
-      directory = directory + "/" + @product.sku
-      path = File.join(directory, name)
-      unless File.directory?directory
-        Dir.mkdir(directory)
-      end
-      #save file
-      File.open(path, "wb") { |f| f.write(params[:product][:pic].read) }
-    end
+    # if params[:product][:pic]
+    #   
+    #   #create path
+    #   directory = "public/pics"
+    #   unless File.directory?directory
+    #     Dir.mkdir(directory)
+    #   end
+    #   
+    #   name = params[:product][:pic].original_filename
+    #   @product.pic = name
+    # 
+    #   #create path
+    #   directory = directory + "/" + @product.sku
+    #   path = File.join(directory, name)
+    #   unless File.directory?directory
+    #     Dir.mkdir(directory)
+    #   end
+    #   #save file
+    #   File.open(path, "wb") { |f| f.write(params[:product][:pic].read) }
+    # end
 
     #params[:product_tag].each do |tag|
     #  if tag[:key] != ""
