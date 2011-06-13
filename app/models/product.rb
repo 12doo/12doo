@@ -7,8 +7,8 @@ class Product < ActiveRecord::Base
   has_many :product_tags
   cattr_reader :per_page
   paginates_per 20
-  has_attached_file :pic_label, :styles => { :medium => "300x300>", :thumb => "100x100>" }
-  has_attached_file :pic_main, :styles => { :medium => "300x300>", :thumb => "100x100>" }
+  has_attached_file :pic_label, :styles => { :medium => "300x300" }
+  has_attached_file :pic_main, :styles => { :medium => "270x270", :thumb => "224x224" }
   
   def has_attribute(short,value)
     self.product_attributes.each do | attr |
