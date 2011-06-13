@@ -1,10 +1,24 @@
-<script type="text/javascript" src="/javascripts/wymeditor/jquery.wymeditor.min.js"></script>
+<link rel="stylesheet" href="/javascripts/jwysiwyg/jquery.wysiwyg.css" type="text/css"/>
+<script type="text/javascript" src="/javascripts/jwysiwyg/jquery.wysiwyg.js"></script>
+<script type="text/javascript" src="/javascripts/jwysiwyg/controls/wysiwyg.image.js"></script>
+<script type="text/javascript" src="/javascripts/jwysiwyg/controls/wysiwyg.table.js"></script>
+<script type="text/javascript" src="/javascripts/jwysiwyg/controls/wysiwyg.link.js"></script>
+<script type="text/javascript" src="/javascripts/jwysiwyg/plugins/wysiwyg.fileManager.js"></script>
 
 <script type="text/javascript">
-  $(function() {
-    $('.wymeditor').wymeditor();
-  });
+(function ($) {
+	$(document).ready(function () {
+		$('.wysiwyg').wysiwyg({
+			autoGrow: true,
+			maxHeight: 600,
+			controls: {
+				"html": {visible: true}
+			},
+		});
+	});
+})(jQuery);
 </script>
+
 <div id="error_explanation">
   <ul>
   <% @product.errors.full_messages.each do |msg| %>
@@ -79,7 +93,7 @@
 		<% end %>
 		<tr>
 		    <td height="30" class="tcenter">备注</td>
-		    <td><%= f.text_area :memo, :size => "80x20", :class => "wymeditor" %></td>
+		    <td><%= f.text_area :memo, :size => "80x20", :class => "wysiwyg" %></td>
 		</tr>
 
     </tbody>

@@ -79,41 +79,10 @@ class ProductsController < ApplicationController
           temp.name = attri[:name]
           temp.value = attri[:value]
           temp.product_sku = @product.sku
-          temp.save
+          @product.product_attributes << temp
         end
       end
     end
-    
-    # @product.pic = ''
-    # # save pic
-    # if params[:product][:pic]
-    #   
-    #   #create path
-    #   directory = "public/pics"
-    #   unless File.directory?directory
-    #     Dir.mkdir(directory)
-    #   end
-    #   
-    #   name = params[:product][:pic].original_filename
-    #   @product.pic = name
-    # 
-    #   #create path
-    #   directory = directory + "/" + @product.sku
-    #   path = File.join(directory, name)
-    #   unless File.directory?directory
-    #     Dir.mkdir(directory)
-    #   end
-    #   #save file
-    #   File.open(path, "wb") { |f| f.write(params[:product][:pic].read) }
-    # end
-    
-    #params[:product_tag].each do |tag|
-    #  temp = ProductTag.new
-    #  temp.key = tag[:key]
-    #  temp.value = tag[:value]
-    #  temp.product_sku = @product.sku
-    #  temp.save
-    #end
     
     respond_to do |format|
       if @product.save
