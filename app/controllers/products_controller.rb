@@ -62,50 +62,50 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(params[:product])
     
-    if params[:product_attribute]
-      params[:product_attribute].each do |attri|
-        if attri[:value] && attri[:value] != ''
-          define = ProductAttributeDefine.find_by_name(attri[:name])
-          value = ProductAttributeValue.find(:first,:conditions => {:name => attri[:name],:value => attri[:value]})
-          temp = ProductAttribute.new
-          temp.short = define.short
-          temp.description = define.description
-          if value
-            temp.product_attribute_value_id = value.id
-          end
-          
-          temp.fix = define.fix
-          temp.multiple = define.multiple
-          temp.name = attri[:name]
-          temp.value = attri[:value]
-          temp.product_sku = @product.sku
-          temp.save
-        end
-      end
-    end
+    # if params[:product_attribute]
+    #   params[:product_attribute].each do |attri|
+    #     if attri[:value] && attri[:value] != ''
+    #       define = ProductAttributeDefine.find_by_name(attri[:name])
+    #       value = ProductAttributeValue.find(:first,:conditions => {:name => attri[:name],:value => attri[:value]})
+    #       temp = ProductAttribute.new
+    #       temp.short = define.short
+    #       temp.description = define.description
+    #       if value
+    #         temp.product_attribute_value_id = value.id
+    #       end
+    #       
+    #       temp.fix = define.fix
+    #       temp.multiple = define.multiple
+    #       temp.name = attri[:name]
+    #       temp.value = attri[:value]
+    #       temp.product_sku = @product.sku
+    #       temp.save
+    #     end
+    #   end
+    # end
     
-    @product.pic = ''
-    # save pic
-    if params[:product][:pic]
-      
-      #create path
-      directory = "public/pics"
-      unless File.directory?directory
-        Dir.mkdir(directory)
-      end
-      
-      name = params[:product][:pic].original_filename
-      @product.pic = name
-
-      #create path
-      directory = directory + "/" + @product.sku
-      path = File.join(directory, name)
-      unless File.directory?directory
-        Dir.mkdir(directory)
-      end
-      #save file
-      File.open(path, "wb") { |f| f.write(params[:product][:pic].read) }
-    end
+    # @product.pic = ''
+    # # save pic
+    # if params[:product][:pic]
+    #   
+    #   #create path
+    #   directory = "public/pics"
+    #   unless File.directory?directory
+    #     Dir.mkdir(directory)
+    #   end
+    #   
+    #   name = params[:product][:pic].original_filename
+    #   @product.pic = name
+    # 
+    #   #create path
+    #   directory = directory + "/" + @product.sku
+    #   path = File.join(directory, name)
+    #   unless File.directory?directory
+    #     Dir.mkdir(directory)
+    #   end
+    #   #save file
+    #   File.open(path, "wb") { |f| f.write(params[:product][:pic].read) }
+    # end
     
     #params[:product_tag].each do |tag|
     #  temp = ProductTag.new
@@ -114,10 +114,12 @@ class ProductsController < ApplicationController
     #  temp.product_sku = @product.sku
     #  temp.save
     #end
+    
     respond_to do |format|
       if @product.save
-        format.html { redirect_to :action => "products", :controller => "admin" }
+        format.html { redirect_to :action => "index" }
       else
+        @statuses = ProductStatus.all
         format.html { render :action => "new" }
       end
     end

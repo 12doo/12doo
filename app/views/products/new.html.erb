@@ -8,19 +8,7 @@
 		</ul>
 		<div class="clearit"></div>
 		<div id="ac_more_detail">
-			<%= form_tag 'create', :multipart => true, :id => :product_new do %>
-			<%= render 'form' %>
-			<div class="bj-sp10"></div>
-			<table width="98%" cellspacing="0" cellpadding="0" border="0" align="center">
-            	<tbody>
-					<tr>
-				    	<td width="100%" valign="middle" align="middle">
-				        	<a href="javascript:$('#product_new').submit();"><img align="absmiddle" alt="" src="/images/confirm_btn.gif" /></a>
-				        </td>
-				    </tr>
-				</tbody>
-			</table>
-			<% end %>
+			<%= render 'new_form' %>
 		</div>
 	</div>
 </div>

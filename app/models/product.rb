@@ -1,12 +1,14 @@
 # -*- encoding : utf-8 -*-
 class Product < ActiveRecord::Base
-  validates_presence_of :name, :memo,  :price, :status, :indication_price,  :sku, :count, :sold_count, :cn_name, :pic
+  validates_presence_of :name, :memo,  :price, :status, :indication_price,  :sku, :count, :sold_count, :cn_name
   validates_numericality_of :price, :indication_price,:count, :sold_count
   validates_uniqueness_of :sku
   has_many :product_attributes
   has_many :product_tags
   cattr_reader :per_page
   paginates_per 20
+  has_attached_file :pic_label, :styles => { :medium => "300x300>", :thumb => "100x100>" }
+  has_attached_file :pic_main, :styles => { :medium => "300x300>", :thumb => "100x100>" }
   
   def has_attribute(short,value)
     self.product_attributes.each do | attr |

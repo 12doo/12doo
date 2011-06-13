@@ -27,6 +27,9 @@ gem 'kaminari'
 gem 'jquery-rails'  
 gem 'client_side_validations'
 
+gem 'paperclip', :git => 'git://github.com/thoughtbot/paperclip.git'
+gem 'rmagick'
+
 # Rails CKeditor for HTML editor with file and image upload feature
 # gem 'ckeditor'
 
