@@ -4,7 +4,7 @@ class PicturesController < ApplicationController
   # 身份验证  
   before_filter :authorize_admin!
   
-  layout ""
+  layout false
   
   def index
     @pictures = Picture.order("id desc").page(params[:page])
