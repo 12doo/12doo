@@ -1,3 +1,8 @@
+<script type="text/javascript">
+	function openWindow(url){
+		window.open(url, 'newwindow', 'height=400, width=400, top=0, left=0, toolbar=no, menubar=no, scrollbars=no, resizable=no,location=n o, status=no');
+	}
+</script>
 <%= render 'admin/header' %>
 <div id="my_acinfo">
 <%= render 'admin/userside' %>
@@ -5,7 +10,7 @@
 		<ul id="pd_infomenu">
 			<li><%= link_to "所有产品", products_path %></li>
 			<li><%= link_to "添加产品", :action => :new, :controller => :products %></li>
-			<li><%= link_to "内容图片", :action => :index, :controller => :pictures, :target => :_blank %></li>
+			<li><a href="javascript:openWindow('<%= pictures_path %>');">内容图片</a></li>
 			<li class="on">编辑产品</li>
 		</ul>
 		<div class="clearit"></div>
