@@ -5,11 +5,12 @@
 		<ul id="pd_infomenu">
 			<li><%= link_to "所有产品", products_path %></li>
 			<li><%= link_to "添加产品", :action => :new, :controller => :products %></li>
+			<li><%= link_to "内容图片", :action => :index, :controller => :pictures, :target => :_blank %></li>
 			<li class="on">编辑产品</li>
 		</ul>
 		<div class="clearit"></div>
 		<div id="ac_more_detail">
-			<%= render 'new_form' %>
+			<%= render 'form' %>
 		</div>
 	</div>
 </div>

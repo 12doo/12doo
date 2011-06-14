@@ -1,0 +1,4 @@
+<% @pictures.each do |picture| %>
+<%= link_to (image_tag picture.pic_main.url(:thumb), :width => "224", :height => "224"), picture_path(picture) %>
+<% end %>
+<%= paginate @picture %>

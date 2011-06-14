@@ -6,7 +6,7 @@ V3::Application.routes.draw do
   get "git/."
 
   resources :coupons, :deliveries, :addresses, :order_items, :order_changes, :pictures, :alipay_logs, :dispatches, :dispatch_items,
-            :product_tags, :product_statuses, :product_attributes, :product_attribute_defines
+            :product_tags, :product_statuses, :product_attributes, :product_attribute_defines, :orders, :products
             
   devise_for :users, :controllers => { :registrations => "registrations" }
   get "my/info", :to => "my#index"
@@ -20,12 +20,7 @@ V3::Application.routes.draw do
 
   get "orders/get_coupon"
   get "orders/check_out"
-
-  resources :orders
-  
   get "products/bought"
-  
-  resources :products
 
   get "store/index"
   
