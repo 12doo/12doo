@@ -2,34 +2,35 @@
 <!-- 主要产品属性 -->
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
-    <td width="255"><img src="/images/pd_detail_img.gif" width="255" height="350" /></td>
-    <td id="pd_attribute"><table width="100%" border="0" cellspacing="0" cellpadding="0">
-      <tr>
-        <td width="262"><%= @product.get_attribute_value("type") %></td>
-        <td><%= @product.get_attribute_value("country") %></td>
-      </tr>
-      <tr>
-        <td class="colSTa"><%= @product.get_attribute_value("vintage") %></td>
-        <td><%= @product.get_attribute_value("region") %></td>
-      </tr>
-      <tr>
-        <td class="colSTa"><%= @product.get_attribute_value("use_for") %></td>
-        <td><%= @product.get_attribute_value("made_by") %></td>
-      </tr>
-      <tr>
-        <td>清亮玫瑰红</td>
-        <td><%= @product.get_attribute_value("level") %></td>
-      </tr>
-      <tr>
-        <td class="colSTc">10℃-16℃</td>
-        <td class="colSTa"><%= @product.get_attribute_value("abv") %> %Vol</td>
-      </tr>
-      <tr>
-        <td class="colSTb">
-          <%= @product.get_attribute_value("grape") %></td>
-        <td><%= @product.get_attribute_value("vol") %></td>
-      </tr>
-    </table></td>
+    <td width="255"><%= image_tag @product.pic_label.url(:medium), :width => "255", :height => "350", :title => @product.name, :alt => @product.cn_name %></td>
+    <td>
+		<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	      <tr>
+	        <td width="262">种类:<%= @product.get_attribute_value("type") %></td>
+			<td>葡萄品种:<%= @product.get_attribute_value("grape") %></td>
+	      </tr>
+	      <tr>
+			<td>国家:<%= @product.get_attribute_value("country") %></td>
+	        <td>产区:<%= @product.get_attribute_value("region") %></td>
+	      </tr>
+	      <tr>
+			<td>葡萄年份:<%= @product.get_attribute_value("vintage") %></td>
+	        <td>灌装年份:<%= @product.get_attribute_value("pd") %></td>
+	      </tr>
+			<tr>
+				<td>生产厂商:<%= @product.get_attribute_value("made_by") %></td>
+				<td>级别:<%= @product.get_attribute_value("level") %></td>
+			</tr>
+	      <tr>
+			<td>葡萄成分:<%= @product.get_attribute_value("grape_content") %></td>
+	        <td>适用于:<%= @product.get_attribute_value("use_for") %></td>
+	      </tr>
+	      <tr>
+	        <td>酒精度:<%= @product.get_attribute_value("abv") %></td>
+			<td>规格:<%= @product.get_attribute_value("vol") %></td>
+	      </tr>
+	    </table>
+	</td>
   </tr>
 </table>
 <br />

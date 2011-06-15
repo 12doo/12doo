@@ -1,12 +1,28 @@
 # -*- encoding : utf-8 -*-
 class Product < ActiveRecord::Base
-  validates_presence_of :name, :memo,  :price, :status, :indication_price,  :sku, :count, :sold_count, :cn_name, :pic
+  before_create :randomize_file_name
+  validates_presence_of :name, :memo,  :price, :status, :indication_price,  :sku, :count, :sold_count, :cn_name
   validates_numericality_of :price, :indication_price,:count, :sold_count
   validates_uniqueness_of :sku
   has_many :product_attributes
   has_many :product_tags
   cattr_reader :per_page
   paginates_per 20
+  has_attached_file :pic_label, :styles => { :medium => "225x350>" },
+                    :url  => "/photos/products/:id/label/:style/:basename.:extension",
+                    :path => ":rails_root/public/photos/products/:id/label/:style/:basename.:extension"
+                    
+  has_attached_file :pic_main, :styles => { :medium => "270x270>", :thumb => "224x224>" },
+                    :url  => "/photos/products/:id/:style/:basename.:extension",
+                    :path => ":rails_root/public/photos/products/:id/:style/:basename.:extension"
+
+  validates_attachment_presence :pic_main
+  validates_attachment_size :pic_main, :less_than => 2.megabytes
+  validates_attachment_content_type :pic_main, :content_type => ['image/jpeg', 'image/png']
+  
+  validates_attachment_presence :pic_label
+  validates_attachment_size :pic_label, :less_than => 2.megabytes
+  validates_attachment_content_type :pic_label, :content_type => ['image/jpeg', 'image/png']
   
   def has_attribute(short,value)
     self.product_attributes.each do | attr |
@@ -29,6 +45,19 @@ class Product < ActiveRecord::Base
     end
     
     return value
+  end
+  
+  private  
+  def randomize_file_name  
+    #archives 就是你在 has_attached_file :archives 使用的名字  
+    extension = File.extname(pic_main.original_filename).downcase  
+    #你可以改成你想要的文件名，把下面这个方法的第二个参数随便改了就可以了。  
+    self.pic_main.instance_write(:file_name, "#{Time.now.strftime("%Y%m%d%H%M%S")}#{rand(1000)}#{extension}")  
+    
+    extension = File.extname(pic_label.original_filename).downcase  
+    #你可以改成你想要的文件名，把下面这个方法的第二个参数随便改了就可以了。  
+    self.pic_label.instance_write(:file_name, "#{Time.now.strftime("%Y%m%d%H%M%S")}#{rand(1000)}#{extension}")  
+  
   end
   
 end

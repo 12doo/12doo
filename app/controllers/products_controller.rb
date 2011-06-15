@@ -20,7 +20,7 @@ class ProductsController < ApplicationController
     end
     
     if (params[:tags] == nil) && (params[:keywords] == nil)
-      @products = Product.where(:visiable => true).order('id desc').page(params[:page]).per(9)#.paginate(:page => params[:page], :order => sort_by + ' ' + sort , :conditions => "visiable = true")
+      @products = Product.where(:visiable => true).order('id desc').page(params[:page]).per(9)
     else
       sku = []
       
@@ -40,7 +40,6 @@ class ProductsController < ApplicationController
         skus << item.product_sku
       end
       
-      #@products = Product.where(:sku => skus, :visiable => true).order('id desc').page(params[:page])
       @products = Product.where("(sku in (:skus) or cn_name like :cn_name or name like :name) and visiable = :visiable", :skus => skus, :cn_name => "%#{params[:keywords]}%", :name => "%#{params[:keywords]}%", :visiable => true).order('id desc').page(params[:page]).per(9)
     end
   end
@@ -79,45 +78,18 @@ class ProductsController < ApplicationController
           temp.name = attri[:name]
           temp.value = attri[:value]
           temp.product_sku = @product.sku
-          temp.save
+          @product.product_attributes << temp
         end
       end
     end
     
-    @product.pic = ''
-    # save pic
-    if params[:product][:pic]
-      
-      #create path
-      directory = "public/pics"
-      unless File.directory?directory
-        Dir.mkdir(directory)
-      end
-      
-      name = params[:product][:pic].original_filename
-      @product.pic = name
-
-      #create path
-      directory = directory + "/" + @product.sku
-      path = File.join(directory, name)
-      unless File.directory?directory
-        Dir.mkdir(directory)
-      end
-      #save file
-      File.open(path, "wb") { |f| f.write(params[:product][:pic].read) }
-    end
-    
-    #params[:product_tag].each do |tag|
-    #  temp = ProductTag.new
-    #  temp.key = tag[:key]
-    #  temp.value = tag[:value]
-    #  temp.product_sku = @product.sku
-    #  temp.save
-    #end
     respond_to do |format|
       if @product.save
-        format.html { redirect_to :action => "products", :controller => "admin" }
+        format.html { redirect_to :action => "index" }
       else
+        @statuses = ProductStatus.all
+        @years = (Time.now.year).downto(Time.now.year - 30).map{ |x| x }
+        @attributes = ProductAttributeDefine.all
         format.html { render :action => "new" }
       end
     end
@@ -144,26 +116,26 @@ class ProductsController < ApplicationController
     @product.sold_count = params[:product][:sold_count]
     @product.visiable = params[:product][:visiable]
     
-    if params[:product][:pic]
-      
-      #create path
-      directory = "public/pics"
-      unless File.directory?directory
-        Dir.mkdir(directory)
-      end
-      
-      name = params[:product][:pic].original_filename
-      @product.pic = name
-
-      #create path
-      directory = directory + "/" + @product.sku
-      path = File.join(directory, name)
-      unless File.directory?directory
-        Dir.mkdir(directory)
-      end
-      #save file
-      File.open(path, "wb") { |f| f.write(params[:product][:pic].read) }
-    end
+    # if params[:product][:pic]
+    #   
+    #   #create path
+    #   directory = "public/pics"
+    #   unless File.directory?directory
+    #     Dir.mkdir(directory)
+    #   end
+    #   
+    #   name = params[:product][:pic].original_filename
+    #   @product.pic = name
+    # 
+    #   #create path
+    #   directory = directory + "/" + @product.sku
+    #   path = File.join(directory, name)
+    #   unless File.directory?directory
+    #     Dir.mkdir(directory)
+    #   end
+    #   #save file
+    #   File.open(path, "wb") { |f| f.write(params[:product][:pic].read) }
+    # end
 
     #params[:product_tag].each do |tag|
     #  if tag[:key] != ""

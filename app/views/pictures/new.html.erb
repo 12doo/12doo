@@ -1,0 +1,4 @@
+<% form_for @picture, :html => {:multipart => true, :id => :picture_form } do |f|  %>
+	<%= f.file_field  :item %>
+	<%= f.submit '添加' %>
+<% end %>

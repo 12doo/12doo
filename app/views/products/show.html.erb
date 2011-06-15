@@ -15,7 +15,7 @@
 -->
 <div class="clearit"></div>
 <div id="pd_baseinfo">
-	<div class="pd_img"><img src="/pics/<%= @product.sku %>/<%= @product.pic %>" width="270" height="270" /></div>
+	<div class="pd_img"><%= image_tag @product.pic_main.url(:thumb), :width => "270", :height => "270", :title => @product.name, :alt => @product.cn_name %></div>
 	<div class="basedetail">
 		<div class="r2">
 			<table width="500" cellspacing="0" cellpadding="0" border="0">

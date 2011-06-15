@@ -1,7 +1,7 @@
 <dl>
 
   <dd class="grImg">
-    <%= link_to image_tag('/pics/' + product.sku + '/' + product.pic, :alt => product.cn_name, :title => product.name, :height => '224', :width => '224'), product_path(product) %>
+    <%= link_to (image_tag product.pic_main.url(:thumb), :width => "224", :height => "224", :title => product.name, :alt => product.cn_name), product_path(product) %>
   </dd>
   <dt class="wine_word">
     <%= link_to product.cn_name, product_path(product), {:class => 'f-black-14-YaHei'} %>

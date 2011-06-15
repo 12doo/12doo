@@ -1,0 +1,15 @@
+<script type="text/javascript">
+function selectFile(url){
+	alert(window.opener.insertPic);
+	window.opener.insertPic(url);
+}
+</script>
+<%= link_to "添加图片", new_picture_path %>
+<% @pictures.each do |picture| %>
+
+<a href="javascript:selectFile('<%= picture.item.url(:original) %>');">
+	<%= image_tag picture.item.url(:thumb), :width => "224", :height => "224" %>
+</a>
+
+<% end %>
+<%= paginate @pictures %>

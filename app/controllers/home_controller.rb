@@ -1,26 +1,36 @@
 # -*- encoding : utf-8 -*-
 class HomeController < ApplicationController
-  def index  
+
+  
+  def index
+    sku = ProductAttribute.select("distinct(product_sku)").where("value like :keywords", :keywords => "%干红%")
+
+    skus = []
+    sku.each do |item|
+      skus << item.product_sku
+    end
     
-    @promo1=Product.find(14)
-    @promo2=Product.find(11)
-    @promo3=Product.find(3)
-    @promo4=Product.find(1)
+    @red = Product.where("(sku in (:skus) ) and visiable = :visiable", :skus => skus, :visiable => true).order('id desc').page(1).per(4)
     
-    @red1=Product.find(2)
-    @red2=Product.find(7)
-    @red3=Product.find(4)
-    @red4=Product.find(5)
+    sku = ProductAttribute.select("distinct(product_sku)").where("value like :keywords", :keywords => "%干白%")
+
+    skus = []
+    sku.each do |item|
+      skus << item.product_sku
+    end
     
-    @white1=Product.find(1)
-    @white2=Product.find(3)
-    @white3=Product.find(3)
-    @white4=Product.find(1)
+    @white = Product.where("(sku in (:skus) ) and visiable = :visiable", :skus => skus, :visiable => true).order('id desc').page(1).per(4)
     
-    @other1=Product.find(11)
-    @other2=Product.find(14)
-    @other3=Product.find(7)
-    @other4=Product.find(5)
-   
+    sku = ProductAttribute.select("distinct(product_sku)").where("value like :keywords", :keywords => "%促销%")
+
+    skus = []
+    sku.each do |item|
+      skus << item.product_sku
+    end
+    
+    @promo = Product.where("(sku in (:skus) ) and visiable = :visiable", :skus => skus, :visiable => true).order('id desc').page(1).per(4)
+
+    @other = Product.where("visiable = :visiable", :visiable => true).order('id desc').page(1).per(4)   
+
   end
 end

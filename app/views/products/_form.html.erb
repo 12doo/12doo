@@ -1,106 +1,82 @@
-<script type="text/javascript" src="/javascripts/tiny_mce/tiny_mce.js"></script>
+<link rel="stylesheet" href="/javascripts/jwysiwyg/jquery.wysiwyg.css" type="text/css"/>
+<script type="text/javascript" src="/javascripts/jwysiwyg/jquery.wysiwyg.js"></script>
+<script type="text/javascript" src="/javascripts/jwysiwyg/controls/wysiwyg.image.js"></script>
+<script type="text/javascript" src="/javascripts/jwysiwyg/controls/wysiwyg.table.js"></script>
+<script type="text/javascript" src="/javascripts/jwysiwyg/controls/wysiwyg.link.js"></script>
+<script type="text/javascript" src="/javascripts/jwysiwyg/plugins/wysiwyg.fileManager.js"></script>
 
 <script type="text/javascript">
+(function ($) {
+	$(document).ready(function () {
+		$('.wysiwyg').wysiwyg({
+			autoGrow: true,
+			maxHeight: 600,
+			controls: {
+				"html": {visible: true}
+			},
+		});
+	});
+})(jQuery);
 
-tinyMCE.init({
-// General options
-mode : "textareas",
-language : "zh-cn",
-theme : "advanced",
-width : "300",
-height : "500",
-plugins : "",
-//plugins : "safari,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
-// Theme options
-theme_advanced_buttons1 : "newdocument,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
-
-
-theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code",
-//theme_advanced_buttons2 : ""
-//theme_advanced_buttons3 : "",
-//theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,print,|,ltr,rtl,|,fullscreen",
-//theme_advanced_buttons4 : "",
-//theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,|,cite,abbr,acronym,del,ins,attribs,|,visualchars,nonbreaking,template,blockquote,pagebreak,|,insertfile,insertimage,|,insertdate,inserttime,preview,|,forecolor,backcolor",
-theme_advanced_toolbar_location : "top",
-theme_advanced_toolbar_align : "left",
-theme_advanced_statusbar_location : "bottom",
-theme_advanced_resizing : false,
-// Example content CSS (should be your site CSS)
-// content_css : "css/example.css",
-// Drop lists for link/image/media/template dialogs
-template_external_list_url : "js/template_list.js",
-external_link_list_url : "js/link_list.js",
-external_image_list_url : "js/image_list.js",
-media_external_list_url : "js/media_list.js",
-// Replace values for the template plugin
-template_replace_values : {
-username : "<%= current_user.email %>",
-staffid : "991234"
+function insertPic(url){
+	$('.wysiwyg').wysiwyg('insertImage', url);
 }
-});
-
 </script>
-<div id="error_explanation">
-  <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product_attribute_define from being saved:</h2>
 
+<div id="error_explanation">
   <ul>
   <% @product.errors.full_messages.each do |msg| %>
     <li><%= msg %></li>
   <% end %>
   </ul>
 </div>
-<table width="100%" cellspacing="0" cellpadding="0" border="0" class="tableinfo" text-align="left">
+<% form_for @product, :html => {:multipart => true, :id => :product_form } do |f|  %>
+<table width="100%" cellspacing="0" cellpadding="0" border="0" class="tableinfoL" align="center">
 	<tbody>
 		<tr>
-		    <td height="30" width="70">图片</td>
-		    <td>
-				<input type="file" name="product[pic]" />
-			<% if @product.pic %>
-				<a href="/pics/<%= @product.sku %>/<%= @product.pic %>" target="_blank">查看</a>
-			<% end %>
-			</td>
+			<td height="30" width="70" class="tcenter">图片</td>
+			<td><%= f.file_field  :pic_main %></td>
 		</tr>
 		<tr>
-		    <td height="30">SKU</td>
-		    <td><input type="text" name="product[sku]" value="<%= @product.sku %>" /></td>
+			<td height="30" class="tcenter">酒标</td>
+			<td><%= f.file_field  :pic_label %></td>
 		</tr>
 		<tr>
-		    <td height="30">产品名称</td>
-		    <td><input type="text" name="product[name]" value="<%= @product.name %>" /></td>
+		    <td height="30" class="tcenter">SKU</td>
+		    <td><%= f.text_field :sku %></td>
 		</tr>
 		<tr>
-		    <td height="30">中文名称</td>
-		    <td><input type="text" name="product[cn_name]" value="<%= @product.cn_name %>" /></td>
+		    <td height="30" class="tcenter">产品名称</td>
+		    <td><%= f.text_field :name %></td>
 		</tr>
 		<tr>
-		    <td height="30">价格</td>
-		    <td><input type="text" name="product[price]" value="<%= @product.price %>" /></td>
+		    <td height="30" class="tcenter">中文名称</td>
+		    <td><%= f.text_field :cn_name %></td>
 		</tr>
 		<tr>
-		    <td height="30">市场价</td>
-		    <td><input type="text" name="product[indication_price]" value="<%= @product.indication_price %>" /></td>
+		    <td height="30" class="tcenter">价格</td>
+		    <td><%= f.text_field :price %></td>
 		</tr>
 		<tr>
-		    <td height="30">备注</td>
-		    <td><textarea name="product[memo]"><%= @product.memo %></textarea></td>
+		    <td height="30" class="tcenter">市场价</td>
+		    <td><%= f.text_field :indication_price %></td>
 		</tr>
 		<tr>
 		    <td height="30">状态</td>
-		    <td><%= select :product, :status, @statuses.map {|s| [ s.name, s.name ] } %></td>
+		    <td><%= f.select :status, @statuses.map {|s| [ s.name, s.name ] } %></td>
 		</tr>
 		<tr>
-		    <td height="30">库存</td>
-		    <td><input type="text" name="product[count]" value="<%= @product.count %>" /></td>
+		    <td height="30" class="tcenter">库存</td>
+		    <td><%= f.text_field :count %></td>
 		</tr>
 		<tr>
-		    <td height="30">已售</td>
-		    <td><input type="text" name="product[sold_count]" value="<%= @product.sold_count %>" /></td>
+		    <td height="30" class="tcenter">已售</td>
+		    <td><%= f.text_field :sold_count %></td>
 		</tr>
 		<tr>
-		    <td height="30">是否显示</td>
-		    <td><input type="checkbox" <%= @product.visiable ? "checked" : "" %> value="true" name="product[visiable]" /></td>
+		    <td height="30" class="tcenter">是否显示</td>
+		    <td><%= f.check_box :visiable %></td>
 		</tr>
-
 		<% @attributes.each do |attribute| %>
 		<tr>
 			<td height="30"><%= attribute.name %></td>
@@ -119,5 +95,21 @@ staffid : "991234"
 			</td>
 		</tr>
 		<% end %>
+		<tr>
+		    <td height="30" class="tcenter">备注</td>
+		    <td><%= f.text_area :memo, :size => "80x20", :class => "wysiwyg" %></td>
+		</tr>
+
     </tbody>
 </table>
+<div class="bj-sp10"></div>
+<table width="98%" cellspacing="0" cellpadding="0" border="0" align="center">
+	<tbody>
+		<tr>
+	    	<td width="100%" valign="middle" align="middle">
+	        	<a href="javascript:$('#product_form').submit();"><img align="absmiddle" alt="" src="/images/confirm_btn.gif" /></a>
+	        </td>
+	    </tr>
+	</tbody>
+</table>
+<% end %>

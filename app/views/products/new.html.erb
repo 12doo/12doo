@@ -1,26 +1,21 @@
+<script type="text/javascript">
+	function openWindow(url){
+		window.open(url, 'newwindow', 'height=400, width=400, top=0, left=0, toolbar=no, menubar=no, scrollbars=no, resizable=no,location=n o, status=no');
+	}
+</script>
+
 <%= render 'admin/header' %>
 <div id="my_acinfo">
 <%= render 'admin/userside' %>
 	<div id="ac_right">
 		<ul id="pd_infomenu">
 			<li><%= link_to "所有产品", products_path %></li>
+			<li><a href="javascript:openWindow('<%= pictures_path %>');">内容图片</a></li>
 			<li class="on">添加产品</li>
 		</ul>
 		<div class="clearit"></div>
 		<div id="ac_more_detail">
-			<%= form_tag 'create', :multipart => true, :id => :product_new do %>
 			<%= render 'form' %>
-			<div class="bj-sp10"></div>
-			<table width="98%" cellspacing="0" cellpadding="0" border="0" align="center">
-            	<tbody>
-					<tr>
-				    	<td width="100%" valign="middle" align="middle">
-				        	<a href="javascript:$('#product_new').submit();"><img align="absmiddle" alt="" src="/images/confirm_btn.gif" /></a>
-				        </td>
-				    </tr>
-				</tbody>
-			</table>
-			<% end %>
 		</div>
 	</div>
 </div>
