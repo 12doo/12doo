@@ -77,6 +77,10 @@ function insertPic(url){
 		    <td height="30" class="tcenter">是否显示</td>
 		    <td><%= f.check_box :visiable %></td>
 		</tr>
+		<tr>
+		    <td height="30" class="tcenter">促销</td>
+		    <td><%= f.check_box :promo %></td>
+		</tr>
 		<% @attributes.each do |attribute| %>
 		<tr>
 			<td height="30"><%= attribute.name %></td>
