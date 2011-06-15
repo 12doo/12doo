@@ -2,10 +2,14 @@
 class ProductsController < ApplicationController
 
   # 身份验证  
-  before_filter :authorize_admin!, :except => [:query_result, :show]
+  before_filter :authorize_admin!, :except => [:query_result, :show, :promotion]
   
   def index
     @products = Product.order("id desc").page(params[:page])
+  end
+  
+  def promotion
+    @products = Product.where("promo = :promo and visiable = :visiable", :promo => true, :visiable => true).order('id desc').page(params[:page]).per(9)
   end
   
   def query_result
