@@ -20,7 +20,7 @@ class ProductsController < ApplicationController
     end
     
     if (params[:tags] == nil) && (params[:keywords] == nil)
-      @products = Product.where(:visiable => true).order('id desc').page(params[:page]).per(9)#.paginate(:page => params[:page], :order => sort_by + ' ' + sort , :conditions => "visiable = true")
+      @products = Product.where(:visiable => true).order('id desc').page(params[:page]).per(9)
     else
       sku = []
       
@@ -40,7 +40,6 @@ class ProductsController < ApplicationController
         skus << item.product_sku
       end
       
-      #@products = Product.where(:sku => skus, :visiable => true).order('id desc').page(params[:page])
       @products = Product.where("(sku in (:skus) or cn_name like :cn_name or name like :name) and visiable = :visiable", :skus => skus, :cn_name => "%#{params[:keywords]}%", :name => "%#{params[:keywords]}%", :visiable => true).order('id desc').page(params[:page]).per(9)
     end
   end

@@ -9,18 +9,11 @@
 </div>
 <div class="goodsResult">
   <ul class="pagePicView">
-    <li class="one">
-      <%= render :partial => "product", :object => @promo1 %>
-    </li>
-    <li>
-      <%= render :partial => "product", :object => @promo2 %>
-  	</li>
-    <li>
-      <%= render :partial => "product", :object => @promo3 %>
-  	</li>
-    <li>
-      <%= render :partial => "product", :object => @promo4 %>
-  	</li>
+	<% @promo.each_with_index do |item,index| %>
+    <li<%= index == 0 ? ' class="one"' : '' %>>
+      <%= render :partial => "product", :object => item %>
+ 	</li>
+	<% end %>
  	</ul>
 
 </div>
@@ -38,18 +31,11 @@
 <div class="goodsResult">
   <ul class="pagePicView">
   
-    <li class="one">
-      <%= render :partial => "product", :object => @red1 %>
- 	  </li>
-    <li>
-      <%= render :partial => "product", :object => @red2 %>
-  	</li>
-    <li>
-      <%= render :partial => "product", :object => @red3 %>
-  	</li>
-    <li>
-      <%= render :partial => "product", :object => @red4 %>
-  	</li>
+	<% @red.each_with_index do |item,index| %>
+    <li<%= index == 0 ? ' class="one"' : '' %>>
+      <%= render :partial => "product", :object => item %>
+ 	</li>
+	<% end %>
                   
  	</ul>
 
@@ -65,19 +51,12 @@
 </div>      
 <div class="goodsResult">
   <ul class="pagePicView">
-    <li class="one">
-      <%= render :partial => "product", :object => @white1 %>
- 	  </li>
-    <li>
-      <%= render :partial => "product", :object => @white2 %>
-  	</li>
-    <li>
-      <%= render :partial => "product", :object => @white3 %>
-  	</li>
-    <li>
-      <%= render :partial => "product", :object => @white4 %>
-  	</li>
- 	</ul>
+	<% @white.each_with_index do |item,index| %>
+    <li<%= index == 0 ? ' class="one"' : '' %>>
+      <%= render :partial => "product", :object => item %>
+ 	</li>
+	<% end %>
+ </ul>
 
 </div>
 <div class="clearit"></div>
@@ -92,19 +71,11 @@
 
 <div class="goodsResult">
   <ul class="pagePicView">
-    <li class="one">
-      <%= render :partial => "product", :object => @other1 %>
-    </li>
-    <li>
-      <%= render :partial => "product", :object => @other2 %>
-    </li>
-    <li>
-      <%= render :partial => "product", :object => @other3 %>
-    </li>
-    <li>
-      <%= render :partial => "product", :object => @other4 %>
-    </li>
-      
+	<% @other.each_with_index do |item,index| %>
+    <li<%= index == 0 ? ' class="one"' : '' %>>
+      <%= render :partial => "product", :object => item %>
+ 	</li>
+	<% end %>
  	</ul>
 
 </div>
