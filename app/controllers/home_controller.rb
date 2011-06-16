@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 class HomeController < ApplicationController
-
+  
   def index
     sku = ProductAttribute.select("distinct(product_sku)").where("value like :keywords", :keywords => "%干红%")
 
@@ -30,6 +30,5 @@ class HomeController < ApplicationController
     @promo = Product.where("(sku in (:skus) ) and visiable = :visiable", :skus => skus, :visiable => true).order('id desc').page(1).per(4)
 
     @other = Product.where("visiable = :visiable", :visiable => true).order('id desc').page(1).per(4)   
-
   end
 end
