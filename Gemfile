@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '>=3.0.7'
+gem 'rails', '=3.0.7'
 gem 'rake'
 
 # Bundle edge Rails instead:
@@ -20,7 +20,7 @@ gem 'active_merchant'
 gem 'activemerchant_patch_for_china'
 
 # version 2.3 has some bugs with rails3
-gem 'will_paginate','3.0.pre2'
+# gem 'will_paginate','3.0.pre2'
 # to replace will_paginate
 gem 'kaminari'
 
