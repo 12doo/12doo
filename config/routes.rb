@@ -21,7 +21,7 @@ V3::Application.routes.draw do
   get "store/index"
   
   match "category(/:tags(/:keywords))", :to => "products#query_result"
-  get "promotion", :to => "products#promotion"
+  get "promotion", :to => "home#promotion"
   #match "category/:tags", :to => "products#index"
   #match "category", :to => "products#index"
 

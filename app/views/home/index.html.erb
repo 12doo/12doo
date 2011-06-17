@@ -60,24 +60,3 @@
 
 </div>
 <div class="clearit"></div>
-
-<!--#sort 其他-->         
-<div class="sort">
-  <img class="titleimg" src="images/title04.gif" width="135" height="43" />
-  <div class="sortmore f-black-14-b">
-    <%= link_to "查看所有产品", search_path_without_keywords %>
-  </div>
-</div>
-
-<div class="goodsResult">
-  <ul class="pagePicView">
-	<% @other.each_with_index do |item,index| %>
-    <li<%= index == 0 ? ' class=one' : '' %>>
-      <%= render :partial => "product", :object => item %>
- 	</li>
-	<% end %>
- 	</ul>
-
-</div>
-<div class="clearit"></div>
-
