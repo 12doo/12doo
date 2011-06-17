@@ -529,11 +529,9 @@ margin:20px 0;
 margin:10px 0 20px 10px;
 	}
 .listL LI LI{
-/*text-indent:10px;*/
-text-align:center;
+text-indent:10px;
 width:75px;
 float:left;
-border:1px solid #fff;
 	}
 
 .listL LI UL.wine{
@@ -729,21 +727,13 @@ padding:80px 0 0 35px;
 height:37px;
 line-height:37px;
 color:#000;
-text-indent:50px;
 font-size:12px;
 font-weight:bold;
+border-bottom:1px dotted #dcdedc;
 	}	
-#pd_moreinfo #pd_attribute td.colSTa{
-text-indent:80px;
-	}	
-#pd_moreinfo #pd_attribute td.colSTb{
-text-indent:0;
-line-height:20px;
-padding:10px 0 0 80px;
-height:50px;
-	}	
-#pd_moreinfo #pd_attribute td.colSTc{
-text-indent:100px;
+#pd_moreinfo #pd_attribute td span{
+color:#666;
+font-weight:bold;
 	}
 #pd_moreinfo .pd_section{
 border:1px dotted #cdc4a6;
@@ -898,7 +888,6 @@ padding:10px;
 	}
 #my_acinfo #ac_more_detail table.tableinfoL td.tcenter{
 	text-align:center;
-	padding:0 0 0 0px;
 	}
 /**make shoplist**/
 #mlist_step{
@@ -1016,13 +1005,6 @@ font-weight:bold;
 border:1px solid #dcdedc;
 
 
-	}
-.common_error{
-background:#f1f1f1 url(../images/error_ico.gif) 10px 8px no-repeat;
-padding:10px 30px;
-color:#e60012;
-font-weight:bold;
-border:1px solid #dcdedc;
 	}
 #reg_table{
 width:750px;

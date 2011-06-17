@@ -22,4 +22,9 @@ class HomeController < ApplicationController
     
     @promo = Product.where("promo = :promo and visiable = :visiable", :promo => true, :visiable => true).order('id desc').page(1).per(4)
   end
+  
+  def promotion
+    @products = Product.where("promo = :promo and visiable = :visiable", :promo => true, :visiable => true).order('id desc').page(params[:page]).per(16)
+  end
+  
 end

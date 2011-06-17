@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Picture < ActiveRecord::Base
   before_create :randomize_file_name
   validates_presence_of :item

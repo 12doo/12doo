@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AlipayLogsController < ApplicationController
   before_filter :authorize_admin!
   # GET /alipay_logs
