@@ -11,8 +11,15 @@
 			<ul class="pagePicView">
 				<% if @products.length == 0 %>
 				没有符合条件的产品.
+				<% else %>
+				
+	<% @products.each_with_index do |item,index| %>
+    <li<%= index%4 == 0 ? ' class=one' : '' %>>
+      <%= render :partial => "product", :object => item %>
+ 	</li>
+	<% end %>				
 				<% end %>
-        <%= render @products %>
+
 			</ul>
 			<div class="clearit"></div>
 			<%= paginate @products %>
