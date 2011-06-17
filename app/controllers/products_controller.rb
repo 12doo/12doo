@@ -109,16 +109,16 @@ class ProductsController < ApplicationController
   def update
     @product = Product.find(params[:id])
     
-    @product.sku = params[:product][:sku]
-    @product.name = params[:product][:name]
-    @product.cn_name = params[:product][:cn_name]
-    @product.price = params[:product][:price]
-    @product.indication_price = params[:product][:indication_price]
-    @product.memo = params[:product][:memo]
-    @product.status = params[:product][:status]
-    @product.count = params[:product][:count]
-    @product.sold_count = params[:product][:sold_count]
-    @product.visiable = params[:product][:visiable]
+    # @product.sku = params[:product][:sku]
+    # @product.name = params[:product][:name]
+    # @product.cn_name = params[:product][:cn_name]
+    # @product.price = params[:product][:price]
+    # @product.indication_price = params[:product][:indication_price]
+    # @product.memo = params[:product][:memo]
+    # @product.status = params[:product][:status]
+    # @product.count = params[:product][:count]
+    # @product.sold_count = params[:product][:sold_count]
+    # @product.visiable = params[:product][:visiable]
     
     # if params[:product][:pic]
     #   
@@ -155,7 +155,7 @@ class ProductsController < ApplicationController
     #end
 
     respond_to do |format|
-      if @product.save
+      if @product.update_attributes(params[:product])
         @product.product_attributes.each do |item|
           item.destroy
         end

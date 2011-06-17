@@ -13,8 +13,8 @@ class Product < ActiveRecord::Base
                     :path => ":rails_root/public/photos/products/:id/label/:style/:basename.:extension"
                     
   has_attached_file :pic_main, :styles => { :medium => "270x270>", :thumb => "224x224>" },
-                    :url  => "/photos/products/:id/:style/:basename.:extension",
-                    :path => ":rails_root/public/photos/products/:id/:style/:basename.:extension"
+                    :url  => "/photos/products/:id/main/:style/:basename.:extension",
+                    :path => ":rails_root/public/photos/products/:id/main/:style/:basename.:extension"
 
   validates_attachment_presence :pic_main
   validates_attachment_size :pic_main, :less_than => 2.megabytes
