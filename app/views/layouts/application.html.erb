@@ -6,7 +6,15 @@
         <%= javascript_include_tag :defaults, "rails.validations" %>
         
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>12度红酒网</title>
+		<meta name="keywords" content="12度,葡萄酒,红酒,干红,进口葡萄酒,干白" />
+		<meta name="description" content="十二度葡萄酒,我们身边的葡萄酒." />
+		</head>
+        <title>
+			<% if @title %>
+			<%= @title %> -	
+			<% end %>
+			12度红酒网
+		</title>
         <link rel="stylesheet" type="text/css" href="/css/home.css" />
         <link rel="stylesheet" type="text/css" href="/css/floatdiv.css" />
 		<link rel="stylesheet" type="text/css" href="/css/alert.css"/>

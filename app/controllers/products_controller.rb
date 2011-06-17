@@ -50,6 +50,7 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
+    @title = @product.cn_name
     unless @product.visiable
       redirect_to :action => "index"
     end
