@@ -30,7 +30,7 @@ function insertPic(url){
   <% end %>
   </ul>
 </div>
-<% form_for @product, :html => {:multipart => true, :id => :product_form } do |f|  %>
+<% form_for @product, :validate => true, :html => {:multipart => true, :id => :product_form } do |f|  %>
 <table width="100%" cellspacing="0" cellpadding="0" border="0" class="tableinfoL" align="center">
 	<tbody>
 		<tr>
@@ -81,6 +81,7 @@ function insertPic(url){
 		    <td height="30" class="tcenter">促销</td>
 		    <td><%= f.check_box :promo %></td>
 		</tr>
+		<tr><td height="30" colspan="2" class="tcenter"><b><%= link_to '编辑属性', :action => :index, :controller => :product_attribute_defines %></b></td></tr>
 		<% @attributes.each do |attribute| %>
 		<tr>
 			<td height="30"><%= attribute.name %></td>
@@ -95,17 +96,16 @@ function insertPic(url){
 			<input type="hidden" value="<%= attribute.name %>" name="product_attribute[][name]" />
 			<input type="text" name="product_attribute[][value]" value="<%= @product.get_attribute_value(attribute.short) %>" /><br />
 			<% end %>
-			<%= link_to '编辑属性', :action => :index, :controller => :product_attribute_defines %>
 			</td>
 		</tr>
 		<% end %>
-		<tr>
-		    <td height="30" class="tcenter">备注</td>
-		    <td><%= f.text_area :memo, :size => "80x20", :class => "wysiwyg" %></td>
-		</tr>
-
-    </tbody>
+	  <tr><td height="30" colspan="2" class="tcenter"><b><%= link_to '编辑属性', :action => :index, :controller => :product_attribute_defines %></b></td></tr>
+	</tbody>
 </table>
+
+<h2>详细说明</h2>
+<%= f.text_area :memo, :size => "120x40", :class => "wysiwyg" %>
+
 <div class="bj-sp10"></div>
 <table width="98%" cellspacing="0" cellpadding="0" border="0" align="center">
 	<tbody>

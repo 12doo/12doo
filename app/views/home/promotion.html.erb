@@ -1,9 +1,9 @@
 <!--shoplist-->
-<h2 class="shopLtitle">
+<!--<h2 class="shopLtitle">
 </h2>
 
 <div class="shopLbox">
-    
+-->    
 <!--#sort-->
 	<div style="float:left;width:725px;">
 		<div class="goodsResult">
@@ -13,11 +13,12 @@
 				没有符合条件的产品.
 				<% else %>
 				
-	<% @products.each_with_index do |item,index| %>
-    <li<%= index%4 == 0 ? ' class=one' : '' %>>
-      <%= render :partial => "product", :object => item %>
- 	</li>
-	<% end %>				
+          <% @products.each_with_index do |item,index| %>
+            <li<%= index%4 == 0 ? ' class=one' : '' %>>
+              <%= render :partial => "product", :object => item %>
+          </li>
+          <% end %>
+          				
 				<% end %>
 
 			</ul>
@@ -26,4 +27,7 @@
     </div>
 	</div>
 	<div class="clearit"></div>
-</div>
+
+<!--
+</div> 
+-->
