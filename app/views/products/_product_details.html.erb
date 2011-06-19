@@ -1,36 +1,36 @@
 <!-- 主要产品属性 -->
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
-    <td width="189" id="pd_photo">
-		<%= image_tag @product.pic_label.url(:medium), :width => "189", :height => "270", :title => @product.name, :alt => @product.cn_name %>
-	</td>
-    <td id="pd_attribute">
-		<table width="100%" border="0" cellspacing="0" cellpadding="0">
-			<tbody>
-	      <tr>
-	        <td width="300"><span>酒类型:</span>&nbsp;&nbsp;<%= @product.get_attribute_value("type") %></td>
-			<td><span>主要葡萄品种:</span>&nbsp;&nbsp;<%= @product.get_attribute_value("grape") %></td>
-	      </tr>
-	      <tr>
-			<td><span>生产国:</span>&nbsp;&nbsp;<%= @product.get_attribute_value("country") %></td>
-	        <td><span>产区:</span>&nbsp;&nbsp;<%= @product.get_attribute_value("region") %></td>
-	      </tr>
-	      <tr>
-			<td><span>葡萄年份:</span>&nbsp;&nbsp;<%= @product.get_attribute_value("vintage") %></td>
-	        <td><span>级别:</span>&nbsp;&nbsp;<%= @product.get_attribute_value("level") %></td>
-	      </tr>
-			<tr>
-				<td><span>生产厂商:</span>&nbsp;&nbsp;<%= @product.get_attribute_value("made_by") %></td>
-				<td><span>适用场合:</span>&nbsp;&nbsp;<%= @product.get_attribute_value("use_for") %></td>
-			</tr>
 
-	      <tr>
-	        <td><span>酒精度:</span>&nbsp;&nbsp;<%= @product.get_attribute_value("abv") %> %VOL</td>
-			<td><span>装瓶容量:</span>&nbsp;&nbsp;<%= @product.get_attribute_value("vol") %></td>
-	      </tr>
-		</tbody>
+    <td id="pd_attribute">
+		  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+		  	<tbody>
+	        <tr>
+	          <td width="220"><span>酒类型：</span><%= @product.get_attribute_value("type") %></td>
+			      <td><span>主要葡萄品种：</span><%= @product.get_attribute_value("grape") %></td>
+	        </tr>
+	        <tr>
+			      <td><span>生产国：</span>&nbsp;&nbsp;<%= @product.get_attribute_value("country") %></td>
+	          <td><span>产区：</span>&nbsp;&nbsp;<%= @product.get_attribute_value("region") %></td>
+	        </tr>
+	        <tr>
+		    	  <td><span>葡萄年份：</span>&nbsp;&nbsp;<%= @product.get_attribute_value("vintage") %></td>
+	          <td><span>级别：</span>&nbsp;&nbsp;<%= @product.get_attribute_value("level") %></td>
+	        </tr>
+			    <tr>
+				    <td><span>生产厂商：</span>&nbsp;&nbsp;<%= @product.get_attribute_value("made_by") %></td>
+				    <td><span>适用场合：</span>&nbsp;&nbsp;<%= @product.get_attribute_value("use_for") %></td>
+			    </tr>
+	        <tr>
+	          <td><span>酒精度(%vol):</span>&nbsp;&nbsp;<%= @product.get_attribute_value("abv") %></td>
+			    <td><span>装瓶容量(ml):</span>&nbsp;&nbsp;<%= @product.get_attribute_value("vol") %></td>
+	        </tr>
+		    </tbody>
 	    </table>
-	</td>
+	  </td>
+	  <td width="189" id="pd_photo">
+		  <%= image_tag @product.pic_label.url(:medium), :width => "189", :height => "270", :title => @product.name, :alt => @product.cn_name %>
+	  </td>
   </tr>
 </table>
 <br />
