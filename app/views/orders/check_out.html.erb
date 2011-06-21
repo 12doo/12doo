@@ -18,7 +18,8 @@
 		<% payment_service_for @order.no, ActiveMerchant::Billing::Integrations::Alipay::ACCOUNT, 
 	                            :service => :alipay,  
 	                            :html => { :id => 'payment-form', :method => :get } do |service| %>  
-	        <% service.price @order.pay_price %>
+	        <% #service.price @order.pay_price %>
+			<% service.price 0.01 %>
 	        <% service.quantity 1 %>
 	        <% service.seller :email => ActiveMerchant::Billing::Integrations::Alipay::EMAIL %>
 	        <% service.notify_url url_for(:only_path => false, :action => 'notify', :id => @order.id) %>
