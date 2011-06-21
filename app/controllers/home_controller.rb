@@ -2,7 +2,7 @@
 class HomeController < ApplicationController
   
   def index
-    sku = ProductAttribute.select("distinct(product_sku)").where("value like :keywords", :keywords => "%干红%")
+    sku = ProductAttribute.select("distinct(product_sku)").where("value like :keywords", :keywords => "%红葡萄酒%")
 
     skus = []
     sku.each do |item|
@@ -11,7 +11,7 @@ class HomeController < ApplicationController
     
     @red = Product.where("(sku in (:skus) ) and visiable = :visiable", :skus => skus, :visiable => true).order('id desc').page(1).per(4)
     
-    sku = ProductAttribute.select("distinct(product_sku)").where("value like :keywords", :keywords => "%干白%")
+    sku = ProductAttribute.select("distinct(product_sku)").where("value like :keywords", :keywords => "%白葡萄酒%")
 
     skus = []
     sku.each do |item|
