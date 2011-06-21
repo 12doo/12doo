@@ -19,36 +19,34 @@
 			    </tr>
 	        <tr>
 	          <td>
-		    	  <% if @product.get_attribute_value("abv") == "" %>
-		    	    &nbsp;
-		    	  <% else %>
-		    	    <span>酒精度：</span>&nbsp;&nbsp;<%= @product.get_attribute_value("abv") %>%vol
-		    	  <% end %>
+	        	  <% if @product.get_attribute_value("abv") == "" %>
+	        	    &nbsp;
+	        	  <% else %>
+	        	    <span>酒精度：</span>&nbsp;&nbsp;<%= @product.get_attribute_value("abv") %>%vol
+	        	  <% end %>
 		    	  </td>
 	          <td>
-	          <% if @product.get_attribute_value("vol") == "" %>
-		    	    &nbsp;
-		    	  <% else %>
-		    	    <span>装瓶容量：</span>&nbsp;&nbsp;<%= @product.get_attribute_value("vol") %>ml
-		    	  <% end %>
+	            <% if @product.get_attribute_value("vol") == "" %>
+		      	    &nbsp;
+		      	  <% else %>
+		      	    <span>装瓶容量：</span>&nbsp;&nbsp;<%= @product.get_attribute_value("vol") %>ml
+		      	  <% end %>
 		    	  </td>
 	        </tr>
 	        <tr>
 		    	  <td>
-	          <td>
-	          <% if @product.get_attribute_value("level") == "" %>
-		    	    &nbsp;
-		    	  <% else %>
-		    	    <span>级别：</span>&nbsp;&nbsp;<%= @product.get_attribute_value("level") %>
-		    	  <% end %>
+	            <% if @product.get_attribute_value("level") == "" %>
+		      	    &nbsp;
+		      	  <% else %>
+		      	    <span>级别：</span>&nbsp;&nbsp;<%= @product.get_attribute_value("level") %>
+		      	  <% end %>
 	          </td>		    	  
-		    	  <% if @product.get_attribute_value("vintage") == "" %>
-		    	    &nbsp;
-		    	  <% else %>
-		    	    <span>葡萄年份：</span>&nbsp;&nbsp;<%= @product.get_attribute_value("vintage") %>
-		    	  <% end %>
+		      	  <% if @product.get_attribute_value("vintage") == "" %>
+		      	    &nbsp;
+		      	  <% else %>
+		      	    <span>葡萄年份：</span>&nbsp;&nbsp;<%= @product.get_attribute_value("vintage") %>
+		      	  <% end %>
 		    	  </td>
-
 	        </tr>
 		    </tbody>
 	    </table>
