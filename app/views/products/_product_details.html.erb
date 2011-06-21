@@ -1,4 +1,5 @@
 <!-- 主要产品属性 -->
+<br />
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
 
@@ -10,8 +11,8 @@
 			      <td><span>葡萄品种：&nbsp;&nbsp;</span><%= @product.get_attribute_value("grape") %></td>
 	        </tr>
 	        <tr>
-			      <td><span>生产国：</span>&nbsp;&nbsp;<%= @product.get_attribute_value("country") %></td>
-	          <td><span>所属产区：</span>&nbsp;&nbsp;<%= @product.get_attribute_value("region") %></td>
+			      <td><span>原产国：</span>&nbsp;&nbsp;<%= @product.get_attribute_value("country") %></td>
+	          <td><span>葡萄产区：</span>&nbsp;&nbsp;<%= @product.get_attribute_value("region") %></td>
 	        </tr>
 			    <tr>
 				    <td><span>生产商：</span>&nbsp;&nbsp;<%= @product.get_attribute_value("made_by") %></td>
@@ -52,10 +53,10 @@
 		    </tbody>
 	    </table>
 	  </td>
-	  <td width="189" id="pd_photo">
-		  <%= image_tag @product.pic_label.url(:medium), :width => "189", :height => "270", :title => @product.name, :alt => @product.cn_name %>
+	  <td width="270" height="270" id="pd_label" style="text-align:center;vertical-align:middle;">
+	   
+		  <%= image_tag @product.pic_label.url(:medium), :title => @product.name, :alt => @product.cn_name %>
 	  </td>
   </tr>
 </table>
-<br />
 <%= raw @product.memo %>
