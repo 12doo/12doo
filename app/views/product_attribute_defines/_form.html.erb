@@ -1,3 +1,5 @@
+<% form_for @product_attribute_define, :html => { :id => :product_attribute_define_form } do |f| %>
+
 <% if @product_attribute_define.errors.any? %>
   <div id="error_explanation">
     <h2><%= pluralize(@product_attribute_define.errors.count, "error") %> prohibited this product_attribute_define from being saved:</h2>
@@ -14,35 +16,45 @@
 	<tbody>
 		<tr>
 		    <td height="30" width="100" class="tcenter">名称</td>
-		    <td><input type="text" name="product_attribute_define[name]" value="<%= @product_attribute_define.name %>" /></td>
+		    <td><%= f.text_field  :name %></td>
 		</tr>
 		<tr>
 		    <td height="30" class="tcenter">缩写</td>
-		    <td><input type="text" name="product_attribute_define[short]" value="<%= @product_attribute_define.short %>" /></td>
+		    <td><%= f.text_field  :short %></td>
 		</tr>
 		<tr>
 		    <td height="30" class="tcenter">简单说明</td>
-		    <td><input type="text" name="product_attribute_define[description]" size="50" value="<%= @product_attribute_define.description %>" /></td>
+		    <td><%= f.text_field  :description %></td>
 		</tr>
 		<tr>
 		    <td height="30" class="tcenter">多个值</td>
-		    <td><input type="text" name="product_attribute_define[multiple]" value="<%= @product_attribute_define.multiple %>" /></td>
+		    <td><%= f.check_box  :multiple %></td>
 		</tr>
 		<tr>
 		    <td height="30" class="tcenter">可以搜索</td>
-		    <td><input type="text" name="product_attribute_define[search]" value="<%= @product_attribute_define.search %>" /></td>
+		    <td><%= f.check_box  :search %></td>
 		</tr>
 		<tr>
 		    <td height="30" class="tcenter">固定值</td>
-		    <td><input type="text" name="product_attribute_define[fix]" value="<%= @product_attribute_define.fix %>" /></td>
+		    <td><%= f.check_box  :fix %></td>
 		</tr>
 		<tr>
-		    <td class="tcenter">值</td>
+		    <td height="30" class="tcenter">值</td>
 		    <td>
-				<textarea rows="10" cols="70" name="values"><%= @product_attribute_define.get_values %></textarea>
-				<br />
-				多个用逗号隔开.
+				<%= @product_attribute_define.get_values %>
 			</td>
 		</tr>
     </tbody>
 </table>
+<div class="bj-sp10"></div>
+<table width="98%" cellspacing="0" cellpadding="0" border="0" align="center">
+	<tbody>
+		<tr>
+	    	<td width="100%" valign="middle" align="middle">
+	        	<a href="javascript:$('#product_attribute_define_form').submit();"><img align="absmiddle" alt="" src="/images/confirm_btn.gif" /></a>
+	        </td>
+	    </tr>
+	</tbody>
+</table>
+
+<% end %>

@@ -888,11 +888,12 @@ padding:10px;
 	  border: 1px solid #ccc;
 	}
 #my_acinfo #ac_more_detail table.tableinfoL td{
+	padding:0 15px 0 15px;
 	text-align:left;
-	padding:0 0 0 15px;
 	}
 #my_acinfo #ac_more_detail table.tableinfoL td.tcenter{
 	text-align:center;
+	padding:0 0 0 0px;
 	}
 /**make shoplist**/
 #mlist_step{
