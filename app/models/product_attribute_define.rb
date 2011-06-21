@@ -1,5 +1,10 @@
 # -*- encoding : utf-8 -*-
 class ProductAttributeDefine < ActiveRecord::Base
+  
+  def values
+    ProductAttributeValue.where(:name => self.name).order("sort desc")
+  end
+  
   def get_values
     returns = ''
     ProductAttributeValue.where(:name => self.name).order("sort desc").each { |item| returns += item.value + ',' }

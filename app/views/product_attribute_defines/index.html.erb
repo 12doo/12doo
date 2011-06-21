@@ -32,13 +32,14 @@
                     </tr>
 					<% @product_attribute_defines.each do |product_attribute_define| %>
 				 	<tr>
-					    <td height="30"><%= link_to product_attribute_define.name, product_attribute_define, :class => 'f-red-12' %></td>
+					    <td height="30"><%= product_attribute_define.name %></td>
 					    <td><%= product_attribute_define.short %></td>
 					    <td><%= product_attribute_define.search ? "是" : "否" %></td>
 						<td><%= product_attribute_define.fix ? "是" : "否" %></td>
 					    <td><%= product_attribute_define.multiple ? "是" : "否" %></td>
 						<td>
 							<%= link_to '[编辑]', edit_product_attribute_define_path(product_attribute_define), :class => 'f-red-12' %>
+							<%= link_to '[编辑属性值]', {:action => :edit_values, :controller => :product_attribute_values, :define_id => product_attribute_define.id }, :class => 'f-red-12'  %>
 						</td>
 				  	</tr>
 					<% end %>

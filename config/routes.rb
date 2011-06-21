@@ -19,6 +19,10 @@ V3::Application.routes.draw do
   
   resources :orders
   
+  get "product_attribute_values/edit_values"
+  
+  resources :product_attribute_values
+  
   get "products/bought"
 
   get "store/index"
