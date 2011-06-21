@@ -727,6 +727,10 @@ padding:70px 0 0 25px;
 	}
 #pd_moreinfo #pd_label{
 border:1px solid #f5f3ec;
+width:270px;
+height:270px;
+text-align:center;
+vertical-align:middle;
 }	
 	
 #pd_moreinfo #pd_photo img{
