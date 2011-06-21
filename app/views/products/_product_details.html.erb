@@ -40,7 +40,8 @@
 		      	  <% else %>
 		      	    <span>级别：</span>&nbsp;&nbsp;<%= @product.get_attribute_value("level") %>
 		      	  <% end %>
-	          </td>		    	  
+	          </td>		
+	          <td>    	  
 		      	  <% if @product.get_attribute_value("vintage") == "" %>
 		      	    &nbsp;
 		      	  <% else %>
