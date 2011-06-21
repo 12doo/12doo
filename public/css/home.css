@@ -681,7 +681,7 @@ border:1px solid #dcdedc;
 
 }
 .activemsg ul.kc li {
-    cursor: pointer;
+/*    cursor: pointer; */
     display: block;
     float: left;
     margin-right: 11px;
