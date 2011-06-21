@@ -1,6 +1,8 @@
 # -*- encoding : utf-8 -*-
 class ProductAttributeDefine < ActiveRecord::Base
   
+  has_many :product_attribute_values
+  
   def values
     ProductAttributeValue.where(:name => self.name).order("sort desc")
   end

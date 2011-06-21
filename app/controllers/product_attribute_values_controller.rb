@@ -16,7 +16,7 @@ class ProductAttributeValuesController < ApplicationController
 
     respond_to do |format|
       if @product_attribute_value.save
-        format.html { redirect_to :action => :edit_values, :define_id => params[:define_id]  }
+        format.html { redirect_to :action => :edit_values, :define_id => params[:define_id] }
       else
         format.html { render :action => "edit_values" }
       end
@@ -25,12 +25,16 @@ class ProductAttributeValuesController < ApplicationController
 
   def update
     @product_attribute_value = ProductAttributeValue.find(params[:id])
+    @product_attribute_define = ProductAttributeDefine.find(params[:define_id])
 
     respond_to do |format|
       if @product_attribute_value.update_attributes(params[:product_attribute_value])
-        format.html { redirect_to :action => :edit_values, :define_id => params[:define_id]  }
+        @product_attribute_value.product_attributes.each do |item|
+          item.value = @product_attribute_value.value
+          item.save
+        end
+        format.html { redirect_to :action => :edit_values, :define_id => params[:define_id] }
       else
-        @product_attribute_define = ProductAttributeDefine.find(params[:define_id])
         format.html { render :action => "edit_values" }
       end
     end

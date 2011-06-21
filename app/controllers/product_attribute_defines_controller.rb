@@ -24,7 +24,6 @@ class ProductAttributeDefinesController < ApplicationController
 
     respond_to do |format|
       if @product_attribute_define.save
-        @product_attribute_define.save_values params[:values]
         format.html { redirect_to :action => :index }
       else
         format.html { render :action => "new" }
@@ -37,7 +36,6 @@ class ProductAttributeDefinesController < ApplicationController
 
     respond_to do |format|
       if @product_attribute_define.update_attributes(params[:product_attribute_define])
-        @product_attribute_define.save_values params[:values]
         format.html { redirect_to :action => :index }
       else
         format.html { render :action => "edit" }
