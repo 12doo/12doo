@@ -2,24 +2,23 @@
 class ProductAttributeValuesController < ApplicationController
   # 身份验证
   before_filter :authorize_admin!
-
-  def new
-    @product_attribute_define = ProductAttributeDefine.find(params[:define_id])
-  end
   
   def edit_values
     @product_attribute_define = ProductAttributeDefine.find(params[:define_id])    
   end
 
   def create
-    @product_attribute_define = ProductAttributeDefine.new(params[:product_attribute_define])
+    @product_attribute_define = ProductAttributeDefine.find(params[:define_id])
+
+    @product_attribute_value = ProductAttributeValue.new(params[:product_attribute_value])
+    @product_attribute_value.short = @product_attribute_define.short
+    @product_attribute_value.name = @product_attribute_define.name
 
     respond_to do |format|
-      if @product_attribute_define.save
-        @product_attribute_define.save_values params[:values]
-        format.html { redirect_to :action => :index }
+      if @product_attribute_value.save
+        format.html { redirect_to :action => :edit_values, :define_id => params[:define_id]  }
       else
-        format.html { render :action => "new" }
+        format.html { render :action => "edit_values" }
       end
     end
   end
@@ -36,14 +35,4 @@ class ProductAttributeValuesController < ApplicationController
       end
     end
   end
-
-  # def destroy
-  #   @product_attribute_define = ProductAttributeDefine.find(params[:id])
-  #   @product_attribute_define.destroy
-  # 
-  #   respond_to do |format|
-  #     format.html { redirect_to(product_attribute_defines_url) }
-  #     format.xml  { head :ok }
-  #   end
-  # end
 end

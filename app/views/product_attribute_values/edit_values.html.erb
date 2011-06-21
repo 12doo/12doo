@@ -55,6 +55,21 @@
 			    </table>	
 				<% end %>
 			<% end %>
+			<%= form_for ProductAttributeValue.new, :url => { :action => :create, :define_id => params[:define_id] }, :html => { :id => "product_attribute_value_form" } do |f| %>
+		    <table width="100%" cellspacing="0" cellpadding="0" border="0" class="tableinfoL">
+				<tbody>
+					<tr>
+			 	   		<td height="30" class="tcenter">顺序:</td>
+						<td><%= f.text_field :sort %></td>
+						<td class="tcenter">值:</td>
+						<td><%= f.text_field :value %></td>
+						<td class="tcenter">
+							<a href="javascript:$('#product_attribute_value_form').submit();" class='f-red-12'>[添加]</a>
+						</td>
+					</tr>
+				</tbody>
+		    </table>	
+			<% end %>
 		</div>
 	</div>
 </div>
