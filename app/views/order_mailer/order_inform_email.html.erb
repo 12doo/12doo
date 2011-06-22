@@ -7,7 +7,7 @@
 订购时间：<%= @order.order_at -%><br/>
 收货人：<%= @order.fullname -%><br/>
 联系电话：<%= @order.phone -%><br/>
-送货地址：<%= @order.address -%><br/>
+送货地址：<%= @order.province -%>_<%= @order.city -%>_<%= @order.region -%>_<%= @order.address -%><br/>
 实际付款：<%= @order.pay_price -%><br/>
 附加说明：<%= @order.memo -%><br/>
 </p>

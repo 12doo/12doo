@@ -8,7 +8,7 @@
 订单金额：<%= @order.total -%><br/>
 订购时间：<%= @order.order_at -%><br/>
 收货人：<%= @order.fullname -%><br/>
-送货地址：<%= @order.address -%><br/>
+送货地址：<%= @order.province -%>_<%= @order.city -%>_<%= @order.region -%>_<%= @order.address -%><br/>
 实际付款：<%= @order.pay_price -%><br/>
 </p>
 详细清单：
