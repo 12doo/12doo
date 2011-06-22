@@ -28,7 +28,7 @@ class ProductsController < ApplicationController
     else
       sku = []
       
-      if params[:tags] == nil && params[:keywords] && params[:keywords] != ''
+      if (params[:tags] == nil || condition_is_null) && params[:keywords] && params[:keywords] != ''
         # 如果tag为空,keywords不为空
         sku = ProductAttribute.select("distinct(product_sku)").where("value like :keywords", :keywords => "%#{params[:keywords]}%")
       elsif params[:keywords] == nil && params[:tags] && params[:tags] != ''
@@ -36,7 +36,7 @@ class ProductsController < ApplicationController
         sku = ProductAttribute.select("distinct(product_sku)").where(join_for_where)
       else
         # 如果都不为空
-        sku = ProductAttribute.select("distinct(product_sku)").where(join_for_where).where("value like :keywords", :keywords => "%#{params[:keywords]}%")
+        sku = ProductAttribute.select("distinct(product_sku)").where("(:join) or value like :keywords", :join => join_for_where, :keywords => "%#{params[:keywords]}%")
       end
       
       skus = []
@@ -45,7 +45,11 @@ class ProductsController < ApplicationController
       end
       
       if params[:keywords] && params[:keywords] != ''
-        @products = Product.where("(sku in (:skus) or cn_name like :cn_name or name like :name) and visiable = :visiable", :skus => skus, :cn_name => "%#{params[:keywords]}%", :name => "%#{params[:keywords]}%", :visiable => true).order('id desc').page(params[:page]).per(9)
+        if condition_is_null
+          @products = Product.where("(sku in (:skus) or cn_name like :cn_name or name like :name) and visiable = :visiable", :skus => skus, :cn_name => "%#{params[:keywords]}%", :name => "%#{params[:keywords]}%", :visiable => true).order('id desc').page(params[:page]).per(9)
+        else
+          @products = Product.where("(sku in (:skus) and (cn_name like :cn_name or name like :name)) and visiable = :visiable", :skus => skus, :cn_name => "%#{params[:keywords]}%", :name => "%#{params[:keywords]}%", :visiable => true).order('id desc').page(params[:page]).per(9)
+        end
       else
         @products = Product.where("sku in (:skus) and visiable = :visiable", :skus => skus, :visiable => true).order('id desc').page(params[:page]).per(9)
       end
@@ -245,6 +249,15 @@ class ProductsController < ApplicationController
       end
     end
     returns
+  end
+  
+  def condition_is_null
+    params[:tags].split('-').each_with_index do |item, index|
+      if item && item != '' && item != "0"
+        return false
+      end
+    end
+    return true
   end
   
 end
