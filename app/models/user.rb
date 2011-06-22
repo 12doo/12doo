@@ -22,9 +22,7 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :phone, :allow_nil => true, :allow_blank => true
   
   def send_welcome_email
-    Thread.start do 
-      UserMailer.welcome_email(self).deliver
-    end
+    UserMailer.welcome_email(self).deliver
   end
   
   def display_name

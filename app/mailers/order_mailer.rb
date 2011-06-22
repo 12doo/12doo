@@ -6,7 +6,12 @@ class OrderMailer < ActionMailer::Base
     @order = order
     @user = @order.user
     mail(:to => @user.email,
-         :subject => "收到 您的订购")
+         :subject => "确认收到您的订单"+@order.no)
   end
-  
+  def order_inform_email(order)
+    @order = order
+    @user = @order.user
+    mail(:to => "admin@12doo.com",
+         :subject => "来自"+@user.email+"的订单"+@order.no+"，实付金额"+@order.pay_price.to_s)
+  end  
 end

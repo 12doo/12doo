@@ -8,8 +8,7 @@ class Order < ActiveRecord::Base
   paginates_per 10
     
   def send_order_confirm_email
-    Thread.start do 
-      OrderMailer.order_confirm_email(self).deliver
-    end
+    OrderMailer.order_confirm_email(self).deliver
+    OrderMailer.order_inform_email(self).deliver
   end
 end
