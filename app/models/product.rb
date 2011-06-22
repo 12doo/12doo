@@ -8,7 +8,7 @@ class Product < ActiveRecord::Base
   has_many :product_tags
   cattr_reader :per_page
   paginates_per 20
-  has_attached_file :pic_label, :styles => { :medium => "225x350>" },
+  has_attached_file :pic_label, :styles => { :medium => "270x270>" },
                     :url  => "/photos/products/:id/label/:style/:basename.:extension",
                     :path => ":rails_root/public/photos/products/:id/label/:style/:basename.:extension"
                     

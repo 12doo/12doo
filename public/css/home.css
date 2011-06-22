@@ -725,6 +725,14 @@ font-size:14px;
 background:#f5f3ec url(../images/pd_attribute_bg.png);	
 padding:70px 0 0 25px;
 	}
+#pd_moreinfo #pd_label{
+border:1px solid #f5f3ec;
+width:270px;
+height:270px;
+text-align:center;
+vertical-align:middle;
+}	
+	
 #pd_moreinfo #pd_photo img{
 border:1px solid #f5f3ec;
 	}
@@ -741,15 +749,15 @@ color:#666;
 font-weight:bold;
 	}
 #pd_moreinfo .pd_section{
-border:1px dotted #cdc4a6;
-padding:10px;
-margin:20px 0;
+border:0px dotted #cdc4a6;
+padding:0px;
+margin:25px 0;
 color:#333;
 font-size:12px;
 	}
 #pd_moreinfo .pd_section .insection{
 background:#f5f3ec;
-padding:10px;
+padding:10px 25px
 	}
 #pd_moreinfo .pd_section h1{
 border-bottom:1px solid #dcdedc;
@@ -757,7 +765,7 @@ color:#9e0a0e;
 line-height:30px;
 font-size:16px;
 font-weight:bold;
-margin:0 0 20px 0;
+margin:0 0 10px 0;
 	}
 #pd_moreinfo h2{
 background:#f1f1f1;
