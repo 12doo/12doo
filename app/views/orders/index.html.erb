@@ -21,7 +21,7 @@
 			 	<tr>
 				    <td height="30"><%= link_to order.no, order_path(order), :class => 'f-red-12', :target => '_blank'  %></td>
 				    <td><%= format "%.2f", order.pay_price %></td>
-				    <td><%= order.user.name %></td>
+				    <td><%= order.user.display_name %></td>
 				    <td><%= order.order_at.strftime('%Y-%m-%d %H:%M:%S') %></td>
 				    <td><%= order.status %></td>
 					<td>

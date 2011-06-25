@@ -1,12 +1,17 @@
 # -*- encoding : utf-8 -*-
+
+#TODO: Move some logistic to model
 class OrdersController < ApplicationController
   # 身份验证
   before_filter :authorize_user!, :except => [:notify, :done]
+  before_filter :authorize_admin!, :only => [:index, :delivery, :pay]
   
+  # 普通用户列出所有订单的操作在 /my/index 或 /my/orders 中，此处只允许管理员操作
   def index
     @orders = Order.order("id desc").page(params[:page])
   end
   
+  # 普通 用户 和管理员用同一个 action 
   def show
     @order = Order.find(params[:id])
     unless @order.user_id == current_user.id || current_user.admin
@@ -14,7 +19,8 @@ class OrdersController < ApplicationController
     end
     
   end
-
+  
+  # 创建新订单
   def new
     cart = find_cart
     if cart.quantity == 0
@@ -69,6 +75,7 @@ class OrdersController < ApplicationController
     @order.zip = address.zip
     @order.phone = address.phone 
     
+    #调试付款过程的阶段，将订单支付额设为一分钱，减少调试成本；已经改为在check_out.html.erb中设置
     #@order.pay_price = 0.01
     
     cart = find_cart
@@ -113,6 +120,7 @@ class OrdersController < ApplicationController
     end
   end
   
+  #去付款的界面
   def check_out
     @order = Order.find(params[:id])
     unless @order.status == '等待付款'
@@ -121,6 +129,7 @@ class OrdersController < ApplicationController
     end
   end
   
+  #接受支付宝返回状态，以支付状态识别，无须用户验证
   def notify
     order = Order.find(params[:id])
     notification = ActiveMerchant::Billing::Integrations::Alipay::Notification.new(request.raw_post)
@@ -145,6 +154,7 @@ class OrdersController < ApplicationController
     end
     order.save
     
+    #将支付宝返回内容记录下来，无论是否对应订单
     alipay = AlipayLog.new
     alipay.notify_type = notification.notify_type
     alipay.notify_id = notification.notify_id
@@ -171,6 +181,7 @@ class OrdersController < ApplicationController
     end
   end
   
+  #成功支付后的信息页面
   def done
     order = Order.find(params[:id])
     flash[:info] = '您的订单 ' + order.no + ' 已经支付完成，我们将尽快为您安排配送。';
@@ -178,7 +189,9 @@ class OrdersController < ApplicationController
         format.html { render :action => "info" }
     end
   end
-
+  
+  #用户可以取消 TODO：可能需要根据状态判断是否可以进行取消操作
+  #当前管理员界面没有取消订单的途径，因此只返回到用户界面
   def cancel
     @order = Order.find(params[:id])
     if @order.user_id == current_user.id
@@ -198,6 +211,7 @@ class OrdersController < ApplicationController
     redirect_to :action => :orders, :controller => :my
   end
   
+  # 用户确认收货的操作，只在用户界面 /my/orders 显示该操作链接
   def confirm
     @order = Order.find(params[:id])
     
@@ -205,16 +219,19 @@ class OrdersController < ApplicationController
     change.user_id = @order.user_id
     change.before = @order.status
      
-    @order.status = '等待发货'
+    @order.status = '订单完成'
     @order.save
     
     change.after = @order.status
     change.changed_at = Time.now
     change.save
+    
+    #因此只返回到用户界面 /my/orders
+    redirect_to :action => :orders, :controller => :my
 
-    redirect_to :action => :index, :controller => :orders
   end
   
+  #发货操作，只允许后台管理员进行
   def delivery
     @order = Order.find(params[:id])
     
@@ -265,6 +282,7 @@ class OrdersController < ApplicationController
     redirect_to :action => :index, :controller => :orders
   end
   
+  #管理员确认订单已付的操作，只允许管理员进行
   def pay
     @order = Order.find(params[:id])
     
@@ -317,11 +335,13 @@ class OrdersController < ApplicationController
     end
     order.total = cart.total
     
+    #计算运费，当前只有20一档和满200免运费优惠
     if order.total < 200
       order.carriage = 20
     else
       order.carriage = 0
     end
+    
     order.pay_price = order.carriage + order.total
     order.quantity = cart.quantity
     return order
