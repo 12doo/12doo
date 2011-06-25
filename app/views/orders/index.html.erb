@@ -10,26 +10,18 @@
 		<table width="100%" cellspacing="0" cellpadding="0" border="0" class="tableinfo">
 	        	<tbody>
 	                <tr bgcolor="#f0f0f0" class="f-black-12-b">
-	                    <td height="30" width="150">
-	                        编号
-	                    </td>
-	                    <td width="65">
-	                        付款金额
-	                    </td>
-	                    <td width="170">
-	                        创建时间
-	                    </td>
-	                    <td width="100">
-	                        状态
-	                    </td>
-	                    <td width="170" valign="middle" bgcolor="#f0f0f0" align="center">
-	                        操作
-	                    </td>
+	                    <td height="30" width="150">编号</td>
+	                    <td width="65">付款金额</td>
+	                    <td width="">客户</td>
+	                    <td width="150">创建时间</td>
+	                    <td width="100">状态</td>
+	                    <td width="150" valign="middle" bgcolor="#f0f0f0" align="center">操作</td>
 	                </tr>
 				<% @orders.each do |order| %>
 			 	<tr>
 				    <td height="30"><%= link_to order.no, order_path(order), :class => 'f-red-12', :target => '_blank'  %></td>
 				    <td><%= format "%.2f", order.pay_price %></td>
+				    <td><%= order.user.name %></td>
 				    <td><%= order.order_at.strftime('%Y-%m-%d %H:%M:%S') %></td>
 				    <td><%= order.status %></td>
 					<td>
@@ -45,7 +37,7 @@
 						<% when '订单取消' %>
 						<% end %>
 						<%= link_to '[查看]', order_path(order), :class => 'f-red-12', :target => '_blank' %>
-						<%= link_to '[打印发货单]', {:action => :print, :controller => :orders, :id => order.id }, :class => 'f-red-12', :target => '_blank' %>
+						<%= link_to '[打印发货单]', {:action => :print, :controller => :dispatches, :id => order.id }, :class => 'f-red-12', :target => '_blank' %>
 					</td>
 			  	</tr>
 				<% end %>

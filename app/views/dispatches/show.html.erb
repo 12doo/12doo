@@ -1,10 +1,93 @@
-<p id="notice"><%= notice %></p>
+<%= render 'admin/header' %>
+<div id="my_acinfo">
+  <%= render 'admin/userside' %>
+  <div id="ac_right">
+	<ul id="pd_infomenu">
+		<li ><%= link_to "所有送货单", dispatches_path %></li>
+		<li class="on">送货单详细</li>
+	</ul>
+	<div class="clearit"></div>
+	<div id="ac_more_detail">
+	
+		<table width="100%" cellspacing="1" cellpadding="0" border="1"> 
+			<tbody> 
+				<tr> 
+				    <td width="20%">发货单号</td> 
+				    <td><%= @dispatch.no %></td>
 
-<p>
-  <b>No:</b>
-  <%= @dispatch.no %>
-</p>
+				</tr>
+				<tr>
+					<td>销售单号</td>
+					<td><%= @dispatch.order_no %></td>				
+				</tr>
+				<tr> 
+				    <td>收货人</td> 
+				    <td><%= @dispatch.order_fullname %></td>
+				</tr>
+				<tr> 
+					<td>联系电话</td>
+					<td><%= @dispatch.order_phone %></td>
+				</tr>
+				<tr> 
+				    <td>送货地址</td> 
+				    <td>
+					<%= @dispatch.order_province %>,&nbsp;&nbsp;
+					<%= @dispatch.order_city %>,&nbsp;&nbsp;
+					<%= @dispatch.order_region %>,&nbsp;&nbsp;
+					<%= @dispatch.order_address %>,&nbsp;&nbsp;
+					<%= @dispatch.order_zip %>,&nbsp;&nbsp;
+					</td>
+				</tr>
+				<tr> 
+				    <td>附加说明</td> 
+				    <td >
+					<%= @dispatch.order_memo %>
+					</td>
+				</tr>
+		    </tbody>
+		</table>
+		<br />
+		<table width="100%" cellspacing="0" cellpadding="0" border="1"> 
+			<tbody>
+				<tr>
+					<th>商品名称</th>
+					<th>单价</th>
+					<th>数量</th>
+					<th>小计</th>
+				</tr>
+				<% @dispatch.dispatch_items.each do |item| %>
+				<tr>
+					<td><%= item.product_name %></td>
+					<td><%= format "%.2f", item.product_price %></td>
+					<td><%= item.quantity %></td>
+					<td><%= format "%.2f", item.subtotal %></td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+		<br />
+		<table width="100%" cellspacing="0" cellpadding="0" border="1"> 
+			<tbody>
+				<tr>
+					<td width="20%">货品总计</td>
+					<td><%= format "%.2f", @dispatch.order_total %></td>
+				</tr>
+				<tr> 
+					<td>运费</td>
+					<td><%= format "%.2f", @dispatch.order_carriage %></td>
+				</tr>
+				<tr>
+					<td>支付方式</td>
+					<td><%= @dispatch.order_pay_type %></td>
+				</tr>
+				<tr> 
+					<td>应付总额</td>
+					<td><%= format "%.2f", @dispatch.order_pay_price %></td>
+				</tr>
+			</tbody>
+		</table>
 
-
-<%= link_to 'Edit', edit_dispatch_path(@dispatch) %> |
-<%= link_to 'Back', dispatches_path %>
+	</div>
+  </div>
+</div>
+<div class="clearit"></div>

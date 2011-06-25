@@ -1,25 +1,26 @@
-<div id="logo"><img src="/images/blank.gif" title="12度红酒网" alt="12度红酒网" width="204" height="97" /></div>
+<div id="logo">
+  <img src="/images/blank.gif" title="12度红酒网" alt="12度红酒网" width="204" height="97" />
+</div>
 <div id="shopcart">
   <div id="cartico">
     	<img src="/images/shopping_cart.gif" width="32" height="31" />
   </div>
   <div id="carttext">
     	<span class="f-black-arial-12">SHOPPING CART 购物车</span><br />
-		<% cart = find_cart %>
+		  <% cart = find_cart %>
     	<a href="/cart/show">现在您购物车有<%= cart.quantity %>件商品</a>
   </div>
 </div>
 <div id="login" class="f-grey-12">
   <% if user_signed_in? %>
-  您好，<a href="/my"><%= current_user.display_name %></a>
-  <% end %>
-  <% if user_signed_in? %>
-  <%= link_to "注销", destroy_user_session_path %>
+    您好，<a href="/my"><%= current_user.display_name %> &nbsp;|&nbsp; 我的12doo</a> &nbsp;| &nbsp;<a href="/cart/show">购物车有<%= cart.quantity %>件商品</a>&nbsp;|&nbsp; <%= link_to "注销", destroy_user_session_path %>
   <% else %>
-  <%= link_to "注册", new_user_registration_path %> | <%= link_to "登陆", new_user_session_path %>
+    <a href="/my">我的12doo</a> &nbsp;|&nbsp; <a href="/cart/show">购物车中有<%= cart.quantity %>件商品</a>&nbsp;|&nbsp; <%= link_to "注册", new_user_registration_path %> &nbsp;| &nbsp;<%= link_to "登陆", new_user_session_path %>
   <% end %>
-&nbsp;&nbsp;
-<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=138151236&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:138151236:41" alt="点击联系在线客服." title="点击联系在线客服."></a>
+  &nbsp;&nbsp;
+  <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=138151236&site=qq&menu=yes">
+    <img border="0" src="http://wpa.qq.com/pa?p=2:138151236:41" alt="点击联系在线客服." title="点击联系在线客服.">
+  </a>
 </div>
 <div id="tele-usico">
   	<img src="/images/telephone.gif" width="139" height="23" />
