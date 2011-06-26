@@ -4,8 +4,7 @@
     <%= link_to (image_tag product.pic_main.url(:thumb), :width => "224", :height => "224", :title => product.name, :alt => product.cn_name), product_path(product) %>
   </dd>
   <dt class="wine_word">
-    <%= link_to product.cn_name, product_path(product), {:class => 'f-black-14-YaHei'} %><br />
-    <%= product.name %>
+    <%= link_to product.cn_name, product_path(product), {:class => 'f-black-14-YaHei'} %>
   </dt>
   <dt class="grPrice">
     <em class="f-grey-12">市场价:<%= format "%.2f", product.indication_price %>元</em>

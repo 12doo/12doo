@@ -59,4 +59,31 @@ class Coupon < ActiveRecord::Base
     self.used_time += 1
     self.save
   end
+  
+  # 用户注册送coupon
+  def self.new_for_register(user)
+    if user.sign_in_count == 0
+      coupon = Coupon.new
+      coupon.code = new_code
+      coupon.discount = 20
+      coupon.threshold = 100
+      coupon.belongs_to = user.id
+      coupon.all_user = false
+      coupon.one_off = true
+      coupon.begin = Time.now
+      coupon.end = Time.now + 1.year
+      coupon.used_time = 0
+      coupon.save
+      coupon
+    end
+    nil
+  end
+  
+  def self.new_code
+    chars = ("a".."z").to_a + ("0".."9").to_a
+    newpass = ""
+    1.upto(10) { |i| newpass << chars[rand(chars.size-1)] }
+    newpass
+  end
+  
 end
