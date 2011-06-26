@@ -16,6 +16,7 @@ class RegistrationsController < ApplicationController
 
     if resource.save
       set_flash_message :notice, :signed_up
+      coupon = Coupon.new_for_register(resource)
       sign_in_and_redirect(resource_name, resource)
     else
       clean_up_passwords(resource)
