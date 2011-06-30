@@ -5,7 +5,11 @@ class CartController < ApplicationController
 
   def add_product
     cart = find_cart
-    cart.add_product(find_product)
+    quantity = 1
+    if params[:quantity]
+      quantity = Integer(params[:quantity])
+    end
+    cart.add_product(find_product, quantity)
     redirect_to :action => 'show'
   end
 
