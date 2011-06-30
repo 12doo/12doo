@@ -31,47 +31,6 @@
 			$('#address_id_0').click();
 		}
 	});
-	
-	var flag_address = false;
-	var flag_pay = false;
-	
-	function change_address(){
-		$('#address_div').hide();
-		$('#addresses_div').show();
-		flag_address = false;
-	}
-	
-	function cancel_select_address(){
-		$('#address_div').show();
-		$('#addresses_div').hide();
-		flag_address = true;
-	}
-	
-	function select_address(){
-		var address_id = $('input[name="address_id"]:checked').val();
-		if (address_id > 0){
-			$('#div_address_selected').html($('#address_' + address_id).html());
-		}else{
-			if (verify_address()){
-				$('#div_address_selected').html(generate_new_address());
-			}else{
-				$.prompt('请填写完整地址信息。',
-					{
-					buttons:{ 确定:true },
-					callback:function(v,m,f){ $(this).remove();},
-					});
-				return;
-			}
-		}
-
-		cancel_select_address();
-		$('#close_link_address').show();
-		flag_address = true;
-	}
-	
-	function generate_new_address(){
-		return $('#name').val() + ',&nbsp;&nbsp;' + $('#province').val() + '&nbsp;&nbsp;' + $('#city').val() + '&nbsp;&nbsp;' + $('#region').val() + '&nbsp;&nbsp;' + $('#detail').val() + '&nbsp;&nbsp;' + $('#phone').val() + '&nbsp;&nbsp;' + $('#zip').val();
-	}
 
 	function show_addaddress(){
 		$('#table_addaddress').show();
@@ -79,26 +38,6 @@
 	
 	function hide_addaddress(){
 		$('#table_addaddress').hide();
-	}
-	
-	function change_pay(){
-		$('#pay_div').hide();
-		$('#selectpay_div').show();
-		flag_pay = false;
-	}
-	
-	function cancel_select_pay(){
-		$('#pay_div').show();
-		$('#selectpay_div').hide();
-		flag_pay = true;
-	}
-	
-	function select_pay(){
-		$('#div_pay_selected').html($('input[name="pay_type_radio"]:checked').val());
-		$('#pay_type').val($('input[name="pay_type_radio"]:checked').val());
-		cancel_select_pay();
-		$('#close_link_pay').show();
-		flag_pay = true;
 	}
 	
 	function verify_address(){
@@ -110,37 +49,26 @@
 	}
 	
 	function next_step(){
-		
 		var txt = '';
-		
 		var flag_submit = true;
-		
-		if (!flag_pay && !flag_address){
-			txt = '请确认送货地址和支付方式.';
-			flag_submit = false;
-		}
-		
-		if (!flag_address){
-			txt = '请确认送货地址.';
-			flag_submit = false;
-		}
-		if (!flag_pay){
-			txt = '请确认支付方式.';
-			flag_submit = false;
+		var address_id = $('input[name="address_id"]:checked').val();
+		if (address_id == '0'){
+			if (!verify_address()){
+				txt = '请填写完整地址信息。';
+				flag_submit = false;	
+			}
 		}
 		
 		if (flag_submit){
 			$('#create_order').submit();
 		}else{
 			$.prompt(txt,
-				{ 
-				//buttons:{ 确定:true, 取消:false},
-				buttons:{ 确定:true },
-				callback:function(v,m,f){ $(this).remove();},
+				{
+					buttons:{ 确定:true },
+					callback:function(v,m,f){ $(this).remove();},
 				});
 		}
-	}
-	
+	}	
 	
 </script>
 <div class="clearit bj-sp10"></div>
@@ -148,113 +76,8 @@
 <div id="mlist_detail">
 	<%= form_tag 'create', :id => :create_order do %>
 	<div class="order_box">
-		<div id="address_div" style="display:none">
-	    	<h1 class="f-black-12">
-				<img src="/images/msl_userinfo.gif" width="99" height="25" />
-				<a href="javascript:change_address()">[修改]</a>
-			</h1>
-			<div id="div_address_selected">
-				<% current_user.addresses.each do |address| %>
-					<% if address.default %>
-					<%= address.name %>,&nbsp;&nbsp;
-					<%= address.province %>&nbsp;&nbsp;
-					<%= address.city %>&nbsp;&nbsp;
-					<%= address.region %>&nbsp;&nbsp;
-					<%= address.detail %>&nbsp;&nbsp;
-					<%= address.phone %>&nbsp;&nbsp;
-					<%= address.zip %>
-					<% end %>
-				<% end %>
-			</div>
-		</div>
 		<%= render "addresses" %>
-		<div id="pay_div" style="display:none">
-			<h1 class="f-black-12">
-				<img src="/images/msl_payselect.gif" width="97" height="27" />
-				<a href="javascript:change_pay()">[修改]</a>
-			</h1>
-			<input id="pay_type" type="hidden" name="pay_type" value="支付宝" />
-			<div id="div_pay_selected">支付宝</div>
-		</div>
 		<%= render "pay" %>
-		<!-- <h1 class="f-black-12"><img src="/images/msl_timeselect.gif" width="99" height="29" /></h1> 
-		<div id="selectime">
-			<input type="radio" checked="checked" value="SEND_DATE_TYPE_USUALLY" name="writeOrderParaDTO.sendDateType">周一至周五
-          	<input type="radio" value="SEND_DATE_TYPE_WEEKEND" name="writeOrderParaDTO.sendDateType">双休日
-            <input type="radio" value="SEND_DATE_TYPE_UNLIMIT" name="writeOrderParaDTO.sendDateType">不限
-		</div>
-		
-		<div id="timetips" class="f-black-12">                
-     		<b>送货所需时间</b><br />
-			江浙沪 2-4天，其他地区 5天左右<br /><br />
-            <b>声明</b><br />
-            我们会努力按照您指定的时间配送，但因天气、交通等各类因素影响，您的订单有可能会有延误现象！敬请谅解！
-		</div> -->
-		
-		<!-- <h1 class="f-black-12"><img src="/images/msl_deliveryselect.gif" width="99" height="29" /></h1>              
-		  		<ul>
-		 			<li><input type="radio" name="delivery_type" value="door_step" checked="true" />送货上门</li> 
-		 			<li><input type="radio" name="delivery_type" value="door_step" checked="false" />EMS</li>
-					<li><input type="radio" name="delivery_type" value="door_step" checked="false" />快递</li> 
-		  		</ul>               
-		 		<h1 class="f-black-12"><img src="/images/msl_paperselect.gif" width="99" height="29" /></h1>              
-		  		<ul>
-		 			<li><input type="radio" class="hover" checked="checked" value="-1" />不需要发票</li> 
-		 			<li><input type="radio" value="0" />普通发票</li>
-					<li><input type="radio" value="1" />增值税发票</li> 
-		  		</ul>
-		 		<table width="100%" cellspacing="0" cellpadding="0" border="0" class="fpnormal f-black-12">
-		        	<tbody>
-						<tr>
-		          			<td>
-								<b>发票抬头</b><input type="text" size="50" id="title2" name="title" />
-		          			</td>
-		          		</tr>
-		        		<tr>
-		          			<td>
-								1.个人发票请填写您的姓名<br />
-		            			2.单位发票请填写单位全称 
-							</td>
-		          		</tr>
-		        	</tbody>
-				</table>
-		 		<table width="100%" cellspacing="0" cellpadding="0" border="0" class="fpnormal">
-		        	<tr>
-		            	<td>
-							<span class="f-red-12">*</span>
-							公司名称 ：<input type="text" size="30" id="companyName" name="writeOrderParaDTO.companyName" />
-						</td>
-		            	<td>
-							<span class="f-red-12">*</span>
-							寄送地址：<input type="text" size="30" id="companyAddr" name="writeOrderParaDTO.companyAddr" />
-						</td>
-		            	<td>
-							<span class="f-red-12">*</span>
-							公司电话：<input type="text" size="30" id="companyPhone" name="writeOrderParaDTO.companyPhone" />
-						</td>
-		            </tr>
-		      		<tr>
-		            	<td>
-							<span class="f-red-12">*</span>
-							开户行：<input type="text" size="30" id="bankName" name="writeOrderParaDTO.bankName" />
-						</td>
-		            	<td>
-							<span class="f-red-12">*</span>
-							帐号：<input type="text" size="30" id="bankNo" name="writeOrderParaDTO.bankNo" />
-						</td>
-		            	<td>
-							<span class="f-red-12">*</span>
-							税务号：<input type="text" size="30" id="companyRateNo" name="writeOrderParaDTO.companyRateNo" />
-						</td>
-		            </tr>
-		          	<tr>
-		            	<td colspan="3">
-							<span class="f-red-12-b">提示：</span>
-							增值税发票只针对企业用户。<br />
-		              		请在订单提交后将一般纳税人证书传真至 021-36368251（注明订单号），我们会在 7-15 个工作日将增值税发票快递给您。 
-						</td>
-		            </tr>
-		        </table> -->
 		<h1 class="f-black-12"><img src="/images/msl_pdlist.gif" width="99" height="29" /></h1>                           
 		<table width="100%" cellspacing="0" cellpadding="0" border="0" class="order_table">
         	<tbody>
@@ -305,8 +128,7 @@
 	</div>
 	<div id="totalprice" class="f-black-12-b">
 		商品金额总计： <span class="f-blue-20-Ar-b">￥<%= format "%.2f", @order.total %></span> 
-		优惠券抵扣： <span class="f-gren-20-Ar-b">-￥<span id="discount">0.00</span></span> 
-		<!-- 积分抵扣：     <span class="f-gren-20-Ar-b">-￥</span>  -->
+		优惠券抵扣： <span class="f-gren-20-Ar-b">-￥<span id="discount">0.00</span></span>
 		运费：      <span class="f-gren-20-Ar-b">+￥ <%= format "%.2f", @order.carriage %></span>
 	</div>
 	<div class="f-black-20-hei lastprice">

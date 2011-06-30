@@ -73,10 +73,7 @@ class OrdersController < ApplicationController
     @order.city = address.city
     @order.region = address.region
     @order.zip = address.zip
-    @order.phone = address.phone 
-    
-    #调试付款过程的阶段，将订单支付额设为一分钱，减少调试成本；已经改为在check_out.html.erb中设置
-    #@order.pay_price = 0.01
+    @order.phone = address.phone
     
     cart = find_cart
     cart.items.each do |item|
