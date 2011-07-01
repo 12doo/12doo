@@ -9,49 +9,35 @@
 		<div class="clearit"></div>
 		<div id="ac_more_detail">
 			<table width="100%" cellspacing="0" cellpadding="0" border="0" class="tableinfo">
-            	<tbody>
-                    <tr bgcolor="#f0f0f0" class="f-black-12-b">
-                        <td height="30" width="70">
-                            编号
-                        </td>
-                        <td width="40">
-                            抵扣金额
-                        </td>
-                        <td width="40">
-                            最低金额
-                        </td>
-                        <td width="40">
-                            一次性
-                        </td>
-                        <td width="40">
-                            已使用
-                        </td>
-                        <td width="80" valign="middle" bgcolor="#f0f0f0" align="center">
-                        	启用时间
-                        </td>
-                        <td width="80" valign="middle" bgcolor="#f0f0f0" align="center">
-                            截止时间
-                        </td>
-                        <td width="70" valign="middle" bgcolor="#f0f0f0" align="center">
-                        	操作
-                        </td>
-                    </tr>
+      	<tbody>
+          <tr bgcolor="#f0f0f0" class="f-black-12-b">
+              <td height="30" width="70">编号</td>
+              <td width="100">属于</td>
+              <td width="40">抵扣金额</td>
+              <td width="40">最低金额</td>
+              <td width="40">一次性</td>
+              <td width="40">已使用</td>
+              <td width="80" valign="middle" bgcolor="#f0f0f0" align="center">启用时间</td>
+              <td width="80" valign="middle" bgcolor="#f0f0f0" align="center">截止时间</td>
+              <td width="70" valign="middle" bgcolor="#f0f0f0" align="center">操作</td>
+          </tr>
 					<% @coupons.each do |coupon| %>
 				 	<tr>
 					    <td height="30"><%= link_to coupon.code, coupon, :class => 'f-red-12' %></td>
+					    <td><%= coupon.belongs_to %></td>
 					    <td><%= format "%.2f", coupon.discount %></td>
-						<td><%= format "%.2f", coupon.threshold %></td>
-						<td><%= coupon.one_off ? '是' : '否' %></td>
-						<td><%= coupon.used_time %></td>
-						<td><%= coupon.begin ? "" : coupon.begin.strftime('%Y-%m-%d') %></td>
+						  <td><%= format "%.2f", coupon.threshold %></td>
+						  <td><%= coupon.one_off ? '是' : '否' %></td>
+						  <td><%= coupon.used_time %></td>
+						  <td><%= coupon.begin ? "" : coupon.begin.strftime('%Y-%m-%d') %></td>
 					    <td><%= coupon.end ? "" : coupon.end.strftime('%Y-%m-%d') %></td>
-						<td>
-							<%= link_to '[编辑]', edit_coupon_path(coupon), :class => 'f-red-12' %>
-							<%= link_to '[删除]', coupon, :method => :delete, :class => 'f-red-12' %>
-						</td>
+						  <td>
+							  <%= link_to '[编辑]', edit_coupon_path(coupon), :class => 'f-red-12' %>
+							  <%= link_to '[删除]', coupon, :method => :delete, :class => 'f-red-12' %>
+						  </td>
 				  	</tr>
 					<% end %>
-                </tbody>
+        </tbody>
 			</table>
 			<%= paginate @coupons %>
 		</div>

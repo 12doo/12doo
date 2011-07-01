@@ -56,51 +56,59 @@
 		<div class="r5">
 			会员价：<span class="f-red-20-Ar">￥<%= format "%.2f", @product.price %></span>
 		</div>
-		<div class="r5">
-			<span class="f-grey-12">市场价：￥<%= format "%.2f", @product.indication_price %></span>
-		</div>
 		<div class="r5 underline">
+			<span class="f-grey-12">市场价：￥<%= format "%.2f", @product.indication_price %></span>
+			&nbsp;&nbsp;<span class="f-grey-12">已经售出  </span><span class="f-blue-12"><b><%= @product.sold_count %></b></span><span class="f-grey-12"> 瓶 </span>
+		</div>
 			<!--
+		<div class="r5 underline">
+		
 			银卡会员价：￥135.2&nbsp;&nbsp;&nbsp;&nbsp;
 			金卡会员价：￥133.9&nbsp;&nbsp;&nbsp;&nbsp;
 			铂金卡会员价：￥131.1
-			-->
-		</div>
+		
+		</div>	-->
+	
+		
 		<table width="496" cellspacing="0" cellpadding="0" border="0" class="r4">
 			<tbody>
 				<tr>
            			<td width="40" height="45" align="left">数量：</td>
-           			<td width="85" align="left">
+           			<td width="100" align="left">
 						<a title="减少" href="javascript:if($('#winenum').val() > 1){$('#winenum').val($('#winenum').val() - 1);$('#winenum').change();}"><img src="/images/minus_btn.gif"></a>
-						<input type="text" id="winenum" class="winenum" value="1" name="textfield3" />
+						<input type="text" id="winenum" class="con_mycart_input" size="2" value="1" name="textfield3" />
 						<a title="增加" href="javascript:if($('#winenum').val() >= 0){$('#winenum').val($('#winenum').val() - 0 + 1);$('#winenum').change();}">
 						<img src="/images/plus_btn.gif"></a>
            			</td>
-           			<td width="375" align="left" class="f-grey-12">
-						已经售出  <span class="f-blue-12"><b><%= @product.sold_count %></b></span> 瓶 
+           			<td width="320" align="left" class="f-grey-12">
+						<a href="/cart/add_product/<%= @product.id %>" onclick="add_to_cart(this.href, $('#winenum').val()); return false;"><img border="0" src="/images/add_cart.gif" id="buttonImg"></a>
 						<!--
 						有 <span class="f-blue-12"><b>53</b></span> 人评论 <a href="#"><span class="f-red-12">查看评论(12)</span></a>
 						-->
 					</td>
          			</tr>
+         			
+         	<!-- 计划 用来 显示 多个小图 		
          			<tr>
            			<td style="vertical-align: top; padding-bottom: 10px;" colspan="3">
            				<ul id="winelabellist" class="jb_singleli">
            				</ul>
 					</td>
          			</tr>
+         			--> 
+         			<!-- 计划 用来显示 添加到购物车 和 添加到收藏夹 ，当前由于功能简化，将 添加到购物车 移到 购买数量 后面
          			<tr>
            			<td valign="middle" height="25" align="left" colspan="3">
 						<table width="500" height="28" cellspacing="0" cellpadding="0" border="0">
              					<tbody>
 								<tr>
                						<td valign="top" align="left" id="clickBox" colspan="2">
-                                       	<a href="/cart/add_product/<%= @product.id %>" onclick="add_to_cart(this.href, $('#winenum').val()); return false;"><img border="0" src="/images/add_cart.gif" id="buttonImg"></a>
+                		<a href="/cart/add_product/<%= @product.id %>" onclick="add_to_cart(this.href, $('#winenum').val()); return false;"><img border="0" src="/images/add_cart.gif" id="buttonImg"></a>                       	
 									</td>
                						<td width="115" valign="top" align="left">
-										<!--
+										
 										<a href="#"><img border="0" src="/images/favourite_ico.gif"></a>
-										-->
+										
 									</td>
                						<td width="260" align="left" valign="top"></td>
              						</tr>
@@ -108,21 +116,25 @@
 						</table>
 					</td>
          			</tr>
+         			-->
        		</tbody>
 		</table>
-		<div class="activemsg"></div>
-		<div class="activemsg">
+
+	  <div class="activemsg">
          		<ul class="kc">
-	  			<li style="margin: 0pt;"><b>库存：</b></li>
-				<li><span>上海</span><font id="shanghai">有货</font></li>
+				<li>上海库存：<strong><font id="shanghai"><%= @product.count > 0 ? "现货" : "无货" -%></font></strong></li>
 				<!--
+				<li style="margin: 0pt;"><b>库存：</b></li>
+				
 				<li><span>北京仓</span><font id="beijing">无货</font></li>
 				<li><span>广州仓</span><font id="guangzhou">有货</font></li>
 				<li><span>成都仓</span><font id="chengdu">有货</font></li>
 				-->
-				<li>试营业期，送货范围仅限上海郊环线内</li> 
          		</ul>
+         <br/>	
 		</div>
+		<div class="clearit"></div>
+		<div class="activemsg">试营业期间，送货范围仅限上海郊环线内	</div>
 	</div>
 	<div class="clearit"></div>
 </div>
