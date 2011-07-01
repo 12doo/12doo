@@ -12,15 +12,58 @@
 	<div style="float:left;width:725px;">
 		<div class="goodsResult">
 			
+			<div  class="list_num_top">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0">
+				  <tr>
+				    <td align="right" width="180">
+						<!-- <table width="100%" border="0" cellspacing="5" cellpadding="0">
+				  			<tr>
+								<td><a href="#" class="order_up_on">销量</a></td>
+				    			<td><a href="#" class="order_up">价格</a></td>
+				     			<td><a href="#" class="order_down">评价</a></td>
+				  			</tr>
+						</table> -->
+					</td>
+				    <td align="right">
+						<%= paginate @products %>
+					</td>
+				  </tr>
+				</table>
+			</div>
+
+			<div class="clearit"></div>
+			
 			<ul class="pagePicView">
 				<% if @products.length == 0 %>
 				没有符合条件的产品.
 				<% end %>
-        <%= render @products %>
+        		<%= render @products %>
 			</ul>
+			
 			<div class="clearit"></div>
-			<%= paginate @products %>
+			<div  class="list_num_top">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0">
+				  <tr>
+				    <td align="right" width="180">
+						<!-- <table width="100%" border="0" cellspacing="5" cellpadding="0">
+				  			<tr>
+								<td><a href="#" class="order_up_on">销量</a></td>
+				    			<td><a href="#" class="order_up">价格</a></td>
+				     			<td><a href="#" class="order_down">评价</a></td>
+				  			</tr>
+						</table> -->
+					</td>
+				    <td align="right">
+						<%= paginate @products %>
+					</td>
+				  </tr>
+				</table>
+			</div>
     </div>
 	</div>
 	<div class="clearit"></div>
+	
+	
+
+	
 </div>
