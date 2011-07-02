@@ -64,11 +64,11 @@ module ProductsHelper
   end
   
   def search_path_without_sort
-    search_path_without_keywords + "#{params[:keywords]}"
+    "/category/" + params[:tags] + "/#{params[:keywords]}"
   end
   
   def search_path_with_sort(sort_by, sort)
-    search_path_without_keywords + "#{params[:keywords]}?sort_by=#{sort_by}&sort=#{sort}"
+    "/category/" + params[:tags] + "/#{params[:keywords]}?sort_by=#{sort_by}&sort=#{sort}"
   end
   
   def search_path_by_short_value(short, value)
@@ -83,7 +83,7 @@ module ProductsHelper
     "/category/#{tags.join('-')}"
   end
   
-  def selected(sort_by,sort)
+  def selected(sort_by, sort)
     if sort_by == params[:sort_by] && sort.to_s == params[:sort]
       return true
     else
