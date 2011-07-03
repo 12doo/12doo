@@ -1,7 +1,7 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('#province').change(function(){
-			$.getJSON("/areas/get_cities?province=" + escape($('#province').val()), function(data){
+			$.getJSON(encodeURI("/areas/get_cities?province=" + $('#province').val()), function(data){
 				$('#city option').remove();
 			  	$.each(data, function(i,item){
 			    	$('#city').append("<option value='"+ item.area.city +"'>"+ item.area.city +"</option>");
@@ -13,7 +13,7 @@
 	
 	$(document).ready(function(){
 		$('#city').change(function(){
-			$.getJSON("/areas/get_regions?province=" + escape($('#province').val()) + "&city=" + escape($('#city').val()), function(data){
+			$.getJSON(encodeURI("/areas/get_regions?province=" + $('#province').val() + "&city=" + $('#city').val()), function(data){
 				$('#region option').remove();
 			  	$.each(data, function(i,item){
 			    	$('#region').append("<option value='"+ item.area.region +"'>"+ item.area.region +"</option>");
@@ -25,7 +25,7 @@
 	
 	$(document).ready(function(){
 		$('#region').change(function(){
-			$.getJSON("/areas/get_detail?province=" + escape($('#province').val()) + "&city=" + escape($('#city').val()) + "&region=" + escape($('#region').val()), function(data){
+			$.getJSON(encodeURI("/areas/get_detail?province=" + $('#province').val() + "&city=" + $('#city').val() + "&region=" + $('#region').val()), function(data){
 				$('#zip').val(data[0].area.postcode);
 				$('#zip').change();
 			});

@@ -15,7 +15,7 @@
   <% if user_signed_in? %>
     您好，<%= current_user.display_name %> &nbsp;|&nbsp; <a href="/my">我的12doo</a> &nbsp;| &nbsp;<%= link_to "注销", destroy_user_session_path %>
   <% else %>
-    <%= link_to "注册", new_user_registration_path %> &nbsp;| &nbsp;<%= link_to "登陆", new_user_session_path %>
+    <%= link_to "注册", new_user_registration_path %> &nbsp;| &nbsp;<%= link_to "登录", new_user_session_path %>
   <% end %>
   &nbsp;&nbsp;
   <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=138151236&site=qq&menu=yes">
