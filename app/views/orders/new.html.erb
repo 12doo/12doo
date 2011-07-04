@@ -120,7 +120,7 @@
 						<b>优惠券</b>
 						<span id="coupon_code_show" style="display:none;"></span>
 						<input type="text" name="coupon_code" id="coupon_code" size="50" />
-						<a id="coupon_button" href="javascript:check_coupon();"><img src="/images/use_discount.gif" width="120" height="30" /></a>
+						<a id="coupon_button" href="#" onclick="javascript:check_coupon(); return false;"><img src="/images/use_discount.gif" width="120" height="30" /></a>
           			</td>
           		</tr>
         	</tbody>
@@ -135,7 +135,7 @@
 		订单金额： <span class="f-red-12-b">￥</span><span id="total" class="f-red-30-Ar-b"><%= format "%.2f", @order.pay_price %></span>
 	</div>
 	<div align="center">
-		<a href="javascript:next_step();"><img src="/images/next-step_btn.gif" width="145" height="45" /></a>
+		<a href="#" onclick="javascript:next_step(); return false;"><img src="/images/next-step_btn.gif" width="145" height="45" /></a>
 	</div>
 	<% end %>
 </div>
