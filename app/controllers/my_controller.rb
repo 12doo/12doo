@@ -84,6 +84,15 @@ class MyController < ApplicationController
   def bought  
     @items = Product.joins('LEFT OUTER JOIN order_items ON order_items.product_id = products.id').where("order_items.user_id" => current_user.id)
   end
+  
+  def update_password
+    if current_user.update_with_password(params[:user])
+      sign_out
+      redirect_to '/'
+    else
+      render :change_password
+    end
+  end
 
 #  def update_profile
 #    current_user.gender = params[:gender]
@@ -101,4 +110,5 @@ class MyController < ApplicationController
 #    end
 #    
 #  end
+
 end
