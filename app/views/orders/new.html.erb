@@ -16,10 +16,9 @@
 				}else{
 					$.prompt('您输入的优惠券无法识别或者当前订单不符合使用条件。',
 						{
-						buttons:{ "确定":true },
-						callback:function(v,m,f){ $(this).remove();},
+							buttons:{ "确定":true },
+							callback:function(v,m,f){ $(this).remove();},
 						});
-					return;
 				}
 			},
 		});
