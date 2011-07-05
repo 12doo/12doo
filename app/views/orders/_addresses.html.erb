@@ -3,6 +3,7 @@
 		$('#province').change(function(){
 			$.getJSON(encodeURI("/areas/get_cities?province=" + $('#province').val()), function(data){
 				$('#city option').remove();
+				$('#city').append("<option disabled>---------请选择市/区---------</option>");
 			  	$.each(data, function(i,item){
 			    	$('#city').append("<option value='"+ item.area.city +"'>"+ item.area.city +"</option>");
 			  	});
@@ -15,6 +16,7 @@
 		$('#city').change(function(){
 			$.getJSON(encodeURI("/areas/get_regions?province=" + $('#province').val() + "&city=" + $('#city').val()), function(data){
 				$('#region option').remove();
+				$('#region').append("<option disabled>------请选择区/县------</option>");
 			  	$.each(data, function(i,item){
 			    	$('#region').append("<option value='"+ item.area.region +"'>"+ item.area.region +"</option>");
 			  	});
@@ -64,7 +66,7 @@
 					<td align="left">
 						<% areas = Area.new.get_provinces %>
 						<select align="left" id="province" name="address[province]" id="province">
-							<option value=""></option>
+							<option disabled>-----请选择省/直辖市-----</option>
 						    <% areas.each do |item| %>
 							    <option value="<%= item.province %>">
 							      <%= item.province %>
@@ -72,8 +74,10 @@
 						    <% end %>
 						</select>
 						<select align="left" id="city" name="address[city]" id="city">
+							<option disabled>---------请选择市/区---------</option>
 						</select>
 						<select align="left" id="region" name="address[region]" id="region">
+							<option disabled>------请选择区/县------</option>
 						</select>
 					</td>
 				</tr>
