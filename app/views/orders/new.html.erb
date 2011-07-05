@@ -8,7 +8,7 @@
 				if (data){
 					$.each(data, function(i,item){
 						$('#discount').html(parseFloat(item.discount).toFixed(2));
-						$('#total').html((parseFloat($('#total').html()) - parseFloat(item.discount)).toFixed(2))
+						$('#total').html((parseFloat($('#total').html()) - parseFloat(item.discount)).toFixed(2));
 						$('#coupon_code_show').html($('#coupon_code').val()).show();
 						$('#coupon_code').hide();
 						$('#coupon_button').hide();
