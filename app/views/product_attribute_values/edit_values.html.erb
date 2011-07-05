@@ -48,7 +48,7 @@
 							<td class="tcenter">值:</td>
 							<td><%= f.text_field :value %></td>
 							<td class="tcenter">
-								<a href="javascript:$('#product_attribute_value_form_<%= item.id.to_s %>').submit();" class='f-red-12'>[保存]</a>
+								<a href="#" onclick="javascript:$('#product_attribute_value_form_<%= item.id.to_s %>').submit(); return false;" class='f-red-12'>[保存]</a>
 							</td>
 						</tr>
 					</tbody>
@@ -64,7 +64,7 @@
 						<td class="tcenter">值:</td>
 						<td><%= f.text_field :value %></td>
 						<td class="tcenter">
-							<a href="javascript:$('#product_attribute_value_form').submit();" class='f-red-12'>[添加]</a>
+							<a href="#" onclick="javascript:$('#product_attribute_value_form').submit(); return false;" class='f-red-12'>[添加]</a>
 						</td>
 					</tr>
 				</tbody>

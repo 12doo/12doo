@@ -31,7 +31,7 @@
 	        <% service.payment_type 1 %>
 	        <% service.subject @order.no %>
 	        <% service.sign %>
-			<a href="javascript:$('#submit').click();">
+			<a href="#" onclick="javascript:$('#submit').click(); return false;">
 				<img src="/images/next-step_btn.gif" width="145" height="45" />
 			</a>&nbsp;
 			<span class="f-grey-12">（点击按钮转到支付宝）</span>

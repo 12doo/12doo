@@ -7,7 +7,7 @@ function selectFile(url){
 <%= link_to "添加图片", new_picture_path %>
 <% @pictures.each do |picture| %>
 
-<a href="javascript:selectFile('<%= picture.item.url(:original) %>');">
+<a href="#" onclick="javascript:selectFile('<%= picture.item.url(:original) %>'); return false;">
 	<%= image_tag picture.item.url(:thumb), :width => "224", :height => "224" %>
 </a>
 
