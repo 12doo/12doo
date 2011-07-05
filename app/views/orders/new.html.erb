@@ -24,13 +24,6 @@
 			},
 		});
 	}
-	
-	$(document).ready(function(){
-		var address_id = $('input[name="address_id"]:checked').val();
-		if (address_id == null){
-			$('#address_id_0').click();
-		}
-	});
 
 	function show_addaddress(){
 		$('#table_addaddress').show();
@@ -68,7 +61,14 @@
 					callback:function(v,m,f){ $(this).remove();},
 				});
 		}
-	}	
+	}
+	
+	$(document).ready(function(){
+		var address_id = $('input[name="address_id"]:checked').val();
+		if (address_id == null){
+			$('#address_id_0').click();
+		}
+	});
 	
 </script>
 <div class="clearit bj-sp10"></div>
