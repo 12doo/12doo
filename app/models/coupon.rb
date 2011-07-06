@@ -66,6 +66,11 @@ class Coupon < ActiveRecord::Base
       coupon = Coupon.new
       coupon.code = new_code
       coupon.discount = 20
+      
+      if user.id <= 100
+        coupon.discount = 50
+      end
+      
       coupon.threshold = 100
       coupon.belongs_to = user.id
       coupon.all_user = false
@@ -83,7 +88,13 @@ class Coupon < ActiveRecord::Base
     chars = ("a".."z").to_a + ("0".."9").to_a
     newpass = ""
     1.upto(10) { |i| newpass << chars[rand(chars.size-1)] }
-    newpass
+    
+    # 查看重复
+    if Coupon.find_by_code(newpass)
+      self.new_code
+    else
+      newpass
+    end
   end
   
 end
