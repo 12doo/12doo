@@ -126,12 +126,13 @@
 		</table>
 	</div>
 	<div id="totalprice" class="f-black-12-b">
-		商品金额总计： <span class="f-blue-20-Ar-b">￥<%= format "%.2f", @order.total %></span> 
-		优惠券抵扣： <span class="f-gren-20-Ar-b">-￥<span id="discount">0.00</span></span>
-		运费：      <span class="f-gren-20-Ar-b">+￥ <%= format "%.2f", @order.carriage %></span>
+		商品金额总计:<span class="f-blue-20-Ar-b"> +￥<%= format "%.2f", @order.total %></span>
+		折扣金额:<span class="f-gren-20-Ar-b"> -￥<%= format "%.2f", @order.total * (1 - @order.discount_rate) %></span>
+		优惠券抵扣:<span class="f-gren-20-Ar-b"> -￥<span id="discount">0.00</span></span>
+		运费:<span class="f-blue-20-Ar-b"> +￥<%= format "%.2f", @order.carriage %></span>
 	</div>
 	<div class="f-black-20-hei lastprice">
-		订单金额： <span class="f-red-12-b">￥</span><span id="total" class="f-red-30-Ar-b"><%= format "%.2f", @order.pay_price %></span>
+		订单金额:<span class="f-red-12-b">￥</span><span id="total" class="f-red-30-Ar-b"><%= format "%.2f", @order.pay_price %></span>
 	</div>
 	<div align="center">
 		<a href="#" onclick="javascript:next_step(); return false;"><img src="/images/next-step_btn.gif" width="145" height="45" /></a>
