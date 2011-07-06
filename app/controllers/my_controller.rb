@@ -78,7 +78,13 @@ class MyController < ApplicationController
   
   # coupons
   def coupons
-    @coupons = Coupon.where(:belongs_to =>  current_user.id).order("id desc").page(params[:page])
+    @coupons = []
+    all_coupons = Coupon.where(:belongs_to =>  current_user.id).order("id desc")
+    all_coupons.each do |item|
+      if item.available(current_user)
+        @coupons << item
+      end
+    end
   end
   
   def bought  
