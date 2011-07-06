@@ -24,17 +24,9 @@ class Order < ActiveRecord::Base
       self.carriage = 20
     end
     
-    self.discount_rate = get_discount_rate
+    self.discount_rate = 1
     
     self.pay_price = self.carriage + self.total * self.discount_rate
-  end
-  
-  def get_discount_rate
-    if Time.now < Time.mktime(2011,8,1)
-      0.8
-    else
-      1
-    end
   end
   
   def calc_order_price

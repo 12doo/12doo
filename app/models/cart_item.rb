@@ -20,6 +20,11 @@ class CartItem
     temp.product_name = self.product.cn_name
     temp.product_sku = self.product.sku
     temp.price = self.product.price
+    
+    if self.product.promo_price > 0
+      temp.price = self.product.promo_price
+    end
+    
     temp.quantity = self.quantity
     temp.subtotal = self.subtotal
     temp
@@ -30,6 +35,10 @@ class CartItem
   end
   
   def subtotal
-    (product.price * @quantity).to_f
+    (self.product.price * @quantity).to_f
+    
+    if self.product.promo_price > 0
+      (self.product.promo_price * @quantity).to_f
+    end
   end 
 end

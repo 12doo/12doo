@@ -102,7 +102,7 @@
 		<table width="100%" cellspacing="0" cellpadding="0" border="0">
         	<tbody>
 				<tr>
-					<td> 商品数量总计：<%= @order.quantity %> 件 </td>
+					<td>商品数量总计：<%= @order.quantity %> 件 </td>
 					<td align="right"><%= link_to image_tag("/images/back_to_cart_btn.gif"), "/cart/show" %></td>
 				</tr>
           	</tbody>
@@ -127,7 +127,9 @@
 	</div>
 	<div id="totalprice" class="f-black-12-b">
 		商品金额总计:<span class="f-blue-20-Ar-b"> +￥<%= format "%.2f", @order.total %></span>
-		折扣金额:<span class="f-gren-20-Ar-b"> -￥<%= format "%.2f", @order.total * (1 - @order.discount_rate) %></span>
+		<% if @order.discount_rate < 1 %>
+		整单折扣金额:<span class="f-gren-20-Ar-b"> -￥<%= format "%.2f", @order.total * (1 - @order.discount_rate) %></span>
+		<% end %>
 		优惠券抵扣:<span class="f-gren-20-Ar-b"> -￥<span id="discount">0.00</span></span>
 		运费:<span class="f-blue-20-Ar-b"> +￥<%= format "%.2f", @order.carriage %></span>
 	</div>

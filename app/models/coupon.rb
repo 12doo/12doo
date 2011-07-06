@@ -4,21 +4,25 @@ class Coupon < ActiveRecord::Base
   paginates_per 10
   
   # 判断是否可用
-  def can_use(user,order)
+  def can_use(user, order)
     result = false
     # 判断优惠券生效时间范围,价格是否适用
     if self.begin < Time.now && self.end > Time.now && self.threshold_match(order)
       # 判断优惠券是否是多人使用券
       if self.all_user
         # 是多人优惠券,如果不是一次性并且已经使用过,都返回true
-        unless self.one_off && self.used(user)
+        if self.one_off && self.used(user)
+          result = false
+        else
           result = true
         end
       else
         # 是单人优惠券,是否是当前用户的
         if self.belongs_to == user.id
           # 除非是一次性并且已经用过的,其余都返回true
-          unless self.one_off && self.used(user)
+          if self.one_off && self.used(user)
+            result = false
+          else
             result = true
           end
         end
@@ -30,8 +34,8 @@ class Coupon < ActiveRecord::Base
   
   # 判断某个人是否使用过该券
   def used(user)
-    record = CouponUsedRecord.find_by_user_id(user.id)
-    if record
+    record = CouponUsedRecord.where(:user_id => user.id, :coupon_code => self.code)
+    if record && record.count > 0
       return true
     end
     return false

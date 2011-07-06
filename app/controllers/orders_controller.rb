@@ -299,7 +299,7 @@ class OrdersController < ApplicationController
   
   def get_coupon
     detail = Coupon.find_by_code(params[:code])
-    if detail && detail.can_use(current_user,temp_order)
+    if detail && detail.can_use(current_user, temp_order)
       respond_to do |format| 
         format.json { render :json => detail } 
       end
@@ -320,6 +320,6 @@ class OrdersController < ApplicationController
     order = Order.new
     cart = find_cart
     order.init_from_cart(cart)
-    return order
+    order
   end
 end

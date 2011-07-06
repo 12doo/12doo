@@ -28,7 +28,7 @@
 			<% cart.items.each do |item| %>
             <tr>
             	<td height="30"><%= link_to item.product.cn_name, product_path(item.product), :class=>"f-blue-12-b" %></td>
-                <td>￥<%= format "%.2f", item.product.price %></td>
+                <td>￥<%= format "%.2f", item.product.promo_price > 0 ? item.product.promo_price : item.product.price %></td>
                 <td align="center">
 					<%= form_tag({:action=>'update_product', :id=>item.productid}, :name=>'update_product_form_' + item.productid.to_s) do %>
 					<a title="减少" onclick="javascript:if($('#quantity_<%= item.productid %>').val() > 1){$('#quantity_<%= item.productid %>').val($('#quantity_<%= item.productid %>').val() - 1);$('#quantity_<%= item.productid %>').change();}; return false;" href="#"><img src="/images/minus_btn.gif"></a>

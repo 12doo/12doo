@@ -7,10 +7,18 @@
 	  <%= link_to product.cn_name, product_path(product), {:class => 'f-black-14-YaHei'} %>
 	</dt>
 	<dt class="grPrice">
-	  <em class="f-grey-12">市场价:<%= format "%.2f", product.indication_price %>元</em>
+	  <em class="f-grey-12">市场价: <%= format "%.2f", product.indication_price %>元</em>
+	<% if product.promo_price > 0 %>
+	<em class="f-grey-12">会员价: <%= format "%.2f", product.price %>元</em>
+	<% end %>
+		
 	</dt>
   <dt class="grPrice">
-  	<em><span class="f-red-12">会员价:</span><span class="f-grey-20-Arial"><%= format "%.2f", product.price %></span><span class="f-red-12">元</span></em>
+	<% if product.promo_price > 0 %>
+	<em><span class="f-red-12">促销价: </span><span class="f-grey-20-Arial"><%= format "%.2f", product.promo_price %></span><span class="f-red-12">元</span></em>
+	<% else %>
+	<em><span class="f-red-12">会员价: </span><span class="f-grey-20-Arial"><%= format "%.2f", product.price %></span><span class="f-red-12">元</span></em>
+	<% end %>
     <%= link_to image_tag('/images/go-off.gif', :height => '23', :width => '23', :title => '放入购物车', :style => 'float: right;'), "/cart/add_product/" + product.id.to_s %>
   </dt> 
 </dl>
