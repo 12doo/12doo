@@ -30,8 +30,7 @@ class OrdersController < ApplicationController
     else
       @order = temp_order
       respond_to do |format|
-        format.html # new.html.erb
-        format.xml  { render :xml => @order }
+        format.html
       end
     end
   end
@@ -43,11 +42,8 @@ class OrdersController < ApplicationController
     change.before = ''
     
     @order = temp_order
-    @order.no = Time.now.strftime("SO%Y%m%d%H%M%S")
     @order.status = '等待确认订单';
     @order.memo = params[:memo]
-    @order.order_at = Time.now
-    @order.user_id = current_user.id
     @order.pay_type = params[:pay_type]
     if @order.pay_type == '支付宝'
       @order.status = '等待付款'
@@ -66,40 +62,15 @@ class OrdersController < ApplicationController
     else
       address = Address.find(params[:address_id])
     end
-   
-    @order.fullname = address.name
-    @order.address = address.detail
-    @order.province = address.province
-    @order.city = address.city
-    @order.region = address.region
-    @order.zip = address.zip
-    @order.phone = address.phone
     
-    cart = find_cart
-    cart.items.each do |item|
-      temp = OrderItem.new
-      temp.product_id = item.product.id
-      temp.user_id = current_user.id
-      temp.product_name = item.product.cn_name
-      temp.product_sku = item.product.sku
-      temp.price = item.product.price
-      temp.quantity = item.quantity
-      temp.subtotal = item.subtotal
-      temp.order_no = @order.no
-      temp.save
-    end
+    @order.set_address(address)
     
     #coupon
     if params[:coupon_code]
       coupon = Coupon.find_by_code(params[:coupon_code])
-      if coupon && coupon.can_use(current_user,temp_order)
-        @order.pay_price = @order.total - coupon.discount
-        @order.discount = coupon.discount
-        @order.coupon_code = params[:coupon_code]
-        coupon.use(current_user, @order)
-      end
+      @order.use_coupon(coupon, current_user)
     end
-    
+    cart = find_cart
     respond_to do |format|
       if @order.save
         cart.clear
@@ -319,7 +290,7 @@ class OrdersController < ApplicationController
   def temp_order
     order = Order.new
     cart = find_cart
-    order.init_from_cart(cart)
+    order.init_from_cart(cart, current_user)
     order
   end
 end
