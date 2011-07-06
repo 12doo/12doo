@@ -15,6 +15,16 @@ class CartItem
     product.name
   end
   
+  def get_order_item
+    temp = OrderItem.new
+    temp.product_name = self.product.cn_name
+    temp.product_sku = self.product.sku
+    temp.price = self.product.price
+    temp.quantity = self.quantity
+    temp.subtotal = self.subtotal
+    temp
+  end
+  
   def product
     Product.find(productid)
   end

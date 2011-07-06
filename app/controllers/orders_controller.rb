@@ -294,7 +294,6 @@ class OrdersController < ApplicationController
     change.changed_at = Time.now
     change.save
     
-
     redirect_to :action => :index, :controller => :orders
   end
   
@@ -319,28 +318,8 @@ class OrdersController < ApplicationController
   
   def temp_order
     order = Order.new
-    order.no = Time.now.strftime("SO%Y%m%d%H%M%S")
     cart = find_cart
-    cart.items.each do |item|
-      temp = OrderItem.new
-      temp.product_name = item.product.cn_name
-      temp.product_sku = item.product.sku
-      temp.price = item.product.price
-      temp.quantity = item.quantity
-      temp.subtotal = item.subtotal
-      order.order_items << temp
-    end
-    order.total = cart.total
-    
-    #计算运费，当前只有20一档和满200免运费优惠
-    if order.total < 200
-      order.carriage = 20
-    else
-      order.carriage = 0
-    end
-    
-    order.pay_price = order.carriage + order.total
-    order.quantity = cart.quantity
+    order.init_from_cart(cart)
     return order
   end
 end
