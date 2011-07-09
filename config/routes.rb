@@ -2,7 +2,7 @@
 V3::Application.routes.draw do
 
   resources :coupons, :deliveries, :addresses, :order_items, :order_changes, :pictures, :alipay_logs, :dispatches, :dispatch_items,
-            :product_tags, :product_statuses, :product_attributes, :product_attribute_defines, :products
+            :product_tags, :product_statuses, :product_attributes, :product_attribute_defines, :products, :promotions
             
   devise_for :users, :controllers => { :registrations => "registrations" }
   get "my/info", :to => "my#index"
@@ -28,7 +28,6 @@ V3::Application.routes.draw do
   get "store/index"
   
   match "category(/:tags(/:keywords))", :to => "products#query_result"
-  get "promotion", :to => "home#promotion"
   #match "category/:tags", :to => "products#index"
   #match "category", :to => "products#index"
 

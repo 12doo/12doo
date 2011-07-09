@@ -177,7 +177,17 @@ padding-left:0px;
 border: 1px solid #dcdedc;	
 	}
 .goodsResult .grPrice{
-padding-top:10px;
+	position:relative;
+	height:20px;
+	padding:5px 0 0 0;
+	}
+.goodsResult .grPrice a{
+	position:absolute;
+	right:0;
+	bottom:0;
+	width:23px;
+	height:23px;
+	display:block;
 	}
 .pagePicView li {
     background: none repeat scroll 0 0 #FCFCFC;
@@ -192,7 +202,8 @@ padding-top:10px;
 padding:10px 10px 10px 10px;
 border-left: 1px solid #dcdedc;	
 border-right: 1px solid #dcdedc;	
-border-bottom: 1px solid #dcdedc;	
+border-bottom: 1px solid #dcdedc;
+height:44px;	
 }
 
 #footer {
