@@ -4,6 +4,8 @@ class Order < ActiveRecord::Base
   after_create :send_order_confirm_email
   
   has_many :order_items
+  has_many :order_changes
+  
   belongs_to :user
   paginates_per 10
   
@@ -41,6 +43,28 @@ class Order < ActiveRecord::Base
       self.coupon_discount = coupon.discount
       self.coupon_code = coupon.code
       coupon.use(user, self)
+    end
+  end
+  
+  # 取消订单
+  def cancel(user)
+    change = OrderChange.new
+    change.user_id = self.user_id
+    change.before = self.status
+
+    self.status = '订单取消'
+
+    change.after = self.status
+    change.changed_at = Time.now
+    self.order_changes << change
+    
+    self.save
+    
+    if self.coupon_code
+      coupon = Coupon.find_by_code(coupon_code)
+      if coupon
+        coupon.restore(user,self)
+      end
     end
   end
   

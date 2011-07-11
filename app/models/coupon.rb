@@ -92,6 +92,18 @@ class Coupon < ActiveRecord::Base
     self.save
   end
   
+  def restore(user,order)
+    if order.coupon_code == self.code
+      records = CouponUsedRecord.where(:user_id => user.id, :coupon_code => self.code)
+      records.each do |item|
+        item.destroy
+        break
+      end
+      self.used_time -= 1
+      self.save
+    end
+  end
+  
   # 用户注册送coupon
   def self.new_for_register(user)
     if user.sign_in_count == 0
@@ -118,7 +130,7 @@ class Coupon < ActiveRecord::Base
   end
   
   def self.new_code
-    chars = ("a".."z").to_a + ("0".."9").to_a
+    chars = ("A".."Z").to_a + ("0".."9").to_a
     newpass = ""
     1.upto(10) { |i| newpass << chars[rand(chars.size-1)] }
     

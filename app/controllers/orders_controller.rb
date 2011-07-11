@@ -162,18 +162,9 @@ class OrdersController < ApplicationController
   #当前管理员界面没有取消订单的途径，因此只返回到用户界面
   def cancel
     @order = Order.find(params[:id])
-    if @order.user_id == current_user.id
+    if @order && @order.user_id == current_user.id
       
-      change = OrderChange.new
-      change.user_id = @order.user_id
-      change.before = @order.status
-       
-      @order.status = '订单取消'
-      @order.save
-      
-      change.after = @order.status
-      change.changed_at = Time.now
-      change.save
+      @order.cancel(current_user)
 
     end
     redirect_to :action => :orders, :controller => :my
