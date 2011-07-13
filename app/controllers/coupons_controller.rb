@@ -15,6 +15,9 @@ class CouponsController < ApplicationController
   def new
     @coupon = Coupon.new
   end
+  
+  def batch_new
+  end
 
   def edit
     @coupon = Coupon.find(params[:id])

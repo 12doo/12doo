@@ -108,11 +108,13 @@ class Coupon < ActiveRecord::Base
   def self.new_for_register(user)
     if user.sign_in_count == 0
       coupon = Coupon.new
-      coupon.code = new_code
+      
       coupon.discount = 20
+      coupon.code = new_code('NEW20')
       
       if user.id <= 100
         coupon.discount = 50
+        coupon.code = new_code('NEW50')
       end
       
       coupon.threshold = 100
@@ -129,7 +131,7 @@ class Coupon < ActiveRecord::Base
     nil
   end
   
-  def self.new_code
+  def self.new_code(prefix)
     chars = ("A".."Z").to_a + ("0".."9").to_a
     newpass = ""
     1.upto(10) { |i| newpass << chars[rand(chars.size-1)] }
