@@ -19,7 +19,7 @@
 	<% else %>
 	<em><span class="f-red-12">会员价: </span><span class="f-grey-20-Arial"><%= format "%.2f", product.price %></span><span class="f-red-12">元</span></em>
 	<% end %>
-    <%= link_to image_tag('/images/go-off.gif', :height => '23', :width => '23', :title => '放入购物车', :style => 'float: right;'), "/cart/add_product/" + product.id.to_s %>
+    <%= link_to image_tag('/images/go-off.gif', :height => '23', :width => '23', :title => '立即购买', :style => 'float: right;'), "/cart/add_product/" + product.id.to_s %>
   </dt> 
 </dl>
 </li>
