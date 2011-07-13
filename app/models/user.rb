@@ -13,13 +13,16 @@ class User < ActiveRecord::Base
   
   has_many :addresses
   has_many :orders
-  has_many :coupons
   has_many :coupon_used_records
   has_many :order_items
   has_many :favorites
   
   # verify
   validates_uniqueness_of :phone, :allow_nil => true, :allow_blank => true
+  
+  def coupons
+    Coupon.where("belongs_to = :user_id or all_user = 1", :user_id => self.id)
+  end
   
   def send_welcome_email
     UserMailer.welcome_email(self).deliver

@@ -9,6 +9,16 @@ class Order < ActiveRecord::Base
   belongs_to :user
   paginates_per 10
   
+  def can_use_coupons(user)
+    coupons = []
+    user.coupons.each do |coupon|
+      if coupon.can_use(user,self)
+        coupons << coupon
+      end
+    end
+    coupons
+  end
+  
   def init_from_cart(cart, user)
     self.no = Time.now.strftime("SO%Y%m%d%H%M%S")
     self.order_at = Time.now

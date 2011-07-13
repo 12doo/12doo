@@ -1,27 +1,9 @@
 <script type="text/javascript" src="/javascripts/jquery-impromptu.3.1.min.js"></script>
 <script type="text/javascript">	
-	function check_coupon(){
-		$.ajax({
-		  url: "/orders/get_coupon?code=" + $('#coupon_code').val(),
-		  dataType: 'json',
-		  success: function(data){
-				if (data){
-					$.each(data, function(i,item){
-						$('#discount').html(parseFloat(item.discount).toFixed(2));
-						$('#total').html((parseFloat($('#total').html()) - parseFloat(item.discount)).toFixed(2));
-						$('#coupon_code_show').html($('#coupon_code').val()).show();
-						$('#coupon_code').hide();
-						$('#coupon_button').hide();
-				  	});
-				}else{
-					$.prompt('您输入的优惠券无法识别或者当前订单不符合使用条件。',
-						{
-							buttons:{ 确定:true },
-							callback:function(v,m,f){ $(this).remove();}
-						});
-				}
-			}
-		});
+	function check_coupon(control,discount){
+		if (control.checked){
+			$('#pay_price').html((parseFloat($('#total').html()) - parseFloat(discount)).toFixed(2));
+		}
 	}
 
 	function show_addaddress(){
@@ -116,17 +98,23 @@
         	<tbody>
 				<tr>
           			<td>
-						<b>优惠券</b>
-						<span id="coupon_code_show" style="display:none;"></span>
-						<input type="text" name="coupon_code" id="coupon_code" size="50" />
-						<a id="coupon_button" href="#" onclick="javascript:check_coupon(); return false;"><img src="/images/use_discount.gif" width="120" height="30" /></a>
+						<% coupons = @order.can_use_coupons(current_user) %>
+						<% if coupons && coupons.length > 0 %>
+						<input type="radio" name="coupon_code" onchange="check_coupon(this, 0)" value="0"><b>不使用优惠券</b>
+						<% coupons.each do |coupon| %>
+						<input type="radio" name="coupon_code" onchange="check_coupon(this, <%= coupon.discount %>)" value="<%= coupon.code %>">
+						<b><%= coupon.code %>(抵扣￥<%= format "%.2f", coupon.discount %>)</b>
+						<% end %>
+						<% else %>
+							没有可以使用的优惠券
+						<% end %>
           			</td>
           		</tr>
         	</tbody>
 		</table>
 	</div>
 	<div id="totalprice" class="f-black-12-b">
-		商品金额总计:<span class="f-blue-20-Ar-b"> +￥<%= format "%.2f", @order.total %></span>
+		商品金额总计:<span class="f-blue-20-Ar-b"> +￥<span id="total"><%= format "%.2f", @order.total %></span></span>
 		<% if @order.discount_rate < 1 %>
 		整单折扣金额:<span class="f-gren-20-Ar-b"> -￥<%= format "%.2f", @order.total * (1 - @order.discount_rate) %></span>
 		<% end %>
@@ -134,7 +122,7 @@
 		运费:<span class="f-blue-20-Ar-b"> +￥<%= format "%.2f", @order.carriage %></span>
 	</div>
 	<div class="f-black-20-hei lastprice">
-		订单金额:<span class="f-red-12-b">￥</span><span id="total" class="f-red-30-Ar-b"><%= format "%.2f", @order.pay_price %></span>
+		订单金额:<span class="f-red-12-b">￥</span><span id="pay_price" class="f-red-30-Ar-b"><%= format "%.2f", @order.pay_price %></span>
 	</div>
 	<div align="center">
 		<a href="#" onclick="javascript:next_step(); return false;"><img src="/images/next-step_btn.gif" width="145" height="45" /></a>
