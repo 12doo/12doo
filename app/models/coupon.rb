@@ -18,7 +18,7 @@ class Coupon < ActiveRecord::Base
         end
       else
         # 是单人优惠券,是否是当前用户的
-        if self.belongs_to == user.id
+        if self.user_id == user.id
           # 除非是一次性并且已经用过的,其余都返回true
           if self.one_off && self.used(user)
             result = false
@@ -55,7 +55,7 @@ class Coupon < ActiveRecord::Base
         end
       else
         # 是单人优惠券,是否是当前用户的
-        if self.belongs_to == user.id
+        if self.user_id == user.id
           # 除非是一次性并且已经用过的,其余都返回true
           if self.one_off && self.used(user)
             result = false
@@ -118,7 +118,7 @@ class Coupon < ActiveRecord::Base
       end
       
       coupon.threshold = 100
-      coupon.belongs_to = user.id
+      coupon.user_id = user.id
       coupon.all_user = false
       coupon.one_off = true
       coupon.begin = Time.now

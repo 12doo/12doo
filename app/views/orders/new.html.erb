@@ -1,7 +1,38 @@
 <script type="text/javascript" src="/javascripts/jquery-impromptu.3.1.min.js"></script>
-<script type="text/javascript">	
-	function check_coupon(control,discount){
+<script type="text/javascript">
+    function check_coupon(){
+        $.ajax({
+          url: "/orders/get_coupon?code=" + $('#coupon_code_input').val(),
+          dataType: 'json',
+          success: function(data){
+                if (data){
+                    $.each(data, function(i,item){
+						$('#coupon_code_holder').attr("checked",true).val($('#coupon_code_input').val());
+                        $('#discount').html(parseFloat(item.discount).toFixed(2));
+                        $('#pay_price').html((parseFloat($('#total').html()) - parseFloat(item.discount)).toFixed(2));
+                        $('#coupon_code_show').html($('#coupon_code_input').val()).show();
+                        $('#coupon_code_input').hide();
+                        $('#coupon_button').hide();	
+                      });
+                }else{
+                    $.prompt('您输入的优惠券无法识别或者当前订单不符合使用条件。',
+                        {
+                            buttons:{ 确定:true },
+                            callback:function(v,m,f){ $(this).remove();}
+                        });
+                }
+            }
+        });
+	}
+
+	function select_coupon(control,discount){
 		if (control.checked){
+			
+			$('#coupon_code_input').val("").show();
+            $('#coupon_button').show();
+			$('#coupon_code_show').html("").hide();
+			$('#coupon_code_holder').val("0");
+			
 			$('#pay_price').html((parseFloat($('#total').html()) - parseFloat(discount)).toFixed(2));
 		}
 	}
@@ -93,21 +124,27 @@
 			<b>您需要附加说明吗？</b><br />
 			<textarea rows="4" name="memo"></textarea>
 		</div>
- 		<h1 class="f-black-12"><img src="/images/msl_couponuse.gif" width="99" height="29" /></h1>              
+ 		<h1 class="f-black-12"><img src="/images/msl_couponuse.gif" width="99" height="29" /></h1>
+		<div>
+			<% coupons = @order.can_use_coupons(current_user) %>
+			<% if coupons && coupons.length > 0 %>
+			<% coupons.each do |coupon| %>
+			<p>
+			<input type="radio" name="coupon_code" onchange="select_coupon(this, <%= coupon.discount %>)" value="<%= coupon.code %>" /><b><%= coupon.code %> (抵扣￥<%= format "%.2f", coupon.discount %>)</b> <%= coupon.memo %>
+			</p>
+			<% end %>
+			<% end %>
+			<p>
+				<input type="radio" name="coupon_code" id="coupon_code_holder" onchange="select_coupon(this, 0)" value="0" />使用其他优惠券:
+			</p>
+		</div>
  		<table width="100%" cellspacing="0" cellpadding="0" border="0" class="fpnormal f-black-12">
         	<tbody>
 				<tr>
           			<td>
-						<% coupons = @order.can_use_coupons(current_user) %>
-						<% if coupons && coupons.length > 0 %>
-						<input type="radio" name="coupon_code" onchange="check_coupon(this, 0)" value="0"><b>不使用优惠券</b>
-						<% coupons.each do |coupon| %>
-						<input type="radio" name="coupon_code" onchange="check_coupon(this, <%= coupon.discount %>)" value="<%= coupon.code %>">
-						<b><%= coupon.code %>(抵扣￥<%= format "%.2f", coupon.discount %>)</b>
-						<% end %>
-						<% else %>
-							没有可以使用的优惠券
-						<% end %>
+						<span id="coupon_code_show" style="display:none;"></span>
+						<input type="text" id="coupon_code_input" size="50" />
+						<a id="coupon_button" href="#" onclick="javascript:check_coupon(); return false;"><img src="/images/use_discount.gif" width="120" height="30" /></a>
           			</td>
           		</tr>
         	</tbody>

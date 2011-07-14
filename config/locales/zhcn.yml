@@ -205,7 +205,7 @@ zhcn:
         discount: "可折抵金额"
         threshold: "使用折扣所需消费金额"
         product_category: "可适用产品类"
-        belongs_to: "所属用户"
+        user_id: "所属用户"
         all_user: "是否所有人可用"
         one_off: "是否一次性"
         begin: "开始生效时间"

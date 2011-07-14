@@ -24,7 +24,7 @@
 					<% @coupons.each do |coupon| %>
 				 	<tr>
 					    <td height="30"><%= link_to coupon.code, coupon, :class => 'f-red-12' %></td>
-					    <td><%= coupon.belongs_to %></td>
+					    <td><%= coupon.user_id %></td>
 					    <td><%= format "%.2f", coupon.discount %></td>
 						  <td><%= format "%.2f", coupon.threshold %></td>
 						  <td><%= coupon.one_off ? '是' : '否' %></td>
