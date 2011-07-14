@@ -137,10 +137,10 @@ class Coupon < ActiveRecord::Base
     1.upto(10) { |i| newpass << chars[rand(chars.size-1)] }
     
     # 查看重复
-    if Coupon.find_by_code(newpass)
+    if Coupon.find_by_code(prefix + newpass)
       self.new_code
     else
-      newpass
+      prefix + newpass
     end
   end
   
