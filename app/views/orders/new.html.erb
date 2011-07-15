@@ -9,10 +9,11 @@
                     $.each(data, function(i,item){
 						$('#coupon_code_holder').attr("checked",true).val($('#coupon_code_input').val());
                         $('#discount').html(parseFloat(item.discount).toFixed(2));
-                        $('#pay_price').html((parseFloat($('#total').html()) - parseFloat(item.discount)).toFixed(2));
                         $('#coupon_code_show').html($('#coupon_code_input').val()).show();
                         $('#coupon_code_input').hide();
-                        $('#coupon_button').hide();	
+                        $('#coupon_button').hide();
+						check_carriage();
+						
                       });
                 }else{
                     $.prompt('您输入的优惠券无法识别或者当前订单不符合使用条件。',
@@ -24,6 +25,21 @@
             }
         });
 	}
+	
+	function check_carriage(){
+	    $.ajax({
+          url: "/orders/get_carriage?total=" + (parseFloat($('#total').html()) - parseFloat($('#discount').html())),
+          dataType: 'json',
+          success: function(data){
+                $('#carriage').html(parseFloat(data).toFixed(2));
+				set_pay_price();
+            }
+        });
+	}
+	
+	function set_pay_price(){
+		$('#pay_price').html((parseFloat($('#total').html()) - parseFloat($('#discount').html()) + parseFloat($('#carriage').html())).toFixed(2));
+	}
 
 	function select_coupon(control,discount){
 		if (control.checked){
@@ -33,7 +49,9 @@
 			$('#coupon_code_show').html("").hide();
 			$('#coupon_code_holder').val("0");
 			
-			$('#pay_price').html((parseFloat($('#total').html()) - parseFloat(discount)).toFixed(2));
+			$('#discount').html(parseFloat(discount).toFixed(2));
+			
+			check_carriage();
 		}
 	}
 
@@ -156,7 +174,7 @@
 		整单折扣金额:<span class="f-gren-20-Ar-b"> -￥<%= format "%.2f", @order.total * (1 - @order.discount_rate) %></span>
 		<% end %>
 		优惠券抵扣:<span class="f-gren-20-Ar-b"> -￥<span id="discount">0.00</span></span>
-		运费:<span class="f-blue-20-Ar-b"> +￥<%= format "%.2f", @order.carriage %></span>
+		运费:<span class="f-blue-20-Ar-b"> +￥<span id="carriage"><%= format "%.2f", @order.carriage %></span></span>
 	</div>
 	<div class="f-black-20-hei lastprice">
 		订单金额:<span class="f-red-12-b">￥</span><span id="pay_price" class="f-red-30-Ar-b"><%= format "%.2f", @order.pay_price %></span>

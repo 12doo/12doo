@@ -272,6 +272,12 @@ class OrdersController < ApplicationController
     end
   end
   
+  def get_carriage
+    respond_to do |format| 
+      format.json { render :json => Order.get_carriage(params[:total].to_f) } 
+    end
+  end
+  
   private
   
   def find_cart

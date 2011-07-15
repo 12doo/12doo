@@ -34,17 +34,21 @@ class Order < ActiveRecord::Base
       self.quantity += item.quantity
     end
     
-    self.carriage = 0
-    
-    #计算运费，当前只有20一档和满200免运费优惠
-    if self.total < 200
-      self.carriage = 20
-    end
+    self.carriage = Order.get_carriage(self.total)
     
     self.discount_rate = 1
     self.discount = self.total * (1 - self.discount_rate)
     
     self.pay_price = self.carriage + self.total * self.discount_rate
+  end
+  
+  def self.get_carriage(total)
+    #计算运费，当前只有20一档和满200免运费优惠
+    if total < 200
+      20
+    else
+      0
+    end
   end
   
   def use_coupon(coupon, user)

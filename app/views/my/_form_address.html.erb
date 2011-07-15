@@ -30,8 +30,10 @@
 	$(document).ready(function(){
 		$('#region').change(function(){
 			$.getJSON(encodeURI("/areas/get_detail?province=" + $('#province').val() + "&city=" + $('#city').val() + "&region=" + $('#region').val()), function(data){
-				$('#zip').val(data[0].area.postcode);
-				$('#zip').change();
+				if (data && (data.length == 1)){
+					$('#zip').val(data[0].area.postcode);
+					$('#zip').change();					
+				}
 			});
 		});
 	});
