@@ -38,9 +38,11 @@ class CartItem
   
   def subtotal
     pro = self.product
-    (pro.price * @quantity).to_f
+    
     if pro.promo_price > 0
       (pro.promo_price * @quantity).to_f
+    else
+      (pro.price * @quantity).to_f
     end
   end 
 end
