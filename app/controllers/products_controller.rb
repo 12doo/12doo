@@ -33,10 +33,10 @@ class ProductsController < ApplicationController
         sku = ProductAttribute.select("distinct(product_sku)").where("value like :keywords", :keywords => "%#{params[:keywords]}%")
       elsif params[:keywords] == nil && params[:tags] && params[:tags] != ''
         # 如果keywords为空,tags不为空
-        sku = ProductAttribute.select("distinct(product_sku)").where(join_for_where)
+        sku = ProductAttribute.select("product_sku").where("product_attribute_value_id in (:skus)", :skus => params[:tags].split(/,|-/)).group("product_sku").having("count(*) > 1")
       else
         # 如果都不为空
-        sku = ProductAttribute.select("distinct(product_sku)").where("(:join) or value like :keywords", :join => join_for_where, :keywords => "%#{params[:keywords]}%")
+        sku = ProductAttribute.select("product_sku").where("(product_attribute_value_id in (:skus)) or value like :keywords",:skus => params[:tags].split(/,|-/), :keywords => "%#{params[:keywords]}%").group("product_sku").having("count(*) > 1")
       end
       
       skus = []
@@ -232,23 +232,6 @@ class ProductsController < ApplicationController
       end
     end
     returns += ')'
-  end
-  
-  def join_for_where
-    returns = ''
-    flag = 0
-    params[:tags].split('-').each do |item|
-      if item && item != '' && item != "0"
-        if flag == 0
-          returns += "product_attribute_value_id in #{join_for_in(item.split(','))}"
-          flag += 1
-        else
-          returns += " and product_attribute_value_id in #{join_for_in(item.split(','))}"
-          flag += 1
-        end
-      end
-    end
-    returns
   end
   
   def condition_is_null
