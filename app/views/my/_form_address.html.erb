@@ -37,6 +37,14 @@
 			});
 		});
 	});
+	
+	function verify_address(){
+		if ($('#name').val() != '' && $('#province').val() != '' && $('#city').val() != '' && $('#region').val() != '' && $('#detail').val() != '' && $('#phone').val() != '' && $('#zip').val() != ''){
+			return true;
+		}else{
+			return false;
+		}
+	}
 
 </script>
 <% if @address.errors.any? %>
