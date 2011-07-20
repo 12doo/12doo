@@ -68,10 +68,10 @@
 		</table>
 	</div>
 	<div id="totalprice" class="f-black-12-b">
-		商品金额总计： <span class="f-blue-20-Ar-b">￥</span> 
-		优惠券抵扣： <span class="f-gren-20-Ar-b">-￥</span> 
+		商品金额总计： <span class="f-blue-20-Ar-b"> ￥<%= format "%.2f", @order.total %></span> 
+		优惠券抵扣： <span class="f-gren-20-Ar-b"> -￥<%= format "%.2f", @order.coupon_discount %></span> 
 		<!-- 积分抵扣：     <span class="f-gren-20-Ar-b">-￥</span>  -->
-		运费：      <span class="f-gren-20-Ar-b">+￥ <%= @order.total >= 200 ? "0.00" : "20.00" %></span>
+		运费：      <span class="f-gren-20-Ar-b">+￥ <%= format "%.2f", @order.carriage %></span>
 	</div>
 	<div class="f-black-20-hei lastprice">
 		订单金额： <span class="f-red-12-b">￥</span><span class="f-red-30-Ar-b"><%= format "%.2f", @order.pay_price %></span>

@@ -169,7 +169,7 @@
 		</table>
 	</div>
 	<div id="totalprice" class="f-black-12-b">
-		商品金额总计:<span class="f-blue-20-Ar-b"> +￥<span id="total"><%= format "%.2f", @order.total %></span></span>
+		商品金额总计:<span class="f-blue-20-Ar-b"> ￥<span id="total"><%= format "%.2f", @order.total %></span></span>
 		<% if @order.discount_rate < 1 %>
 		整单折扣金额:<span class="f-gren-20-Ar-b"> -￥<%= format "%.2f", @order.total * (1 - @order.discount_rate) %></span>
 		<% end %>
