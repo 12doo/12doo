@@ -1,7 +1,11 @@
 # -*- encoding : utf-8 -*-
 V3::Application.routes.draw do
 
+  resources :feeds, :only => :index
+
   resources :categories
+  
+  
 
   resources :coupons, :deliveries, :addresses, :order_items, :order_changes, :pictures, :alipay_logs, :dispatches, :dispatch_items,
             :product_tags, :product_statuses, :product_attributes, :product_attribute_defines, :products, :promotions
