@@ -61,6 +61,15 @@ class ProductsController < ApplicationController
     @title = @product.cn_name
     unless @product.visiable
       redirect_to :action => "index"
+    else
+      respond_to do |format|
+        if @product.template_name != ''
+          format.html { render "products/templates/common" }
+        else
+          format.html { render :action => "show" }
+        end
+        
+      end
     end
   end
 
