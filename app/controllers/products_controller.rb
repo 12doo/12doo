@@ -13,18 +13,18 @@ class ProductsController < ApplicationController
   end
   
   def query_result
-    sort_by = "created_at"
+    sort_by = "id"
     sort = "desc"
     if params[:sort] && params[:sort] == "0"
       sort = "asc"
     end
     
     if params[:sort_by]
-      sort_by = params[:sort_by]
+      sort_by = params[:sort_by].gsub(/\s/, '')
     end
     
     if (params[:tags] == nil || condition_is_null) && (params[:keywords] == nil || params[:keywords] == '')
-      @products = Product.where(:visiable => true).order('id desc').page(params[:page]).per(9)
+      @products = Product.where(:visiable => true).order("#{sort_by} #{sort}").page(params[:page]).per(9)
     else
       sku = []
       if (params[:tags] == nil || condition_is_null) && params[:keywords] && params[:keywords] != ''
@@ -45,12 +45,12 @@ class ProductsController < ApplicationController
       
       if params[:keywords] && params[:keywords] != ''
         if condition_is_null
-          @products = Product.where("(sku in (:skus) or cn_name like :cn_name or name like :name) and visiable = :visiable", :skus => skus, :cn_name => "%#{params[:keywords]}%", :name => "%#{params[:keywords]}%", :visiable => true).order('id desc').page(params[:page]).per(9)
+          @products = Product.where("(sku in (:skus) or cn_name like :cn_name or name like :name) and visiable = :visiable", :skus => skus, :cn_name => "%#{params[:keywords]}%", :name => "%#{params[:keywords]}%", :visiable => true).order("#{sort_by} #{sort}").page(params[:page]).per(9)
         else
-          @products = Product.where("(sku in (:skus) and (cn_name like :cn_name or name like :name)) and visiable = :visiable", :skus => skus, :cn_name => "%#{params[:keywords]}%", :name => "%#{params[:keywords]}%", :visiable => true).order('id desc').page(params[:page]).per(9)
+          @products = Product.where("(sku in (:skus) and (cn_name like :cn_name or name like :name)) and visiable = :visiable", :skus => skus, :cn_name => "%#{params[:keywords]}%", :name => "%#{params[:keywords]}%", :visiable => true).order("#{sort_by} #{sort}").page(params[:page]).per(9)
         end
       else
-        @products = Product.where("sku in (:skus) and visiable = :visiable", :skus => skus, :visiable => true).order('id desc').page(params[:page]).per(9)
+        @products = Product.where("sku in (:skus) and visiable = :visiable", :skus => skus, :visiable => true).order("#{sort_by} #{sort}").page(params[:page]).per(9)
       end
     end
   end
@@ -223,23 +223,6 @@ class ProductsController < ApplicationController
     end
     
     redirect_to :action => 'edit',:id=>params[:id]
-  end
-  
-  def join_for_in(a)
-    returns = '('
-    flag = 0
-    a.each do |item|
-      if item && item != '' && item != "0"
-        if flag == 0
-          returns += "#{item}"
-          flag += 1
-        else
-          returns += ",#{item}"
-          flag += 1
-        end
-      end
-    end
-    returns += ')'
   end
   
   def condition_is_null

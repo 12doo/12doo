@@ -71,6 +71,16 @@ module ProductsHelper
     "/category/" + params[:tags] + "/#{params[:keywords]}?sort_by=#{sort_by}&sort=#{sort}"
   end
   
+  def sort_is_already(sort_by)
+    flag = false
+    
+    if params[:sort_by] && params[:sort_by] == sort_by && params[:sort] && params[:sort] == "0"
+      flag = true
+    end
+    
+    flag
+  end
+  
   def search_path_by_short_value(short, value)
     tags_count = ProductAttributeDefine.where(:search => true).count(:id)
     tags = Array.new(tags_count, "0")
