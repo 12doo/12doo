@@ -87,8 +87,13 @@ class MyController < ApplicationController
   end
   
   def bought
-    @order_items = OrderItem.select("DISTINCT order_items.product_name,order_items.product_id").joins('LEFT OUTER JOIN orders ON orders.id = order_items.order_id').where("orders.status <> '订单完成'", "order_items.user_id" => current_user.id).order('order_items.product_id desc').page(params[:page])
- end
+    sku = OrderItem.select("DISTINCT(order_items.product_sku)").joins('LEFT OUTER JOIN orders ON orders.id = order_items.order_id').where("orders.status = '订单完成'", "order_items.user_id" => current_user.id)
+    skus = []
+    sku.each do |item|
+      skus << item.product_sku
+    end
+    @products = Product.where("sku in (:skus) and visiable = :visiable", :skus => skus, :visiable => true).order("id desc").page(params[:page])
+  end
   
   def update_password
     if current_user.update_with_password(params[:user])
