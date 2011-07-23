@@ -86,9 +86,9 @@ class MyController < ApplicationController
     end
   end
   
-  def bought  
-    @products = Product.joins('LEFT OUTER JOIN order_items ON order_items.product_id = products.id').where("order_items.user_id" => current_user.id).page(params[:page])
-  end
+  def bought
+    @order_items = OrderItem.joins('LEFT OUTER JOIN orders ON orders.id = order_items.order_id').where("orders.status <> '订单完成'", "order_items.user_id" => current_user.id).order('id desc').page(params[:page])
+ end
   
   def update_password
     if current_user.update_with_password(params[:user])

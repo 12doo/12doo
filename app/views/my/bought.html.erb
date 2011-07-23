@@ -10,36 +10,32 @@
 			<table width="100%" cellspacing="0" cellpadding="0" border="0" class="tableinfo">
             	<tbody>
                     <tr bgcolor="#f0f0f0" class="f-black-12-b">
-                        <td height="30" width="300">
+                        <td height="30" width="400">
                             产品名称
                         </td>
-                        <td width="200">
-                            价格
-                        </td>
                         <td width="70">
-                            
+                           	价格
                         </td>
-                        <td width="70">
-                            
+                        <td width="170">
+                            购买时间
                         </td>
                         <td width="75" valign="middle" bgcolor="#f0f0f0" align="center">
                             操作
                         </td>
                     </tr>
-					<% @products.each do |product| %>
+					<% @order_items.each do |item| %>
                     <tr>
-                        <td height="30"><%= product.cn_name %></td>
-                        <td><%= format "%.2f", product.price %></td>
-                        <td></td>
-                        <td></td>
+                        <td height="30"><%= link_to item.product_name, {:action => :show, :controller => :products, :id => item.product_id }, :class => "f-red-12" %></td>
+                        <td><%= format "%.2f", item.price %></td>
+                        <td><%= item.created_at.strftime('%Y-%m-%d %H:%M:%S') %></td>
                         <td>
-							<%= link_to '[放入购物车]', {:action => :edit_address, :id => product.id}, :class=>"f-red-12" %>
+							<a href="/cart/add_product/<%= item.product_id %>" class="f-red-12">[放入购物车]</a>
 						</td>
                     </tr>
 					<% end %> 
                 </tbody>
 			</table>
-			<%= paginate @products %>
+			<%= paginate @order_items %>
 		</div>
 	</div>
 </div>
