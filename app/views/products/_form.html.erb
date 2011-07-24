@@ -119,6 +119,9 @@ function insertPic(url){
 	<tbody>
 		<tr>
 	    	<td width="100%" valign="middle" align="middle">
+				<% if @product && @product.id %>
+				<%= link_to '预览', {:action => :preview, :controller => :products, :id => @product.id }, :target => :_blank %>
+				<% end %>
 	        	<a href="#" onclick="javascript:$('#product_form').submit(); return false;"><img align="absmiddle" alt="" src="/images/confirm_btn.gif" /></a>
 	        </td>
 	    </tr>

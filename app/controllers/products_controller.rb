@@ -57,17 +57,33 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
-    @title = @product.cn_name
-    unless @product.visiable
-      redirect_to :action => "index"
-    else
+    if @product
+      @title = @product.cn_name
+      unless @product.visiable
+        redirect_to :action => "index"
+      else
+        respond_to do |format|
+          if @product.template_name != ''
+            format.html { render "products/templates/common" }
+          else
+            format.html { render :action => "show" }
+          end
+
+        end
+      end
+    end
+  end
+  
+  def preview
+    @product = Product.find(params[:id])
+    if @product
+      @title = @product.cn_name
       respond_to do |format|
         if @product.template_name != ''
           format.html { render "products/templates/common" }
         else
           format.html { render :action => "show" }
         end
-        
       end
     end
   end
