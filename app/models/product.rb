@@ -1,6 +1,7 @@
 # -*- encoding : utf-8 -*-
 class Product < ActiveRecord::Base
   before_create :randomize_file_name
+  after_save :set_price_attribute
   validates_presence_of :name, :memo,  :price, :status, :indication_price,  :sku, :count, :sold_count, :cn_name
   validates_numericality_of :price, :indication_price,:count, :sold_count
   validates_uniqueness_of :sku
@@ -58,6 +59,35 @@ class Product < ActiveRecord::Base
     #你可以改成你想要的文件名，把下面这个方法的第二个参数随便改了就可以了。  
     self.pic_label.instance_write(:file_name, "#{Time.now.strftime("%Y%m%d%H%M%S")}#{rand(1000)}#{extension}")  
   
+  end
+  
+  def set_price_attribute
+    price = self.price
+    if self.promo_price && self.promo_price > 0
+      price = self.promo_price
+    end
+    item = ProductAttribute.where(:short => 'price', :product_id => self.id).first
+
+    if item
+      string = '600以上'
+      if price < 100
+        string = '99以下'
+      elsif price >= 100 and price < 200
+        string = '100~199'
+      elsif price >= 200 and price < 300
+        string = '200~299'
+      elsif price >= 300 and price < 600
+        string = '300~599'
+      end
+    
+      value = ProductAttributeValue.where(:short => 'price', :value => string).first
+      item.value = value.value
+      item.product_attribute_value_id = value.id
+    
+      item.save
+    end
+      
+    return true
   end
   
 end

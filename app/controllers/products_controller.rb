@@ -211,6 +211,7 @@ class ProductsController < ApplicationController
             end
           end
         end
+        @product.save
         format.html { redirect_to products_path }
       else
         @statuses = ProductStatus.all
