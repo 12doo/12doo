@@ -1,4 +1,7 @@
 class ExchangesController < ApplicationController
+  
+  before_filter :authorize_admin!, :except => [:new]
+  
   # GET /exchanges
   # GET /exchanges.xml
   def index
@@ -25,6 +28,11 @@ class ExchangesController < ApplicationController
   # GET /exchanges/new.xml
   def new
     @exchange = Exchange.new
+    
+    @addresses = []
+    if current_user
+      @addresses = current_user.addresses
+    end
 
     respond_to do |format|
       format.html # new.html.erb

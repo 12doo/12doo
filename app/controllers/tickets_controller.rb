@@ -1,7 +1,7 @@
 class TicketsController < ApplicationController
   
   # 身份验证  
-  before_filter :authorize_admin!, :except => [:book]
+  before_filter :authorize_admin!
   
   # GET /tickets
   # GET /tickets.xml
@@ -12,14 +12,6 @@ class TicketsController < ApplicationController
       format.html # index.html.erb
       format.xml  { render :xml => @tickets }
     end
-  end
-  
-  def book
-    @addresses = []
-    if current_user
-      @addresses = current_user.addresses
-    end
-      
   end
 
   # GET /tickets/1

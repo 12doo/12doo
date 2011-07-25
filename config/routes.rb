@@ -3,8 +3,6 @@ V3::Application.routes.draw do
 
   resources :exchanges
 
-  get "tickets/book"
-  
   resources :tickets
 
   resources :feeds, :only => :index
