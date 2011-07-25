@@ -784,7 +784,6 @@ padding:20px 0 0 25px;
 #pd_moreinfo.otherpd #pd_attribute h1{
 height:30px;
 background:#9e0a0e;
-border:1px dashed #fff;
 margin:0 25px 15px 0;
 padding:5px 10px;
 color:#fff;
@@ -839,8 +838,7 @@ margin:0 0 10px 0;
 	}
 #pd_moreinfo.otherpd .pd_section h1{
 height:30px;
-background:#000;
-border:1px dashed #fff;
+background:#888;
 margin:20px 25px 15px 0;
 padding:5px 10px;
 color:#fff;
