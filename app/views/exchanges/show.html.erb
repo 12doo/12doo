@@ -1,0 +1,65 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>No:</b>
+  <%= @exchange.no %>
+</p>
+
+<p>
+  <b>Address:</b>
+  <%= @exchange.address %>
+</p>
+
+<p>
+  <b>Province:</b>
+  <%= @exchange.province %>
+</p>
+
+<p>
+  <b>City:</b>
+  <%= @exchange.city %>
+</p>
+
+<p>
+  <b>Region:</b>
+  <%= @exchange.region %>
+</p>
+
+<p>
+  <b>Zip:</b>
+  <%= @exchange.zip %>
+</p>
+
+<p>
+  <b>Phone:</b>
+  <%= @exchange.phone %>
+</p>
+
+<p>
+  <b>Memo:</b>
+  <%= @exchange.memo %>
+</p>
+
+<p>
+  <b>Expected time:</b>
+  <%= @exchange.expected_time %>
+</p>
+
+<p>
+  <b>Count:</b>
+  <%= @exchange.count %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @exchange.status %>
+</p>
+
+<p>
+  <b>Fullname:</b>
+  <%= @exchange.fullname %>
+</p>
+
+
+<%= link_to 'Edit', edit_exchange_path(@exchange) %> |
+<%= link_to 'Back', exchanges_path %>

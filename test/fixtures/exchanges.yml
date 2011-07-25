@@ -1,0 +1,29 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  no: MyString
+  address: MyString
+  province: MyString
+  city: MyString
+  region: MyString
+  zip: MyString
+  phone: MyString
+  memo: MyString
+  expected_time: 2011-07-26 01:26:32
+  count: 1
+  status: MyString
+  fullname: MyString
+
+two:
+  no: MyString
+  address: MyString
+  province: MyString
+  city: MyString
+  region: MyString
+  zip: MyString
+  phone: MyString
+  memo: MyString
+  expected_time: 2011-07-26 01:26:32
+  count: 1
+  status: MyString
+  fullname: MyString

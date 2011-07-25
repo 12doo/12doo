@@ -1,5 +1,6 @@
 class Ticket < ActiveRecord::Base
   belongs_to :product
+  
   paginates_per 10
   
   def self.new_code(prefix)

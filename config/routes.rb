@@ -1,7 +1,7 @@
 # -*- encoding : utf-8 -*-
 V3::Application.routes.draw do
 
-  resources :ticket_used_records
+  resources :exchanges
 
   get "tickets/book"
   
