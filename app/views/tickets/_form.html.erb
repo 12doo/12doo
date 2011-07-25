@@ -11,27 +11,34 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :code %><br />
-    <%= f.text_field :code %>
-  </div>
-  <div class="field">
-    <%= f.label :product_id %><br />
-    <%= f.text_field :product_id %>
-  </div>
-  <div class="field">
-    <%= f.label :user_id %><br />
-    <%= f.text_field :user_id %>
-  </div>
-  <div class="field">
-    <%= f.label :used_at %><br />
-    <%= f.datetime_select :used_at %>
-  </div>
-  <div class="field">
-    <%= f.label :price %><br />
-    <%= f.text_field :price %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<table width="100%" cellspacing="0" cellpadding="0" border="0" class="tableinfo">
+	<tbody>
+		<tr>
+		    <td height="30" width="70">编码</td>
+		    <td>
+				<%= f.text_field :code %>
+			</td>
+		</tr>
+		<tr>
+		    <td height="30">产品ID</td>
+		    <td><%= f.text_field :product_id %></td>
+		</tr>
+		<tr>
+		    <td height="30">价格</td>
+		    <td><%= f.text_field :price %></td>
+		</tr>
+		<tr>
+		    <td height="30">前缀</td>
+		    <td><input type="text" name="prefix" value="" /></td>
+		</tr>
+		<tr>
+		    <td height="30">生成个数</td>
+		    <td><input type="text" name="count" value="1" /></td>
+		</tr>
+    </tbody>
+</table>
+
+<input type="submit" value="保存" />
+
 <% end %>
+

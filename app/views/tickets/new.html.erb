@@ -1,5 +1,15 @@
-<h1>New ticket</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Back', tickets_path %>
+<%= render 'admin/header' %>
+<div id="my_acinfo">
+<%= render 'admin/userside' %>
+	<div id="ac_right">
+		<ul id="pd_infomenu">
+			<li><%= link_to '所有提货券', tickets_path %></li>
+			<li class="on">创建提货券</li>
+		</ul>
+		<div class="clearit"></div>
+		<div id="ac_more_detail">
+			<%= render 'form' %>
+		</div>
+	</div>
+</div>
+<div class="clearit"></div>

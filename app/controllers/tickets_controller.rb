@@ -6,7 +6,7 @@ class TicketsController < ApplicationController
   # GET /tickets
   # GET /tickets.xml
   def index
-    @tickets = Ticket.all
+    @tickets = Ticket.order("id desc").page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -52,17 +52,19 @@ class TicketsController < ApplicationController
   # POST /tickets
   # POST /tickets.xml
   def create
-    @ticket = Ticket.new(params[:ticket])
-
-    respond_to do |format|
-      if @ticket.save
-        format.html { redirect_to(@ticket, :notice => 'Ticket was successfully created.') }
-        format.xml  { render :xml => @ticket, :status => :created, :location => @ticket }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @ticket.errors, :status => :unprocessable_entity }
+    
+    if params[:count]
+      Integer(params[:count]).times do |t|
+        ticket = Ticket.new(params[:ticket])
+        ticket.code = Ticket.new_code(params[:prefix])
+        ticket.save
       end
     end
+    
+    respond_to do |format|
+      format.html { redirect_to :action => :index }
+    end
+
   end
 
   # PUT /tickets/1
