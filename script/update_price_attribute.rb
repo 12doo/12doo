@@ -25,3 +25,7 @@ Product.find_each do |p|
     item.save
   end
 end
+
+ProductAttribute.where(:product_id => nil).each do |item|
+  item.destroy
+end
