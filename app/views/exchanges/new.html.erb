@@ -1,59 +1,44 @@
 <script type="text/javascript" src="/javascripts/jquery-impromptu.3.1.min.js"></script>
 <script type="text/javascript">
-    function check_coupon(){
-        $.ajax({
-          url: "/orders/get_coupon?code=" + $('#coupon_code_input').val(),
-          dataType: 'json',
-          success: function(data){
-                if (data){
-                    $.each(data, function(i,item){
-						$('#coupon_code_holder').attr("checked",true).val($('#coupon_code_input').val());
-                        $('#discount').html(parseFloat(item.discount).toFixed(2));
-                        $('#coupon_code_show').html($('#coupon_code_input').val()).show();
-                        $('#coupon_code_input').hide();
-                        $('#coupon_button').hide();
-						check_carriage();
-						
-                      });
-                }else{
-                    $.prompt('您输入的优惠券无法识别或者当前订单不符合使用条件。',
-                        {
-                            buttons:{ 确定:true },
-                            callback:function(v,m,f){ $(this).remove();}
-                        });
-                }
-            }
-        });
-	}
-	
-	function check_carriage(){
-	    $.ajax({
-          url: "/orders/get_carriage?total=" + (parseFloat($('#total').html()) - parseFloat($('#discount').html())),
-          dataType: 'json',
-          success: function(data){
-                $('#carriage').html(parseFloat(data).toFixed(2));
-				set_pay_price();
-            }
-        });
-	}
-	
-	function set_pay_price(){
-		$('#pay_price').html((parseFloat($('#total').html()) - parseFloat($('#discount').html()) + parseFloat($('#carriage').html())).toFixed(2));
-	}
 
-	function select_coupon(control,discount){
-		if (control.checked){
-			
-			$('#coupon_code_input').val("").show();
-            $('#coupon_button').show();
-			$('#coupon_code_show').html("").hide();
-			$('#coupon_code_holder').val("0");
-			
-			$('#discount').html(parseFloat(discount).toFixed(2));
-			
-			check_carriage();
-		}
-	}
+	$(document).ready(function(){
+		$('#province').change(function(){
+			$.getJSON(encodeURI("/areas/get_cities?province=" + $('#province').val()), function(data){
+				$('#city option').remove();
+				$('#city').append("<option disabled>---------请选择市/区---------</option>");
+			  	$.each(data, function(i,item){
+			    	$('#city').append("<option value='"+ item.area.city +"'>"+ item.area.city +"</option>");
+			  	});
+				$('#city').change();
+			});
+		});
+	
+		$('#province').change();
+	});
+
+	$(document).ready(function(){
+		$('#city').change(function(){
+			$.getJSON(encodeURI("/areas/get_regions?province=" + $('#province').val() + "&city=" + $('#city').val()), function(data){
+				$('#region option').remove();
+				$('#region').append("<option disabled>------请选择区/县------</option>");
+			  	$.each(data, function(i,item){
+			    	$('#region').append("<option value='"+ item.area.region +"'>"+ item.area.region +"</option>");
+			  	});
+				$('#region').change();
+			});
+		});
+	});
+
+	$(document).ready(function(){
+		$('#region').change(function(){
+			$.getJSON(encodeURI("/areas/get_detail?province=" + $('#province').val() + "&city=" + $('#city').val() + "&region=" + $('#region').val()), function(data){
+				if (data && (data.length == 1)){
+					$('#zip').val(data[0].area.postcode);
+					$('#zip').change();	
+				}
+			});
+		});
+	});
 
 	function show_addaddress(){
 		$('#table_addaddress').show();
@@ -74,6 +59,7 @@
 	function next_step(){
 		var txt = '';
 		var flag_submit = true;
+		
 		var address_id = $('input[name="address_id"]:checked').val();
 		if (address_id == '0'){
 			if (!verify_address()){
@@ -82,8 +68,13 @@
 			}
 		}
 		
+		<% if @tickets.count == 0 %>
+		txt = '请输入有效的提货券。';
+		flag_submit = false;
+		<% end %>
+		
 		if (flag_submit){
-			$('#create_order').submit();
+			$('#create_exchange').submit();
 		}else{
 			$.prompt(txt,
 				{
@@ -107,7 +98,9 @@
 </script>
 <div class="clearit bj-sp10"></div>
 <div id="mlist_detail">
+	<%= form_tag 'create', :id => :create_exchange do %>
 	<div class="order_box">
+		
 		<h1 class="f-black-12">
 			<img src="/images/msl_ticketuse.gif" />
 		</h1>
@@ -116,13 +109,12 @@
 				<tr>
           			<td>
 						<input type="text" id="codes_input" size="120" />
+						<input type="hidden" name="codes" value='<%= params[:codes] %>' />
 						<a id="code_button" href="#" onclick="javascript:window.location.href = '/exchanges/new?codes=<%= @codes.join(' ') %> ' + $('#codes_input').val(); return false;"><img src="/images/btn_ticket.gif" width="120" height="30" /></a>  多个请用空格隔开。
           			</td>
           		</tr>
         	</tbody>
 		</table>
-		
-
 		<h1 class="f-black-12">
 			<img src="/images/msl_pdlist.gif" />
 		</h1>                           
@@ -149,7 +141,6 @@
 				<% end %>
 			</tbody>
 		</table>
-
 		<div id="addresses_div">
 			<h1 class="f-black-12">
 				<img src="/images/msl_userinfo.gif"  />
@@ -238,11 +229,11 @@
 			<textarea rows="4" name="memo"></textarea>
 		</div>
 		
-
 	</div>
 
 	<div align="center">
 		<a href="#" onclick="javascript:next_step(); return false;"><img src="/images/next-step_btn.gif" width="145" height="45" /></a>
 	</div>
+	<% end %>
 </div>
 <div class="clearit"></div>

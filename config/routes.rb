@@ -38,10 +38,12 @@ V3::Application.routes.draw do
 
   match "category(/:tags(/:keywords))", :to => "products#query_result"
   get "promotion", :to => "home#promotion"
+  get "info", :to => "home#info"
   #match "category/:tags", :to => "products#index"
   #match "category", :to => "products#index"
 
   get "home/index"
+
   root :to => "home#index" 
 
   # The priority is based upon order of creation:
