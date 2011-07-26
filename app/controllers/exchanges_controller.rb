@@ -60,8 +60,6 @@ class ExchangesController < ApplicationController
     @exchange = Exchange.find(params[:id])
   end
 
-  # POST /exchanges
-  # POST /exchanges.xml
   def create
     exchange = Exchange.new
     exchange.no = Time.now.strftime("SO%Y%m%d%H%M%S")
@@ -91,9 +89,6 @@ class ExchangesController < ApplicationController
       if exchange.save
         flash[:notice] = '我们已经收到您的提货预约，随后将会跟您取得联系。'
         format.html { redirect_to(:action => 'info', :controller => 'home') }
-      else
-        flash[:notice] = '保'
-        format.html { render :action => "new", :codes => params[:codes] }
       end
     end
   end
