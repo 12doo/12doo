@@ -70,7 +70,7 @@ class ExchangesController < ApplicationController
       tickets = get_tickets
 
       exchange = Exchange.new
-      exchange.no = Time.now.strftime("SO%Y%m%d%H%M%S")
+      exchange.no = Time.now.strftime("EX%Y%m%d%H%M%S")
       address = nil
       #if select a exsit address
       if params[:address_id] == "0"
