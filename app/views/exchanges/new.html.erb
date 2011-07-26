@@ -93,6 +93,14 @@
 			$('#address_list').hide();
 			<% end %>
 		}
+		
+		<% if flash[:notice] %>
+		$.prompt('<%= flash[:notice] %>',
+			{
+				buttons:{ 确定:true },
+				callback:function(v,m,f){ $(this).remove();}
+			});
+		<% end %>
 	});
 	
 </script>

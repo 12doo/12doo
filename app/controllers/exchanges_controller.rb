@@ -23,29 +23,36 @@ class ExchangesController < ApplicationController
 
     @codes = []
     if params[:codes]
-      @codes = params[:codes].split(/\s/)
+      @codes = params[:codes].split(/\s+/).delete_if{|code| code == ''}
     end
     
     @tickets = get_tickets
-    
-    if @codes.count <> @tickets.count
-      useless = []
-      get_useless_tickets.each do |item|
-        useless << item.code
-      end
-      flash[:notice] = "提货券 #{useless.join('，')} 已经被使用。"
-    end
     
     @addresses = []
     if current_user
       @addresses = current_user.addresses
     end
-    
+    logger.debug @codes
     @years = (Time.now.year).upto(Time.now.year + 1).map{ |x| x }
-
-    respond_to do |format|
-      format.html
+    
+    if @codes.count != @tickets.count
+      useless = []
+      get_useless_tickets.each do |item|
+        useless << item.code
+        @codes.delete_if{|code| code == item.code }
+      end
+      logger.debug @codes
+      flash[:notice] = "提货券 #{useless.join('，')} 已经被使用。"
+      
+      respond_to do |format|
+        format.html { redirect_to(:action => 'new', :codes => @codes.join(' ')) }
+      end
+    else
+      respond_to do |format|
+        format.html
+      end
     end
+
   end
 
   # GET /exchanges/1/edit
