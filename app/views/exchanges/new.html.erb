@@ -97,6 +97,10 @@
 		var address_id = $('input[name="address_id"]:checked').val();
 		if (address_id == null){
 			$('#address_id_0').click();
+			
+			<% unless current_user %>
+			$('#address_list').hide();
+			<% end %>
 		}
 	});
 	
@@ -111,8 +115,8 @@
         	<tbody>
 				<tr>
           			<td>
-						<input type="text" id="codes_input" size="120" value='<%= params[:codes] %>' />
-						<a id="code_button" href="#" onclick="javascript:window.location.href = '/exchanges/new?codes=' + $('#codes_input').val(); return false;"><img src="/images/use_discount.gif" width="120" height="30" /></a>  多个请用空格隔开。
+						<input type="text" id="codes_input" size="120" />
+						<a id="code_button" href="#" onclick="javascript:window.location.href = '/exchanges/new?codes=<%= @codes.join(' ') %> ' + $('#codes_input').val(); return false;"><img src="/images/use_discount.gif" width="120" height="30" /></a>  多个请用空格隔开。
           			</td>
           		</tr>
         	</tbody>
@@ -125,7 +129,7 @@
 		<table width="100%" cellspacing="0" cellpadding="0" border="0" class="order_table">
         	<tbody>
 				<tr bgcolor="#ebebeb" class="f-black-12-b">
-					<td width="20%" align="center">领用券编号</td>
+					<td width="20%" align="center">提货券编号</td>
 					<td width="15%" align="center">商品编号</td>
 					<td align="center">商品名称</td>
 					<td width="5%" align="center">数量</td>
@@ -150,7 +154,7 @@
 			<h1 class="f-black-12">
 				<img src="/images/msl_userinfo.gif" width="99" height="25" />
 			</h1>
-			<div class="address_list">
+			<div id="address_list" class="address_list">
 				<% @addresses.each do |address| %>
 				<p>
 					<input type="radio" onclick="hide_addaddress();" name="address_id" value="<%= address.id %>" <%= address.default ? "checked" : "" %> />
@@ -160,6 +164,7 @@
 				<p>
 					<input type="radio" id="address_id_0" name="address_id" value="0" onclick="show_addaddress();" />使用新地址:
 				</p>
+				
 			</div>
 
 		  	<div id="table_addaddress" style="display:none;">
@@ -212,14 +217,28 @@
 		</div>
 		
 		<div class="order_comment f-black-12">
-			<b>您需要附加说明吗？</b><br />
-			<textarea rows="4" name="memo"></textarea>
+			<h1 class="f-black-12">
+				<img src="/images/msl_userinfo.gif" width="99" height="25" />
+			</h1>
+			<%= select_year Time.now, :field_name => 'year', :start_year => Time.now.year, :end_year => Time.now.year + 1 %>年
+			<%= select_month Time.now, :field_name => 'month', :use_month_numbers => true %>月
+			<%= select_day Time.now + 1.day, :field_name => 'day' %>日
+			<select id="time" name="time">
+				<option value="11:30">上午(9:00~12:00)</option>
+				<option value="15:30">下午(12:00~18:00)</option>
+				<option value="20:00">晚上(18:00~21:00)</option>
+			</select>
+			   十二度尽量保证按照预约时间送达，但是不保证所有风险。
 		</div>
 		
 		<div class="order_comment f-black-12">
-			<b>预约送货时间</b><br />
+			<h1 class="f-black-12">
+				<img src="/images/msl_userinfo.gif" width="99" height="25" />
+			</h1>
 			<textarea rows="4" name="memo"></textarea>
 		</div>
+		
+
 	</div>
 
 	<div align="center">

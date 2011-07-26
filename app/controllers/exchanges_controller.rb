@@ -27,8 +27,7 @@ class ExchangesController < ApplicationController
   # GET /exchanges/new
   # GET /exchanges/new.xml
   def new
-    @exchange = Exchange.new
-    
+
     @codes = []
     if params[:codes]
       @codes = params[:codes].split(/\s/)
@@ -43,10 +42,11 @@ class ExchangesController < ApplicationController
     if current_user
       @addresses = current_user.addresses
     end
+    
+    @years = (Time.now.year).upto(Time.now.year + 1).map{ |x| x }
 
     respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @exchange }
+      format.html
     end
   end
 
