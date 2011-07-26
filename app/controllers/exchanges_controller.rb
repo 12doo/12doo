@@ -29,6 +29,16 @@ class ExchangesController < ApplicationController
   def new
     @exchange = Exchange.new
     
+    @codes = []
+    if params[:codes]
+      @codes = params[:codes].split(/\s/)
+    end
+    
+    @tickets = []
+    if params[:codes]
+      @tickets = Ticket.where("code in (:codes) and usable = :usable", :codes => @codes, :usable => true).order('id desc')
+    end
+    
     @addresses = []
     if current_user
       @addresses = current_user.addresses

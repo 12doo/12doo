@@ -111,9 +111,8 @@
         	<tbody>
 				<tr>
           			<td>
-						<span id="coupon_code_show" style="display:none;"></span>
-						<input type="text" id="coupon_code_input" size="100" />
-						<a id="coupon_button" href="#" onclick="javascript:check_coupon(); return false;"><img src="/images/use_discount.gif" width="120" height="30" /></a>  多个请用逗号或者空格隔开。
+						<input type="text" id="codes_input" size="120" value='<%= params[:codes] %>' />
+						<a id="code_button" href="#" onclick="javascript:window.location.href = '/exchanges/new?codes=' + $('#codes_input').val(); return false;"><img src="/images/use_discount.gif" width="120" height="30" /></a>  多个请用空格隔开。
           			</td>
           		</tr>
         	</tbody>
@@ -126,13 +125,24 @@
 		<table width="100%" cellspacing="0" cellpadding="0" border="0" class="order_table">
         	<tbody>
 				<tr bgcolor="#ebebeb" class="f-black-12-b">
-					<td width="10%" align="center">领用券编号</td>
-					<td width="20%" align="center">商品编号</td>
+					<td width="20%" align="center">领用券编号</td>
+					<td width="15%" align="center">商品编号</td>
 					<td align="center">商品名称</td>
-					<td width="10%" align="center">数量</td>
+					<td width="5%" align="center">数量</td>
 					<td width="10%" align="center">单价</td>
-					
+					<td width="5%" align="center">操作</td>
           	    </tr>
+				<% @tickets.each do |item| %>
+				<tr>
+					<td align="center"><%= item.code %></td>
+					<td align="center"><%= item.product.sku %></td>
+					<td align="center"><%= item.product.cn_name %></td>
+					<td align="center">1</td>
+					<td align="center">￥<%= format "%.2f", item.price %></td>
+					<td align="center"><%= link_to '删除', {:action => :new, :codes => @codes.delete_if{|code| code == item.code }.join(' ') }, :class => 'f-red-12' %></td>
+				</tr>
+				<% @codes << item.code %>
+				<% end %>
 			</tbody>
 		</table>
 
