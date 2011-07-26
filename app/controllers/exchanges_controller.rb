@@ -32,7 +32,6 @@ class ExchangesController < ApplicationController
     if current_user
       @addresses = current_user.addresses
     end
-    logger.debug @codes
     @years = (Time.now.year).upto(Time.now.year + 1).map{ |x| x }
     
     if @codes.count != @tickets.count
@@ -41,7 +40,6 @@ class ExchangesController < ApplicationController
         useless << item.code
         @codes.delete_if{|code| code == item.code }
       end
-      logger.debug @codes
       flash[:notice] = "提货券 #{useless.join('，')} 已经被使用。"
       
       respond_to do |format|
@@ -55,56 +53,51 @@ class ExchangesController < ApplicationController
 
   end
 
-  # GET /exchanges/1/edit
-  def edit
-    @exchange = Exchange.find(params[:id])
-  end
-
   def create
-    exchange = Exchange.new
-    exchange.no = Time.now.strftime("SO%Y%m%d%H%M%S")
-    address = nil
-    #if select a exsit address
-    if params[:address_id] == "0"
-      address = Address.new(params[:address])
-      address.user_id = current_user.id
-      address.save
-    else
-      address = Address.find(params[:address_id])
-    end
     
-    exchange.set_address(address)
-    tickets = get_tickets
-    tickets.each do |item|
-      item.usable = false
-      item.used_at = Time.now
-      exchange.tickets << item
-    end
-    
-    exchange.count = tickets.count
-    exchange.memo = params[:memo]
-    exchange.expected_time = Time.local(params[:date][:year],params[:date][:month],params[:date][:day],params[:time])
-
-    respond_to do |format|
-      if exchange.save
-        flash[:notice] = '我们已经收到您的提货预约，随后将会跟您取得联系。'
-        format.html { redirect_to(:action => 'info', :controller => 'home') }
+    if get_useless_tickets.count > 0
+      codes = params[:codes].split(/\s+/).delete_if{|code| code == ''}
+      useless = []
+      get_useless_tickets.each do |item|
+        useless << item.code
+        codes.delete_if{|code| code == item.code }
       end
-    end
-  end
+      flash[:notice] = "提货券 #{useless.join('，')} 已经被使用。"
+      respond_to do |format|
+        format.html { redirect_to(:action => 'new', :codes => codes.join(' ')) }
+      end
+    else
+      tickets = get_tickets
 
-  # PUT /exchanges/1
-  # PUT /exchanges/1.xml
-  def update
-    @exchange = Exchange.find(params[:id])
-
-    respond_to do |format|
-      if @exchange.update_attributes(params[:exchange])
-        format.html { redirect_to(@exchange, :notice => 'Exchange was successfully updated.') }
-        format.xml  { head :ok }
+      exchange = Exchange.new
+      exchange.no = Time.now.strftime("SO%Y%m%d%H%M%S")
+      address = nil
+      #if select a exsit address
+      if params[:address_id] == "0"
+        address = Address.new(params[:address])
+        address.user_id = current_user.id
+        address.save
       else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @exchange.errors, :status => :unprocessable_entity }
+        address = Address.find(params[:address_id])
+      end
+
+      exchange.set_address(address)
+
+      tickets.each do |item|
+        item.usable = false
+        item.used_at = Time.now
+        exchange.tickets << item
+      end
+
+      exchange.count = tickets.count
+      exchange.memo = params[:memo]
+      exchange.expected_time = Time.local(params[:date][:year],params[:date][:month],params[:date][:day],params[:time])
+
+      respond_to do |format|
+        if exchange.save
+          flash[:notice] = '我们已经收到您的提货预约，随后将会跟您取得联系。'
+          format.html { redirect_to(:action => 'info', :controller => 'home') }
+        end
       end
     end
   end
