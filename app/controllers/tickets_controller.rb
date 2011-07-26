@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class TicketsController < ApplicationController
   
   # 身份验证  

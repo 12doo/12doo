@@ -13,10 +13,9 @@
 	                <tr bgcolor="#f0f0f0" class="f-black-12-b">
 	                    <td height="30" width="150">编号</td>
 	                    <td>产品名称</td>
-	                    <td width="30">金额</td>
+	                    <td width="50">金额</td>
 	                    <td width="150">创建时间</td>
-	                    <td width="50">已被使用</td>
-	                    <td width="50" valign="middle" bgcolor="#f0f0f0" align="center">操作</td>
+	                    <td width="50">已使用</td>
 	                </tr>
 				<% @tickets.each do |ticket| %>
 			 	<tr>
@@ -25,14 +24,22 @@
 				    <td><%= format "%.2f", ticket.price %></td>
 				    <td><%= ticket.created_at.strftime('%Y-%m-%d %H:%M:%S') %></td>
 				    <td><%= ticket.usable ? "否" : "是" %></td>
-					<td>
-					</td>
 			  	</tr>
 				<% end %>
 	            </tbody>
 		</table>
-		<%= paginate @tickets %>
+	</div>
+	<div class="clearit"></div>
+	<div class="list_num_top">
+		<table width="100%" border="0" cellspacing="0" cellpadding="0">
+		  <tr>
+		    <td align="right">
+			</td>
+		    <td align="right" width="600">
+				<%= paginate @tickets %>
+			</td>
+		  </tr>
+		</table>
 	</div>
   </div>
 </div>
-<div class="clearit"></div>
