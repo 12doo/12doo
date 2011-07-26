@@ -109,14 +109,14 @@
 <div id="mlist_detail">
 	<div class="order_box">
 		<h1 class="f-black-12">
-			<img src="/images/msl_couponuse.gif" width="99" height="29" />
+			<img src="/images/msl_ticketuse.gif" />
 		</h1>
 		<table width="100%" cellspacing="0" cellpadding="0" border="0" class="fpnormal f-black-12">
         	<tbody>
 				<tr>
           			<td>
 						<input type="text" id="codes_input" size="120" />
-						<a id="code_button" href="#" onclick="javascript:window.location.href = '/exchanges/new?codes=<%= @codes.join(' ') %> ' + $('#codes_input').val(); return false;"><img src="/images/use_discount.gif" width="120" height="30" /></a>  多个请用空格隔开。
+						<a id="code_button" href="#" onclick="javascript:window.location.href = '/exchanges/new?codes=<%= @codes.join(' ') %> ' + $('#codes_input').val(); return false;"><img src="/images/btn_ticket.gif" width="120" height="30" /></a>  多个请用空格隔开。
           			</td>
           		</tr>
         	</tbody>
@@ -124,7 +124,7 @@
 		
 
 		<h1 class="f-black-12">
-			<img src="/images/msl_pdlist.gif" width="99" height="29" />
+			<img src="/images/msl_pdlist.gif" />
 		</h1>                           
 		<table width="100%" cellspacing="0" cellpadding="0" border="0" class="order_table">
         	<tbody>
@@ -152,7 +152,7 @@
 
 		<div id="addresses_div">
 			<h1 class="f-black-12">
-				<img src="/images/msl_userinfo.gif" width="99" height="25" />
+				<img src="/images/msl_userinfo.gif"  />
 			</h1>
 			<div id="address_list" class="address_list">
 				<% @addresses.each do |address| %>
@@ -218,7 +218,7 @@
 		
 		<div class="order_comment f-black-12">
 			<h1 class="f-black-12">
-				<img src="/images/msl_userinfo.gif" width="99" height="25" />
+				<img src="/images/msl_expectedtime.gif" />
 			</h1>
 			<%= select_year Time.now, :field_name => 'year', :start_year => Time.now.year, :end_year => Time.now.year + 1 %>年
 			<%= select_month Time.now, :field_name => 'month', :use_month_numbers => true %>月
@@ -233,7 +233,7 @@
 		
 		<div class="order_comment f-black-12">
 			<h1 class="f-black-12">
-				<img src="/images/msl_userinfo.gif" width="99" height="25" />
+				<img src="/images/msl_memo.gif" />
 			</h1>
 			<textarea rows="4" name="memo"></textarea>
 		</div>
