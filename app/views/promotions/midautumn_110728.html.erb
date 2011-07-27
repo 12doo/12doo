@@ -1,0 +1,38 @@
+<style type="text/css"> 
+.zt110708_wrap{}
+.zt110708_wrap .ztbanner{}
+.zt110708_wrap .zt_pd_title{padding:15px 0;}
+.zt110708_wrap .zt_attention{padding:15px 0;}
+</style>
+<div class="zt110708_wrap">
+ 	<div class="ztbanner">
+		<img src="/images/110728_banner.gif" width="950" height="322" />
+		<img src="/images/110728_pd.gif" width="950" height="1168" usemap="#planetmap" />
+		<map name="planetmap">
+		  <area shape="rect" coords="0,70,950,380" href="/products/41" alt="香港大班冰皮玲珑四色伴官燕月饼" title="香港大班冰皮玲珑四色伴官燕月饼" />
+		  <area shape="rect" coords="0,470,950,770" href="/products/43" alt="香港大班冰皮迷你四色月饼" title="香港大班冰皮迷你四色月饼" />
+		  <area shape="rect" coords="0,860,950,1160" href="/products/42" alt="香港大班冰皮尊贵燕窝绿豆蓉月饼" title="香港大班冰皮尊贵燕窝绿豆蓉月饼" />
+		</map>
+	</div> 
+	<div class="zt_pd_title">
+		<img src="/images/110728_wine_title.gif" width="950" height="90" />
+	</div>
+	<div class="goodsResult">
+		<ul class="pagePicView">
+			<li class="one">
+			      <%= render :partial => "home/product", :object => Product.find(26) %>
+			</li>
+			<li>
+			      <%= render :partial => "home/product", :object => Product.find(17) %>
+			</li>
+			<li>
+			      <%= render :partial => "home/product", :object => Product.find(22) %>
+			</li>
+			<li>
+			      <%= render :partial => "home/product", :object => Product.find(45) %>
+			</li>
+		</ul>
+	</div>
+	<div class="clearit"></div>
+	<div class="zt_attention"><img src="/images/110728_attention.gif" width="950" height="147" /></div>
+</div>
