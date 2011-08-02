@@ -4,7 +4,12 @@
 	        {
 	            buttons:{ 继续购物:true,去结算:false },
 				persistent:false,
-	            callback:function(v,m,f){ $(this).remove();}
+	            callback:function(v,m,f){ 
+					if (!v){
+						window.location.href = "/orders/new";
+					}
+					$(this).remove();
+					}
 	        });	
 	}
 
