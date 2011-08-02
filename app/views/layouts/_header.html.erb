@@ -1,3 +1,14 @@
+<script type="text/javascript">
+	function add_to_cart(id, qty){
+		$.prompt('您已经成功添加到购物车。',
+	        {
+	            buttons:{ 继续购物:true,去结算:false },
+				persistent:false,
+	            callback:function(v,m,f){ $(this).remove();}
+	        });	
+	}
+
+</script>
 <div id="logo">
 	<a href="/" title="十二度红酒网">
   		<img src="/images/blank.gif" title="12度红酒网" alt="12度红酒网" width="204" height="97" />

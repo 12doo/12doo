@@ -4,11 +4,13 @@
 		<%= auto_discovery_link_tag(:atom, "/feeds.atom") %>
 		<%= auto_discovery_link_tag(:rss, "/feeds.rss") %>
         <%= csrf_meta_tag %>
+
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		    <meta name="keywords" content="12度,葡萄酒,红酒,干红,进口葡萄酒,干白" />
 		    <meta name="description" content="十二度葡萄酒,我们身边的葡萄酒." />        
         <%= stylesheet_link_tag "/css/home", "/css/floatdiv", "/css/alert", :cache => "12doo" %>
         <%= javascript_include_tag :defaults, "rails.validations",  :cache => "12doo" %>
+<script type="text/javascript" src="/javascripts/jquery-impromptu.3.1.min.js"></script>
         <title>
 			    <% if @title %>
 			    <%= @title %> -	
