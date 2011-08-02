@@ -10,7 +10,11 @@ class CartController < ApplicationController
       quantity = Integer(params[:quantity])
     end
     cart.add_product(find_product, quantity)
-    redirect_to :action => 'show'
+    respond_to do |format| 
+      format.html { redirect_to :action => 'show' }
+      format.json { render :json => cart.quantity } 
+    end
+    
   end
 
   def update_product

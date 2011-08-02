@@ -1,18 +1,3 @@
-<script type="text/javascript">
-	// function add_to_cart(url, qty){
-	// 	qty = parseInt(qty);
-	// 	if (isNaN(qty) || (qty < 1)){
-	// 		qty = 1;
-	// 	}
-	// 	window.location.href = url + '?quantity=' + qty;
-	// }
-</script>
-<!--product-detail-->
-<!--
-<div id="pd_breadnav">
-	<a href="/">首页</a> > <a href="#">起泡酒</a> > <a href="#"><%= @product.cn_name %></a>
-</div>
--->
 <div class="clearit"></div>
 <div id="pd_baseinfo">
 	<div class="pd_img"><%= image_tag @product.pic_main.url(:medium), :width => "270", :height => "270", :title => @product.name, :alt => @product.cn_name %></div>
@@ -87,7 +72,6 @@
 						<img src="/images/plus_btn.gif"></a>
            			</td>
            			<td width="320" align="left" class="f-grey-12">
-						<!-- <a href="/cart/add_product/<%= @product.id %>" title="立即购买" onclick="add_to_cart(this.href, $('#winenum').val()); return false;"><img border="0" src="/images/buy.gif" id="buttonImg"></a> -->
 						<a href="#" title="立即购买" onclick="add_to_cart(<%= @product.id %>, $('#winenum').val()); return false;"><img border="0" src="/images/buy.gif" id="buttonImg"></a>
 						<!--
 						有 <span class="f-blue-12"><b>53</b></span> 人评论 <a href="#"><span class="f-red-12">查看评论(12)</span></a>
