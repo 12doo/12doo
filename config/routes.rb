@@ -21,6 +21,12 @@ V3::Application.routes.draw do
   get "cart/delete_product"
   get "cart/update_product"
   get "cart/add_product"
+  
+  get "favorites/delete_product"
+  get "favorites/add_product"
+  get "favorites/clear"
+  
+  resources :favorites
 
   get "orders/get_coupon"
   get "orders/check_out"

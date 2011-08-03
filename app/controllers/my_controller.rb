@@ -95,6 +95,10 @@ class MyController < ApplicationController
     @products = Product.where("sku in (:skus) and visiable = :visiable", :skus => skus, :visiable => true).order("id desc").page(params[:page])
   end
   
+  def favorites
+    @favorites = current_user.favorites.order("id desc").page(params[:page])
+  end
+  
   def update_password
     if current_user.update_with_password(params[:user])
       sign_out

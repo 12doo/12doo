@@ -8,7 +8,7 @@
 		$.getJSON(encodeURI("/cart/add_product/" + id + "?quantity=" + qty), function(data){
 			if (data){
 				$('#cart_items_quantity').html(data);
-			};
+			}
 			
 		});
 		
@@ -23,6 +23,54 @@
 						$(this).remove();
 					}
 	        });	
+	}
+	
+	function add_to_favorite(id){
+		<% if current_user %>
+		$.getJSON(encodeURI("/favorites/add_product/" + id), function(data){
+			if (data){
+				$.prompt('您已经成功将产品添加到收藏夹。',
+			        {
+			            buttons:{ 继续购物:true,查看收藏:false },
+						persistent:false,
+			            callback:function(v,m,f){ 
+								if (!v){
+									window.location.href = "/my/favorites";
+								}
+								$(this).remove();
+							}
+			        });
+			}else{
+				$.prompt('该物品已经在您的收藏中。',
+			        {
+			            buttons:{ 继续购物:true,查看收藏:false },
+						persistent:false,
+			            callback:function(v,m,f){ 
+								if (!v){
+									window.location.href = "/my/favorites";
+								}
+								$(this).remove();
+							}
+			        });	
+			}
+			
+		});
+		<% else %>
+		$.prompt('请先登录。',
+	        {
+	            buttons:{ 继续浏览:true,登录:false },
+				persistent:false,
+	            callback:function(v,m,f){ 
+						if (!v){
+							window.location.href = "/users/sign_in?return_url=/products/" + id;
+						}
+						$(this).remove();
+					}
+	        });
+		<% end %>
+
+		
+
 	}
 
 </script>
