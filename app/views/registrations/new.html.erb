@@ -39,7 +39,25 @@ $(document).ready(function(){
 		}
 	});
 	
+
+	
 });
+
+
+function new_user(){
+	if ($('#agreement').attr('checked')){	
+		$('#user_new').submit();
+	}else{
+		$.prompt('请确认已经阅读并同意&lt;12doo服务条款&gt;。',
+	        {
+	            buttons:{ 确认:true },
+				persistent:false,
+	            callback:function(v,m,f){ 
+						$(this).remove();
+					}
+	        });
+	}
+}
 </script>
 
 <div id="join_now"><img src="/images/reg_wyjr.gif" width="295" height="42" /></div>
@@ -73,10 +91,10 @@ $(document).ready(function(){
     	<td>&nbsp;</td>
     	<td>
 			<div id="reg_submit">
-				<a href="#" onclick="javascript:$('#user_new').submit(); return false;">
+				<a href="#" onclick="new_user();">
 					<img src="/images/reg_btn.gif" width="197" height="53" />
 				</a>
-				<input name="" type="checkbox" value="" checked="checked" class="iptnormal" />
+				<input id="agreement" type="checkbox" class="iptnormal" />
 				<span class="attention">
 					
 					<a href="/help/agreement">我已经阅读并同意&lt;12doo服务条款&gt;</a>
