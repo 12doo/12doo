@@ -25,6 +25,14 @@ class Product < ActiveRecord::Base
   validates_attachment_size :pic_label, :less_than => 2.megabytes
   validates_attachment_content_type :pic_label, :content_type => ['image/jpeg', 'image/png']
   
+  def current_price
+    price = self.price
+    if self.promo_price && self.promo_price > 0
+      price = self.promo_price
+    end
+    price
+  end
+  
   def has_attribute(short,value)
     self.product_attributes.each do | attr |
       if attr.short == short && attr.value == value
@@ -62,10 +70,7 @@ class Product < ActiveRecord::Base
   end
   
   def set_price_attribute
-    price = self.price
-    if self.promo_price && self.promo_price > 0
-      price = self.promo_price
-    end
+    price = current_price
     item = ProductAttribute.where(:short => 'price', :product_id => self.id).first
 
     if item

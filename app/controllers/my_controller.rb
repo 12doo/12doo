@@ -96,7 +96,7 @@ class MyController < ApplicationController
   end
   
   def favorites
-    @favorites = current_user.favorites.order("id desc").page(params[:page])
+    @favorites = current_user.favorites.where("deleted = :deleted", :deleted => false).order("id desc").page(params[:page])
   end
   
   def update_password

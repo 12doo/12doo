@@ -10,7 +10,7 @@
 			<table width="100%" cellspacing="0" cellpadding="0" border="0" class="tableinfo">
             	<tbody>
                     <tr bgcolor="#f0f0f0" class="f-black-12-b">
-                        <td height="30" width="400">
+                        <td height="30">
                             商品名称
                         </td>
 						<td width="70">
@@ -19,24 +19,38 @@
                         <td width="70">
                            	当前价格
                         </td>
-                        <td width="70">
+                        <td width="135">
                            	收藏时间
                         </td>
-                        <td width="75" valign="middle" bgcolor="#f0f0f0" align="center">
+                        <td width="135" valign="middle" bgcolor="#f0f0f0" align="center">
                             操作
                         </td>
                     </tr>
 					<% @favorites.each do |item| %>
                     <tr>
-                        <td height="30"><%= link_to item.product.cn_name, {:action => :show, :controller => :products, :id => product.id }, :class => "f-red-12", :target => '_blank' %></td>
+                        <td height="30"><%= link_to item.product.cn_name, {:action => :show, :controller => :products, :id => item.product.id }, :class => "f-red-12", :target => '_blank' %></td>
                         <td><%= format "%.2f", item.price %></td>
-						<td><%= format "%.2f", item.product.price %></td>
+						<td><%= format "%.2f", item.product.current_price %></td>
+						<td><%= item.created_at.strftime('%Y-%m-%d %H:%M:%S') %></td>
                         <td>
-							<a href="/cart/add_product/<%= item.id %>" class="f-red-12">[放入购物车]</a>
+							<a href="#" onclick="add_to_cart(<%= item.product.id %>)" class="f-red-12">[放入购物车]</a>
+							<a href="/favorites/delete_product/<%= item.product.id %>" class="f-red-12">[取消收藏]</a>
 						</td>
                     </tr>
 					<% end %>
                 </tbody>
+			</table>
+		</div>
+		<div class="clearit"></div>
+		<div class="list_num_top">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+			  <tr>
+			    <td align="right">
+				</td>
+			    <td align="right" width="600">
+					<%= paginate @favorites %>
+				</td>
+			  </tr>
 			</table>
 		</div>
 	</div>

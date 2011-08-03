@@ -30,10 +30,12 @@ class FavoritesController < ApplicationController
       product = Product.find(params[:id])
       if Favorite.delete_product(product, current_user)
         respond_to do |format| 
-          format.json { render :json => product.id } 
+          format.html { redirect_to(:action => 'favorites', :controller => 'my') }
+          format.json { render :json => product.id }
         end
       else
         respond_to do |format| 
+          format.html { redirect_to(:action => 'favorites', :controller => 'my') }
           format.json { render :json => nil } 
         end
       end
