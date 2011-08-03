@@ -33,7 +33,7 @@
 						<td><%= format "%.2f", item.product.current_price %></td>
 						<td><%= item.created_at.strftime('%Y-%m-%d %H:%M:%S') %></td>
                         <td>
-							<a href="#" onclick="add_to_cart(<%= item.product.id %>)" class="f-red-12">[放入购物车]</a>
+							<a href="#" onclick="add_to_cart(<%= item.product.id %>,1)" class="f-red-12">[放入购物车]</a>
 							<a href="/favorites/delete_product/<%= item.product.id %>" class="f-red-12">[取消收藏]</a>
 						</td>
                     </tr>
