@@ -1,5 +1,10 @@
 # -*- encoding : utf-8 -*-
 class Ticket < ActiveRecord::Base
+  
+  validates_presence_of :code, :product_id, :price
+  validates_numericality_of :price, :product_id
+  validates_uniqueness_of :code
+  
   belongs_to :product
   
   paginates_per 10

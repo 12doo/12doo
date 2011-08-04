@@ -8,7 +8,51 @@
 		</ul>
 		<div class="clearit"></div>
 		<div id="ac_more_detail">
-			<%= render 'form' %>
+			<%= form_for(@ticket) do |f| %>
+			  <% if @ticket.errors.any? %>
+			    <div id="error_explanation">
+			      <h2><%= pluralize(@ticket.errors.count, "error") %> prohibited this ticket from being saved:</h2>
+
+			      <ul>
+			      <% @ticket.errors.full_messages.each do |msg| %>
+			        <li><%= msg %></li>
+			      <% end %>
+			      </ul>
+			    </div>
+			  <% end %>
+
+			<table width="100%" cellspacing="0" cellpadding="0" border="0" class="tableinfoL" align="center">
+				<tbody>
+					<tr>
+					    <td height="30" width="100" class="tcenter">产品ID</td>
+					    <td><%= f.text_field :product_id %></td>
+					</tr>
+					<tr>
+					    <td height="30" class="tcenter">价格</td>
+					    <td><%= f.text_field :price %></td>
+					</tr>
+					<tr>
+					    <td height="30" class="tcenter">前缀</td>
+					    <td><input type="text" name="prefix" size="30" /></td>
+					</tr>
+					<tr>
+					    <td height="30" class="tcenter">生成个数</td>
+					    <td><input type="text" name="count" value="1" size="30" /></td>
+					</tr>
+			    </tbody>
+			</table>
+			<div class="bj-sp10"></div>
+			<table width="98%" cellspacing="0" cellpadding="0" border="0" align="center">
+            	<tbody>
+					<tr>
+				    	<td width="100%" valign="middle" align="middle">
+				        	<a href="#" onclick="javascript:$('#new_ticket').submit();"><img align="absmiddle" alt="" src="/images/confirm_btn.gif" /></a>
+				        </td>
+				    </tr>
+				</tbody>
+			</table>
+
+			<% end %>
 		</div>
 	</div>
 </div>
