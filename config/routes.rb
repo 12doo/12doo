@@ -10,7 +10,7 @@ V3::Application.routes.draw do
   resources :categories
   
   resources :deliveries, :addresses, :order_items, :order_changes, :pictures, :alipay_logs, :dispatches, :dispatch_items,
-            :product_tags, :product_statuses, :product_attributes, :product_attribute_defines, :products, :promotions, :coupons
+            :product_tags, :product_statuses, :product_attributes, :product_attribute_defines, :products, :promotions
             
   devise_for :users, :controllers => { :registrations => "registrations" }
   get "my/info", :to => "my#index"
@@ -34,13 +34,13 @@ V3::Application.routes.draw do
   
   resources :orders
   
+  get "coupons/query_result"
+  
+  resources :coupons
+  
   get "product_attribute_values/edit_values"
   
   resources :product_attribute_values
-  
-  get "products/bought"
-
-  get "store/index"
 
   match "category(/:tags(/:keywords))", :to => "products#query_result"
   get "promotion", :to => "home#promotion"
