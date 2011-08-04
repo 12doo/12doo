@@ -3,8 +3,6 @@ V3::Application.routes.draw do
 
   resources :exchanges
 
-  resources :tickets
-
   resources :feeds, :only => :index
 
   resources :categories
@@ -37,6 +35,10 @@ V3::Application.routes.draw do
   get "coupons/export"
   
   resources :coupons
+  
+  get "tickets/export"
+  
+  resources :tickets
   
   get "product_attribute_values/edit_values"
   

@@ -8,6 +8,18 @@
 	</ul>
 	<div class="clearit"></div>
 	<div id="ac_more_detail">
+		<%= form_tag '/tickets', {:id => 'tickets', :method => :get} do %>
+		前缀：<input type="text" name="prefix" style="width: 120px;" value="<%= params[:prefix] %>" />&nbsp;&nbsp;
+		状态：
+		<select name="usable">
+			<option value="">全部</option>
+			<option value="1"<%= params[:usable] == "1" ? " selected" : "" %>>未使用</option>
+			<option value="0"<%= params[:usable] == "0" ? " selected" : "" %>>已使用</option>
+		</select>&nbsp;&nbsp;
+		<a href="#" onclick="$('#tickets').submit();"><img src="/images/confirm_btn.gif"></a>&nbsp;&nbsp;
+		<a href="#" onclick="$('#tickets').attr('action','/tickets/export').submit();"><img src="/images/export_btn.png"></a>
+		<% end %>
+		<div class="bj-sp10"></div>
 		<table width="100%" cellspacing="0" cellpadding="0" border="0" class="tableinfo">
 	        	<tbody>
 	                <tr bgcolor="#f0f0f0" class="f-black-12-b">

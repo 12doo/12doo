@@ -4,10 +4,16 @@ class TicketsController < ApplicationController
   # 身份验证  
   before_filter :authorize_admin!
   
+  layout "application", :except => [:export]
+  
   def index
-    @tickets = Ticket.order("id desc").page(params[:page])
+    @tickets = get_tickets(true)
   end
-
+  
+  def export
+    @tickets = get_tickets(false)
+  end
+  
   def new
     @ticket = Ticket.new
   end
@@ -28,12 +34,24 @@ class TicketsController < ApplicationController
 
   end
 
-  def destroy
-    @ticket = Ticket.find(params[:id])
-    @ticket.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(tickets_url) }
+  private
+  
+  def get_tickets(pager)
+    if params[:prefix] && params[:usable]
+      if params[:usable] == ""
+        tickets = Ticket.where("code like :prefix", :prefix => "#{params[:prefix]}%").order("id desc")
+      else
+        tickets = Ticket.where("code like :prefix and usable = :usable", :prefix => "#{params[:prefix]}%", :usable => params[:usable]).order("id desc")
+      end
+    else
+      tickets = Ticket.order("id desc")
+    end
+    
+    if pager
+      tickets = tickets.page(params[:page])
+    else
+      tickets
     end
   end
+  
 end
