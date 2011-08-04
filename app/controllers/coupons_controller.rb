@@ -13,13 +13,32 @@ class CouponsController < ApplicationController
   end
 
   def create
-    if params[:count]
-      Integer(params[:count]).times do |t|
-        coupon = Coupon.new(params[:coupon])
-        coupon.code = Coupon.new_code(params[:prefix])
-        coupon.save
+    if params[:type]
+      case params[:type]
+        when "create"
+          
+          if params[:count]
+            Integer(params[:count]).times do |t|
+              coupon = Coupon.new(params[:coupon])
+              coupon.code = Coupon.new_code(params[:prefix])
+              coupon.save
+            end
+          end
+          
+
+        when "import"
+          
+          if params[:codes]
+            params[:codes].split(',').each do |item|
+              coupon = Coupon.new(params[:coupon])
+              coupon.code = item
+              coupon.save
+            end
+          end
+          
       end
     end
+
     
     respond_to do |format|
       format.html { redirect_to :action => :index, :controller => :coupons }

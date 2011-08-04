@@ -1,3 +1,6 @@
+<script type="text/javascript">
+	
+</script>
 <%= render 'admin/header' %>
 <div id="my_acinfo">
 <%= render 'admin/userside' %>
@@ -8,15 +11,11 @@
 		</ul>
 		<div class="clearit"></div>
 		<div id="ac_more_detail">
-			<%= form_for(@coupon, :id => "coupon") do |f| %>
+			<%= form_for(@coupon) do |f| %>
 			<table width="100%" cellspacing="0" cellpadding="0" border="0" class="tableinfoL" align="center">
 				<tbody>
 					<tr>
-					    <td height="30" width="100" class="tcenter">编码</td>
-					    <td><input type="text" name="codes" /></td>
-					</tr>
-					<tr>
-					    <td height="30" class="tcenter">折扣金额</td>
+					    <td height="30" width="100" class="tcenter">折扣金额</td>
 					    <td><%= f.text_field :discount %></td>
 					</tr>
 					<tr>
@@ -48,16 +47,8 @@
 					    <td><%= f.text_field :end %></td>
 					</tr>
 					<tr>
-					    <td height="30" class="tcenter">前缀</td>
-					    <td><input type="text" name="prefix" /></td>
-					</tr>
-					<tr>
 					    <td height="30" class="tcenter">说明</td>
-					    <td><%= f.text_field :memo %></td>
-					</tr>
-					<tr>
-					    <td height="30" class="tcenter">生成个数</td>
-					    <td><input type="text" name="count" value="1" /></td>
+					    <td><%= f.text_field :memo, {:size => "70"} %></td>
 					</tr>
 					<tr>
 					    <td height="30" class="tcenter">创建方式</td>
@@ -66,6 +57,18 @@
 							<input type="radio" name="type" value="create" checked /> 创建
 						</td>
 					</tr>
+					<tr id="td_prefix">
+					    <td height="30" class="tcenter">前缀</td>
+					    <td><input type="text" name="prefix" size="30" /></td>
+					</tr>
+					<tr id="td_count">
+					    <td height="30" class="tcenter">生成个数</td>
+					    <td><input type="text" name="count" size="30" value="1" /></td>
+					</tr>
+					<tr id="td_codes">
+					    <td height="30" class="tcenter">编码</td>
+					    <td><textarea type="text" name="codes" cols="60" rows="10"></textarea></td>
+					</tr>
 			    </tbody>
 			</table>
 			<div class="bj-sp10"></div>
@@ -73,7 +76,7 @@
             	<tbody>
 					<tr>
 				    	<td width="100%" valign="middle" align="middle">
-				        	<a href="#" onclick="javascript:if (verify_address()){$('#address').submit();} return false;"><img align="absmiddle" alt="" src="/images/confirm_btn.gif" /></a>
+				        	<a href="#" onclick="javascript:$('#new_coupon').submit();"><img align="absmiddle" alt="" src="/images/confirm_btn.gif" /></a>
 				        </td>
 				    </tr>
 				</tbody>

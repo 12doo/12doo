@@ -1,5 +1,10 @@
 # -*- encoding : utf-8 -*-
 class Coupon < ActiveRecord::Base
+  
+  validates_presence_of :code, :discount, :threshold
+  validates_numericality_of :discount, :threshold
+  validates_uniqueness_of :code
+  
   has_many :coupon_used_records
   belongs_to :user
   paginates_per 10
