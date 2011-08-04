@@ -8,9 +8,76 @@
 		</ul>
 		<div class="clearit"></div>
 		<div id="ac_more_detail">
-			<%= form_tag 'create', :multipart => true do %>
-			<%= render 'form' %>
-			<input type="submit" value="保存" />
+			<%= form_for(@coupon, :id => "coupon") do |f| %>
+			<table width="100%" cellspacing="0" cellpadding="0" border="0" class="tableinfoL" align="center">
+				<tbody>
+					<tr>
+					    <td height="30" width="100" class="tcenter">编码</td>
+					    <td><input type="text" name="codes" /></td>
+					</tr>
+					<tr>
+					    <td height="30" class="tcenter">折扣金额</td>
+					    <td><%= f.text_field :discount %></td>
+					</tr>
+					<tr>
+					    <td height="30" class="tcenter">订单金额</td>
+					    <td><%= f.text_field :threshold %></td>
+					</tr>
+					<tr>
+					    <td height="30" class="tcenter">用于分类</td>
+					    <td><%= f.text_field :product_category %></td>
+					</tr>
+					<tr>
+					    <td height="30" class="tcenter">属于</td>
+					    <td><%= f.text_field :user_id %></td>
+					</tr>
+					<tr>
+					    <td height="30" class="tcenter">所有人可用</td>
+					    <td><%= f.check_box :all_user %></td>
+					</tr>
+					<tr>
+					    <td height="30" class="tcenter">一次性</td>
+					    <td><%= f.check_box :one_off %></td>
+					</tr>
+					<tr>
+					    <td height="30" class="tcenter">启用时间</td>
+					    <td><%= f.text_field :begin %></td>
+					</tr>
+					<tr>
+					    <td height="30" class="tcenter">结束时间</td>
+					    <td><%= f.text_field :end %></td>
+					</tr>
+					<tr>
+					    <td height="30" class="tcenter">前缀</td>
+					    <td><input type="text" name="prefix" /></td>
+					</tr>
+					<tr>
+					    <td height="30" class="tcenter">说明</td>
+					    <td><%= f.text_field :memo %></td>
+					</tr>
+					<tr>
+					    <td height="30" class="tcenter">生成个数</td>
+					    <td><input type="text" name="count" value="1" /></td>
+					</tr>
+					<tr>
+					    <td height="30" class="tcenter">创建方式</td>
+					    <td>
+							<input type="radio" name="type" value="import" /> 导入
+							<input type="radio" name="type" value="create" checked /> 创建
+						</td>
+					</tr>
+			    </tbody>
+			</table>
+			<div class="bj-sp10"></div>
+			<table width="98%" cellspacing="0" cellpadding="0" border="0" align="center">
+            	<tbody>
+					<tr>
+				    	<td width="100%" valign="middle" align="middle">
+				        	<a href="#" onclick="javascript:if (verify_address()){$('#address').submit();} return false;"><img align="absmiddle" alt="" src="/images/confirm_btn.gif" /></a>
+				        </td>
+				    </tr>
+				</tbody>
+			</table>
 			<% end %>
 		</div>
 	</div>

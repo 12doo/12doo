@@ -8,20 +8,11 @@ class CouponsController < ApplicationController
     @coupons = Coupon.order("id desc").page(params[:page])
   end
 
-  def show
-    @coupon = Coupon.find(params[:id])
-  end
-
   def new
     @coupon = Coupon.new
   end
 
-  def edit
-    @coupon = Coupon.find(params[:id])
-  end
-
   def create
-
     if params[:count]
       Integer(params[:count]).times do |t|
         coupon = Coupon.new(params[:coupon])
