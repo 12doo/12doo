@@ -5,7 +5,15 @@ class CouponsController < ApplicationController
   before_filter :authorize_admin!
 
   def index
-    @coupons = Coupon.order("id desc").page(params[:page])
+    if params[:prefix] && params[:used_time]
+      if params[:used_time] == ""
+        @coupons = Coupon.where("code like :prefix", :prefix => "#{params[:prefix]}%").order("id desc").page(params[:page])
+      else
+        @coupons = Coupon.where("code like :prefix and used_time = :used_time", :prefix => "#{params[:prefix]}%", :used_time => params[:used_time]).order("id desc").page(params[:page])
+      end
+    else
+      @coupons = Coupon.order("id desc").page(params[:page])
+    end
   end
 
   def new
