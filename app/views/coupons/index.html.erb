@@ -11,7 +11,8 @@
 			<%= form_tag '/coupons', {:id => 'coupons', :method => :get} do %>
 			前缀：<input type="text" name="prefix" style="width: 120px;" value="<%= params[:prefix] %>" />&nbsp;&nbsp;
 			使用次数：<input type="text" name="used_time" style="width: 50px;" value="<%= params[:used_time] %>" />&nbsp;&nbsp;
-			<a href="#" onclick="$('#coupons').submit();"><img src="/images/confirm_btn.gif"></a>
+			<a href="#" onclick="$('#coupons').submit();"><img src="/images/confirm_btn.gif"></a>&nbsp;&nbsp;
+			<a href="#" onclick="$('#coupons').attr('action','/coupons/export').submit();"><img src="/images/export_btn.png"></a>
 			<% end %>
 			<div class="bj-sp10"></div>
 			<table width="100%" cellspacing="0" cellpadding="0" border="0" class="tableinfo">

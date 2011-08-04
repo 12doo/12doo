@@ -3,17 +3,15 @@ class CouponsController < ApplicationController
   
   # 身份验证  
   before_filter :authorize_admin!
+  
+  layout "application", :except => [:export]
 
   def index
-    if params[:prefix] && params[:used_time]
-      if params[:used_time] == ""
-        @coupons = Coupon.where("code like :prefix", :prefix => "#{params[:prefix]}%").order("id desc").page(params[:page])
-      else
-        @coupons = Coupon.where("code like :prefix and used_time = :used_time", :prefix => "#{params[:prefix]}%", :used_time => params[:used_time]).order("id desc").page(params[:page])
-      end
-    else
-      @coupons = Coupon.order("id desc").page(params[:page])
-    end
+    @coupons = get_coupons(true)
+  end
+  
+  def export
+    @coupons = get_coupons(false)
   end
 
   def new
@@ -53,27 +51,33 @@ class CouponsController < ApplicationController
     end
   end
 
-  def update
-    @coupon = Coupon.find(params[:id])
-
-    respond_to do |format|
-      if @coupon.update_attributes(params[:coupon])
-        format.html { redirect_to(@coupon, :notice => 'Coupon was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @coupon.errors, :status => :unprocessable_entity }
-      end
-    end
-  end
-
   def destroy
     @coupon = Coupon.find(params[:id])
     @coupon.destroy
 
     respond_to do |format|
       format.html { redirect_to(coupons_url) }
-      format.xml  { head :ok }
     end
   end
+  
+  private
+  
+  def get_coupons(pager)
+    if params[:prefix] && params[:used_time]
+      if params[:used_time] == ""
+        coupons = Coupon.where("code like :prefix", :prefix => "#{params[:prefix]}%").order("id desc")
+      else
+        coupons = Coupon.where("code like :prefix and used_time = :used_time", :prefix => "#{params[:prefix]}%", :used_time => params[:used_time]).order("id desc")
+      end
+    else
+      coupons = Coupon.order("id desc")
+    end
+    
+    if pager
+      coupons = coupons.page(params[:page])
+    else
+      coupons
+    end
+  end
+  
 end

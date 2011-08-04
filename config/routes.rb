@@ -34,7 +34,7 @@ V3::Application.routes.draw do
   
   resources :orders
   
-  get "coupons/query_result"
+  get "coupons/export"
   
   resources :coupons
   
