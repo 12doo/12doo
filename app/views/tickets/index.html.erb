@@ -25,7 +25,6 @@
 	                <tr bgcolor="#f0f0f0" class="f-black-12-b">
 	                    <td height="30" width="150">编号</td>
 	                    <td>产品名称</td>
-	                    <td width="50">金额</td>
 	                    <td width="150">创建时间</td>
 	                    <td width="50">已使用</td>
 	                </tr>
@@ -33,7 +32,6 @@
 			 	<tr>
 				    <td height="30"><%= ticket.code %></td>
 					<td><%= ticket.product.cn_name %></td>
-				    <td><%= format "%.2f", ticket.price %></td>
 				    <td><%= ticket.created_at.strftime('%Y-%m-%d %H:%M:%S') %></td>
 				    <td><%= ticket.usable ? "否" : "是" %></td>
 			  	</tr>
