@@ -7,7 +7,7 @@ class Coupon < ActiveRecord::Base
   
   has_many :coupon_used_records
   belongs_to :user
-  paginates_per 10
+  paginates_per 20
   
   # 判断是否可用
   def can_use(user, order)

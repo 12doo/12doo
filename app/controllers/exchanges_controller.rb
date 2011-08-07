@@ -2,13 +2,9 @@
 class ExchangesController < ApplicationController
   
   before_filter :authorize_admin!, :except => [:new, :create, :show]
-
+  
   def index
-    @exchanges = Exchange.all
-
-    respond_to do |format|
-      format.html
-    end
+    @exchanges = Exchange.order("id desc").page(params[:page])
   end
 
   def show

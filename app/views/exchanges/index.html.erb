@@ -1,45 +1,45 @@
-<h1>Listing exchanges</h1>
-
-<table>
-  <tr>
-    <th>No</th>
-    <th>Address</th>
-    <th>Province</th>
-    <th>City</th>
-    <th>Region</th>
-    <th>Zip</th>
-    <th>Phone</th>
-    <th>Memo</th>
-    <th>Expected time</th>
-    <th>Count</th>
-    <th>Status</th>
-    <th>Fullname</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @exchanges.each do |exchange| %>
-  <tr>
-    <td><%= exchange.no %></td>
-    <td><%= exchange.address %></td>
-    <td><%= exchange.province %></td>
-    <td><%= exchange.city %></td>
-    <td><%= exchange.region %></td>
-    <td><%= exchange.zip %></td>
-    <td><%= exchange.phone %></td>
-    <td><%= exchange.memo %></td>
-    <td><%= exchange.expected_time %></td>
-    <td><%= exchange.count %></td>
-    <td><%= exchange.status %></td>
-    <td><%= exchange.fullname %></td>
-    <td><%= link_to 'Show', exchange %></td>
-    <td><%= link_to 'Edit', edit_exchange_path(exchange) %></td>
-    <td><%= link_to 'Destroy', exchange, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Exchange', new_exchange_path %>
+<%= render 'admin/header' %>
+<div id="my_acinfo">
+<%= render 'admin/userside' %>
+	<div id="ac_right">
+		<ul id="pd_infomenu">
+			<li class="on">所有提货预约</li>
+		</ul>
+		<div class="clearit"></div>
+		<div id="ac_more_detail">
+			<table width="100%" cellspacing="0" cellpadding="0" border="0" class="tableinfo">
+	      	<tbody>
+	          <tr bgcolor="#f0f0f0" class="f-black-12-b">
+	              <td height="30" width="100">编号</td>
+	              <td width="200">地址/邮编/联系人/电话</td>
+	              <td width="100">期望送货时间</td>
+	              <td width="40">状态</td>
+	              <td width="40">操作</td>
+	          </tr>
+			<% @exchanges.each do |exchange| %>
+		 	<tr>
+			    <td height="30"><%= exchange.no %></td>
+			    <td><%= exchange.province %> <%= exchange.city %> <%= exchange.region %> <%= exchange.address %> <%= exchange.zip %> <%= exchange.fullname %> <%= exchange.phone %></td>
+				  <td><%= exchange.expected_time.strftime('%Y-%m-%d %H:%M:%S') %></td>
+				  <td><%= exchange.status %></td>
+				  <td></td>
+		  	</tr>
+			<% end %>
+	        </tbody>
+			</table>
+		</div>
+		<div class="clearit"></div>
+		<div class="list_num_top">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+			  <tr>
+			    <td align="right">
+				</td>
+			    <td align="right" width="600">
+					<%= paginate @exchanges %>
+				</td>
+			  </tr>
+			</table>
+		</div>
+	</div>
+</div>
+<div class="clearit"></div>
