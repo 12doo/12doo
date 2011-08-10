@@ -18,6 +18,8 @@ class User < ActiveRecord::Base
   has_many :order_items
   has_many :favorites
   
+  paginates_per 20
+  
   # verify
   validates_uniqueness_of :phone, :allow_nil => true, :allow_blank => true
   

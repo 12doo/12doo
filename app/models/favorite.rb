@@ -3,7 +3,7 @@ class Favorite < ActiveRecord::Base
   
   belongs_to :product
   
-  paginates_per 10
+  paginates_per 20
   
   def self.add_product(product, user)
     if product && product.visiable && user

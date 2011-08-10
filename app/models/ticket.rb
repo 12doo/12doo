@@ -7,7 +7,7 @@ class Ticket < ActiveRecord::Base
   
   belongs_to :product
   
-  paginates_per 10
+  paginates_per 20
   
   def self.new_code(prefix)
     chars = ("A".."Z").to_a + ("0".."9").to_a

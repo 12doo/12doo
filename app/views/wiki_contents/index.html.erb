@@ -1,0 +1,23 @@
+<h1>Listing wiki_contents</h1>
+
+<table>
+  <tr>
+    <th>Text</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @wiki_contents.each do |wiki_content| %>
+  <tr>
+    <td><%= wiki_content.text %></td>
+    <td><%= link_to 'Show', wiki_content %></td>
+    <td><%= link_to 'Edit', edit_wiki_content_path(wiki_content) %></td>
+    <td><%= link_to 'Destroy', wiki_content, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Wiki content', new_wiki_content_path %>

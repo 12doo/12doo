@@ -7,7 +7,7 @@ class Order < ActiveRecord::Base
   has_many :order_changes
   
   belongs_to :user
-  paginates_per 10
+  paginates_per 20
   
   def can_use_coupons(user)
     coupons = []

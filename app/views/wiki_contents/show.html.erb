@@ -1,0 +1,10 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Text:</b>
+  <%= @wiki_content.text %>
+</p>
+
+
+<%= link_to 'Edit', edit_wiki_content_path(@wiki_content) %> |
+<%= link_to 'Back', wiki_contents_path %>
