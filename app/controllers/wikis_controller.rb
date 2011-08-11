@@ -4,14 +4,10 @@ class WikisController < ApplicationController
   # 身份验证
   before_filter :authorize_admin!, :except => [:show]
   
-  # GET /wikis
-  # GET /wikis.xml
   def index
     @wikis = Wiki.order("id desc").page(params[:page])
   end
 
-  # GET /wikis/1
-  # GET /wikis/1.xml
   def show
     @wiki = Wiki.find(params[:id])
 
@@ -21,20 +17,25 @@ class WikisController < ApplicationController
     end
   end
 
-  # GET /wikis/new
-  # GET /wikis/new.xml
   def new
     @wiki = Wiki.new
-    @product_attribute_defines = ProductAttributeDefine.all
   end
 
-  # GET /wikis/1/edit
   def edit
     @wiki = Wiki.find(params[:id])
   end
+  
+  def edit_item
+    wiki = Wiki.where(:category => params[:category], :name => params[:name])
+    respond_to do |format|
+      if wiki
+        format.html { redirect_to :action=> "edit", :id => wiki.id }
+      else
+        format.html { redirect_to :action=> "new", :category => params[:category], :name => params[:name] }
+      end
+    end
+  end
 
-  # POST /wikis
-  # POST /wikis.xml
   def create
     @wiki = Wiki.new(params[:wiki])
 
@@ -49,8 +50,6 @@ class WikisController < ApplicationController
     end
   end
 
-  # PUT /wikis/1
-  # PUT /wikis/1.xml
   def update
     @wiki = Wiki.find(params[:id])
 
@@ -65,8 +64,6 @@ class WikisController < ApplicationController
     end
   end
 
-  # DELETE /wikis/1
-  # DELETE /wikis/1.xml
   def destroy
     @wiki = Wiki.find(params[:id])
     @wiki.destroy

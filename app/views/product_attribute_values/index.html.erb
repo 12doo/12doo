@@ -11,9 +11,9 @@
         <tbody>
           <tr bgcolor="#f0f0f0" class="f-black-12-b">
             <td height="30" width="30">ID</td>
-            <td width="50">属性</td>
+            <td width="100">属性</td>
             <td>值</td>
-            <td width="50">操作</td>
+            <td width="100">操作</td>
           </tr>
 					<% @product_attribute_values.each do |product_attribute_value| %>
 				 	<tr>
@@ -21,7 +21,7 @@
   			    		<td><%= product_attribute_value.name %></td>
 				    	<td><%= product_attribute_value.value %></td>
 						<td>
-							<%= link_to '[编辑]', edit_wiki_path(product_attribute_value), :class => 'f-red-12' %>
+							<%= link_to '[编辑内容]', {:action => :edit_item, :controller => :wikis, :category => product_attribute_value.name, :title => product_attribute_value.value} , :class => 'f-red-12' %>
 						</td>
 				  </tr>
 					<% end %>
