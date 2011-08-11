@@ -1,9 +1,11 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
+  namespace: MyString
   title: MyString
-  wiki_page_id: 1
+  content: MyString
 
 two:
+  namespace: MyString
   title: MyString
-  wiki_page_id: 1
+  content: MyString

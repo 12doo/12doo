@@ -1,9 +1,7 @@
 # -*- encoding : utf-8 -*-
 V3::Application.routes.draw do
 
-  resources :wiki_pages
-
-  resources :wiki_contents
+  resources :wikis
 
   resources :exchanges
 

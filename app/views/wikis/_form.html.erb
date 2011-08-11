@@ -1,0 +1,65 @@
+<link rel="stylesheet" href="/javascripts/jwysiwyg/jquery.wysiwyg.css" type="text/css"/>
+<script type="text/javascript" src="/javascripts/jwysiwyg/jquery.wysiwyg.js"></script>
+<script type="text/javascript" src="/javascripts/jwysiwyg/controls/wysiwyg.image.js"></script>
+<script type="text/javascript" src="/javascripts/jwysiwyg/controls/wysiwyg.table.js"></script>
+<script type="text/javascript" src="/javascripts/jwysiwyg/controls/wysiwyg.link.js"></script>
+<script type="text/javascript" src="/javascripts/jwysiwyg/plugins/wysiwyg.fileManager.js"></script>
+
+<script type="text/javascript">
+(function ($) {
+	$(document).ready(function () {
+		$('.wysiwyg').wysiwyg({
+			autoGrow: true,
+			maxHeight: 600,
+			controls: {
+				"html": {visible: true}
+			},
+		});
+	});
+})(jQuery);
+
+function insertPic(url){
+	$('.wysiwyg').wysiwyg('insertImage', url);
+}
+</script>
+
+<%= form_for(@wiki) do |f| %>
+  <% if @wiki.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@wiki.errors.count, "error") %> prohibited this wiki from being saved:</h2>
+
+      <ul>
+      <% @wiki.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+	<table width="100%" cellspacing="0" cellpadding="0" border="0" class="tableinfoL" align="center">
+		<tbody>
+			<tr>
+				<td height="30" width="70" class="tcenter">分类</td>
+				<td><%= f.text_field  :category %></td>
+			</tr>
+			<tr>
+				<td height="30" class="tcenter">标题</td>
+				<td><%= f.text_field  :title %></td>
+			</tr>
+			<tr>
+				<td height="30" width="70" class="tcenter">内容</td>
+				
+				<td><%= f.text_area :content, :size => "80x40", :class => "wysiwyg" %></td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="bj-sp10"></div>
+	<table width="98%" cellspacing="0" cellpadding="0" border="0" align="center">
+		<tbody>
+			<tr>
+		    	<td width="100%" valign="middle" align="middle">
+		        	<a href="#" onclick="javascript:$('#wiki').submit(); return false;"><img align="absmiddle" alt="" src="/images/confirm_btn.gif" /></a>
+		        </td>
+		    </tr>
+		</tbody>
+	</table>
+<% end %>

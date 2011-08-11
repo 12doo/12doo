@@ -1,0 +1,48 @@
+<%= render 'admin/header' %>
+<div id="my_acinfo">
+<%= render 'admin/userside' %>
+	<div id="ac_right">
+		<ul id="pd_infomenu">
+			<li class="on">所有内容</li>
+			<li><%= link_to "添加内容", :action => :new, :controller => :wikis %></li>
+		</ul>
+		<div class="clearit"></div>
+		<div id="ac_more_detail">
+		<table width="100%" cellspacing="0" cellpadding="0" border="0" class="tableinfo">
+        <tbody>
+          <tr bgcolor="#f0f0f0" class="f-black-12-b">
+            <td height="30" width="30">ID</td>
+            <td width="50">分类</td>
+            <td>标题</td>
+            <td width="50">操作</td>
+          </tr>
+					<% @wikis.each do |wiki| %>
+				 	<tr>
+				 	  	<td height="30"><%= wiki.id %></td>
+  			    		<td><%= product.category %></td>
+				    	<td><%= link_to wiki.title, wiki, :class => 'f-red-12', :target => :_blank %></td>
+						<td>
+							<%= link_to '[编辑]', edit_wiki_path(wiki), :class => 'f-red-12' %>
+						</td>
+				  </tr>
+					<% end %>
+        </tbody>
+		</table>
+			
+		</div>
+		<div class="clearit"></div>
+		<div class="list_num_top">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+			  <tr>
+			    <td align="right">
+				</td>
+			    <td align="right" width="600">
+					<%= paginate @wikis %>
+				</td>
+			  </tr>
+			</table>
+		</div>
+	</div>
+</div>
+<div class="clearit"></div>
+
