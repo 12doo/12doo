@@ -3,6 +3,10 @@ class ProductAttributeValuesController < ApplicationController
   # 身份验证
   before_filter :authorize_admin!
   
+  def index
+    @product_attribute_values = ProductAttributeValue.order("id desc").page(params[:page])
+  end
+  
   def edit_values
     @product_attribute_define = ProductAttributeDefine.find(params[:define_id])    
   end

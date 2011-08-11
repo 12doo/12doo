@@ -39,11 +39,11 @@ function insertPic(url){
 		<tbody>
 			<tr>
 				<td height="30" width="70" class="tcenter">分类</td>
-				<td><%= f.text_field  :category %></td>
+				<td><%= f.text_field  :category, { :readonly => :readonly } %></td>
 			</tr>
 			<tr>
 				<td height="30" class="tcenter">标题</td>
-				<td><%= f.text_field  :title %></td>
+				<td><%= f.text_field  :title, { :readonly => :readonly } %></td>
 			</tr>
 			<tr>
 				<td height="30" width="70" class="tcenter">内容</td>

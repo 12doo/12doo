@@ -3,7 +3,7 @@
 <%= render 'admin/userside' %>
 	<div id="ac_right">
 		<ul id="pd_infomenu">
-			<li class="on">所有内容</li>
+			<li class="on">所有属性值</li>
 		</ul>
 		<div class="clearit"></div>
 		<div id="ac_more_detail">
@@ -11,17 +11,17 @@
         <tbody>
           <tr bgcolor="#f0f0f0" class="f-black-12-b">
             <td height="30" width="30">ID</td>
-            <td width="50">分类</td>
-            <td>标题</td>
+            <td width="50">属性</td>
+            <td>值</td>
             <td width="50">操作</td>
           </tr>
-					<% @wikis.each do |wiki| %>
+					<% @product_attribute_values.each do |product_attribute_value| %>
 				 	<tr>
-				 	  	<td height="30"><%= wiki.id %></td>
-  			    		<td><%= product.category %></td>
-				    	<td><%= link_to wiki.title, wiki, :class => 'f-red-12', :target => :_blank %></td>
+				 	  	<td height="30"><%= product_attribute_value.id %></td>
+  			    		<td><%= product_attribute_value.name %></td>
+				    	<td><%= product_attribute_value.value %></td>
 						<td>
-							<%= link_to '[编辑]', edit_wiki_path(wiki), :class => 'f-red-12' %>
+							<%= link_to '[编辑]', edit_wiki_path(product_attribute_value), :class => 'f-red-12' %>
 						</td>
 				  </tr>
 					<% end %>
@@ -36,7 +36,7 @@
 			    <td align="right">
 				</td>
 			    <td align="right" width="600">
-					<%= paginate @wikis %>
+					<%= paginate @product_attribute_values %>
 				</td>
 			  </tr>
 			</table>

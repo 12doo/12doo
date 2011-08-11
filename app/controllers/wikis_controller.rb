@@ -25,11 +25,7 @@ class WikisController < ApplicationController
   # GET /wikis/new.xml
   def new
     @wiki = Wiki.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @wiki }
-    end
+    @product_attribute_defines = ProductAttributeDefine.all
   end
 
   # GET /wikis/1/edit
