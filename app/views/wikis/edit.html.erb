@@ -1,6 +1,15 @@
-<h1>Editing wiki</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @wiki %> |
-<%= link_to 'Back', wikis_path %>
+<%= render 'admin/header' %>
+<div id="my_acinfo">
+<%= render 'admin/userside' %>
+	<div id="ac_right">
+		<ul id="pd_infomenu">
+			<li><%= link_to "所有内容", wikis_path %></li>
+			<li class="on">编辑内容</li>
+		</ul>
+		<div class="clearit"></div>
+		<div id="ac_more_detail">
+			<%= render 'form' %>
+		</div>
+	</div>
+</div>
+<div class="clearit"></div>

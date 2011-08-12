@@ -19,6 +19,8 @@ class WikisController < ApplicationController
 
   def new
     @wiki = Wiki.new
+    @wiki.category = params[:category]
+    @wiki.title = params[:title]
   end
 
   def edit
@@ -26,12 +28,12 @@ class WikisController < ApplicationController
   end
   
   def edit_item
-    wiki = Wiki.where(:category => params[:category], :name => params[:name])
+    wiki = Wiki.where(:category => params[:category], :title => params[:title]).first
     respond_to do |format|
       if wiki
         format.html { redirect_to :action=> "edit", :id => wiki.id }
       else
-        format.html { redirect_to :action=> "new", :category => params[:category], :name => params[:name] }
+        format.html { redirect_to :action=> "new", :category => params[:category], :title => params[:title] }
       end
     end
   end
@@ -42,10 +44,8 @@ class WikisController < ApplicationController
     respond_to do |format|
       if @wiki.save
         format.html { redirect_to(@wiki, :notice => 'Wiki was successfully created.') }
-        format.xml  { render :xml => @wiki, :status => :created, :location => @wiki }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @wiki.errors, :status => :unprocessable_entity }
       end
     end
   end

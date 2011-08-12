@@ -11,19 +11,19 @@
         <tbody>
           <tr bgcolor="#f0f0f0" class="f-black-12-b">
             <td height="30" width="30">ID</td>
-            <td width="50">分类</td>
+            <td width="80">分类</td>
             <td>标题</td>
             <td width="50">操作</td>
           </tr>
 					<% @wikis.each do |wiki| %>
 				 	<tr>
 				 	  	<td height="30"><%= wiki.id %></td>
-  			    		<td><%= product.category %></td>
+  			    		<td><%= wiki.category %></td>
 				    	<td><%= link_to wiki.title, wiki, :class => 'f-red-12', :target => :_blank %></td>
 						<td>
 							<%= link_to '[编辑]', edit_wiki_path(wiki), :class => 'f-red-12' %>
 						</td>
-				  </tr>
+				  	</tr>
 					<% end %>
         </tbody>
 		</table>

@@ -1,7 +1,7 @@
 # -*- encoding : utf-8 -*-
 V3::Application.routes.draw do
 
-  resources :wikis
+  
 
   resources :exchanges
 
@@ -45,6 +45,10 @@ V3::Application.routes.draw do
   get "product_attribute_values/edit_values"
   
   resources :product_attribute_values
+  
+  get "wikis/edit_item"
+  
+  resources :wikis
 
   match "category(/:tags(/:keywords))", :to => "products#query_result"
   get "promotion", :to => "home#promotion"
