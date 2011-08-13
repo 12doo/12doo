@@ -9,12 +9,7 @@ class WikisController < ApplicationController
   end
 
   def show
-    @wiki = Wiki.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @wiki }
-    end
+    @wiki = Wiki.where(:category => params[:category], :title => params[:title]).first
   end
 
   def new
@@ -31,9 +26,9 @@ class WikisController < ApplicationController
     wiki = Wiki.where(:category => params[:category], :title => params[:title]).first
     respond_to do |format|
       if wiki
-        format.html { redirect_to :action=> "edit", :id => wiki.id }
+        format.html { redirect_to :action => "edit", :id => wiki.id }
       else
-        format.html { redirect_to :action=> "new", :category => params[:category], :title => params[:title] }
+        format.html { redirect_to :action => "new", :category => params[:category], :title => params[:title] }
       end
     end
   end
@@ -43,7 +38,7 @@ class WikisController < ApplicationController
 
     respond_to do |format|
       if @wiki.save
-        format.html { redirect_to(@wiki, :notice => 'Wiki was successfully created.') }
+        format.html { redirect_to :action => "index" }
       else
         format.html { render :action => "new" }
       end
@@ -55,11 +50,9 @@ class WikisController < ApplicationController
 
     respond_to do |format|
       if @wiki.update_attributes(params[:wiki])
-        format.html { redirect_to(@wiki, :notice => 'Wiki was successfully updated.') }
-        format.xml  { head :ok }
+        format.html { redirect_to :action => "index" }
       else
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @wiki.errors, :status => :unprocessable_entity }
       end
     end
   end

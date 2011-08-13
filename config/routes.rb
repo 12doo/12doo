@@ -1,8 +1,6 @@
 # -*- encoding : utf-8 -*-
 V3::Application.routes.draw do
 
-  
-
   resources :exchanges
 
   resources :feeds, :only => :index
@@ -47,6 +45,7 @@ V3::Application.routes.draw do
   resources :product_attribute_values
   
   get "wikis/edit_item"
+  match "wiki(/:category(/:title))", :to => "wikis#show"
   
   resources :wikis
 
