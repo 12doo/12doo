@@ -42,6 +42,38 @@ class Product < ActiveRecord::Base
     return false
   end
   
+  # 添加到当前属性集合
+  def add_attribute(short,value)
+    if short && value
+      define = ProductAttributeDefine.find_by_name(short)
+      if define
+        # 如果是固定值属性
+        if define.fix
+          value = ProductAttributeValue.where(:short => short,:value => value).first
+          if value
+            temp = ProductAttribute.new
+            temp.init_from_define(define)
+            temp.value = value
+            temp.product_sku = self.sku
+            self.product_attributes << temp
+          end
+        else
+          temp = ProductAttribute.new
+          temp.init_from_define(define)
+          temp.value = value
+          temp.product_sku = self.sku
+          self.product_attributes << temp
+        end
+
+      end
+
+    end
+  end
+  
+  def remove_attribute(shrot,value)
+    
+  end
+  
   # TODO: 需要修改成判断多个值的方式
   def get_attribute_value(short)
     value = ''

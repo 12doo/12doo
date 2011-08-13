@@ -98,7 +98,12 @@ function insertPic(url){
 				<% allAttr = ProductAttributeValue.where(:short => attribute.short) %>
 				<% allAttr.each do |value| %>
 				<input type="hidden" value="<%= attribute.name %>" name="product_attribute[][name]" />
-				<input type="checkbox" name="product_attribute[][value]" <%= @product.has_attribute(attribute.short, value.value) ? "checked" : "" %> value="<%= value.value %>" /><%= value.value %>
+				<% if attribute.multiple %>
+								<input type="checkbox" name="product_attribute[][value]" <%= @product.has_attribute(attribute.short, value.value) ? "checked" : "" %> value="<%= value.value %>" /><%= value.value %>
+				<% else %>
+								<input type="radio" name="product_attribute[][value]" <%= @product.has_attribute(attribute.short, value.value) ? "checked" : "" %> value="<%= value.value %>" /><%= value.value %>
+				<% end %>
+
 				<% end %>
 			<% else %>
 			<input type="hidden" value="<%= attribute.name %>" name="product_attribute[][name]" />

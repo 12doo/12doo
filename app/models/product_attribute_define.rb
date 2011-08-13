@@ -2,6 +2,7 @@
 class ProductAttributeDefine < ActiveRecord::Base
   
   has_many :product_attribute_values
+  paginates_per 20
   
   def values
     ProductAttributeValue.where(:name => self.name).order("sort desc")
