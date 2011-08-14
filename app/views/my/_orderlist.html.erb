@@ -34,7 +34,7 @@
 					<% when '订单完成' %>
 					<% when '订单取消' %>
 					<% end %>
-					<%= link_to '[查看]', order_path(order), :class => 'f-red-12', :target => '_blank' %>
+					<%= link_to '[查看]', {:action => :show_order, :controller => :my, :id => order.id }, :class => 'f-red-12' %>
 				</td>
 		  	</tr>
 			<% end %>

@@ -76,6 +76,14 @@ class MyController < ApplicationController
     @orders = current_user.orders.order("id desc").page(params[:page])
   end
   
+  # orders
+  def show_order
+    @order = Order.find(params[:id])
+    unless @order.user_id == current_user.id
+      redirect_to :action => :orders, :controller => :my
+    end
+  end
+  
   # coupons
   def coupons
     @coupons = []

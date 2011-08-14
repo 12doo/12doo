@@ -3,7 +3,7 @@
 <%= render 'admin/userside' %>
 	<div id="ac_right">
 		<ul id="pd_infomenu">
-			<li><%= link_to "所有订单", orders_path %></li>
+			<li><%= link_to "所有订单", {:action => "orders", :controller => "my"} %></li>
 			<li class="on">查看订单</li>
 		</ul>
 		<div class="clearit"></div>

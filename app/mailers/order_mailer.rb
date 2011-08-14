@@ -12,6 +12,6 @@ class OrderMailer < ActionMailer::Base
     @order = order
     @user = @order.user
     mail(:to => "admin@12doo.com",
-         :subject => "来自"+@user.email+"的订单"+@order.no+"，金额"+ format "%.2f", @order.pay_price)
+         :subject => "来自"+@user.email+"的订单"+@order.no+"，金额"+ format("%.2f", @order.pay_price))
   end  
 end
