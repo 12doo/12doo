@@ -53,14 +53,13 @@ class Product < ActiveRecord::Base
             value = ProductAttributeValue.where(:short => short,:value => value).first
             if value
               temp = ProductAttribute.new
-              temp.init_from_define(define)
-              temp.value = value
+              temp.init_from_value(value.id)
               temp.product_sku = self.sku
               self.product_attributes << temp
             end
           else
             temp = ProductAttribute.new
-            temp.init_from_define(define)
+            temp.init_from_define(define.id)
             temp.value = value
             temp.product_sku = self.sku
             self.product_attributes << temp
@@ -94,7 +93,7 @@ class Product < ActiveRecord::Base
     end
   end
   
-  def remove_attribute(shrot,value)
+  def remove_attribute(short,value)
     if short && value
       values = self.product_attributes.where(:short => short, :value => value)
       self.product_attributes.delete(values)
