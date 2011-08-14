@@ -10,7 +10,7 @@ class Ticket < ActiveRecord::Base
   paginates_per 20
   
   def self.new_code(prefix)
-    chars = ("A".."Z").to_a + ("0".."9").to_a
+    chars = "2346789CDFGHJKMPQRTVWXY".split('')
     newpass = ""
     1.upto(10) { |i| newpass << chars[rand(chars.size-1)] }
     

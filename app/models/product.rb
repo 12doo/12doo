@@ -45,33 +45,60 @@ class Product < ActiveRecord::Base
   # 添加到当前属性集合
   def add_attribute(short,value)
     if short && value
-      define = ProductAttributeDefine.find_by_name(short)
-      if define
-        # 如果是固定值属性
-        if define.fix
-          value = ProductAttributeValue.where(:short => short,:value => value).first
-          if value
+      if !self.has_attribute(short,value)
+        define = ProductAttributeDefine.find_by_short(short)
+        if define
+          # 如果是固定值属性
+          if define.fix
+            value = ProductAttributeValue.where(:short => short,:value => value).first
+            if value
+              temp = ProductAttribute.new
+              temp.init_from_define(define)
+              temp.value = value
+              temp.product_sku = self.sku
+              self.product_attributes << temp
+            end
+          else
             temp = ProductAttribute.new
             temp.init_from_define(define)
             temp.value = value
             temp.product_sku = self.sku
             self.product_attributes << temp
           end
-        else
-          temp = ProductAttribute.new
-          temp.init_from_define(define)
-          temp.value = value
-          temp.product_sku = self.sku
-          self.product_attributes << temp
         end
-
       end
-
+    end
+  end
+  
+  def update_attribute(short,old_value,new_value)
+    if short
+      values = self.product_attributes.where(:short => short, :value => old_value)
+      values.each do |item|
+        item.value == new_value
+        self.product_attributes << item
+      end
+    end
+  end
+  
+  def set_attributes(short,values)
+    if short
+      self.product_attributes.each do |item|
+        if !values.include?item.value
+          self.remove_attribute(short,item.value)
+        end
+      end
+      
+      values.each do |item|
+        add_attribute(short,item)
+      end
     end
   end
   
   def remove_attribute(shrot,value)
-    
+    if short && value
+      values = self.product_attributes.where(:short => short, :value => value)
+      self.product_attributes.delete(values)
+    end
   end
   
   # TODO: 需要修改成判断多个值的方式

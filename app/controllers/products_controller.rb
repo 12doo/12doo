@@ -98,24 +98,12 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(params[:product])
     
-    if params[:product_attribute]
-      params[:product_attribute].each do |attri|
-        if attri[:value] && attri[:value] != ''
-          define = ProductAttributeDefine.find_by_name(attri[:name])
-          value = ProductAttributeValue.find(:first,:conditions => {:name => attri[:name],:value => attri[:value]})
-          temp = ProductAttribute.new
-          temp.short = define.short
-          temp.description = define.description
-          if value
-            temp.product_attribute_value_id = value.id
+    if params[:product_attributes]
+      params[:product_attributes].each do |short|
+        if params["product_attribute_" + short] && params["product_attribute_" + short] != ''
+          params["product_attribute_" + short].each do |value|
+            @product.add_attribute(short,value)
           end
-          
-          temp.fix = define.fix
-          temp.multiple = define.multiple
-          temp.name = attri[:name]
-          temp.value = attri[:value]
-          temp.product_sku = @product.sku
-          @product.product_attributes << temp
         end
       end
     end
@@ -141,32 +129,17 @@ class ProductsController < ApplicationController
 
   def update
     @product = Product.find(params[:id])
+    
+    if params[:product_attributes]
+      params[:product_attributes].each do |short|
+        if params["product_attribute_" + short] && params["product_attribute_" + short] != ''
+            @product.set_attributes(short,params["product_attribute_" + short])
+        end
+      end
+    end
 
     respond_to do |format|
-      if @product.update_attributes(params[:product])
-        @product.product_attributes.each do |item|
-          item.destroy
-        end
-        if params[:product_attribute]
-          params[:product_attribute].each do |attri|
-            if attri[:value] && attri[:value] != ''
-              define = ProductAttributeDefine.find_by_name(attri[:name])
-              value = ProductAttributeValue.find(:first,:conditions => {:name => attri[:name],:value => attri[:value]})
-              temp = ProductAttribute.new
-              temp.short = define.short
-              temp.description = define.description
-              temp.product_attribute_value_id = value.id
-              temp.fix = define.fix
-              temp.multiple = define.multiple
-              temp.name = attri[:name]
-              temp.value = attri[:value]
-              temp.product_sku = @product.sku
-              temp.product_id = @product.id
-              temp.save
-            end
-          end
-        end
-        @product.save
+      if @product.save
         format.html { redirect_to products_path }
       else
         @statuses = ProductStatus.all

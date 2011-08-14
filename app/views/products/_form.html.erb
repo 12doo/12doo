@@ -92,22 +92,21 @@ function insertPic(url){
 		<tr><td height="30" colspan="2" class="tcenter"><b><%= link_to '编辑属性', :action => :index, :controller => :product_attribute_defines %></b></td></tr>
 		<% @attributes.each do |attribute| %>
 		<tr>
-			<td height="30"><%= attribute.name %></td>
+			<td height="30"><%= attribute.name %><input type="hidden" value="<%= attribute.short %>" name="product_attributes[]" /></td>
 			<td>
 			<% if attribute.fix %>
 				<% allAttr = ProductAttributeValue.where(:short => attribute.short) %>
 				<% allAttr.each do |value| %>
-				<input type="hidden" value="<%= attribute.name %>" name="product_attribute[][name]" />
+				
 				<% if attribute.multiple %>
-								<input type="checkbox" name="product_attribute[][value]" <%= @product.has_attribute(attribute.short, value.value) ? "checked" : "" %> value="<%= value.value %>" /><%= value.value %>
+					<input type="checkbox" name="product_attribute_<%= attribute.short %>[]" <%= @product.has_attribute(attribute.short, value.value) ? "checked" : "" %> value="<%= value.value %>" /><%= value.value %>
 				<% else %>
-								<input type="radio" name="product_attribute[][value]" <%= @product.has_attribute(attribute.short, value.value) ? "checked" : "" %> value="<%= value.value %>" /><%= value.value %>
+					<input type="radio" name="product_attribute_<%= attribute.short %>[]" <%= @product.has_attribute(attribute.short, value.value) ? "checked" : "" %> value="<%= value.value %>" /><%= value.value %>
 				<% end %>
 
 				<% end %>
 			<% else %>
-			<input type="hidden" value="<%= attribute.name %>" name="product_attribute[][name]" />
-			<input type="text" name="product_attribute[][value]" value="<%= @product.get_attribute_value(attribute.short) %>" /><br />
+				<input type="text" name="product_attribute_<%= attribute.short %>[]" value="<%= @product.get_attribute_value(attribute.short) %>" /><br />
 			<% end %>
 			</td>
 		</tr>
