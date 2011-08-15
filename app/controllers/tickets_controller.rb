@@ -23,7 +23,7 @@ class TicketsController < ApplicationController
     if params[:count]
       Integer(params[:count]).times do |t|
         ticket = Ticket.new(params[:ticket])
-        ticket.code = Ticket.new_code(params[:prefix])
+        ticket.code = Ticket.new_code(params[:prefix],Integer(params[:length]))
         ticket.save
       end
     end
