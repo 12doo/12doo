@@ -137,10 +137,10 @@ class Coupon < ActiveRecord::Base
     nil
   end
   
-  def self.new_code(prefix)
-    chars = ("A".."Z").to_a + ("0".."9").to_a
+  def self.new_code(prefix,length)
+    chars = "2346789CDFGHJKMPQRTVWXY".split('')
     newpass = ""
-    1.upto(10) { |i| newpass << chars[rand(chars.size-1)] }
+    1.upto((length && length > 0) ? length : 10) { |i| newpass << chars[rand(chars.size-1)] }
     
     # 查看重复
     if Coupon.find_by_code(prefix + newpass)

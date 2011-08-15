@@ -26,7 +26,7 @@ class CouponsController < ApplicationController
           if params[:count]
             Integer(params[:count]).times do |t|
               coupon = Coupon.new(params[:coupon])
-              coupon.code = Coupon.new_code(params[:prefix])
+              coupon.code = Coupon.new_code(params[:prefix],Integer(params[:length]))
               coupon.save
             end
           end

@@ -9,13 +9,13 @@ class Ticket < ActiveRecord::Base
   
   paginates_per 10
   
-  def self.new_code(prefix)
-    chars = ("A".."Z").to_a + ("0".."9").to_a
+  def self.new_code(prefix,length)
+    chars = "2346789CDFGHJKMPQRTVWXY".split('')
     newpass = ""
-    1.upto(10) { |i| newpass << chars[rand(chars.size-1)] }
+    1.upto((length && length > 0) ? length : 10) { |i| newpass << chars[rand(chars.size-1)] }
     
     # 查看重复
-    if Ticket.find_by_code(prefix + newpass)
+    if Coupon.find_by_code(prefix + newpass)
       self.new_code
     else
       prefix + newpass
