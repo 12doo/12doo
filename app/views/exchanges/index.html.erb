@@ -22,7 +22,14 @@
 			    <td><%= exchange.province %> <%= exchange.city %> <%= exchange.region %> <%= exchange.address %> <%= exchange.zip %> <%= exchange.fullname %> <%= exchange.phone %></td>
 				  <td><%= exchange.expected_time.strftime('%Y-%m-%d %H:%M:%S') %></td>
 				  <td><%= exchange.status %></td>
-				  <td></td>
+				  <td>
+				  		<% case exchange.status %>
+						<% when '等待确认' %>
+						<%= link_to '[确认]', {:action => :confirm, :controller => :exchanges, :id => exchange.id }, :class => 'f-red-12' %>
+						<% when '等待配送' %>
+						<%= link_to '[配送]', {:action => :delivery, :controller => :exchanges, :id => exchange.id }, :class => 'f-red-12' %>
+						<% end %>
+				  </td>
 		  	</tr>
 			<% end %>
 	        </tbody>
