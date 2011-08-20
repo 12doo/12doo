@@ -16,7 +16,6 @@ class ExchangesController < ApplicationController
   end
 
   def new
-
     @codes = []
     if params[:codes]
       @codes = params[:codes].split(/\s+/).delete_if{|code| code == ''}
@@ -46,7 +45,16 @@ class ExchangesController < ApplicationController
         format.html
       end
     end
-
+  end
+  
+  def self_take
+    @ticket = Ticket.find_by_code(params[:code])
+    
+    @addresses = []
+    if current_user
+      @addresses = current_user.addresses
+    end
+    
   end
 
   def create
@@ -97,7 +105,7 @@ class ExchangesController < ApplicationController
       end
     end
   end
-
+  
   # DELETE /exchanges/1
   # DELETE /exchanges/1.xml
   def destroy

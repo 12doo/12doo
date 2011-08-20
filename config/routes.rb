@@ -1,14 +1,9 @@
 # -*- encoding : utf-8 -*-
 V3::Application.routes.draw do
-
-  resources :exchanges
-
   resources :feeds, :only => :index
 
-  resources :categories
-  
   resources :deliveries, :addresses, :order_items, :order_changes, :pictures, :alipay_logs, :dispatches, :dispatch_items,
-            :product_tags, :product_statuses, :product_attributes, :product_attribute_defines, :products, :promotions
+            :product_tags, :product_statuses, :product_attributes, :product_attribute_defines, :products, :promotions, :categories
             
   devise_for :users, :controllers => { :registrations => "registrations" }
   get "my/info", :to => "my#index"
@@ -29,24 +24,22 @@ V3::Application.routes.draw do
   get "orders/get_coupon"
   get "orders/check_out"
   get "orders/get_carriage"
-  
   resources :orders
   
   get "coupons/export"
-  
   resources :coupons
   
   get "tickets/export"
-  
   resources :tickets
   
-  get "product_attribute_values/edit_values"
+  get "exchanges/self_take"
+  resources :exchanges
   
+  get "product_attribute_values/edit_values"
   resources :product_attribute_values
   
   get "wikis/edit_item"
   match "wiki(/:category(/:title))", :to => "wikis#show"
-  
   resources :wikis
 
   match "category(/:tags(/:keywords))", :to => "products#query_result"

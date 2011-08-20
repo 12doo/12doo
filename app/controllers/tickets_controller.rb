@@ -14,10 +14,6 @@ class TicketsController < ApplicationController
     @tickets = get_tickets(false)
   end
   
-  def show
-    @ticket = Ticket.find_by_code(params[:code])
-  end
-  
   def new
     @ticket = Ticket.new
   end

@@ -1,0 +1,99 @@
+<div class="clearit bj-sp10"></div>
+<div id="mlist_detail">
+	<%= form_tag 'create', :id => :create_exchange do %>
+	<div class="order_box">
+		<table width="100%" cellspacing="0" cellpadding="0" border="0" class="fpnormal f-black-12">
+        	<tbody>
+				<tr>
+          			<td>
+						<input type="text" id="code_input" size="120" value="<%= params[:code] %>" />
+						<a id="code_button" href="#" onclick="javascript:window.location.href = '/exchanges/self_take?code=' + $('#code_input').val(); return false;"><img src="/images/btn_ticket.gif" width="120" height="30" /></a>
+          			</td>
+          		</tr>
+        	</tbody>
+		</table>
+		<% if @ticket %>
+		<div class="bj-sp10"></div>
+		<table width="100%" cellspacing="0" cellpadding="0" border="0" class="order_table">
+        	<tbody>
+				<tr bgcolor="#ebebeb" class="f-black-12-b">
+					<td width="20%" align="center">提货券编号</td>
+					<td width="15%" align="center">商品编号</td>
+					<td align="center">商品名称</td>
+					<td width="5%" align="center">数量</td>
+					<td align="center">创建时间</td>
+					<td align="center">已使用</td>
+					<td align="center">使用时间</td>
+          	    </tr>
+				<tr>
+					<td align="center"><%= @ticket.code %></td>
+					<td align="center"><%= @ticket.product.sku %></td>
+					<td align="center"><%= @ticket.product.cn_name %></td>
+					<td align="center">1</td>
+					<td align="center"><%= @ticket.created_at.strftime('%Y-%m-%d %H:%M:%S') %></td>
+				    <td align="center"><%= @ticket.usable ? "否" : "是" %></td>
+					<td align="center"><%= @ticket.used_at ? @ticket.used_at.strftime('%Y-%m-%d %H:%M:%S') : "未使用" %></td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="bj-sp10"></div>
+		<% if @ticket.usable %>
+		<table width="100%" cellspacing="0" cellpadding="0" border="0" class="order_table">
+        	<tbody>
+				<tr bgcolor="#ebebeb" class="f-black-12-b">
+					<td align="center" colspan="2">自提地址</td>
+          	    </tr>
+				<% @addresses.each do |address| %>
+				<tr>
+					<td width="10" align="center"><input type="radio" onclick="hide_addaddress();" name="address_id" value="<%= address.id %>" <%= address.default ? "checked" : "" %> /></td>
+					<td align="left"><%= address.name %>,&nbsp;&nbsp;<%= address.province %>&nbsp;&nbsp;<%= address.city %>&nbsp;&nbsp;<%= address.region %>&nbsp;&nbsp;<%= address.detail %>&nbsp;&nbsp;<%= address.phone %>&nbsp;&nbsp;<%= address.zip %></td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+		<div class="bj-sp10"></div>
+		<div align="center">
+			<a href="#" onclick="javascript:$('#create_exchange').submit(); return false;"><img src="/images/btn_confirm.gif" /></a>
+		</div>
+		<% end %>
+		<% if @ticket.exchange %>
+		<table width="100%" cellspacing="0" cellpadding="0" border="0" class="order_table">
+        	<tbody>
+				<tr bgcolor="#ebebeb" class="f-black-12-b">
+					<td align="center" colspan="2">提货券明细</td>
+          	    </tr>
+				<tr>
+					<td width="20%" align="center">提货券编号</td>
+					<td align="left"><%= @ticket.exchange.no %></td>
+				</tr>
+				<tr>
+					<td align="center">收货信息</td>
+					<td align="left"><%= @ticket.exchange.province %> <%= @ticket.exchange.city %> <%= @ticket.exchange.region %> <%= @ticket.exchange.address %> <%= @ticket.exchange.zip %> <%= @ticket.exchange.fullname %> <%= @ticket.exchange.phone %></td>
+				</tr>
+				<tr>
+					<td align="center">预约送货时间</td>
+					<td align="left"><%= @ticket.exchange.expected_time.strftime('%Y-%m-%d %H:%M:%S') %></td>
+				</tr>
+				<tr>
+					<td align="center">送货单状态</td>
+					<td align="left"><%= @ticket.exchange.status %></td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="bj-sp10"></div>
+		<% end %>
+		<% else %>
+		<table width="100%" cellspacing="0" cellpadding="0" border="0" class="fpnormal f-black-12">
+        	<tbody>
+				<tr>
+          			<td>
+						<%= params[:code] %> 不是有效的提货券编号。
+          			</td>
+          		</tr>
+        	</tbody>
+		</table>
+		<% end %>
+	</div>
+	<% end %>
+</div>
+<div class="clearit"></div>
