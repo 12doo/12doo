@@ -1,0 +1,66 @@
+<%= render 'admin/header' %>
+<div id="my_acinfo">
+  <%= render 'admin/userside' %>
+  <div id="ac_right">
+	<ul id="pd_infomenu">
+		<li><%= link_to "所有提货券", tickets_path %></li>
+		<li class="on">查看提货券</li>
+		<li><%= link_to '创建提货券', new_ticket_path %></li>
+	</ul>
+	<div class="clearit"></div>
+	<div id="ac_more_detail">
+		<%= form_tag '/tickets/show', {:id => 'ticket', :method => :get} do %>
+		值：<input type="text" name="code" style="width: 120px;" value="<%= params[:code] %>" />&nbsp;&nbsp;
+		<a href="#" onclick="$('#ticket').submit();"><img src="/images/confirm_btn.gif"></a>
+		<% end %>
+		<div class="bj-sp10"></div>
+		<% if @ticket %>
+		<table width="100%" cellspacing="0" cellpadding="0" border="0" class="tableinfoL">
+			<tbody>
+				<tr>
+				    <td height="30" width="100" class="tcenter">编号</td>
+				    <td><%= @ticket.code %></td>
+				</tr>
+				<tr>
+				    <td height="30" class="tcenter">创建时间</td>
+				    <td><%= @ticket.created_at.strftime('%Y-%m-%d %H:%M:%S') %></td>
+				</tr>
+				<tr>
+				    <td height="30" class="tcenter">产品名称</td>
+				    <td><%= @ticket.product.cn_name %></td>
+				</tr>
+				<tr>
+				    <td height="30" class="tcenter">是否已经使用</td>
+				    <td><%= @ticket.usable ? "否" : "是" %></td>
+				</tr>
+				<% if !@ticket.usable %>
+				<tr>
+				    <td height="30" class="tcenter">使用时间</td>
+				    <td><%= @ticket.used_at.strftime('%Y-%m-%d %H:%M:%S') %></td>
+				</tr>
+				<% if @ticket.exchange %>
+				<tr>
+				    <td height="30" class="tcenter">提货券编号</td>
+				    <td><%= @ticket.exchange.no %></td>
+				</tr>
+				<tr>
+				    <td height="30" class="tcenter">送货地址</td>
+				    <td><%= @ticket.exchange.province %> <%= @ticket.exchange.city %> <%= @ticket.exchange.region %> <%= @ticket.exchange.address %> <%= @ticket.exchange.zip %> <%= @ticket.exchange.fullname %> <%= @ticket.exchange.phone %></td>
+				</tr>
+				<tr>
+				    <td height="30" class="tcenter">预约送货时间</td>
+				    <td><%= @ticket.exchange.expected_time.strftime('%Y-%m-%d %H:%M:%S') %></td>
+				</tr>
+				<tr>
+				    <td height="30" class="tcenter">送货单状态</td>
+				    <td><%= @ticket.exchange.status %></td>
+				</tr>
+				<% end %>
+				<% end %>
+		    </tbody>
+		</table>
+		<% end %>
+	</div>
+	<div class="clearit"></div>
+  </div>
+</div>

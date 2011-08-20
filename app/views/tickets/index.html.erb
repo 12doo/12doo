@@ -4,12 +4,13 @@
   <div id="ac_right">
 	<ul id="pd_infomenu">
 		<li class="on">所有提货券</li>
-		<li><%= link_to '创建提货券', :action => :new %></li>
+		<li><%= link_to '查看提货券', :action => 'show' %></li>
+		<li><%= link_to '创建提货券', new_ticket_path %></li>
 	</ul>
 	<div class="clearit"></div>
 	<div id="ac_more_detail">
 		<%= form_tag '/tickets', {:id => 'tickets', :method => :get} do %>
-		前缀：<input type="text" name="prefix" style="width: 120px;" value="<%= params[:prefix] %>" />&nbsp;&nbsp;
+		编码：<input type="text" name="prefix" style="width: 120px;" value="<%= params[:prefix] %>" />&nbsp;&nbsp;
 		状态：
 		<select name="usable">
 			<option value="">全部</option>
