@@ -30,6 +30,8 @@ gem 'client_side_validations'
 gem 'paperclip'
 gem 'rmagick'
 
+gem 'exception_notification_rails3', :require => 'exception_notifier'
+
 # Rails CKeditor for HTML editor with file and image upload feature
 # gem 'ckeditor'
 

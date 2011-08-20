@@ -48,7 +48,10 @@ V3::Application.configure do
     :authentication       => 'plain',
     :enable_starttls_auto => true  }
 
-  
+  config.middleware.use ExceptionNotifier,
+    :email_prefix => "[Exception] ",
+    :sender_address => %{"Exception Notifier" <admin@12doo.net>},
+    :exception_recipients => %w{liuzelei@gmail.com}
   # Enable threaded mode
   # config.threadsafe!
 

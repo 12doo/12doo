@@ -28,6 +28,11 @@ V3::Application.configure do
     :password             => 'Password01',
     :authentication       => 'plain',
     :enable_starttls_auto => true  }
+    
+  config.middleware.use ExceptionNotifier,
+    :email_prefix => "[Exception] ",
+    :sender_address => %{"Exception Notifier" <admin@12doo.net>},
+    :exception_recipients => %w{liuzelei@gmail.com}
   
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log
