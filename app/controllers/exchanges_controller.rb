@@ -48,17 +48,41 @@ class ExchangesController < ApplicationController
   end
   
   def self_take
-    @ticket = Ticket.find_by_code(params[:code])
-    
-    @addresses = []
-    if current_user
-      @addresses = current_user.addresses
+    ticket = Ticket.find_by_code(params[:code])
+    if ticket && ticket.usable
+      exchange = Exchange.new
+      exchange.no = Time.now.strftime("EX%Y%m%d%H%M%S")
+      address = Address.find(params[:address_id])
+      exchange.set_address(address)
+      ticket.usable = false
+      ticket.used_at = Time.now
+      exchange.tickets << ticket
+      exchange.memo = '自提。'
+      exchange.expected_time = Time.now
+      exchange.save
+      flash[:notice] = "提货券 #{params[:code]} 自提成功。"
+    else
+      flash[:notice] = "提货券 #{params[:code]} 已经被使用或者无法识别。"
     end
-    
+    respond_to do |format|
+      format.html { redirect_to(:action => 'verify', :code => params[:code]) }
+    end
+  end
+  
+  def verify
+    if params[:code] && params[:code] != ''
+      @ticket = Ticket.find_by_code(params[:code])
+      @addresses = []
+      if current_user
+        @addresses = current_user.addresses
+      end
+      unless @ticket
+        flash[:notice] = "提货券 #{params[:code]} 无法识别。"
+      end
+    end
   end
 
   def create
-    
     if get_useless_tickets.count > 0
       codes = params[:codes].split(/\s+/).delete_if{|code| code == ''}
       useless = []

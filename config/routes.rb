@@ -33,6 +33,7 @@ V3::Application.routes.draw do
   resources :tickets
   
   get "exchanges/self_take"
+  get "exchanges/verify"
   resources :exchanges
   
   get "product_attribute_values/edit_values"
