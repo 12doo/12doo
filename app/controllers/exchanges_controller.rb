@@ -49,20 +49,25 @@ class ExchangesController < ApplicationController
   
   def self_take
     ticket = Ticket.find_by_code(params[:code])
-    if ticket && ticket.usable
-      exchange = Exchange.new
-      exchange.no = Time.now.strftime("EX%Y%m%d%H%M%S")
-      address = Address.find(params[:address_id])
-      exchange.set_address(address)
-      ticket.usable = false
-      ticket.used_at = Time.now
-      exchange.tickets << ticket
-      exchange.memo = '自提。'
-      exchange.expected_time = Time.now
-      exchange.save
-      flash[:notice] = "提货券 #{params[:code]} 自提成功。"
+    if ticket 
+      if ticket.usable
+        exchange = Exchange.new
+        exchange.no = Time.now.strftime("EX%Y%m%d%H%M%S")
+        address = Address.find(params[:address_id])
+        exchange.set_address(address)
+        ticket.usable = false
+        ticket.used_at = Time.now
+        exchange.tickets << ticket
+        exchange.count = 1
+        exchange.memo = '自提。'
+        exchange.expected_time = Time.now
+        exchange.save
+        flash[:notice] = "提货券 #{params[:code]} 自提成功。"
+      else
+        flash[:notice] = "提货券 #{params[:code]} 已经被使用。"
+      end
     else
-      flash[:notice] = "提货券 #{params[:code]} 已经被使用或者无法识别。"
+      flash[:notice] = "提货券 #{params[:code]} 无法识别。"
     end
     respond_to do |format|
       format.html { redirect_to(:action => 'verify', :code => params[:code]) }
@@ -76,7 +81,14 @@ class ExchangesController < ApplicationController
       if current_user
         @addresses = current_user.addresses
       end
-      unless @ticket
+
+      if @ticket
+        if @ticket.usable
+          flash[:notice] = "提货券 #{params[:code]} 可以使用。"
+        else
+          flash[:notice] = "提货券 #{params[:code]} 已经被使用。"
+        end
+      else
         flash[:notice] = "提货券 #{params[:code]} 无法识别。"
       end
     end
