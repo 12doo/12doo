@@ -1,65 +1,67 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>No:</b>
-  <%= @exchange.no %>
-</p>
-
-<p>
-  <b>Address:</b>
-  <%= @exchange.address %>
-</p>
-
-<p>
-  <b>Province:</b>
-  <%= @exchange.province %>
-</p>
-
-<p>
-  <b>City:</b>
-  <%= @exchange.city %>
-</p>
-
-<p>
-  <b>Region:</b>
-  <%= @exchange.region %>
-</p>
-
-<p>
-  <b>Zip:</b>
-  <%= @exchange.zip %>
-</p>
-
-<p>
-  <b>Phone:</b>
-  <%= @exchange.phone %>
-</p>
-
-<p>
-  <b>Memo:</b>
-  <%= @exchange.memo %>
-</p>
-
-<p>
-  <b>Expected time:</b>
-  <%= @exchange.expected_time %>
-</p>
-
-<p>
-  <b>Count:</b>
-  <%= @exchange.count %>
-</p>
-
-<p>
-  <b>Status:</b>
-  <%= @exchange.status %>
-</p>
-
-<p>
-  <b>Fullname:</b>
-  <%= @exchange.fullname %>
-</p>
-
-
-<%= link_to 'Edit', edit_exchange_path(@exchange) %> |
-<%= link_to 'Back', exchanges_path %>
+<%= render 'admin/header' %>
+<div id="my_acinfo">
+<%= render 'admin/userside' %>
+	<div id="ac_right">
+		<ul id="pd_infomenu">
+			<li><%= link_to "所有提货预约", exchanges_path %></li>
+			<li class="on">查看提货预约</li>
+		</ul>
+		<div class="clearit"></div>
+		<div id="ac_more_detail">
+			<table width="100%" cellspacing="0" cellpadding="0" border="0" class="tableinfoL">
+				<tbody>
+					<tr>
+					    <td height="30" width="100" class="tcenter">编号</td>
+					    <td><%= @exchange.no %></td>
+					</tr>
+					<tr>
+					    <td height="30" class="tcenter">收货人详细信息</td>
+					    <td><%= @exchange.fullname %>,&nbsp;&nbsp;
+						<%= @exchange.phone %>&nbsp;&nbsp;
+						<%= @exchange.province %>&nbsp;&nbsp;
+						<%= @exchange.city %>&nbsp;&nbsp;
+						<%= @exchange.region %>&nbsp;&nbsp;
+						<%= @exchange.address %>&nbsp;&nbsp;
+						<%= @exchange.zip %></td>
+					</tr>
+					<tr>
+					    <td height="30" class="tcenter">商品数量</td>
+					    <td><%= @exchange.count %></td>
+					</tr>
+					<tr>
+					    <td height="30" class="tcenter">状态</td>
+					    <td><%= @exchange.status %></td>
+					</tr>
+					<tr>
+					    <td height="30" class="tcenter">期望送货时间</td>
+					    <td><%= @exchange.expected_time.strftime('%Y-%m-%d %H:%M:%S') %></td>
+					</tr>
+					<tr>
+					    <td height="30" class="tcenter">附加说明</td>
+					    <td><%= @exchange.memo %></td>
+					</tr>
+			    </tbody>
+			</table>
+			<div class="bj-sp10"></div>
+		    <table width="100%" cellspacing="0" cellpadding="0" border="0" class="tableinfo">
+				<tbody>
+					<tr bgcolor="#ebebeb" class="f-black-12-b">
+						<td height="30" width="20%" align="center">提货券编号</td>
+						<td align="center">商品编号</td>
+						<td align="center">商品名称</td>
+						<td width="10%" align="center">数量</td>
+	          	    </tr>
+					<% @exchange.tickets.each do |item| %>
+					<tr>
+						<td height="30" align="center"><%= item.code %></td>
+						<td align="center"><%= item.product.sku %></td>
+						<td align="center"><%= item.product.cn_name %></td>
+						<td align="center">1</td>
+					</tr>
+					<% end %>
+				</tbody>
+		    </table>
+		</div>
+	</div>
+</div>
+<div class="clearit"></div>

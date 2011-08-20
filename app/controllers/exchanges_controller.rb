@@ -60,6 +60,7 @@ class ExchangesController < ApplicationController
         exchange.tickets << ticket
         exchange.count = 1
         exchange.memo = '自提。'
+        exchange.status = '等待确认'
         exchange.expected_time = Time.now
         exchange.save
         flash[:notice] = "提货券 #{params[:code]} 自提成功。"
@@ -131,6 +132,7 @@ class ExchangesController < ApplicationController
 
       exchange.count = tickets.count
       exchange.memo = params[:memo]
+      exchange.status = '等待确认'
       exchange.expected_time = Time.local(params[:date][:year],params[:date][:month],params[:date][:day],params[:time])
 
       respond_to do |format|

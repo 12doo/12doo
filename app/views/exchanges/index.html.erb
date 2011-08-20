@@ -18,7 +18,7 @@
 	          </tr>
 			<% @exchanges.each do |exchange| %>
 		 	<tr>
-			    <td height="30"><%= exchange.no %></td>
+			    <td height="30"><%= link_to exchange.no, exchange_path(exchange), :class => 'f-red-12' %></td>
 			    <td><%= exchange.province %> <%= exchange.city %> <%= exchange.region %> <%= exchange.address %> <%= exchange.zip %> <%= exchange.fullname %> <%= exchange.phone %></td>
 				  <td><%= exchange.expected_time.strftime('%Y-%m-%d %H:%M:%S') %></td>
 				  <td><%= exchange.status %></td>
