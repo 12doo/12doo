@@ -2,6 +2,7 @@
 class ExchangesController < ApplicationController
   
   before_filter :authorize_admin!, :except => [:new, :create, :show]
+  layout "application", :except => [:verify]
   
   def index
     @exchanges = Exchange.order("id desc").page(params[:page])
