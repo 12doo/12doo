@@ -6,6 +6,7 @@ V3::Application.routes.draw do
             :product_tags, :product_statuses, :product_attributes, :product_attribute_defines, :products, :promotions, :categories
             
   devise_for :users, :controllers => { :registrations => "registrations" }
+  resources :users
   get "my/info", :to => "my#index"
   #resources :areas
 

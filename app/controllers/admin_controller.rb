@@ -9,12 +9,4 @@ class AdminController < ApplicationController
     
   end
   
-  def orders
-    
-  end
-  
-  def users
-    @users = User.order("id desc").page(params[:page])
-  end
-  
 end
