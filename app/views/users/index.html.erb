@@ -38,9 +38,9 @@
 					    <td><%= user.current_sign_in_ip %></td>
 						<td>
 							<% if user.admin %>
-							<%= link_to "[取消管理员]", "#" %>
+							<%= link_to "[取消管理员]", {:action => :set_role, :controller => :users, :id => user.id, :role => 'user' }, :class => 'f-red-12' %>
 							<% else %>
-							<%= link_to "[设置管理员]", "#" %>
+							<%= link_to "[设置管理员]", {:action => :set_role, :controller => :users, :id => user.id, :role => 'admin' }, :class => 'f-red-12' %>
 							<% end %>
 						</td>
 				  	</tr>

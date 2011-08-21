@@ -10,4 +10,14 @@ class UsersController < ApplicationController
     
   end
   
+  def set_role
+    if params[:role] && params[:id]
+      user = User.find(params[:id])
+      user.set_role(params[:role])
+      user.save
+    end
+    
+    redirect_to :action => :index
+  end
+  
 end

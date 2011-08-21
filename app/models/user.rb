@@ -31,7 +31,11 @@ class User < ActiveRecord::Base
     self.name ? self.name : self.email
   end
   
-protected
+  def set_role(role)
+    self.update_attribute role, true
+  end
+  
+  protected
   def password_required?
     new_record?
   end
