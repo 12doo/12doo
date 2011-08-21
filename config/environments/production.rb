@@ -51,7 +51,7 @@ V3::Application.configure do
   config.middleware.use ExceptionNotifier,
     :email_prefix => "[Exception] ",
     :sender_address => %{"Exception Notifier" <admin@12doo.net>},
-    :exception_recipients => %w{liuzelei@gmail.com}
+    :exception_recipients => %w{liuzelei@12doo.com}
   # Enable threaded mode
   # config.threadsafe!
 
