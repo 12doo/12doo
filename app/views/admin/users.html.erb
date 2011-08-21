@@ -13,25 +13,19 @@
                         <td height="30" width="170">
                             用户名
                         </td>
-                        <td width="165">
+                        <td width="160">
                             注册时间
                         </td>
-                        <td width="70">
-                            
+                        <td width="160">
+                            最后登陆时间
                         </td>
-                        <td width="70">
-                            
+                        <td width="65">
+                          	登陆次数
                         </td>
-                        <td width="65" valign="middle" bgcolor="#f0f0f0" align="center">
-                          	
+                        <td width="100">
+                            最后登陆IP
                         </td>
-                        <td width="70" valign="middle" bgcolor="#f0f0f0" align="center">
-                            
-                        </td>
-                        <td width="70" valign="middle" bgcolor="#f0f0f0" align="center">
-                            
-                        </td>
-                        <td width="70" valign="middle" bgcolor="#f0f0f0" align="center">
+                        <td width="80">
                             操作
                         </td>
                     </tr>
@@ -39,17 +33,32 @@
 				 	<tr>
 					    <td height="30"><%= user.email %></td>
 					    <td><%= user.created_at.strftime('%Y-%m-%d %H:%M:%S') %></td>
-					    <td><%= user.display_name %></td>
-					    <td></td>
-						<td></td>
-					    <td></td>
-						<td></td>
-						<td><%= link_to "[删除]", "#" %>	</td>
+					    <td><%= user.last_sign_in_at.strftime('%Y-%m-%d %H:%M:%S') %></td>
+						<td><%= user.sign_in_count %></td>
+					    <td><%= user.current_sign_in_ip %></td>
+						<td>
+							<% if user.admin %>
+							<%= link_to "[取消管理员]", "#" %>
+							<% else %>
+							<%= link_to "[设置管理员]", "#" %>
+							<% end %>
+						</td>
 				  	</tr>
 					<% end %>
                 </tbody>
 			</table>
-			<%= paginate @users %>
+		</div>
+		<div class="clearit"></div>
+		<div class="list_num_top">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+			  <tr>
+			    <td align="right">
+				</td>
+			    <td align="right" width="600">
+					<%= paginate @users %>
+				</td>
+			  </tr>
+			</table>
 		</div>
 	</div>
 </div>
