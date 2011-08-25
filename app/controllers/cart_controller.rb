@@ -35,13 +35,6 @@ class CartController < ApplicationController
     redirect_to :action => 'show'
   end
   
-  def in_container
-    if params[:id] && params[:quantity]
-      cart = find_cart
-      cart.add_product(find_product,params[:quantity].to_i)
-    end
-  end
-  
   def show
   end
   
