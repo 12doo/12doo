@@ -1,9 +1,6 @@
 # -*- encoding : utf-8 -*-
 V3::Application.routes.draw do
   
-  # temp block spam link
-  match "pic/book/web%bf%aa%b7%a2%b4%f3%c8%ab.rubyonrails.rar", :to => "/"
-  
   resources :feeds, :only => :index
 
   resources :deliveries, :addresses, :order_items, :order_changes, :pictures, :alipay_logs, :dispatches, :dispatch_items,
