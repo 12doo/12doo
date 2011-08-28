@@ -32,7 +32,13 @@ class User < ActiveRecord::Base
   end
   
   def set_role(role)
-    self.update_attribute role, true
+    case role
+      when "admin"
+        self.update_attribute :admin, true
+      when "user"
+        self.update_attribute :admin, false
+    end
+    
   end
   
   protected
