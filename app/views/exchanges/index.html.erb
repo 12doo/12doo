@@ -10,10 +10,10 @@
 			<table width="100%" cellspacing="0" cellpadding="0" border="0" class="tableinfo">
 	      	<tbody>
 	          <tr bgcolor="#f0f0f0" class="f-black-12-b">
-	              <td height="30" width="100">编号</td>
-	              <td width="200">地址/邮编/联系人/电话</td>
-	              <td width="100">期望送货时间</td>
-	              <td width="40">状态</td>
+	              <td height="30" width="125">编号</td>
+	              <td>地址/邮编/联系人/电话</td>
+	              <td width="130">期望送货时间</td>
+	              <td width="60">状态</td>
 	              <td width="40">操作</td>
 	          </tr>
 			<% @exchanges.each do |exchange| %>
@@ -27,7 +27,7 @@
 						<% when '等待确认' %>
 						<%= link_to '[确认]', {:action => :confirm, :controller => :exchanges, :id => exchange.id }, :class => 'f-red-12' %>
 						<% when '等待配送' %>
-						<%= link_to '[配送]', {:action => :delivery, :controller => :exchanges, :id => exchange.id }, :class => 'f-red-12' %>
+						<%= link_to '[配送]', {:action => :done, :controller => :exchanges, :id => exchange.id }, :class => 'f-red-12' %>
 						<% end %>
 				  </td>
 		  	</tr>

@@ -10,10 +10,6 @@ class ExchangesController < ApplicationController
 
   def show
     @exchange = Exchange.find(params[:id])
-
-    respond_to do |format|
-      format.html
-    end
   end
 
   def new
@@ -142,6 +138,30 @@ class ExchangesController < ApplicationController
           format.html { redirect_to(:action => 'info', :controller => 'home') }
         end
       end
+    end
+  end
+  
+  def confirm
+    exchange = Exchange.find(params[:id])
+    if exchange
+      exchange.status = "等待配送"
+      exchange.save
+    end
+    
+    respond_to do |format|
+      format.html { redirect_to(exchanges_url) }
+    end
+  end
+  
+  def done
+    exchange = Exchange.find(params[:id])
+    if exchange
+      exchange.status = "配送完成"
+      exchange.save
+    end
+    
+    respond_to do |format|
+      format.html { redirect_to(exchanges_url) }
     end
   end
   
