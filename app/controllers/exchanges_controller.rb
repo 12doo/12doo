@@ -14,6 +14,7 @@ class ExchangesController < ApplicationController
   end
 
   def new
+    @menu = "book"
     @codes = []
     if params[:codes]
       @codes = params[:codes].split(/\s+/).delete_if{|code| code == ''}

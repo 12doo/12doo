@@ -9,10 +9,12 @@ class ProductsController < ApplicationController
   end
   
   def promotion
+    @menu = "wine"
     @products = Product.where("promo = :promo and visiable = :visiable", :promo => true, :visiable => true).order('id desc').page(params[:page]).per(9)
   end
   
   def query_result
+    @menu = "wine"
     sort_by = "id"
     sort = "desc"
     if params[:sort] && params[:sort] == "0"
@@ -56,6 +58,7 @@ class ProductsController < ApplicationController
   end
 
   def show
+    @menu = "wine"
     @product = Product.find(params[:id])
     if @product
       @title = @product.cn_name
@@ -75,6 +78,7 @@ class ProductsController < ApplicationController
   end
   
   def preview
+    @menu = "wine"
     @product = Product.find(params[:id])
     if @product
       @title = @product.cn_name
