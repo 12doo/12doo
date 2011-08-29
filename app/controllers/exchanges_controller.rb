@@ -2,6 +2,7 @@
 class ExchangesController < ApplicationController
   
   before_filter :authorize_admin!, :except => [:new, :create, :show]
+  #before_filter :authorize_user!
   layout "application", :except => [:verify]
   
   def index
@@ -113,7 +114,7 @@ class ExchangesController < ApplicationController
       #if select a exsit address
       if params[:address_id] == "0"
         address = Address.new(params[:address])
-        address.user_id = current_user.id
+        #address.user_id = current_user.id
         address.save
       else
         address = Address.find(params[:address_id])

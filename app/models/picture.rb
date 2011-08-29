@@ -1,4 +1,5 @@
 # -*- encoding : utf-8 -*-
+require 'paperclip_processors/watermark'
 class Picture < ActiveRecord::Base
   before_create :randomize_file_name
   validates_presence_of :item
@@ -6,7 +7,9 @@ class Picture < ActiveRecord::Base
   cattr_reader :per_page
   paginates_per 20
   
-  has_attached_file :item, :styles => { :thumb => "270x270>" },
+  has_attached_file :item, 
+                    :processors => [:watermark],
+                    :styles => { :thumb => "270x270>" },
                     :url  => "/uploads/pictures/#{Time.now.year}/#{Time.now.month}/#{Time.now.day}/:style/:basename.:extension",
                     :path => ":rails_root/public/uploads/pictures/#{Time.now.year}/#{Time.now.month}/#{Time.now.day}/:style/:basename.:extension"
                     
