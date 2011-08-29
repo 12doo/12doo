@@ -9,9 +9,13 @@ class Picture < ActiveRecord::Base
   
   has_attached_file :item, 
                     :processors => [:watermark],
-                    :styles => { :thumb => "270x270>" },
+                    :styles => { :thumb => {
+                                              :geometry => "270x270>",
+                                              :watermark_path => "#{Rails.root}/public/images/watermark.png",
+                                            }
+                              },
                     :url  => "/uploads/pictures/#{Time.now.year}/#{Time.now.month}/#{Time.now.day}/:style/:basename.:extension",
-                    :path => ":rails_root/public/uploads/pictures/#{Time.now.year}/#{Time.now.month}/#{Time.now.day}/:style/:basename.:extension"
+                    :path => "#{Rails.root}/public/uploads/pictures/#{Time.now.year}/#{Time.now.month}/#{Time.now.day}/:style/:basename.:extension"
                     
   validates_attachment_presence :item
   validates_attachment_size :item, :less_than => 1.megabytes

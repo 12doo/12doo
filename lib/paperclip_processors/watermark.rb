@@ -1,80 +1,29 @@
-# from http://github.com/ng/paperclip-watermarking-app with modifications
-
+# from https://github.com/mpelos/nova_marine/blob/2dc882dac31532024d4edb196e4a632801738341/lib/paperclip_processors/watermark.rb
+# Rails.root /lib/paperclip_processors/watermark.rb
 module Paperclip
-  class Watermark < Processor
-    # Handles watermarking of images that are uploaded.
-    attr_accessor :current_geometry, :target_geometry, :format, :whiny, :convert_options, :watermark_path, :overlay, :position
+  class Watermark < Thumbnail
+    def initialize(file, options = {}, attachment = nil)
+      super
+      @watermark_path = options[:watermark_path]
+      @position       = options[:position].nil? ? "SouthEast" : options[:position]
+    end
 
-    def initialize file, options = {}, attachment = nil
-       super
-       geometry          = options[:geometry]
-       @file             = file
-       @crop             = geometry[-1,1] == '#'
-       @target_geometry  = Geometry.parse geometry
-       @current_geometry = Geometry.from_file @file
-       @convert_options  = options[:convert_options]
-       @whiny            = options[:whiny].nil? ? true : options[:whiny]
-       @format           = options[:format]
-       @watermark_path   = options[:watermark_path]
-       @position         = options[:position].nil? ? "SouthEast" : options[:position]
-       @overlay          = options[:overlay].nil? ? true : false
-       @current_format   = File.extname(@file.path)
-       @basename         = File.basename(@file.path, @current_format)
-     end
+    def make
+      src = @file
+      dst = Tempfile.new([@basename].compact.join("."))
+      dst.binmode
 
-     # TODO: extend watermark
+      return super unless @watermark_path
 
-     # Returns true if the +target_geometry+ is meant to crop.
-      def crop?
-        @crop
+      params = ":source #{transformation_command.join(" ")} #{@watermark_path} -gravity #{@position} -composite :dest"
+
+      begin
+        success = Paperclip.run("convert", params, :source => "#{File.expand_path(src.path)}[0]", :dest => File.expand_path(dst.path))
+      rescue PaperclipCommandLineError
+        raise PaperclipError, "There was an error processing the watermark for #{@basename}" if @whiny
       end
 
-      # Returns true if the image is meant to make use of additional convert options.
-      def convert_options?
-        not @convert_options.blank?
-      end
-
-      # Performs the conversion of the +file+ into a watermark. Returns the Tempfile
-      # that contains the new image.
-      def make
-        dst = Tempfile.new([@basename, @format].compact.join("."))
-        dst.binmode
-
-        if watermark_path
-          command = "composite"
-          params = %W[-gravity #{@position} #{watermark_path} #{fromfile}]
-          params += transformation_command
-          params << tofile(dst)
-        else
-          command = "convert"
-          params = [fromfile]
-          params += transformation_command
-          params << tofile(dst)
-        end
-
-        begin
-          success = Paperclip.run(command, *params)
-        rescue PaperclipCommandLineError
-          raise PaperclipError, "There was an error processing the watermark for #{@basename}" if @whiny
-        end
-
-        dst
-      end
-
-      def fromfile
-        File.expand_path(@file.path)
-      end
-
-      def tofile(destination)
-        File.expand_path(destination.path)
-      end
-
-      def transformation_command
-        scale, crop = @current_geometry.transformation_to(@target_geometry, crop?)
-        trans = %W[-resize #{scale}]
-        trans += %W[-crop #{crop} +repage] if crop
-        trans << convert_options if convert_options?
-        trans
-      end
+      dst
+    end
   end
 end
