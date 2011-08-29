@@ -139,7 +139,7 @@ class ProductsController < ApplicationController
     end
 
     respond_to do |format|
-      if @product.save
+      if @product.update_attributes(params[:product])
         format.html { redirect_to products_path }
       else
         @statuses = ProductStatus.all

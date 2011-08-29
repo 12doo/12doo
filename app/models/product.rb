@@ -1,4 +1,5 @@
 # -*- encoding : utf-8 -*-
+require 'paperclip_processors/watermark'
 class Product < ActiveRecord::Base
   before_create :randomize_file_name
   after_save :set_price_attribute
