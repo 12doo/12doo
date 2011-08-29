@@ -94,15 +94,6 @@ class MyController < ApplicationController
     end
   end
   
-  def bought
-    sku = OrderItem.select("DISTINCT(order_items.product_sku)").joins('LEFT OUTER JOIN orders ON orders.id = order_items.order_id').where("orders.status = '订单完成'", "order_items.user_id" => current_user.id)
-    skus = []
-    sku.each do |item|
-      skus << item.product_sku
-    end
-    @products = Product.where("sku in (:skus) and visiable = :visiable", :skus => skus, :visiable => true).order("id desc").page(params[:page])
-  end
-  
   def favorites
     @favorites = current_user.favorites.where("deleted = :deleted", :deleted => false).order("id desc").page(params[:page])
   end
