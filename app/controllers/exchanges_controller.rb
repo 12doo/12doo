@@ -34,10 +34,29 @@ class ExchangesController < ApplicationController
         useless << item.code
         @codes.delete_if{|code| code == item.code }
       end
-      flash[:notice] = "提货券 #{useless.join('，')} 已经被使用。"
+      
+      if useless.count > 0
+        flash[:notice] = "提货券 #{useless.join('，')} 已经被使用。"
+      end
+      
+      not_exist = []
+      get_not_exist_codes.each do |item|
+        not_exist << item
+        @codes.delete_if{|code| code == item }
+      end
+      
+      not_exist.delete_if{|code| code == ""}
+      
+      if not_exist.count > 0
+        if flash[:notice]
+          flash[:notice] = flash[:notice] + "号码 #{not_exist.join('，')} 不是正确的提货券。"
+        else
+          flash[:notice] = "号码 #{not_exist.join('，')} 不是正确的提货券。"
+        end
+      end
       
       respond_to do |format|
-        format.html { redirect_to(:action => 'new', :codes => @codes.join(' ')) }
+        format.html { redirect_to(:action => 'new', :codes => @codes.uniq.join(' ')) }
       end
     else
       respond_to do |format|
@@ -206,6 +225,24 @@ class ExchangesController < ApplicationController
     end
     
     tickets
+  end
+  
+  def get_not_exist_codes
+    codes = []
+    if params[:codes]
+      codes = params[:codes].split(/\s/)
+    end
+    
+    tickets = []
+    if params[:codes]
+      tickets = Ticket.where("code in (:codes)", :codes => codes).order('id desc')
+    end
+    
+    tickets.each do |item|
+      codes.delete_if{|code| code == item.code }
+    end
+    
+    codes
   end
   
 end
