@@ -34,21 +34,25 @@
         </script>
     </head>
     <body>
-      <div class="wrap">
+      	<div class="wrap">
 <!--#header-->
-          <div id="header">
-            <%= render :partial => "layouts/header" %>
-          </div>
+          	<div id="header">
+            	<%= render :partial => "layouts/header" %>
+          	</div>
 <!--#nav--> 
-     		  <div id="nav">
-            <%= render :partial => "layouts/nav" %>
-          </div>
+     		<div id="nav">
+            	<%= render :partial => "layouts/nav" %>
+          	</div>
 				  <%= yield %>
-<!--#footer-->
-				  <div id="footer">
-            <%= render :partial => "layouts/footer" %>
-				  </div>
+<!--#links-->
+			<div id="links">
+	            <%= render :partial => "layouts/links" %>
 			</div>
+<!--#footer-->
+			<div id="footer">
+            	<%= render :partial => "layouts/footer" %>
+			</div>
+		</div>
     </body>
   <script type="text/javascript">
     var _gaq = _gaq || [];
