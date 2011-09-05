@@ -2,6 +2,7 @@
 require 'paperclip_processors/watermark'
 class Product < ActiveRecord::Base
   before_create :randomize_file_name
+  before_save :set_promo_price
   after_save :set_price_attribute
   validates_presence_of :name, :memo,  :price, :status, :indication_price,  :sku, :count, :sold_count, :cn_name
   validates_numericality_of :price, :indication_price,:count, :sold_count
@@ -144,8 +145,16 @@ class Product < ActiveRecord::Base
   
   end
   
+  def set_promo_price
+    unless self.promo_price
+      self.promo_price = 0
+      self.save
+    end
+  end
+  
   def set_price_attribute
     price = current_price
+
     item = ProductAttribute.where(:short => 'price', :product_id => self.id).first
 
     if item
