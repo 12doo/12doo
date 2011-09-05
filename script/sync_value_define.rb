@@ -1,2 +1,0 @@
-sql = ActiveRecord::Base.connection()
-sql.update("update product_attribute_values set product_attribute_values.product_attribute_define_id = (select id from product_attribute_defines where product_attribute_values.name = product_attribute_defines.name)")
