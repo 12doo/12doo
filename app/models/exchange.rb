@@ -2,6 +2,7 @@
 class Exchange < ActiveRecord::Base
   has_many :tickets
   paginates_per 20
+  after_create :send_exchange_inform_email
   
   validates_presence_of :fullname, :no,  :count, :province, :city,  :region, :zip, :phone, :count
   validates_numericality_of :count
@@ -15,6 +16,10 @@ class Exchange < ActiveRecord::Base
     self.region = address.region
     self.zip = address.zip
     self.phone = address.phone
+  end
+  
+  def send_exchange_inform_email
+    ExchangeMailer.exchange_inform_email(self).deliver
   end
   
 end
