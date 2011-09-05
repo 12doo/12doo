@@ -74,6 +74,7 @@
 		
 		<table width="496" cellspacing="0" cellpadding="0" border="0" class="r4">
 			<tbody>
+				<% if @product.count > 0%>
 				<tr>
            			<td width="40" height="45" align="left">数量：</td>
            			<td width="100" align="left">
@@ -90,6 +91,13 @@
 						<a href="#" title="加入收藏" onclick="add_to_favorite(<%= @product.id %>);"><img border="0" src="/images/favourite_ico.gif"></a>
 					</td>
          		</tr>
+				<% else %>
+				<tr>
+           			<td width="100" height="45" align="left">
+						<img border="0" src="/images/sold_out.gif" id="buttonImg" />
+					</td>
+         		</tr>
+				<% end %>
          			
          	<!-- 计划 用来 显示 多个小图 		
          			<tr>
