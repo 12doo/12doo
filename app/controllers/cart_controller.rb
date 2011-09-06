@@ -14,7 +14,6 @@ class CartController < ApplicationController
       format.html { redirect_to :action => 'show' }
       format.json { render :json => cart.quantity } 
     end
-    
   end
 
   def update_product

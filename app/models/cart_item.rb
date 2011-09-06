@@ -2,7 +2,7 @@
 class CartItem
   attr_reader :productid, :quantity
   
-  def initialize(productid,quantity = 1) 
+  def initialize(productid, quantity = 1) 
     @productid = productid
     @quantity = quantity
   end

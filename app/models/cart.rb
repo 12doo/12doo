@@ -6,7 +6,7 @@ class Cart
   end
 
   def add_product(product, quantity = 1)
-    if quantity > 0
+    if product.count > 0 && quantity > 0 && product.count >= quantity
       current_item = @items.find {|item| item.product == product} 
       if current_item
         current_item.update_quantity(current_item.quantity + quantity)
@@ -23,11 +23,11 @@ class Cart
     end
   end
   
-  def update_product(product,quantity = 1)
-    if quantity > 0
+  def update_product(product, quantity = 1)
+    if product.count > 0 && quantity > 0 && product.count >= quantity
       current_item = @items.find {|item| item.product == product} 
       if current_item
-          current_item.update_quantity(quantity)
+        current_item.update_quantity(quantity)
       end
     else quantity = 0
       delete_product(product)
