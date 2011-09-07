@@ -7,5 +7,6 @@ class ConfirmUserEmail < ActiveRecord::Migration
   end
 
   def self.down
+    remove_column :users, :confirmable
   end
 end
