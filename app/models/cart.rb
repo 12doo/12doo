@@ -29,7 +29,7 @@ class Cart
       if current_item
         current_item.update_quantity(quantity)
       end
-    elsif quantity = 0
+    elsif quantity == 0
       delete_product(product)
     end
   end

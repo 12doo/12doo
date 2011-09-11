@@ -17,7 +17,9 @@ class RegistrationsController < ApplicationController
     if resource.save
       set_flash_message :notice, :signed_up
       coupon = Coupon.new_for_register(resource)
-      sign_in_and_redirect(resource_name, resource)
+      #sign_in_and_redirect(resource_name, resource)
+      #sign_in(resource_name, resource)
+      redirect_to after_inactive_sign_up_path_for(resource)
     else
       clean_up_passwords(resource)
       render_with_scope :new
@@ -63,5 +65,13 @@ class RegistrationsController < ApplicationController
         
     def after_update_path_for(resource)
       '/my/account' # You can put whatever path you want here
-    end    
+    end
+    
+    def after_sign_up_path_for(resource)
+      '/users/welcome'
+    end
+      
+    def after_inactive_sign_up_path_for(resource)
+      '/users/confirm'
+    end
 end
