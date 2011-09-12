@@ -11,16 +11,19 @@
             	<tbody>
                     <tr bgcolor="#f0f0f0" class="f-black-12-b">
                         <td height="30" width="170">
-                            用户名
+                            账户邮箱
                         </td>
                         <td width="160">
                             注册时间
                         </td>
                         <td width="160">
+                            验证时间
+                        </td>
+                        <td width="160">
                             最后登陆时间
                         </td>
-                        <td width="65">
-                          	登陆次数
+                        <td width="30">
+                          	登陆
                         </td>
                         <td width="100">
                             最后登陆IP
@@ -31,16 +34,17 @@
                     </tr>
 					<% @users.each do |user| %>
 				 	<tr>
-					    <td height="30"><%= user.email %></td>
+					    <td height="30"><%= link_to user.email, user_path(user), :class => 'f-red-12', :target => '_blank'  %></td>
 					    <td><%= user.created_at.strftime('%Y-%m-%d %H:%M:%S') %></td>
-					    <td><%= user.last_sign_in_at.strftime('%Y-%m-%d %H:%M:%S') %></td>
+						<td><%= user.confirmed_at ? user.confirmed_at.strftime('%Y-%m-%d %H:%M:%S') : "未激活" %></td>
+					    <td><%= user.last_sign_in_at ? user.last_sign_in_at.strftime('%Y-%m-%d %H:%M:%S') : "从未登陆" %></td>
 						<td><%= user.sign_in_count %></td>
 					    <td><%= user.current_sign_in_ip %></td>
 						<td>
 							<% if user.admin %>
 							<%= link_to "[取消管理员]", {:action => :set_role, :controller => :users, :id => user.id, :role => 'user' }, :class => 'f-red-12' %>
 							<% else %>
-							<%= link_to "[设置管理员]", {:action => :set_role, :controller => :users, :id => user.id, :role => 'admin' }, :class => 'f-red-12' %>
+							<%= link_to "[设为管理员]", {:action => :set_role, :controller => :users, :id => user.id, :role => 'admin' }, :class => 'f-red-12' %>
 							<% end %>
 						</td>
 				  	</tr>

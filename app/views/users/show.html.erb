@@ -1,0 +1,87 @@
+<%= render 'admin/header' %>
+<div id="my_acinfo">
+<%= render 'admin/userside' %>
+	<div id="ac_right">
+		<ul id="pd_infomenu">
+			<li><%= link_to "所有用户", users_path %></li>
+			<li class="on">查看用户</li>
+		</ul>
+		<div class="clearit"></div>
+		<div id="ac_more_detail">
+			<table width="100%" cellspacing="0" cellpadding="0" border="0" class="tableinfoL">
+				<tbody>
+					<tr>
+					    <td height="30" width="100" class="tcenter">编号</td>
+					    <td><%= @order.no %></td>
+					</tr>
+					<tr>
+					    <td height="30" class="tcenter">收货人详细信息</td>
+					    <td><%= @order.fullname %>,&nbsp;&nbsp;
+						<%= @order.phone %>&nbsp;&nbsp;
+						<%= @order.province %>&nbsp;&nbsp;
+						<%= @order.city %>&nbsp;&nbsp;
+						<%= @order.region %>&nbsp;&nbsp;
+						<%= @order.address %>&nbsp;&nbsp;
+						<%= @order.zip %></td>
+					</tr>
+					<tr>
+					    <td height="30" class="tcenter">支付方式</td>
+					    <td><%= @order.pay_type %></td>
+					</tr>
+					<tr>
+					    <td height="30" class="tcenter">优惠券</td>
+					    <td><%= @order.coupon_code %></td>
+					</tr>
+					<tr>
+					    <td height="30" class="tcenter">数量总计</td>
+					    <td><%= @order.quantity %> 件</td>
+					</tr>
+					<tr>
+					    <td height="30" class="tcenter">金额总计</td>
+					    <td><%= format "%.2f", @order.total %> 元</td>
+					</tr>
+					<tr>
+					    <td height="30" class="tcenter">优惠券抵扣</td>
+					    <td><%= format "%.2f", @order.coupon_discount %> 元</td>
+					</tr>
+					<tr>
+					    <td height="30" class="tcenter">运费</td>
+					    <td><%= format "%.2f", @order.carriage %> 元</td>
+					</tr>
+					<tr>
+					    <td height="30" class="tcenter">订单金额</td>
+					    <td><%= format "%.2f", @order.pay_price %> 元</td>
+					</tr>
+					<tr>
+					    <td height="30" class="tcenter">附加说明</td>
+					    <td><%= @order.memo %></td>
+					</tr>
+			    </tbody>
+			</table>
+			<div class="bj-sp10"></div>
+
+		    <table width="100%" cellspacing="0" cellpadding="0" border="0" class="tableinfo">
+				<tbody>
+					<tr bgcolor="#ebebeb" class="f-black-12-b">
+						<td height="30" width="20%" align="center">商品编号</td>
+						<td align="center">商品名称</td>
+						<td width="10%" align="center">数量</td>
+						<td width="10%" align="center">单价</td>
+						<td width="10%" align="center">小计</td>
+	          	    </tr>
+					<% @order.order_items.each do |item| %>
+					<tr>
+						<td height="30" align="center"><%= link_to item.product_sku, product_path(item.product), :target => "_blank" %></td>
+						<td align="center"><%= link_to item.product.cn_name , product_path(item.product), :target => "_blank"%></td>
+						<td align="center"><%= item.quantity %></td>
+						<td align="center">￥<%= format "%.2f", item.price %></td>
+						<td align="center">￥<%= format "%.2f", item.subtotal %></td>
+					</tr>
+					<% end %>
+				</tbody>
+		    </table>
+			<div class="bj-sp10"></div>
+		</div>
+	</div>
+</div>
+<div class="clearit"></div>
