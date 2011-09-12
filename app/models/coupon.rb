@@ -117,11 +117,12 @@ class Coupon < ActiveRecord::Base
       
       coupon.discount = 20
       coupon.code = new_code('NEW20',10)
-      
-      if user.id <= 100
-        coupon.discount = 50
-        coupon.code = new_code('NEW50',10)
-      end
+
+      # 活动已经过去
+      # if user.id <= 100
+      #   coupon.discount = 50
+      #   coupon.code = new_code('NEW50',10)
+      # end
       
       coupon.threshold = 100
       coupon.user_id = user.id
