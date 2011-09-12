@@ -17,6 +17,7 @@ class RegistrationsController < ApplicationController
     if resource.save
       set_flash_message :notice, :signed_up
       coupon = Coupon.new_for_register(resource)
+      flash[:info] = resource.email
       #sign_in_and_redirect(resource_name, resource)
       #sign_in(resource_name, resource)
       redirect_to after_inactive_sign_up_path_for(resource)
@@ -72,6 +73,6 @@ class RegistrationsController < ApplicationController
     end
       
     def after_inactive_sign_up_path_for(resource)
-      '/users/confirm'
+      '/users/confirmation/new'
     end
 end

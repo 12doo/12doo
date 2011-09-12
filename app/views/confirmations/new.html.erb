@@ -1,29 +1,14 @@
-<h2>Resend confirmation instructions</h2>
-
-<%= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
-
-  <div><%= f.submit "Resend confirmation instructions" %></div>
-<% end %>
-
-<%= render :partial => "devise/shared/links" %>
-
 <div class="clearit bj-sp10"></div>
 <div id="mlist_detail">
 	<div id="confirm_bg">
 		<div class="f-black-14-YaHei">
-			注册成功，我们已经向您的注册邮箱发送了一封验证邮件。请登陆邮箱激活账号。验证后您就可以登陆。<br />
-			没有收到邮件？<a>再发一封</a>。
+			您已经注册成功！<br />
+			我们已经向您的注册邮箱发送了一封验证邮件。请登陆邮箱激活账号。验证后您就可以登陆。<br />
+			<br />
+			没有收到邮件？<br />
 			<%= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f| %>
-			  <%= devise_error_messages! %>
-
-			  <p><%= f.label :email %><br />
-			  <%= f.text_field :email %></p>
-
-			  <p><%= f.submit "发送确认邮件 Resend confirmation instructions" %></p>
+			<a href="#" onclick="javascript:$('#user_new').submit();">再发一封验证邮件到：<%= @email %>。</a>
+			<input type="hidden" name="user[email]" value="<%= @email %>">
 			<% end %>
 		</div>
 	</div>

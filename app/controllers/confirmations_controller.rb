@@ -1,9 +1,10 @@
-class Devise::ConfirmationsController < ApplicationController
+class ConfirmationsController < ApplicationController
   include Devise::Controllers::InternalHelpers
 
   # GET /resource/confirmation/new
   def new
     build_resource({})
+    @email = flash[:info]
     render_with_scope :new
   end
 
