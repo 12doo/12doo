@@ -118,7 +118,7 @@
           			<td>
 						<input type="text" id="codes_input" size="120" />
 						<input type="hidden" name="codes" value='<%= params[:codes] %>' />
-						<a id="code_button" href="#" onclick="javascript:window.location.href = '/exchanges/new?codes=<%= @codes.join(' ') %> ' + $('#codes_input').val(); return false;"><img src="/images/btn_ticket.gif" width="120" height="30" /></a>  多个请用空格隔开。
+						<a id="code_button" href="#" onclick="javascript:window.location.href = '/exchanges/new?codes=<%= @codes.join(' ') %> ' + $('#codes_input').val(); return false;"><img src="/images/btn_ticket.gif" width="100" height="30" /></a>  多个请用空格隔开。
           			</td>
           		</tr>
         	</tbody>
@@ -196,17 +196,17 @@
 						<tr>
 							<td height="30" width="10">*</td>
 		      				<td>详细地址</td>
-		      				<td align="left"><input type="text" id="detail" size="55" name="address[detail]" />&nbsp;&nbsp;请务必填写正确的联系方法,如您填写的收货方联系方法有误,您的预约送货将无法完成.</td>
+		      				<td align="left"><input type="text" id="detail" size="55" name="address[detail]" />&nbsp;&nbsp;请务必填写正确的联系方法，如您填写的收货方联系方法有误，预约将无法完成。</td>
 		    			</tr>
 		    			<tr>
 							<td height="30" width="10">*</td>
 		      				<td>电话</td>
-		      				<td align="left"><input type="text" id="phone" name="address[phone]" />&nbsp;&nbsp;非常重要.</td>
+		      				<td align="left"><input type="text" id="phone" name="address[phone]" />&nbsp;&nbsp;非常重要。</td>
 		    			</tr>
 		    			<tr>
 							<td height="30" width="10">*</td>
 		      				<td>邮编</td>
-							<td align="left"><input type="text" id="zip" name="address[zip]" /></td>
+							<td align="left"><input type="text" id="zip" name="address[zip]" />&nbsp;&nbsp;12doo免费送货范围仅限上海外环线以内地区。超过范围将酌情收取送货费。以12doo服务电话联系确认为准。</td>
 		    			</tr>
 		  			</tbody>
 				</table>	  
