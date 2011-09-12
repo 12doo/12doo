@@ -118,7 +118,6 @@ class Coupon < ActiveRecord::Base
       coupon.discount = 20
       coupon.code = new_code('NEW20',10)
 
-      # 活动已经过去
       # if user.id <= 100
       #   coupon.discount = 50
       #   coupon.code = new_code('NEW50',10)
