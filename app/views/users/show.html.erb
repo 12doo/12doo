@@ -10,14 +10,26 @@
 		<div id="ac_more_detail">
 			<table width="100%" cellspacing="0" cellpadding="0" border="0" class="tableinfoL">
 				<tbody>
-					<tr>
-					    <td height="30" width="100" class="tcenter">编号</td>
-					    <td><%= @user.email %></td>
-					</tr>
-					<tr>
-					    <td height="30" class="tcenter">收货人详细信息</td>
-					    <td></td>
-					</tr>
+                    <tr>
+                        <td height="30" class="tcenter">账号</td>
+                        <td><%= @user.email %></td>
+                    </tr>
+                    <tr>
+                        <td height="30" class="tcenter">姓名</td>
+                        <td><%= @user.name %></td>
+                    </tr>
+                    <tr>
+                        <td height="30" class="tcenter">电话</td>
+                        <td><%= @user.phone %></td>
+                    </tr>
+                    <tr>
+                        <td height="30" class="tcenter">性别</td>
+                        <td><%= @user.gender %></td>
+                    </tr>
+                    <tr>
+                        <td height="30" class="tcenter">生日</td>
+                        <td><%= @user.birth ? @user.birth.strftime('%Y-%m-%d') : '' %></td>
+                    </tr>
 			    </tbody>
 			</table>
 			<div class="bj-sp10"></div>
