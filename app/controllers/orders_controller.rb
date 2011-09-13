@@ -165,29 +165,25 @@ class OrdersController < ApplicationController
     if @order && @order.user_id == current_user.id
       
       @order.cancel(current_user)
-
     end
     redirect_to :action => :orders, :controller => :my
   end
   
-  # 用户确认收货的操作，只在用户界面 /my/orders 显示该操作链接
+  
   def confirm
     @order = Order.find(params[:id])
+    @order.confirm(current_user)
     
-    change = OrderChange.new
-    change.user_id = @order.user_id
-    change.before = @order.status
-     
-    @order.status = '订单完成'
-    @order.save
-    
-    change.after = @order.status
-    change.changed_at = Time.now
-    change.save
+    redirect_to orders_path
+  end
+  
+  # 用户确认收货的操作，只在用户界面 /my/orders 显示该操作链接
+  def receive
+    @order = Order.find(params[:id])
+    @order.receive(current_user)
     
     #因此只返回到用户界面 /my/orders
     redirect_to :action => :orders, :controller => :my
-
   end
   
   #发货操作，只允许后台管理员进行

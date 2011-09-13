@@ -60,6 +60,32 @@ class Order < ActiveRecord::Base
     end
   end
   
+  def confirm(user)
+      change = OrderChange.new
+      change.user_id = user.id
+      change.before = self.status
+
+      self.status = '等待发货'
+      self.save
+
+      change.after = self.status
+      change.changed_at = Time.now
+      change.save
+  end
+  
+  def receive(user)
+      change = OrderChange.new
+      change.user_id = user.id
+      change.before = self.status
+
+      self.status = '订单完成'
+      self.save
+
+      change.after = self.status
+      change.changed_at = Time.now
+      change.save
+  end
+  
   # 取消订单
   def cancel(user)
     change = OrderChange.new
