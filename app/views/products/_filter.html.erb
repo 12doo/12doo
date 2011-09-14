@@ -1,0 +1,61 @@
+<!--select-->
+<div class="pdselect">
+	<ul id="selectbox">
+		<li>
+			<dl class="fore">
+				<dt>葡萄酒种类：</dt>
+				<dd>
+					<% values = ProductAttributeValue.where(:short => :type) %>
+					<% sort = get_attribute_define_sort_by_short('type') %>
+					<div><a href="<%= search_path 0, sort %>">不限</a></div>
+					<% values.each do |value|%>
+					<div><a href="<%= search_path value.id, sort %>" class="<%= checked?(value.id, sort) ? '' : 'sel' %>"><%= value.value %></a></div>
+					<% end %>
+				</dd>
+			</dl>
+		</li>
+		<li>
+			<dl>
+				<dt>价格：</dt>
+				<dd>
+					<% values = ProductAttributeValue.where(:short => :price) %>
+					<% sort = get_attribute_define_sort_by_short('price') %>
+					<div><a href="<%= search_path 0, sort %>">不限</a></div>
+		        	<% values.each do |value|%>
+		          	<div><a href="<%= search_path value.id, sort %>" class="<%= checked?(value.id, sort) ? '' : 'sel' %>"><%= value.value %></a></div>
+		      		<% end %>
+				</dd>
+			</dl>
+		</li>
+		<li>
+			<dl>
+				<dt>国家：</dt>
+				<dd>
+					<% values = ProductAttributeValue.where(:short => :country) %>
+					<% sort = get_attribute_define_sort_by_short('country') %>
+					<div><a href="<%= search_path 0, sort %>">不限</a></div>
+		        	<% values.each do |value|%>
+		          	<div><a href="<%= search_path value.id, sort %>" class="<%= checked?(value.id, sort) ? '' : 'sel' %>"><%= value.value %></a></div>
+		      		<% end %>
+				</dd>
+			</dl>
+		</li>
+		<li>
+			<dl>
+				<dt>适用场合：</dt>
+				<dd>
+					<% values = ProductAttributeValue.where(:short => :use_for) %>
+					<% sort = get_attribute_define_sort_by_short('use_for') %>
+					<div><a href="<%= search_path 0, sort %>">不限</a></div>
+		        	<% values.each do |value|%>
+		          	<div><a href="<%= search_path value.id, sort %>" class="<%= checked?(value.id, sort) ? '' : 'sel' %>"><%= value.value %></a></div>
+		      		<% end %>
+				</dd>
+			</dl>
+		</li>
+	</ul>
+	<div class="clearit"></div>
+	<div class="pdselect_bar">
+		<a href="#" onClick="openShutManager(this,'selectbox',false,'<img src=images/select_bar_up.gif width=126 height=12>','显示工具栏<br><img src=images/select_bar_down.gif width=126 height=12>')"><img src="/images/select_bar_up.gif" width="126" height="12" /></a>
+	</div>
+</div>

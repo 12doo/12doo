@@ -1,17 +1,8 @@
 <!--shoplist-->
-<h2 class="shopLtitle">
-	<div class="capname">
-		<img src="/images/s_wine01.gif"  alt="葡萄酒" width="113" height="48" />
-	</div>
-</h2>
-
 <div class="shopLbox">
-  <%= render :partial => "products/shopleftbar" %>
-       
 <!--#sort-->
-	<div style="float:left;width:725px;">
 		<div class="goodsResult">
-			
+			<%= render :partial => "products/filter" %>
 			<div class="list_num_top">
 				<table width="100%" border="0" cellspacing="0" cellpadding="0">
 				  <tr>
@@ -61,11 +52,6 @@
 				  </tr>
 				</table>
 			</div>
-    </div>
-	</div>
+    	</div>
 	<div class="clearit"></div>
-	
-	
-
-	
 </div>
