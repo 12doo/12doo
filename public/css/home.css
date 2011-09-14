@@ -58,12 +58,12 @@ body {
 }
 
 .wrap {
-    width: 950px;
+    width: 1000px;
     margin: 0 auto;
 }
 
 #header {
-    height: 94px;
+    height: 70px;
     overflow: hidden;
     position: relative;
 	margin:7px 0 16px 0;
@@ -73,16 +73,16 @@ body {
     position: absolute;
     left: 0;
     top: 0;
-    height: 94px;
+    height: 70px;
     background: url(../images/web_logo.gif) 0 0 no-repeat;
     overflow: hidden;
 	width:204px;
 }
 #shopcart #cartico{
-left:204px;position:absolute; top:60px;
+left:190px;position:absolute; bottom:5px;
 	}
 #shopcart #carttext{
-left:244px;position:absolute; top:60px;	
+left:230px;position:absolute; bottom:2px;	
 line-height:18px;
 	}
 #header #login {
@@ -94,10 +94,10 @@ line-height:18px;
 
 }
 #header #tele-usico {
-height:23px;position:absolute;right:0;top:42px;
+height:23px;position:absolute;right:196px;bottom:10px;
 }
 #header #tele-usnum{
-height:22px;position:absolute;right:0;bottom:0;
+height:22px;position:absolute;right:0;bottom:10px;
 	}
 
 #nav {
@@ -168,26 +168,27 @@ height: 33px; position: absolute; right:0; bottom:0;
 
 .goodsResult ul li {
     overflow: hidden;
-		padding-left:15px;
+		padding:0 9px;
+	
 }
 .goodsResult ul li.one{
-padding-left:0px;
+
 	}
 .goodsResult .grImg{
 border: 1px solid #dcdedc;	
 	}
 .goodsResult .grPrice{
-	position:relative;
-	height:20px;
-	padding:5px 0 0 0;
+position:relative;
+height:20px;
+padding:5px 0 0 0;
 	}
 .goodsResult .grPrice a{
-	position:absolute;
-	right:0;
-	bottom:0;
-	width:23px;
-	height:23px;
-	display:block;
+position:absolute;
+right:0;
+bottom:0;
+width:23px;
+height:23px;
+display:block;
 	}
 .pagePicView li {
     background: none repeat scroll 0 0 #FCFCFC;
@@ -196,14 +197,19 @@ border: 1px solid #dcdedc;
     width: 226px;
 	height:350px;
 	overflow:hidden;
+	position:relative;
 }
-
+.pagePicView li .flag{
+position:absolute;
+right:9px;
+top:1px;
+	}
 .wine_word{
 padding:10px 10px 10px 10px;
 border-left: 1px solid #dcdedc;	
 border-right: 1px solid #dcdedc;	
 border-bottom: 1px solid #dcdedc;
-height:44px;	
+height:44px;
 }
 
 #footer {
@@ -369,6 +375,7 @@ font-weight:bold;
     font-weight: normal;
     color: #999;
 }
+
 .f-grey2-14-u, .f-grey2-14-u a, a.f-grey2-14-u {
     font-size: 14px;
     font-weight: normal;
@@ -460,6 +467,70 @@ padding:2px 0;
 	}
 
 /**shopList**/
+.pdselect{
+background:#f5f5f5;	
+padding:0px 10px 0 10px;
+margin:0 5px 20px 5px;
+	}
+.pdselect UL{
+padding:10px 0 0 0;	
+*padding:10px 0 0 0;	
+	}
+.pdselect LI{
+padding:5px 0;
+line-height:25px;
+	}
+.pdselect LI dl.fore{
+	border-top:none;
+
+	}	
+.pdselect LI dl{	
+	border-top:1px dashed #dcdedc;
+}
+.pdselect LI dt{
+float:left;
+width:100px;
+color:#333px;
+font-weight:bold;
+text-align:right;
+font-size:12px;
+	}
+.pdselect LI dd{
+float:right;	
+color:#999;
+width:800px;
+font-size:
+	}
+.pdselect LI dd div{
+float:left;
+height:25px;
+margin:0 15px 0 0;
+	}
+.pdselect LI dd div a:hover{
+background:#9f0a0e;
+color:#fff;
+	}
+.pdselect LI dd div .sel{
+background:#9f0a0e;	
+color:#fff;
+	}
+.pdselect_bar{
+    line-height:25px;
+	color:#999;
+	text-align:center;
+	position:relative;
+	height:40px;
+	
+}
+.pdselect_bar img{
+	position:absolute;
+	bottom:0;
+	left:410px;
+	
+	}
+.pdselect_bar a{
+	color:#aaa;
+	}
 h2.shopLtitle{
 position:relative;
 height:49px;
@@ -476,8 +547,8 @@ text-align:center;
 	}
 .shopLbox{
 border:1px solid #dcdedc;
-border-top:1px solid #fff;
-padding:20px 0 0 10px;
+margin:10px 0 0 0;
+padding:10px;
 height:100%;
 	}
 .listL,.helpL {
@@ -784,6 +855,7 @@ padding:20px 0 0 25px;
 #pd_moreinfo.otherpd #pd_attribute h1{
 height:30px;
 background:#9e0a0e;
+border:1px dashed #fff;
 margin:0 25px 15px 0;
 padding:5px 10px;
 color:#fff;
@@ -797,7 +869,7 @@ height:270px;
 text-align:center;
 vertical-align:middle;
 }	
-
+	
 #pd_moreinfo #pd_photo img{
 border:1px solid #f5f3ec;
 	}
@@ -838,7 +910,8 @@ margin:0 0 10px 0;
 	}
 #pd_moreinfo.otherpd .pd_section h1{
 height:30px;
-background:#888;
+background:#000;
+border:1px dashed #fff;
 margin:20px 25px 15px 0;
 padding:5px 10px;
 color:#fff;
