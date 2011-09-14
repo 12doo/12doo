@@ -24,7 +24,7 @@
 			        	<tbody>
 							<tr>
 			          			<td>
-									<input type="text" id="code_input" name="code" size="120" value="<%= params[:code] %>" />
+									<input type="text" id="code_input" name="code" size="120" onkeydown="javascript:if(event.keyCode == 13){window.location.href = '/exchanges/verify?code=' + $('#code_input').val();return false;} " value="<%= params[:code] %>" />
 									<a id="code_button" href="#" onclick="javascript:window.location.href = '/exchanges/verify?code=' + $('#code_input').val(); return false;"><img src="/images/btn_ticket.gif" width="120" height="30" /></a>
 			          			</td>
 			          		</tr>
