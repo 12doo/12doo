@@ -1,3 +1,25 @@
+<script type="text/javascript">
+//===========================点击展开关闭效果====================================
+function openShutManager(oSourceObj,oTargetObj,shutAble,oOpenTip,oShutTip){
+var sourceObj = typeof oSourceObj == "string" ? document.getElementById(oSourceObj) : oSourceObj;
+var targetObj = typeof oTargetObj == "string" ? document.getElementById(oTargetObj) : oTargetObj;
+var openTip = oOpenTip || "";
+var shutTip = oShutTip || "";
+if(targetObj.style.display!="none"){
+   if(shutAble) return;
+   targetObj.style.display="none";
+   if(openTip  &&  shutTip){
+    sourceObj.innerHTML = shutTip; 
+   }
+} else {
+   targetObj.style.display="block";
+   if(openTip  &&  shutTip){
+    sourceObj.innerHTML = openTip; 
+   }
+}
+}
+</script>
+
 <!--select-->
 <div class="pdselect">
 	<ul id="selectbox">
@@ -56,6 +78,6 @@
 	</ul>
 	<div class="clearit"></div>
 	<div class="pdselect_bar">
-		<a href="#" onClick="openShutManager(this,'selectbox',false,'<img src=images/select_bar_up.gif width=126 height=12>','显示工具栏<br><img src=images/select_bar_down.gif width=126 height=12>')"><img src="/images/select_bar_up.gif" width="126" height="12" /></a>
+		<a href="#" onClick="openShutManager(this,'selectbox',false,'<img src=/images/select_bar_up.gif width=126 height=12>','显示查询条件<br><img src=/images/select_bar_down.gif width=126 height=12>')"><img src="/images/select_bar_up.gif" width="126" height="12" /></a>
 	</div>
 </div>
