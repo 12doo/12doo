@@ -9,6 +9,7 @@ class Product < ActiveRecord::Base
   validates_uniqueness_of :sku
   has_many :product_attributes
   has_many :product_tags
+  belongs_to :category
   cattr_reader :per_page
   paginates_per 20
   has_attached_file :pic_label,
