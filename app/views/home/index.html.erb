@@ -14,7 +14,7 @@ $(document).ready(function(){
 });
 </script> -->
 <!--#ad-->
-<img src="/images/title_pic01.jpg" />
+<img src="/images/title_pic01.jpg" width="1000" height="180" />
 <!-- <div id="flashbox" style="width:950px;height:180px;" class="smallslider">
 	<ul>
 		<li><a href="/promotions/open_110708" title="开业限时优惠"><img src="/images/110708_banner_index.gif" alt="开业限时优惠" /></a></li>
@@ -29,49 +29,48 @@ $(document).ready(function(){
 		<%= link_to "查看所有产品", "/promotion" %>
 	</div>
 </div>
-<div class="goodsResult">
-  <ul class="pagePicView">
-	<% @promo.each_with_index do |item,index| %>
-    <li<%= index == 0 ? ' class=one' : '' %>>
-      <%= render :partial => "product", :object => item %>
- 	</li>
-	<% end %>
- 	</ul>
-
+<div class="goodsResult index_goodslist">
+  	<ul class="pagePicView">
+		<% @promo.each_with_index do |item,index| %>
+	    <li<%= index == 0 ? ' class=one' : '' %>>
+	    <%= render :partial => "product", :object => item %>
+	 	</li>
+		<% end %>
+	</ul>
+	<div class="clearit"></div>
 </div>
 <div class="clearit"></div>
 
 <!--#ad -->
-<img src="/images/title_pic02.jpg" />
+<img src="/images/title_pic02.jpg" width="1000" height="180" />
 <!--#sort 红-->         
 <div class="sort">
-  <img class="titleimg" src="images/title02.gif" width="113" height="43" />
+  <img class="titleimg" src="/images/title02.gif" width="113" height="43" />
   <div class="sortmore f-black-14-b">
     <%= link_to "查看所有产品", (search_path_by_short_value 'type', '红葡萄酒') %>
   </div>
 </div>
-<div class="goodsResult">
+<div class="goodsResult index_goodslist">
   <ul class="pagePicView">
   
 	<% @red.each_with_index do |item,index| %>
     <li<%= index == 0 ? ' class=one' : '' %>>
       <%= render :partial => "product", :object => item %>
  	</li>
-	<% end %>
-                  
+	<% end %>      
  	</ul>
-
+	<div class="clearit"></div>
 </div>
 <div class="clearit"></div>
 
 <!--#sort 白 -->         
 <div class="sort">
-  <img class="titleimg" src="images/title03.gif" width="113" height="43" />
+  <img class="titleimg" src="/images/title03.gif" width="113" height="43" />
   <div class="sortmore f-black-14-b">
     <%= link_to "查看所有产品", (search_path_by_short_value 'type', '白葡萄酒') %>
   </div>
 </div>      
-<div class="goodsResult">
+<div class="goodsResult index_goodslist">
   <ul class="pagePicView">
 	<% @white.each_with_index do |item,index| %>
     <li<%= index == 0 ? ' class=one' : '' %>>
@@ -79,6 +78,6 @@ $(document).ready(function(){
  	</li>
 	<% end %>
  </ul>
-
+<div class="clearit"></div>
 </div>
 <div class="clearit"></div>

@@ -1,5 +1,10 @@
+<% if product.promo %>
+<div class="flag"><img src="/images/flag-promotion.png" width="62" height="62" /></div>
+<% end %>
+<% if product.count <= 0 %>
+<div class="flag"><img src="/images/flag-soldout.png" width="62" height="62" /></div>
+<% end %>
 <dl>
-
   <dd class="grImg">
     <%= link_to (image_tag product.pic_main.url(:thumb), :width => "224", :height => "224", :title => product.name, :alt => product.cn_name), product_path(product) %>
   </dd>
@@ -24,6 +29,5 @@
 		<span class="f-grey-20-Arial" style="float:right;">已售完</span>
 	<% end %>
   </dt>
- 
 </dl>
 
