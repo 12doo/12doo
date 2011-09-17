@@ -8,7 +8,7 @@ V3::Application.routes.draw do
             
   devise_for :users, :controllers => { :registrations => "registrations", :confirmations => "confirmations" }
   get "users/set_role"
-  # get "users/welcome"
+  get "users/welcome"
   # get "users/confirm"
   resources :users
   get "my/info", :to => "my#index"
