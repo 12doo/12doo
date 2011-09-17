@@ -10,7 +10,7 @@ class ProductsController < ApplicationController
   
   def promotion
     @menu = "wine"
-    @products = Product.where("promo = :promo and visiable = :visiable", :promo => true, :visiable => true).order('id desc').page(params[:page]).per(9)
+    @products = Product.where("promo = :promo and visiable = :visiable", :promo => true, :visiable => true).order('id desc').page(params[:page]).per(12)
   end
   
   def query_result
@@ -26,7 +26,7 @@ class ProductsController < ApplicationController
     end
     
     if (params[:tags] == nil || condition_is_null) && (params[:keywords] == nil || params[:keywords] == '')
-      @products = Product.where(:visiable => true).order("#{sort_by} #{sort}").page(params[:page]).per(9)
+      @products = Product.where(:visiable => true).order("#{sort_by} #{sort}").page(params[:page]).per(12)
     else
       sku = []
       if (params[:tags] == nil || condition_is_null) && params[:keywords] && params[:keywords] != ''
@@ -47,12 +47,12 @@ class ProductsController < ApplicationController
       
       if params[:keywords] && params[:keywords] != ''
         if condition_is_null
-          @products = Product.where("(sku in (:skus) or cn_name like :cn_name or name like :name) and visiable = :visiable", :skus => skus, :cn_name => "%#{params[:keywords]}%", :name => "%#{params[:keywords]}%", :visiable => true).order("#{sort_by} #{sort}").page(params[:page]).per(9)
+          @products = Product.where("(sku in (:skus) or cn_name like :cn_name or name like :name) and visiable = :visiable", :skus => skus, :cn_name => "%#{params[:keywords]}%", :name => "%#{params[:keywords]}%", :visiable => true).order("#{sort_by} #{sort}").page(params[:page]).per(12)
         else
-          @products = Product.where("(sku in (:skus) and (cn_name like :cn_name or name like :name)) and visiable = :visiable", :skus => skus, :cn_name => "%#{params[:keywords]}%", :name => "%#{params[:keywords]}%", :visiable => true).order("#{sort_by} #{sort}").page(params[:page]).per(9)
+          @products = Product.where("(sku in (:skus) and (cn_name like :cn_name or name like :name)) and visiable = :visiable", :skus => skus, :cn_name => "%#{params[:keywords]}%", :name => "%#{params[:keywords]}%", :visiable => true).order("#{sort_by} #{sort}").page(params[:page]).per(12)
         end
       else
-        @products = Product.where("sku in (:skus) and visiable = :visiable", :skus => skus, :visiable => true).order("#{sort_by} #{sort}").page(params[:page]).per(9)
+        @products = Product.where("sku in (:skus) and visiable = :visiable", :skus => skus, :visiable => true).order("#{sort_by} #{sort}").page(params[:page]).per(12)
       end
     end
   end

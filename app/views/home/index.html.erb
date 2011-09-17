@@ -33,7 +33,7 @@ $(document).ready(function(){
   	<ul class="pagePicView">
 		<% @promo.each_with_index do |item,index| %>
 	    <li<%= index == 0 ? ' class=one' : '' %>>
-	    <%= render :partial => "product", :object => item %>
+	    <%= render :partial => "products/product", :object => item %>
 	 	</li>
 		<% end %>
 	</ul>
@@ -55,7 +55,7 @@ $(document).ready(function(){
   
 	<% @red.each_with_index do |item,index| %>
     <li<%= index == 0 ? ' class=one' : '' %>>
-      <%= render :partial => "product", :object => item %>
+      <%= render :partial => "products/product", :object => item %>
  	</li>
 	<% end %>      
  	</ul>
@@ -74,7 +74,7 @@ $(document).ready(function(){
   <ul class="pagePicView">
 	<% @white.each_with_index do |item,index| %>
     <li<%= index == 0 ? ' class=one' : '' %>>
-      <%= render :partial => "product", :object => item %>
+      <%= render :partial => "products/product", :object => item %>
  	</li>
 	<% end %>
  </ul>
