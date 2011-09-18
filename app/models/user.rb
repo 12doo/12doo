@@ -1,8 +1,6 @@
 # -*- encoding : utf-8 -*-
 class User < ActiveRecord::Base
   
-  after_create :send_welcome_email
-  
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable, :lockable and :timeoutable
   devise :database_authenticatable, :registerable,
@@ -22,10 +20,6 @@ class User < ActiveRecord::Base
   
   # verify
   validates_uniqueness_of :phone, :allow_nil => true, :allow_blank => true
-  
-  def send_welcome_email
-    UserMailer.welcome_email(self).deliver
-  end
   
   def display_name
     self.name ? self.name : self.email
