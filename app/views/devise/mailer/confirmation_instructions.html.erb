@@ -1,6 +1,6 @@
 <p><%= @resource.display_name -%> 您好！</p>
 
-<p>感谢您注册12doo红酒网。只剩最后一步，您就可以获得新帐号体验优惠券一张，请点击下面的确认链接激活您帐号：</p>
+<p>感谢您注册12doo红酒网。只剩最后一步，您就可以使用该帐号，请点击下面的确认链接激活您帐号：</p>
 
 <p><%= link_to '确认激活帐号', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %></p>
 

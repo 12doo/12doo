@@ -71,35 +71,37 @@
 	}
 
 </script>
-<div id="logo">
-	<a href="/" title="十二度红酒网">
-  		<img src="/images/blank.gif" title="12度红酒网" alt="12度红酒网" width="204" height="97" />
-	</a>
-</div>
-<div id="shopcart">
-  <div id="cartico">
-    	<img src="/images/shopping_cart.gif" width="32" height="31" />
-  </div>
-  <div id="carttext">
-    	<span class="f-black-arial-12">SHOPPING CART 购物车</span><br />
-		  <% cart = find_cart %>
-    	<a href="/cart/show">现在您购物车有 <span class="f-black-arial-12" id="cart_items_quantity"><%= cart.quantity %></span> 件商品</a>
-  </div>
-</div>
-<div id="login" class="f-grey-12">
-  <% if user_signed_in? %>
-    您好，<%= current_user.display_name %> &nbsp;|&nbsp; <a href="/my">我的12doo</a> &nbsp;| &nbsp;<%= link_to "注销", destroy_user_session_path %>
-  <% else %>
-    <%= link_to "注册", new_user_registration_path %> &nbsp;| &nbsp;<%= link_to "登录", new_user_session_path %>
-  <% end %>
-  &nbsp;&nbsp;
-  <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=138151236&site=qq&menu=yes">
-    <img border="0" src="http://wpa.qq.com/pa?p=2:138151236:41" alt="点击联系在线客服." title="点击联系在线客服.">
-  </a>
-</div>
-<div id="tele-usico">
-  	<img src="/images/telephone.gif" width="139" height="23" />
-</div>
-<div id="tele-usnum">
-  	<img src="/images/telephone_no.gif" width="196" height="22" />
-</div>
+
+
+   	<div id="logo">
+		<a href="/" title="十二度红酒网">
+       		<img src="/images/blank.gif" width="204" height="97" title="12度红酒网" alt="12度红酒网"  />
+		</a>
+       </div>
+       <div id="shopcart">
+		<div id="cartico">
+           	<img src="/images/shopping_cart.gif" width="32" height="31" />
+           </div>
+          	<div id="carttext">
+           	<span class="f-black-arial-12">SHOPPING CART 购物车</span><br />
+			<% cart = find_cart %>
+               <a href="/cart/show">现在您购物车有 <span class="f-black-arial-12" id="cart_items_quantity"><%= cart.quantity %></span> 件商品</a>
+		</div>
+	</div>
+	<div id="login" class="f-grey-12">
+		<% if user_signed_in? %>
+	    您好，<%= current_user.display_name %> &nbsp;|&nbsp; <a href="/my">我的12doo</a> &nbsp;| &nbsp;<%= link_to "注销", destroy_user_session_path %>
+	  	<% else %>
+	    <%= link_to "注册", new_user_registration_path %> &nbsp;| &nbsp;<%= link_to "登录", new_user_session_path %>
+	  	<% end %>
+		&nbsp;
+		<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=138151236&site=qq&menu=yes">
+			<img border="0" src="http://wpa.qq.com/pa?p=2:138151236:41" alt="点击联系在线客服." title="点击联系在线客服.">
+		</a>
+	</div>
+       <div id="tele-usico">
+       	<img src="/images/telephone.gif" width="139" height="23" />
+	</div>
+       <div id="tele-usnum">
+       	<img src="/images/telephone_no.gif" width="196" height="22" />
+	</div>

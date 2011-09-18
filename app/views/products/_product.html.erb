@@ -1,4 +1,9 @@
-<li>
+<% if product.promo %>
+<div class="flag"><img src="/images/flag-promotion.png" width="62" height="62" /></div>
+<% end %>
+<% if product.count <= 0 %>
+<div class="flag"><img src="/images/flag-soldout.png" width="62" height="62" /></div>
+<% end %>
 <dl>
 	<dd class="grImg">
 		<%= link_to (image_tag product.pic_main.url(:thumb), :width => "224", :height => "224", :title => product.name, :alt => product.cn_name), product_path(product) %>
@@ -11,7 +16,7 @@
 	<% if product.promo_price > 0 %>
 	<em class="f-grey-12">会员价: <%= format "%.2f", product.price %>元</em>
 	<% end %>
-		
+	
 	</dt>
   <dt class="grPrice">
 	<% if product.promo_price > 0 %>
@@ -24,7 +29,5 @@
 	<% else %>
 		<span class="f-grey-20-Arial" style="float:right;">已售完</span>
 	<% end %>
-
-   </dt> 
+   	</dt> 
 </dl>
-</li>

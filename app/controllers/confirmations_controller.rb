@@ -1,4 +1,6 @@
 class ConfirmationsController < ApplicationController
+  # prepend_before_filter :require_no_authentication, :only => [ :new, :create ]
+  # prepend_before_filter :authenticate_scope!, :only => [:edit, :update, :destroy]
   include Devise::Controllers::InternalHelpers
 
   # GET /resource/confirmation/new
@@ -44,7 +46,8 @@ class ConfirmationsController < ApplicationController
 
     # The path used after confirmation.
     def after_confirmation_path_for(resource_name, resource)
-      redirect_location(resource_name, resource)
+      '/users/welcome'
+      #redirect_location(resource_name, resource)
     end
 
 end
