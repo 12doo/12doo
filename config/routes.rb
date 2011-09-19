@@ -48,11 +48,13 @@ V3::Application.routes.draw do
   match "wiki(/:category(/:title))", :to => "wikis#show"
   resources :wikis
 
-  match "category(/:tags(/:keywords))", :to => "products#query_result"
+  match "category(/:cats(/:tags(/:keywords)))", :to => "products#query_result"
   get "promotion", :to => "home#promotion"
   get "info", :to => "home#info"
   #match "category/:tags", :to => "products#index"
   #match "category", :to => "products#index"
+  
+  get "search/index"
 
   get "home/index"
 
