@@ -1,15 +1,9 @@
 class CategoriesController < ApplicationController
   # 身份验证
   before_filter :authorize_admin!
-  # GET /categories
-  # GET /categories.xml
-  def index
-    @categories = Category.all
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @categories }
-    end
+  def index
+    @categories = Category.order("id desc").page(params[:page])
   end
 
   # GET /categories/1
