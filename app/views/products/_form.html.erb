@@ -58,6 +58,10 @@ function insertPic(url){
 		    <td><%= f.text_field :cn_name %></td>
 		</tr>
 		<tr>
+		    <td height="30" class="tcenter">所属分类</td>
+		    <td><%= f.select  :category_id, @categories.collect{ |c| [c.name, c.id] } %></td>
+		</tr>
+		<tr>
 		    <td height="30" class="tcenter">价格</td>
 		    <td><%= f.text_field :price %></td>
 		</tr>

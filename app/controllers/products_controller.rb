@@ -98,6 +98,7 @@ class ProductsController < ApplicationController
     @product = Product.new
     @statuses = ProductStatus.all
     @years = (Time.now.year).downto(Time.now.year - 30).map{ |x| x }
+    @categories = Category.all
     @attributes = ProductAttributeDefine.all
   end
   
@@ -130,6 +131,7 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @statuses = ProductStatus.all
     @years = (Time.now.year).downto(Time.now.year - 30).map{ |x| x }
+    @categories = Category.all
     @attributes = ProductAttributeDefine.all
   end
 
