@@ -7,8 +7,8 @@
 	</ul>
 </div>
 <div id="search">
-  <input type="text" id="keywordTop" onkeydown="javascript:if(event.keyCode == 13){window.location.href = '<%= init_search_path %>' + $('#keywordTop').val();}"  value="<%= params[:keywords] %>" />
-	<a href="#" onclick="javascript:window.location.href = '<%= init_search_path %>' + $('#keywordTop').val(); return false;">
+  <input type="text" id="keywordTop" onkeydown="javascript:if(event.keyCode == 13){window.location.href = '/search?keywords=' + $('#keywordTop').val();}"  value="<%= params[:keywords] %>" />
+	<a href="#" onclick="javascript:window.location.href = '/search?keywords=' + $('#keywordTop').val(); return false;">
 	  <img src="/images/btn_search.gif" width="67" height="30" alt="搜索" />
 	</a>
 </div>
