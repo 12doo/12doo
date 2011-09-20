@@ -21,7 +21,7 @@
 				    <td height="30"><%= category.id %></td>
 				    <td><%= link_to category.name, category_path(category), :class => 'f-red-12' %></td>
 				    <td><%= category.short %></td>
-				    <td><%= category.category ? category.category.name : "" %></td>
+				    <td><%= category.category ? link_to(category.category.name, category_path(category.category), :class => 'f-red-12') : "" %></td>
 					<td>
 					</td>
 			  	</tr>

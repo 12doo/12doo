@@ -18,6 +18,9 @@
                             缩写
                         </td>
                         <td width="50">
+                            所属分类
+                        </td>
+                        <td width="50">
                             是否可搜
                         </td>
                         <td width="50">
@@ -37,6 +40,7 @@
 				 	<tr>
 					    <td height="30"><%= product_attribute_define.name %></td>
 					    <td><%= product_attribute_define.short %></td>
+						<td><%= product_attribute_define.category.name %></td>
 					    <td><%= product_attribute_define.search ? "是" : "否" %></td>
 						<td><%= product_attribute_define.fix ? "是" : "否" %></td>
 					    <td><%= product_attribute_define.multiple ? "是" : "否" %></td>
@@ -48,6 +52,18 @@
 				  	</tr>
 					<% end %>
                 </tbody>
+			</table>
+		</div>
+		<div class="clearit"></div>
+		<div class="list_num_top">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+			  <tr>
+			    <td align="right">
+				</td>
+			    <td align="right" width="600">
+					<%= paginate @product_attribute_defines %>
+				</td>
+			  </tr>
 			</table>
 		</div>
 	</div>

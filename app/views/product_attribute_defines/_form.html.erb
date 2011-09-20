@@ -27,6 +27,10 @@
 		    <td><%= f.text_field  :description %></td>
 		</tr>
 		<tr>
+		    <td height="30" class="tcenter">所属分类</td>
+		    <td><%= f.select  :category_id, @categories.collect{ |c| [c.name, c.id] } %></td>
+		</tr>
+		<tr>
 		    <td height="30" class="tcenter">多个值</td>
 		    <td><%= f.check_box  :multiple %></td>
 		</tr>

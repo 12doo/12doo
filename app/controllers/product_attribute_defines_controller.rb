@@ -4,7 +4,7 @@ class ProductAttributeDefinesController < ApplicationController
   before_filter :authorize_admin!
 
   def index
-    @product_attribute_defines = ProductAttributeDefine.all
+    @product_attribute_defines = ProductAttributeDefine.order("id desc").page(params[:page])
   end
 
   def show
@@ -12,10 +12,12 @@ class ProductAttributeDefinesController < ApplicationController
   end
 
   def new
+    @categories = Category.all
     @product_attribute_define = ProductAttributeDefine.new
   end
 
   def edit
+    @categories = Category.all
     @product_attribute_define = ProductAttributeDefine.find(params[:id])
   end
 
@@ -42,14 +44,4 @@ class ProductAttributeDefinesController < ApplicationController
       end
     end
   end
-
-  # def destroy
-  #   @product_attribute_define = ProductAttributeDefine.find(params[:id])
-  #   @product_attribute_define.destroy
-  # 
-  #   respond_to do |format|
-  #     format.html { redirect_to(product_attribute_defines_url) }
-  #     format.xml  { head :ok }
-  #   end
-  # end
 end

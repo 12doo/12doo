@@ -5,9 +5,7 @@ class CategoriesController < ApplicationController
   def index
     @categories = Category.order("id desc").page(params[:page])
   end
-
-  # GET /categories/1
-  # GET /categories/1.xml
+  
   def show
     @category = Category.find(params[:id])
 
