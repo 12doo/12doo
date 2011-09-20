@@ -1,6 +1,7 @@
 # -*- encoding : utf-8 -*-
 class ProductAttributeDefine < ActiveRecord::Base
   
+  belongs_to :category
   has_many :product_attribute_values
   paginates_per 20
   

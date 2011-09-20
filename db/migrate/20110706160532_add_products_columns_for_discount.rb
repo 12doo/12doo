@@ -6,8 +6,6 @@ class AddProductsColumnsForDiscount < ActiveRecord::Migration
     
     change_column :order_items, :price, :decimal, :precision => 10, :scale => 2
     change_column :order_items, :subtotal, :decimal, :precision => 10, :scale => 2
-    
-    Product.update_all ["promo_price = price * 0.8"]
   end
 
   def self.down
