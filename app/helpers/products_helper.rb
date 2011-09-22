@@ -64,11 +64,11 @@ module ProductsHelper
   end
   
   def search_path_without_sort
-    "/category/" + params[:tags] + "/#{params[:keywords]}"
+    "/category/#{params[:tags]}/#{params[:keywords]}"
   end
   
   def search_path_with_sort(sort_by, sort)
-    "/category/" + params[:tags] + "/#{params[:keywords]}?sort_by=#{sort_by}&sort=#{sort}"
+    "/category/#{params[:tags]}/#{params[:keywords]}?sort_by=#{sort_by}&sort=#{sort}"
   end
   
   def sort_is_already(sort_by)

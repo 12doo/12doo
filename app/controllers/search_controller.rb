@@ -2,8 +2,38 @@
 class SearchController < ApplicationController
   
   def index
+    @products = []
+    @attributes = []
     if params[:cats]
-      @menu = "wine"
+    end
+    sort_by = "id"
+    sort = "desc"
+    if params[:sort] && params[:sort] == "0"
+      sort = "asc"
+    end
+  
+    if params[:sort_by]
+      sort_by = params[:sort_by].gsub(/\s/, '')
+    end
+  
+    if params[:keywords] == nil || params[:keywords] == ''
+      @products = Product.where(:visiable => true).order("#{sort_by} #{sort}").page(params[:page]).per(12)
+    else
+      sku = ProductAttribute.select("distinct(product_sku)").where("value like :keywords", :keywords => "%#{params[:keywords]}%")
+      skus = []
+      sku.each do |item|
+        skus << item.product_sku
+      end
+      @products = Product.where("(sku in (:skus) or cn_name like :cn_name or name like :name) and visiable = :visiable", :skus => skus, :cn_name => "%#{params[:keywords]}%", :name => "%#{params[:keywords]}%", :visiable => true).order("#{sort_by} #{sort}").page(params[:page]).per(12)
+    end
+  end
+  
+  def category
+    @products = []
+    @menu = "wine"
+    @attributes = []
+    if params[:cats] && params[:tags]
+      
       sort_by = "id"
       sort = "desc"
       if params[:sort] && params[:sort] == "0"
