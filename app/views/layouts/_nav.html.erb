@@ -4,7 +4,7 @@
 		<% cat_wine = Category.find_by_short('wine') %>
 		<li class="index"><a href="<%= cat_path(cat_wine) %>"><img src="<%= menu_is_highlight('wine') ? '/images/wine-on.png' : '/images/wine-off.png' %>" alt="葡萄酒" title="葡萄酒" /></a></li>
 		<% cat_food = Category.find_by_short('healthfood') %>
-		<li class="index"><a href="<%= cat_path(cat_food) %>"><img src="<%= menu_is_highlight('food') ? '/images/food-on.png' : '/images/food-off.png' %>" alt="健康食品" title="健康食品" /></a></li>
+		<li class="index"><a href="<%= cat_path(cat_food) %>"><img src="<%= menu_is_highlight('healthfood') ? '/images/food-on.png' : '/images/food-off.png' %>" alt="健康食品" title="健康食品" /></a></li>
 		<li class="index"><a href="/exchanges/new"><img src="<%= menu_is_highlight('book') ? '/images/book-on.png' : '/images/book-off.png' %>" alt="我有提货券，我要预约送货。" title="我有提货券，我要预约送货。" /></a></li>
 	</ul>
 </div>

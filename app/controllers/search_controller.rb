@@ -31,7 +31,7 @@ class SearchController < ApplicationController
   def category
     @products = []
     @category = Category.find(params[:cat])
-    @menu = "wine"
+    @menu = @category.short
     @attributes = []
     if params[:cat] && params[:tags]
       
@@ -76,7 +76,7 @@ class SearchController < ApplicationController
         end
       end
     else
-      redirect_to "/search"
+      redirect_to "/search?keywords=#{params[:keywords]}"
     end
   end
 
