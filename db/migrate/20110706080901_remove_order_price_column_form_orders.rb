@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class RemoveOrderPriceColumnFormOrders < ActiveRecord::Migration
   def self.up
     remove_column :orders, :order_price

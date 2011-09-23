@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddPayTypeToOrders < ActiveRecord::Migration
   def self.up
     add_column :orders, :pay_type, :string, :default => ''

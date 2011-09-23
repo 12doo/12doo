@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class ChangeWikiColumnNamespaceToCategory < ActiveRecord::Migration
   def self.up
     rename_column :wikis, :namespace, :category

@@ -33,10 +33,10 @@ if(targetObj.style.display!="none"){
 			<% end %>
 				<dt><%= define.name %>：</dt>
 				<dd>
-					<div><a href="<%= cat_path_with_selected_value @category, define, nil %>" class="<%= value_selected?(define, nil) ? '' : 'sel' %>">不限</a></div>
+					<div><a href="<%= cat_path_with_selected_value @category, define, nil %>" class="<%= value_selected?(@category, define, nil) ? '' : 'sel' %>">不限</a></div>
 					<% values = define.product_attribute_values %>
 					<% values.each do |value| %>
-					<div><a href="<%= cat_path_with_selected_value @category, define, value %>" class="<%= value_selected?(define, value) ? '' : 'sel' %>"><%= value.value %></a></div>	
+					<div><a href="<%= cat_path_with_selected_value @category, define, value %>" class="<%= value_selected?(@category, define, value) ? '' : 'sel' %>"><%= value.value %></a></div>	
 					<% end %>
 				</dd>
 			</dl>

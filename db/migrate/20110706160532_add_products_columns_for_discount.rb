@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddProductsColumnsForDiscount < ActiveRecord::Migration
   def self.up
     add_column :products, :promo_price, :decimal, :precision => 10, :scale => 2

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddProductsPicsColumns < ActiveRecord::Migration
   def self.up
     add_column :products, :pic_main_updated_at, :datetime

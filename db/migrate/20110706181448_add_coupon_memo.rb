@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddCouponMemo < ActiveRecord::Migration
   def self.up
     add_column :coupons, :memo, :string, :default => ''

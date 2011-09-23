@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreateExchanges < ActiveRecord::Migration
   def self.up
     create_table :exchanges do |t|

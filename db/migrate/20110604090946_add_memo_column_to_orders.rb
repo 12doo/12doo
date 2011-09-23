@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddMemoColumnToOrders < ActiveRecord::Migration
   def self.up
     add_column :orders, :memo, :string, :default => ''

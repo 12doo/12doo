@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddExchangeIdToTicket < ActiveRecord::Migration
   def self.up
     add_column :tickets, :exchange_id, :integer

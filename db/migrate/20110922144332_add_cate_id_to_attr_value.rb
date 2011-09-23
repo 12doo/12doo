@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddCateIdToAttrValue < ActiveRecord::Migration
   def self.up
     add_column :product_attribute_values, :category_id, :integer, :default => 0

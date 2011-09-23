@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class UpdateCouponsColumnBelongsToType < ActiveRecord::Migration
   def self.up
     change_column :coupons, :belongs_to, :integer

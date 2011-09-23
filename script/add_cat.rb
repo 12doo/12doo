@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 Category.new({:name => '葡萄酒', :short => 'wine'}).save
 h = Category.new({:name => '健康食品', :short => 'healthfood'})
 s = Category.new({:name => '时令食品', :short => 'seasonfood'})

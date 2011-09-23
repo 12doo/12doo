@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class RenameProductsColumnsForImg < ActiveRecord::Migration
   def self.up
     remove_column :products, :pic

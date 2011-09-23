@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class ConfirmUserEmail < ActiveRecord::Migration
   def self.up
     change_table(:users) do |t|

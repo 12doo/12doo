@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddColumnsToDispatchAndItem < ActiveRecord::Migration
   def self.up
     add_column :dispatches, :order_no, :string

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreateAlipayLogs < ActiveRecord::Migration
   def self.up
     create_table :alipay_logs do |t|

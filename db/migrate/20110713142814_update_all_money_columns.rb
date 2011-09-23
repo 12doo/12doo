@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class UpdateAllMoneyColumns < ActiveRecord::Migration
   def self.up
     change_column :alipay_logs, :price, :decimal, :precision => 10, :scale => 2

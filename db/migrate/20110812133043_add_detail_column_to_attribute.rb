@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddDetailColumnToAttribute < ActiveRecord::Migration
   def self.up
     add_column :product_attribute_defines, :detail, :boolean, :default => true

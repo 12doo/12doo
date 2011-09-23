@@ -15,13 +15,14 @@ module SearchHelper
       tags = Array.new(tags_count, "0")
     end
     # sort字段必须是按照0,1,2,3严格排序,不能有跳数字或者重复的情况
-
+    # 容错，不保证一定严格排序处理
+    section = define_in_tags_section(category, define)
     # 找到对应位置上是否已经有该tag
-    if tags.length >= define.sort + 1 && tags[define.sort] && tags[define.sort] != ''
+    if tags.length >= section + 1 && tags[section] && tags[section] != ''
       
       # 如果当前tag是0,清理掉所有的同节点values
       if value
-        values = tags[define.sort].split(',')
+        values = tags[section].split(',')
         
         # 如果已经有该链接,从URL里删除,否则添加
         if values.include?(value.id.to_s)
@@ -29,27 +30,28 @@ module SearchHelper
           if values.length == 0
             values << "0"
           end
-          tags[define.sort] = values.join(',')
+          tags[section] = values.join(',')
         else
-          if tags[define.sort] == "0"
-            tags[define.sort] = value.id.to_s
+          if tags[section] == "0"
+            tags[section] = value.id.to_s
           else
-            tags[define.sort] = value.id.to_s + ',' + tags[define.sort]
+            tags[section] = value.id.to_s + ',' + tags[section]
           end
         end
       else
-        tags[define.sort] = "0"
+        tags[section] = "0"
       end
     end
     "/category/#{category.id}/#{tags.join('-')}/#{params[:keywords]}"
   end
   
-  def value_selected?(define, value)
+  def value_selected?(category, define, value)
     tags = []
     if params[:tags]
       tags = params[:tags].split('-')
-      if tags.length >= define.sort + 1 && tags[define.sort] && tags[define.sort] != ''
-        values = tags[define.sort].split(',')
+      section = define_in_tags_section(category, define)
+      if tags.length >= section + 1 && tags[section] && tags[section] != ''
+        values = tags[section].split(',')
         if value
           unless values.include?(value.id.to_s)
             return true
@@ -75,6 +77,15 @@ module SearchHelper
   
   def cat_path_with_sort(sort_by, sort)
     "/category/#{params[:cat]}/#{params[:tags]}/#{params[:keywords]}?sort_by=#{sort_by}&sort=#{sort}"
+  end
+  
+  def define_in_tags_section(category, define)
+    category.product_attribute_defines.where(:search => true).each_with_index do |item, index|
+      if item.id == define.id
+        return index
+      end
+    end
+    return 0
   end
   
 end

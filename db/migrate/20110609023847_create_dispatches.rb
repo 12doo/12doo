@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreateDispatches < ActiveRecord::Migration
   def self.up
     create_table :dispatches do |t|

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class UpdateOrdersColumnsType < ActiveRecord::Migration
   def self.up
     change_column :orders, :total, :decimal, :precision => 10, :scale => 2

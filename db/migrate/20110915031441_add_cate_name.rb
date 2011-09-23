@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddCateName < ActiveRecord::Migration
   def self.up
     add_column :categories, :short, :string

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddPhotosToProducts < ActiveRecord::Migration
   def self.up
     add_column :products, :pic_label_file_name, :string

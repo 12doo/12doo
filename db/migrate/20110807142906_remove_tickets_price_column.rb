@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class RemoveTicketsPriceColumn < ActiveRecord::Migration
   def self.up
     remove_column :tickets, :price

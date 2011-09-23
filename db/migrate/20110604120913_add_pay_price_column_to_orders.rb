@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddPayPriceColumnToOrders < ActiveRecord::Migration
   def self.up
     add_column :orders, :pay_price, :decimal
