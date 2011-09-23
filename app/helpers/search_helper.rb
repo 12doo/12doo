@@ -65,4 +65,16 @@ module SearchHelper
     return false
   end
   
+  def sort_by?(sort)
+    if params[:sort_by] && params[:sort_by] == sort && params[:sort] && params[:sort] == "0"
+      return true
+    end
+    
+    return false
+  end
+  
+  def cat_path_with_sort(sort_by, sort)
+    "/category/#{params[:cat]}/#{params[:tags]}/#{params[:keywords]}?sort_by=#{sort_by}&sort=#{sort}"
+  end
+  
 end
