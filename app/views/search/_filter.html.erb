@@ -24,9 +24,13 @@ if(targetObj.style.display!="none"){
 <div class="pdselect">
 	<ul id="selectbox">
 		<% defines = @category.product_attribute_defines.where(:search => true) %>
-		<% defines.each do |define| %>
+		<% defines.each_with_index do |define, index| %>
 		<li>
+			<% if index == 0 %>
 			<dl class="fore">
+			<% else %>
+			<dl>
+			<% end %>
 				<dt><%= define.name %>：</dt>
 				<dd>
 					<div><a href="<%= cat_path_with_selected_value @category, define, nil %>" class="<%= value_selected?(define, nil) ? '' : 'sel' %>">不限</a></div>
