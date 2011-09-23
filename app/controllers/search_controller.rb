@@ -4,8 +4,12 @@ class SearchController < ApplicationController
   def index
     @products = []
     @attributes = []
+    cats = []
+    
     if params[:cats]
+      cats = params[:cats].split(/,|-/).delete_if{|item| item == "0"}
     end
+    
     sort_by = "id"
     sort = "desc"
     if params[:sort] && params[:sort] == "0"
@@ -17,9 +21,19 @@ class SearchController < ApplicationController
     end
   
     if params[:keywords] == nil || params[:keywords] == ''
-      @products = Product.where(:visiable => true).order("#{sort_by} #{sort}").page(params[:page]).per(12)
+      if cats.length == 0
+        @products = Product.where(:visiable => true).order("#{sort_by} #{sort}").page(params[:page]).per(12)
+      else
+        @products = Product.where("category_id in :cats and visiable = :visiable", :cats => cats, :visiable => true).order("#{sort_by} #{sort}").page(params[:page]).per(12)
+      end
     else
-      sku = ProductAttribute.select("distinct(product_sku)").where("value like :keywords", :keywords => "%#{params[:keywords]}%")
+      sku = []
+      if cats.length == 0
+        sku = ProductAttribute.select("distinct(product_sku)").where("value like :keywords", :keywords => "%#{params[:keywords]}%")
+      else
+        sku = ProductAttribute.select("distinct(product_sku)").where("category_id in :cats and value like :keywords", :cats => cats, :keywords => "%#{params[:keywords]}%")
+      end
+      
       skus = []
       sku.each do |item|
         skus << item.product_sku
