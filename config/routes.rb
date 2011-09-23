@@ -55,7 +55,7 @@ V3::Application.routes.draw do
   #match "category", :to => "products#index"
   
   match "search(/:cats(/:tags(/:keywords)))", :to => "search#index"
-  match "category(/:cats(/:tags(/:keywords)))", :to => "search#category"
+  match "category(/:cat(/:tags(/:keywords)))", :to => "search#category"
 
   get "home/index"
 

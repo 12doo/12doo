@@ -30,9 +30,10 @@ class SearchController < ApplicationController
   
   def category
     @products = []
+    @category = Category.find(params[:cat])
     @menu = "wine"
     @attributes = []
-    if params[:cats] && params[:tags]
+    if params[:cat] && params[:tags]
       
       sort_by = "id"
       sort = "desc"
