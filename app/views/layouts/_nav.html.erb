@@ -9,8 +9,9 @@
 	</ul>
 </div>
 <div id="search">
-  <input type="text" id="keywordTop" onkeydown="javascript:if(event.keyCode == 13){window.location.href = '/search?keywords=' + $('#keywordTop').val();}"  value="<%= params[:keywords] %>" />
-	<a href="#" onclick="javascript:window.location.href = '/search?keywords=' + $('#keywordTop').val(); return false;">
+	<% cat = Category.find_by_short('wine') %>
+  <input type="text" id="keywordTop" onkeydown="javascript:if(event.keyCode == 13){window.location.href = '<%= cat_path cat %>' + $('#keywordTop').val();}"  value="<%= params[:keywords] %>" />
+	<a href="#" onclick="javascript:window.location.href = '<%= cat_path cat %>' + $('#keywordTop').val(); return false;">
 	  <img src="/images/btn_search.gif" width="67" height="30" alt="搜索" />
 	</a>
 </div>
