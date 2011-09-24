@@ -65,13 +65,13 @@ class SearchController < ApplicationController
         id = []
         if (params[:tags] == nil || condition_is_null) && params[:keywords] && params[:keywords] != ''
           # 如果tag为空,keywords不为空
-          id = ProductAttribute.select("distinct(product_id)").where("category_id = :category_id andvalue like :keywords", :category_id => params[:cat], :keywords => "%#{params[:keywords]}%")
+          id = ProductAttribute.select("distinct(product_id)").where("category_id = :category_id and value like :keywords", :category_id => params[:cat], :keywords => "%#{params[:keywords]}%")
         elsif params[:keywords] == nil && params[:tags] && params[:tags] != '' && !condition_is_null
           # 如果keywords为空,tags不为空
           id = ProductAttribute.select("product_id").where("category_id = :category_id and product_attribute_value_id in (:ids)", :category_id => params[:cat], :ids => params[:tags].split(/,|-/).delete_if{|item| item == "0"}).group("product_id").having("count(*) > #{effective_section_count}")
         else
           # 如果都不为空
-          id = ProductAttribute.select("product_id").where("category_id = :category_id and(product_attribute_value_id in (:ids)) or value like :keywords", :category_id => params[:cat], :ids => params[:tags].split(/,|-/).delete_if{|item| item == "0"}, :keywords => "%#{params[:keywords]}%").group("product_id").having("count(*) > #{effective_section_count}")
+          id = ProductAttribute.select("product_id").where("category_id = :category_id and (product_attribute_value_id in (:ids)) and value like :keywords", :category_id => params[:cat], :ids => params[:tags].split(/,|-/).delete_if{|item| item == "0"}, :keywords => "%#{params[:keywords]}%").group("product_id").having("count(*) > #{effective_section_count}")
         end
       
         ids = []
