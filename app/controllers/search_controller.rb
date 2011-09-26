@@ -81,12 +81,12 @@ class SearchController < ApplicationController
       
         if params[:keywords] && params[:keywords] != ''
           if condition_is_null
-            @products = Product.where("(id in (:ids) or cn_name like :cn_name or name like :name) and visiable = :visiable", :ids => ids, :cn_name => "%#{params[:keywords]}%", :name => "%#{params[:keywords]}%", :visiable => true).order("#{sort_by} #{sort}").page(params[:page]).per(12)
+            @products = Product.where("category_id = :category_id and (id in (:ids) or cn_name like :cn_name or name like :name) and visiable = :visiable", :category_id => params[:cat], :ids => ids, :cn_name => "%#{params[:keywords]}%", :name => "%#{params[:keywords]}%", :visiable => true).order("#{sort_by} #{sort}").page(params[:page]).per(12)
           else
-            @products = Product.where("(id in (:ids) and (cn_name like :cn_name or name like :name)) and visiable = :visiable", :ids => ids, :cn_name => "%#{params[:keywords]}%", :name => "%#{params[:keywords]}%", :visiable => true).order("#{sort_by} #{sort}").page(params[:page]).per(12)
+            @products = Product.where("category_id = :category_id and (id in (:ids) and (cn_name like :cn_name or name like :name)) and visiable = :visiable", :category_id => params[:cat], :ids => ids, :cn_name => "%#{params[:keywords]}%", :name => "%#{params[:keywords]}%", :visiable => true).order("#{sort_by} #{sort}").page(params[:page]).per(12)
           end
         else
-          @products = Product.where("id in (:ids) and visiable = :visiable", :ids => ids, :visiable => true).order("#{sort_by} #{sort}").page(params[:page]).per(12)
+          @products = Product.where("category_id = :category_id and id in (:ids) and visiable = :visiable", :category_id => params[:cat], :ids => ids, :visiable => true).order("#{sort_by} #{sort}").page(params[:page]).per(12)
         end
       end
     else

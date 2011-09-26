@@ -12,16 +12,18 @@
         <tbody>
           <tr bgcolor="#f0f0f0" class="f-black-12-b">
             <td height="30" width="30">ID</td>
+			<td>分类</td>
             <td>中文名称(SKU)</td>
             <td width="50">单价</td>
             <td width="100">售出/库存</td>
             <td width="100">状态</td>
             <td width="50">操作</td>
           </tr>
-					<% @products.each do |product| %>
+			<% @products.each do |product| %>
 				 	<tr>
 				 	  <td height="30"><%= product.id %></td>
-  			    <td><%= link_to product.cn_name, product, :class => 'f-red-12', :target => :_blank %>(<%= product.sku %>)</td>
+				<td height="30"><%= product.category.name %></td>
+  			    	<td><%= link_to product.cn_name, product, :class => 'f-red-12', :target => :_blank %>(<%= product.sku %>)</td>
 				    <td><%= format "%.2f", product.price %></td>
 						<td><%= product.sold_count %>&nbsp;/&nbsp;<%= product.count %></td>
 						<td><%= product.status %>/<%= (product.visiable ? "可见" : "隐藏") %>/<%= (product.promo ? "推荐" : "正常") %></td>
