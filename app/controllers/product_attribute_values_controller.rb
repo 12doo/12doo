@@ -17,6 +17,8 @@ class ProductAttributeValuesController < ApplicationController
     @product_attribute_value = ProductAttributeValue.new(params[:product_attribute_value])
     @product_attribute_value.short = @product_attribute_define.short
     @product_attribute_value.name = @product_attribute_define.name
+    @product_attribute_value.category_id = @product_attribute_define.category_id
+    @product_attribute_value.product_attribute_define_id = @product_attribute_define.id
 
     respond_to do |format|
       if @product_attribute_value.save
