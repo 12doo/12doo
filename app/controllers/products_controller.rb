@@ -109,6 +109,10 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @categories = Category.all
     
+    unless @product.category_id == params[:product][:category_id]
+      @product.change_category
+    end
+    
     if params[:product_attributes]
       params[:product_attributes].each do |short|
         if params["product_attribute_" + short] && params["product_attribute_" + short] != ''

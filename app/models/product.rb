@@ -88,6 +88,10 @@ class Product < ActiveRecord::Base
     end
   end
   
+  def change_category
+    self.product_attributes.delete_all
+  end
+  
   def update_attribute(short,old_value,new_value)
     if short
       values = self.product_attributes.where(:short => short, :value => old_value)
