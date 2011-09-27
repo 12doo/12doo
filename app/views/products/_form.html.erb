@@ -21,6 +21,15 @@
 function insertPic(url){
 	$('.wysiwyg').wysiwyg('insertImage', url);
 }
+
+function changeCat(catId){
+	<% if @product.id %>
+	window.location.href = '<%= edit_product_path @product %>' + '?cat=' + catId
+	<% else %>
+	window.location.href = '<%= new_product_path %>' + '?cat=' + catId
+	<% end %>
+}
+
 </script>
 
 <div id="error_explanation">
@@ -33,6 +42,10 @@ function insertPic(url){
 <% form_for @product, :validate => true, :html => { :multipart => true, :id => :product_form } do |f| %>
 <table width="100%" cellspacing="0" cellpadding="0" border="0" class="tableinfoL" align="center">
 	<tbody>
+		<tr>
+		    <td height="30" class="tcenter">所属分类</td>
+		    <td><%= f.select  :category_id, @categories.collect{ |c| [c.name, c.id] }, {}, :onchange => "changeCat(this.value)" %></td>
+		</tr>
 		<tr>
 			<td height="30" width="70" class="tcenter">图片</td>
 			<td><%= f.file_field  :pic_main %></td>
@@ -56,10 +69,6 @@ function insertPic(url){
 		<tr>
 		    <td height="30" class="tcenter">中文名称</td>
 		    <td><%= f.text_field :cn_name %></td>
-		</tr>
-		<tr>
-		    <td height="30" class="tcenter">所属分类</td>
-		    <td><%= f.select  :category_id, @categories.collect{ |c| [c.name, c.id] } %></td>
 		</tr>
 		<tr>
 		    <td height="30" class="tcenter">价格</td>

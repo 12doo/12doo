@@ -10,8 +10,8 @@
 					<% if @products && @products.count > 1 %>
 					<table width="100%" border="0" cellspacing="5" cellpadding="0">
 			  			<tr>
-							<td><a href="<%= sort_is_already('price') ? search_path_with_sort('price', 1) : search_path_with_sort('price', 0) %>" class="<%= sort_is_already('price') ? "order_up" : "order_down" %>">价格</a></td>
-							<td><a href="<%= sort_is_already('sold_count') ? search_path_with_sort('sold_count', 1) : search_path_with_sort('sold_count', 0) %>" class="<%= sort_is_already('sold_count') ? "order_up" : "order_down" %>">销量</a></td>
+							<td><a href="<%= sort_by?('price') ? cat_path_with_sort('price', 1) : cat_path_with_sort('price', 0) %>" class="<%= sort_by?('price') ? "order_up" : "order_down" %>">价格</a></td>
+							<td><a href="<%= sort_by?('sold_count') ? cat_path_with_sort('sold_count', 1) : cat_path_with_sort('sold_count', 0) %>" class="<%= sort_by?('sold_count') ? "order_up" : "order_down" %>">销量</a></td>
 			  			</tr>
 					</table>
 					<% end %>
@@ -45,8 +45,8 @@
 					<% if @products && @products.count > 1 %>
 					<table width="100%" border="0" cellspacing="5" cellpadding="0">
 			  			<tr>
-							<td><a href="<%= sort_is_already('price') ? search_path_with_sort('price', 1) : search_path_with_sort('price', 0) %>" class="<%= sort_is_already('price') ? "order_up" : "order_down" %>">价格</a></td>
-							<td><a href="<%= sort_is_already('sold_count') ? search_path_with_sort('sold_count', 1) : search_path_with_sort('sold_count', 0) %>" class="<%= sort_is_already('sold_count') ? "order_up" : "order_down" %>">销量</a></td>
+							<td><a href="<%= sort_by?('price') ? cat_path_with_sort('price', 1) : cat_path_with_sort('price', 0) %>" class="<%= sort_by?('price') ? "order_up" : "order_down" %>">价格</a></td>
+							<td><a href="<%= sort_by?('sold_count') ? cat_path_with_sort('sold_count', 1) : cat_path_with_sort('sold_count', 0) %>" class="<%= sort_by?('sold_count') ? "order_up" : "order_down" %>">销量</a></td>
 			  			</tr>
 					</table>
 					<% end %>

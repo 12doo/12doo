@@ -18,8 +18,9 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @menu = "wine"
+    
     @product = Product.find(params[:id])
+    @menu = @product.category.short
     if @product
       @title = @product.cn_name
       unless @product.visiable
@@ -53,11 +54,17 @@ class ProductsController < ApplicationController
   end
 
   def new
-    @product = Product.new
-    @statuses = ProductStatus.all
-    @years = (Time.now.year).downto(Time.now.year - 30).map{ |x| x }
-    @categories = Category.all
-    @attributes = ProductAttributeDefine.all
+    if params[:cat]
+      @product = Product.new
+      @product.category_id = params[:cat]
+      @statuses = ProductStatus.all
+      @years = (Time.now.year).downto(Time.now.year - 30).map{ |x| x }
+      @categories = Category.all
+      @attributes = Category.find(params[:cat]).product_attribute_defines
+    else
+      category = Category.find_by_short('wine')
+      redirect_to new_product_path :cat => category.id
+    end
   end
   
   def create
@@ -90,7 +97,12 @@ class ProductsController < ApplicationController
     @statuses = ProductStatus.all
     @years = (Time.now.year).downto(Time.now.year - 30).map{ |x| x }
     @categories = Category.all
-    @attributes = ProductAttributeDefine.all
+    
+    if params[:cat]
+      @product.category_id = params[:cat]
+    end
+    @attributes = Category.find(@product.category_id).product_attribute_defines
+    
   end
 
   def update
