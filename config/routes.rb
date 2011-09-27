@@ -4,7 +4,7 @@ V3::Application.routes.draw do
   resources :feeds, :only => :index
 
   resources :deliveries, :addresses, :order_items, :order_changes, :pictures, :alipay_logs, :dispatches, :dispatch_items,
-            :product_tags, :product_statuses, :product_attributes, :product_attribute_defines, :products, :promotions, :categories
+            :product_statuses, :product_attributes, :product_attribute_defines, :products, :promotions, :categories
             
   devise_for :users, :controllers => { :registrations => "registrations", :confirmations => "confirmations" }
   get "users/set_role"
