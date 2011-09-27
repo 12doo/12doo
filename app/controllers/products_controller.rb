@@ -71,10 +71,10 @@ class ProductsController < ApplicationController
     @product = Product.new(params[:product])
     @categories = Category.all
     if params[:product_attributes]
-      params[:product_attributes].each do |short|
-        if params["product_attribute_" + short] && params["product_attribute_" + short] != ''
-          params["product_attribute_" + short].each do |value|
-            @product.add_attribute(short,value)
+      params[:product_attributes].each do |id|
+        if params["product_attribute_" + id] && params["product_attribute_" + id] != ''
+          params["product_attribute_" + id].each do |value|
+            @product.add_attribute(id,value)
           end
         end
       end
@@ -114,9 +114,9 @@ class ProductsController < ApplicationController
     end
     
     if params[:product_attributes]
-      params[:product_attributes].each do |short|
-        if params["product_attribute_" + short] && params["product_attribute_" + short] != ''
-            @product.set_attributes(short,params["product_attribute_" + short])
+      params[:product_attributes].each do |id|
+        if params["product_attribute_" + id] && params["product_attribute_" + id] != ''
+            @product.set_attributes(id,params["product_attribute_" + id])
         end
       end
     end

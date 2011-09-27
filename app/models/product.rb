@@ -52,9 +52,9 @@ class Product < ActiveRecord::Base
     price
   end
   
-  def has_attribute(short,value)
+  def has_attribute(id,value)
     self.product_attributes.each do | attr |
-      if attr.short == short && attr.value == value
+      if attr.product_attribute_define_id == id && attr.value == value
         return true
       end
     end
@@ -62,14 +62,14 @@ class Product < ActiveRecord::Base
   end
   
   # 添加到当前属性集合
-  def add_attribute(short,value)
-    if short && value
-      if !self.has_attribute(short,value)
-        define = ProductAttributeDefine.find_by_short(short)
+  def add_attribute(id,value)
+    if id && value
+      if !self.has_attribute(id,value)
+        define = ProductAttributeDefine.find(id)
         if define
           # 如果是固定值属性
           if define.fix
-            value = ProductAttributeValue.where(:short => short,:value => value).first
+            value = ProductAttributeValue.where(:product_attribute_define_id => id, :value => value).first
             if value
               temp = ProductAttribute.new
               temp.init_from_value(value.id)
@@ -92,9 +92,9 @@ class Product < ActiveRecord::Base
     self.product_attributes.delete_all
   end
   
-  def update_attribute(short,old_value,new_value)
-    if short
-      values = self.product_attributes.where(:short => short, :value => old_value)
+  def update_attribute(id,old_value,new_value)
+    if id
+      values = self.product_attributes.where(:product_attribute_define_id => id, :value => old_value)
       values.each do |item|
         item.value == new_value
         self.product_attributes << item
@@ -102,31 +102,31 @@ class Product < ActiveRecord::Base
     end
   end
   
-  def set_attributes(short,values)
-    if short
+  def set_attributes(id,values)
+    if id
       self.product_attributes.each do |item|
         if !values.include?item.value
-          self.remove_attribute(short,item.value)
+          self.remove_attribute(id,item.value)
         end
       end
       
       values.each do |item|
-        add_attribute(short,item)
+        add_attribute(id,item)
       end
     end
   end
   
-  def remove_attribute(short,value)
-    if short && value
-      values = self.product_attributes.where(:short => short, :value => value)
+  def remove_attribute(id,value)
+    if id && value
+      values = self.product_attributes.where(:product_attribute_define_id => id, :value => value)
       self.product_attributes.delete(values)
     end
   end
   
   # TODO: 需要修改成判断多个值的方式
-  def get_attribute_value(short)
+  def get_attribute_value(id)
     value = ''
-    self.product_attributes.find_all_by_short(short).each_with_index do | attr , index|
+    self.product_attributes.find_all_by_product_attribute_define_id(id).each_with_index do | attr , index|
       if index > 0 
         value = value + '，' + attr.value
       else
@@ -160,7 +160,7 @@ class Product < ActiveRecord::Base
   def set_price_attribute
     price = current_price
 
-    item = ProductAttribute.where(:short => 'price', :product_id => self.id).first
+    item = ProductAttribute.where(:name => '价格', :product_id => self.id).first
 
     if item
       string = '600以上'

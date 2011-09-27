@@ -105,21 +105,21 @@ function changeCat(catId){
 		<tr><td height="30" colspan="2" class="tcenter"><b><%= link_to '编辑属性', :action => :index, :controller => :product_attribute_defines %></b></td></tr>
 		<% @attributes.each do |attribute| %>
 		<tr>
-			<td height="30"><%= attribute.name %><input type="hidden" value="<%= attribute.short %>" name="product_attributes[]" /></td>
+			<td height="30"><%= attribute.name %><input type="hidden" value="<%= attribute.id %>" name="product_attributes[]" /></td>
 			<td>
 			<% if attribute.fix %>
-				<% allAttr = ProductAttributeValue.where(:short => attribute.short) %>
+				<% allAttr = attribute.product_attribute_values %>
 				<% allAttr.each do |value| %>
 				
 				<% if attribute.multiple %>
-					<input type="checkbox" name="product_attribute_<%= attribute.short %>[]" <%= @product.has_attribute(attribute.short, value.value) ? "checked" : "" %> value="<%= value.value %>" /><%= value.value %>
+					<input type="checkbox" name="product_attribute_<%= attribute.id %>[]" <%= @product.has_attribute(attribute.id, value.value) ? "checked" : "" %> value="<%= value.value %>" /><%= value.value %>
 				<% else %>
-					<input type="radio" name="product_attribute_<%= attribute.short %>[]" <%= @product.has_attribute(attribute.short, value.value) ? "checked" : "" %> value="<%= value.value %>" /><%= value.value %>
+					<input type="radio" name="product_attribute_<%= attribute.id %>[]" <%= @product.has_attribute(attribute.id, value.value) ? "checked" : "" %> value="<%= value.value %>" /><%= value.value %>
 				<% end %>
 
 				<% end %>
 			<% else %>
-				<input type="text" name="product_attribute_<%= attribute.short %>[]" value="<%= @product.get_attribute_value(attribute.short) %>" /><br />
+				<input type="text" name="product_attribute_<%= attribute.id %>[]" value="<%= @product.get_attribute_value(attribute.id) %>" /><br />
 			<% end %>
 			</td>
 		</tr>
