@@ -27,18 +27,18 @@ class SearchController < ApplicationController
         @products = Product.where("category_id in :cats and visiable = :visiable", :cats => cats, :visiable => true).order("#{sort_by} #{sort}").page(params[:page]).per(12)
       end
     else
-      sku = []
+      id = []
       if cats.length == 0
-        sku = ProductAttribute.select("distinct(product_sku)").where("value like :keywords", :keywords => "%#{params[:keywords]}%")
+        id = ProductAttribute.select("distinct(product_id)").where("value like :keywords", :keywords => "%#{params[:keywords]}%")
       else
-        sku = ProductAttribute.select("distinct(product_sku)").where("category_id in :cats and value like :keywords", :cats => cats, :keywords => "%#{params[:keywords]}%")
+        id = ProductAttribute.select("distinct(product_id)").where("category_id in :cats and value like :keywords", :ids => ids, :keywords => "%#{params[:keywords]}%")
       end
       
-      skus = []
-      sku.each do |item|
-        skus << item.product_sku
+      ids = []
+      id.each do |item|
+        ids << item.product_id
       end
-      @products = Product.where("(sku in (:skus) or cn_name like :cn_name or name like :name) and visiable = :visiable", :skus => skus, :cn_name => "%#{params[:keywords]}%", :name => "%#{params[:keywords]}%", :visiable => true).order("#{sort_by} #{sort}").page(params[:page]).per(12)
+      @products = Product.where("(id in (:ids) or cn_name like :cn_name or name like :name) and visiable = :visiable", :ids => ids, :cn_name => "%#{params[:keywords]}%", :name => "%#{params[:keywords]}%", :visiable => true).order("#{sort_by} #{sort}").page(params[:page]).per(12)
     end
   end
   

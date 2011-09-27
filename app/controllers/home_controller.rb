@@ -2,23 +2,23 @@
 class HomeController < ApplicationController
   
   def index
-    sku = ProductAttribute.select("distinct(product_sku)").where("value like :keywords", :keywords => "%红葡萄酒%")
+    id = ProductAttribute.select("distinct(product_id)").where("value like :keywords", :keywords => "%红葡萄酒%")
 
-    skus = []
-    sku.each do |item|
-      skus << item.product_sku
+    ids = []
+    id.each do |item|
+      ids << item.product_id
     end
     
-    @red = Product.where("(sku in (:skus) ) and visiable = :visiable", :skus => skus, :visiable => true).order('id desc').page(1).per(4)
+    @red = Product.where("(id in (:ids) ) and visiable = :visiable", :ids => ids, :visiable => true).order('id desc').page(1).per(4)
     
-    sku = ProductAttribute.select("distinct(product_sku)").where("value like :keywords", :keywords => "%白葡萄酒%")
+    id = ProductAttribute.select("distinct(product_id)").where("value like :keywords", :keywords => "%白葡萄酒%")
 
-    skus = []
-    sku.each do |item|
-      skus << item.product_sku
+    ids = []
+    id.each do |item|
+      ids << item.product_id
     end
     
-    @white = Product.where("(sku in (:skus) ) and visiable = :visiable", :skus => skus, :visiable => true).order('id desc').page(1).per(4)
+    @white = Product.where("(id in (:ids) ) and visiable = :visiable", :ids => ids, :visiable => true).order('id desc').page(1).per(4)
     
     @promo = Product.where("promo = :promo and visiable = :visiable", :promo => true, :visiable => true).order('id desc').page(1).per(4)
   end

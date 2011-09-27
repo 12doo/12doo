@@ -73,14 +73,12 @@ class Product < ActiveRecord::Base
             if value
               temp = ProductAttribute.new
               temp.init_from_value(value.id)
-              temp.product_sku = self.sku
               self.product_attributes << temp
             end
           else
             temp = ProductAttribute.new
             temp.init_from_define(define.id)
             temp.value = value
-            temp.product_sku = self.sku
             self.product_attributes << temp
           end
         end
@@ -160,7 +158,8 @@ class Product < ActiveRecord::Base
   def set_price_attribute
     price = current_price
 
-    item = ProductAttribute.where(:name => '价格', :product_id => self.id).first
+    # id = 11的define是价格区间
+    item = ProductAttribute.where(:product_attribute_define_id => 11, :product_id => self.id).first
 
     if item
       string = '600以上'
@@ -174,7 +173,7 @@ class Product < ActiveRecord::Base
         string = '300~599'
       end
     
-      value = ProductAttributeValue.where(:short => 'price', :value => string).first
+      value = ProductAttributeValue.where(:product_attribute_define_id => 11, :value => string).first
       item.value = value.value
       item.product_attribute_value_id = value.id
     
