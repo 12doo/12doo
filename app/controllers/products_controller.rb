@@ -62,7 +62,7 @@ class ProductsController < ApplicationController
   
   def create
     @product = Product.new(params[:product])
-    
+    @categories = Category.all
     if params[:product_attributes]
       params[:product_attributes].each do |short|
         if params["product_attribute_" + short] && params["product_attribute_" + short] != ''
@@ -95,6 +95,7 @@ class ProductsController < ApplicationController
 
   def update
     @product = Product.find(params[:id])
+    @categories = Category.all
     
     if params[:product_attributes]
       params[:product_attributes].each do |short|
