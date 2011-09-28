@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class DeleteProductTags < ActiveRecord::Migration
   def self.up
     drop_table :product_tags

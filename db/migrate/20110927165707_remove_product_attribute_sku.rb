@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class RemoveProductAttributeSku < ActiveRecord::Migration
   def self.up
     remove_column :product_attributes, :product_sku

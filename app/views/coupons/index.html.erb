@@ -20,6 +20,7 @@
 	          <tr bgcolor="#f0f0f0" class="f-black-12-b">
 	              <td height="30">编号</td>
 	              <td width="60">属于</td>
+					<td width="60">适用分类</td>
 	              <td width="100">抵扣/最低金额</td>
 	              <td width="40">一次性</td>
 	              <td width="40">已用</td>
@@ -29,7 +30,8 @@
 			<% @coupons.each do |coupon| %>
 		 	<tr>
 			    <td height="30"><%= coupon.code %></td>
-			    <td><%= coupon.user ? coupon.user.name : "所有人" %></td>
+			    <td><%= coupon.user ? coupon.user.display_name : "所有人" %></td>
+				<td><%= coupon.category ? coupon.category.name : "所有产品" %></td>
 			    <td><%= format "%.2f", coupon.discount %> / <%= format "%.2f", coupon.threshold %></td>
 				  <td><%= coupon.one_off ? '是' : '否' %></td>
 				  <td><%= coupon.used_time %> 次</td>

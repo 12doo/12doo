@@ -15,7 +15,7 @@ class Coupon < ActiveRecord::Base
     # 判断优惠券生效时间范围,价格是否适用
     if self.begin < Time.now && self.end > Time.now && self.threshold_match(order)
       # 判断优惠券是否是多人使用券
-      if self.all_user
+      unless self.user_id
         # 是多人优惠券,如果不是一次性并且已经使用过,都返回true
         if self.one_off && self.used(user)
           result = false
@@ -52,7 +52,7 @@ class Coupon < ActiveRecord::Base
     # 判断优惠券生效时间范围,价格是否适用
     if self.begin < Time.now && self.end > Time.now
       # 判断优惠券是否是多人使用券
-      if self.all_user
+      unless self.user_id
         # 是多人优惠券,如果不是一次性并且已经使用过,都返回true
         if self.one_off && self.used(user)
           result = false
@@ -125,7 +125,6 @@ class Coupon < ActiveRecord::Base
       
       coupon.threshold = 100
       coupon.user_id = user.id
-      coupon.all_user = false
       coupon.one_off = true
       coupon.begin = Time.now
       coupon.end = Time.now + 1.year
