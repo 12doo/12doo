@@ -32,6 +32,7 @@ class Coupon < ActiveRecord::Base
   end
   
   def available(user)
+    
     result = false
     # 判断优惠券生效时间范围,价格是否适用
     if self.begin < Time.now && self.end > Time.now
