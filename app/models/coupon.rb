@@ -116,11 +116,12 @@ class Coupon < ActiveRecord::Base
       
       coupon.threshold = 100
       coupon.user_id = user.id
+      coupon.category_id = 1
       coupon.one_off = true
       coupon.begin = Time.now
       coupon.end = Time.now + 1.year
       coupon.used_time = 0
-      coupon.memo = '满' + coupon.threshold.to_s + '减' + coupon.discount.to_s + ',不含运费.有效期到:' +  coupon.end.strftime('%Y-%m-%d %H:%M:%S') + ',一次性使用.'
+      coupon.memo = '购买葡萄酒满' + coupon.threshold.to_s + '减' + coupon.discount.to_s + ',不含运费.有效期到:' +  coupon.end.strftime('%Y-%m-%d %H:%M:%S') + ',一次性使用.'
       coupon.save
       coupon
     end
