@@ -16,6 +16,7 @@ class CouponsController < ApplicationController
 
   def new
     @coupon = Coupon.new
+    @categories = Category.all
   end
 
   def create

@@ -7,6 +7,8 @@ class Coupon < ActiveRecord::Base
   
   has_many :coupon_used_records
   belongs_to :user
+  belongs_to :category
+  
   paginates_per 20
   
   # 判断是否可用

@@ -24,11 +24,11 @@
 					</tr>
 					<tr>
 					    <td height="30" class="tcenter">用于分类</td>
-					    <td><%= f.text_field :product_category %></td>
+						<td><%= f.select  :category_id, @categories.collect{ |c| [c.name, c.id] }, {:include_blank => true} %>留空表示所有分类可用</td>
 					</tr>
 					<tr>
-					    <td height="30" class="tcenter">属于(留空表示所有人可用)</td>
-					    <td><%= f.text_field :user_id %></td>
+					    <td height="30" class="tcenter">属于</td>
+					    <td><%= f.text_field :user_id %>留空表示所有人可用</td>
 					</tr>
 					<tr>
 					    <td height="30" class="tcenter">一次性</td>
