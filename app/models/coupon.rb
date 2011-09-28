@@ -14,27 +14,9 @@ class Coupon < ActiveRecord::Base
   # 判断是否可用
   def can_use(user, order)
     result = false
-    # 判断优惠券生效时间范围,价格是否适用
-    if self.begin < Time.now && self.end > Time.now && self.threshold_match(order)
-      # 判断优惠券是否是多人使用券
-      unless self.user_id
-        # 是多人优惠券,如果不是一次性并且已经使用过,都返回true
-        if self.one_off && self.used(user)
-          result = false
-        else
-          result = true
-        end
-      else
-        # 是单人优惠券,是否是当前用户的
-        if self.user_id == user.id
-          # 除非是一次性并且已经用过的,其余都返回true
-          if self.one_off && self.used(user)
-            result = false
-          else
-            result = true
-          end
-        end
-      end
+    
+    if self.available(user) && self.threshold_match(order)
+      result = true
     end
   
     return result
@@ -79,11 +61,16 @@ class Coupon < ActiveRecord::Base
   
   # 判断订单价格是否适用
   def threshold_match(order)
-    if order.total >= self.threshold
-      return true
-    else
-      return false
+    result = false
+    
+    #判断当前coupon适用的category
+    if self.category == nil && order.total >= self.threshold
+      result = true
+    elsif order.subtotal_of_category(self.category) >= self.threshold
+      result = true 
     end
+
+    return result
   end
   
   # 使用该券
@@ -100,6 +87,7 @@ class Coupon < ActiveRecord::Base
     self.save
   end
   
+  #取消订单
   def restore(user,order)
     if order.coupon_code == self.code
       records = CouponUsedRecord.where(:user_id => user.id, :coupon_code => self.code)

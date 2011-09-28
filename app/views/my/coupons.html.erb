@@ -14,6 +14,9 @@
                             编号
                         </td>
                         <td width="65">
+                           	适用产品
+                        </td>
+                        <td width="65">
                             抵扣金额
                         </td>
                         <td width="70">
@@ -26,6 +29,7 @@
 					<% @coupons.each do |coupon| %>
 				 	<tr>
 					    <td height="30"><%= coupon.code %></td>
+						<td><%= coupon.category ? coupon.category.name : "所有产品" %></td>
 					    <td><%= format "%.2f", coupon.discount %></td>
 					    <td><%= coupon.end ? coupon.end.strftime('%Y-%m-%d') : "" %></td>
 						<td><%= coupon.memo %></td>

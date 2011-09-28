@@ -19,6 +19,23 @@ class Order < ActiveRecord::Base
     coupons
   end
   
+  #某个分类下产品采购价格,支持子分类
+  def subtotal_of_category(category)
+    subtotal = 0
+    
+    self.order_items.each do |item|
+      if item.product.category_id == category.id
+        subtotal = subtotal + item.subtotal
+      end
+    end
+    
+    category.categories.each do |item|
+      subtotal = subtotal + self.subtotal_of_category(item)
+    end
+    
+    return subtotal
+  end
+  
   def init_from_cart(cart, user)
     self.no = Time.now.strftime("SO%Y%m%d%H%M%S")
     self.order_at = Time.now
