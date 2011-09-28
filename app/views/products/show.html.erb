@@ -168,46 +168,46 @@
 				  <table width="100%" border="0" cellspacing="0" cellpadding="0">
 				  	<tbody>
 			        <tr>
-			          <td width="220"><span>酒类型：&nbsp;&nbsp;</span><%= @product.get_attribute_value("type") %></td>
-					      <td><span>葡萄品种：&nbsp;&nbsp;</span><%= @product.get_attribute_value("grape") %></td>
+			          <td width="220"><span>酒类型：&nbsp;&nbsp;</span><%= @product.get_attribute_value(10) %></td>
+					      <td><span>葡萄品种：&nbsp;&nbsp;</span><%= @product.get_attribute_value(1) %></td>
 			        </tr>
 			        <tr>
-					      <td><span>原产国：</span>&nbsp;&nbsp;<%= @product.get_attribute_value("country") %></td>
-			          <td><span>葡萄产区：</span>&nbsp;&nbsp;<%= @product.get_attribute_value("region") %></td>
+					      <td><span>原产国：</span>&nbsp;&nbsp;<%= @product.get_attribute_value(8) %></td>
+			          <td><span>葡萄产区：</span>&nbsp;&nbsp;<%= @product.get_attribute_value(7) %></td>
 			        </tr>
 					    <tr>
-						    <td><span>生产商：</span>&nbsp;&nbsp;<%= @product.get_attribute_value("made_by") %></td>
-						    <td><span>适用场合：</span>&nbsp;&nbsp;<%= @product.get_attribute_value("use_for") %></td>
+						    <td><span>生产商：</span>&nbsp;&nbsp;<%= @product.get_attribute_value(3) %></td>
+						    <td><span>适用场合：</span>&nbsp;&nbsp;<%= @product.get_attribute_value(13) %></td>
 					    </tr>
 			        <tr>
 			          <td>
-			        	  <% if @product.get_attribute_value("abv") == "" %>
+			        	  <% if @product.get_attribute_value(4) == "" %>
 			        	    &nbsp;
 			        	  <% else %>
-			        	    <span>酒精度：</span>&nbsp;&nbsp;<%= @product.get_attribute_value("abv") %>%vol
+			        	    <span>酒精度：</span>&nbsp;&nbsp;<%= @product.get_attribute_value(4) %>%vol
 			        	  <% end %>
 				    	  </td>
 			          <td>
-			            <% if @product.get_attribute_value("vol") == "" %>
+			            <% if @product.get_attribute_value(5) == "" %>
 				      	    &nbsp;
 				      	  <% else %>
-				      	    <span>装瓶容量：</span>&nbsp;&nbsp;<%= @product.get_attribute_value("vol") %>ml
+				      	    <span>装瓶容量：</span>&nbsp;&nbsp;<%= @product.get_attribute_value(5) %>ml
 				      	  <% end %>
 				    	  </td>
 			        </tr>
 			        <tr>
 				    	  <td>
-			            <% if @product.get_attribute_value("level") == "" %>
+			            <% if @product.get_attribute_value(6) == "" %>
 				      	    &nbsp;
 				      	  <% else %>
-				      	    <span>酒等级：</span>&nbsp;&nbsp;<%= @product.get_attribute_value("level") %>
+				      	    <span>酒等级：</span>&nbsp;&nbsp;<%= @product.get_attribute_value(6) %>
 				      	  <% end %>
 			          </td>		
 			          <td>    	  
-				      	  <% if @product.get_attribute_value("vintage") == "" %>
+				      	  <% if @product.get_attribute_value(9) == "" %>
 				      	    &nbsp;
 				      	  <% else %>
-				      	    <span>葡萄年份：</span>&nbsp;&nbsp;<%= @product.get_attribute_value("vintage") %>
+				      	    <span>葡萄年份：</span>&nbsp;&nbsp;<%= @product.get_attribute_value(9) %>
 				      	  <% end %>
 				    	  </td>
 			        </tr>
