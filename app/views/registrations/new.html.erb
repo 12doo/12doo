@@ -3,7 +3,7 @@ $(document).ready(function(){
 	$('#password_confirmation').keydown(function(e){ 
 		if(e.keyCode == 13){
 			$('#password_confirmation').change();
-			$('#user_new').submit();
+			new_user();
 		} 
 	});
 	
