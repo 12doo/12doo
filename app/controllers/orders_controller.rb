@@ -118,7 +118,7 @@ class OrdersController < ApplicationController
       change.save
       
     else
-      @order.status = notification.status
+      order.status = notification.status
     end
     order.save
     
