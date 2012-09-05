@@ -1,14 +1,14 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.9'
-gem 'rake', '0.8.7'
+gem 'rails'
+gem 'rake'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 # gem 'sqlite3-ruby', :require => 'sqlite3'
 
-gem 'mysql2', '0.2.7'
+gem 'mysql2'
 # gem 'mysql2'
 gem	'bundler'
 
@@ -16,8 +16,10 @@ gem 'devise'
 # gem 'delayed_job', :git => 'git://github.com/collectiveidea/delayed_job.git'
 gem 'ar_mailer_rails3'
 
-gem 'active_merchant'
+gem 'activemerchant', :require => 'active_merchant'
 gem 'activemerchant_patch_for_china'
+
+gem 'weibo_2'
 
 # version 2.3 has some bugs with rails3
 # to replace will_paginate
