@@ -9,10 +9,10 @@ class CouponsController < ApplicationController
   def index
     @coupons = get_coupons(true)
   end
-  
-  def export
-    @coupons = get_coupons(false)
-  end
+    
+    def export
+      @coupons = get_coupons(false)
+    end
 
   def new
     @coupon = Coupon.new

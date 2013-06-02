@@ -1,0 +1,90 @@
+<style type="text/css"> 
+.zt110801_wrap{
+	
+	}
+.zt110801_wrap .ztbanner{	
+
+	}	
+.zt110801_wrap .mklist table{
+	margin:20px 0;
+	width:950px;
+	}
+.zt110801_wrap .mklist td{
+	width:317px;
+	}
+.zt110801_wrap .mklist td .mkpd_infoA,.zt110801_wrap .mklist td .mkpd_infoB,.zt110801_wrap .mklist td .mkpd_infoC{
+	position:relative;
+	width:291px;
+	height:163px;
+	display:block;
+	}
+.zt110801_wrap .mklist td .mkpd_infoA{
+	background:url(../images/110728_pdA_info.png) 0 0 no-repeat;
+}
+.zt110801_wrap .mklist td .mkpd_infoB{
+	background:url(../images/110728_pdB_info.png) center 0 no-repeat;
+	margin:0 auto;
+}
+.zt110801_wrap .mklist td .mkpd_infoC{
+	background:url(../images/110728_pdC_info.png) right 0 no-repeat;
+	float:right;
+}
+.zt110801_wrap .mklist td .mkpd_infoA a,.zt110801_wrap .mklist td .mkpd_infoB a,.zt110801_wrap .mklist td .mkpd_infoC a{
+display:block;
+	position:absolute;
+	left:54px;
+	bottom:12px;
+	width:195px;
+	height:34px;
+	cursor:pointer;
+	}
+	
+.zt110801_wrap .zt_pd_title{
+	height:52px;
+	padding:0 0 10px 0;
+	background:url(../images/110728_wine_bgline.png) 0 52px repeat-x;
+	margin:10px 0 20px 0;
+	}
+</style>
+<div class="zt110801_wrap">
+	<div class="ztbanner"><img src="/images/120910_banner.png" width="950" height="180" /></div> 
+	<div class="mklist"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+		<table>
+	  		<tr>
+	    		<td>
+					<a href="/products/42"><img src="/images/110728_pdA.jpg" width="291" height="259" /></a>
+					<div class="mkpd_infoA"><a href="/products/42" title="立即购买"></a></div>
+				</td>
+	    		<td align="center">
+					<a href="/products/41"><img src="/images/110728_pdB.jpg" width="291" height="259" /></a>
+					<div class="mkpd_infoB"><a href="/products/41" title="立即购买"></a></div>
+				</td>
+	    		<td align="right">
+					<a href="/products/43"><img src="/images/110728_pdC.jpg" width="291" height="259" /></a>
+					<div class="mkpd_infoC"><a href="/products/43" title="立即购买"></a></div>
+				</td>
+	  		</tr>
+		</table>
+	</div>
+	<div class="zt_pd_title">
+		<img src="/images/110728_wine_t.png" width="180" height="52" />
+	</div>
+	<div class="goodsResult">
+		<ul class="pagePicView">
+			<li class="one">
+			      <%= render :partial => "products/product", :object => Product.find(26) %>
+			</li>
+			<li>
+			      <%= render :partial => "products/product", :object => Product.find(17) %>
+			</li>
+			<li>
+			      <%= render :partial => "products/product", :object => Product.find(22) %>
+			</li>
+			<li>
+			      <%= render :partial => "products/product", :object => Product.find(45) %>
+			</li>
+		</ul>
+	</div>
+	<div class="clearit"></div>
+	<div class="zt_attention"><img src="/images/110728_attention.png" width="950" height="148" /></div>
+</div>
